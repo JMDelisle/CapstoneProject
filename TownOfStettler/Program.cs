@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using TownOfStettler.Data;
+
 namespace TownOfStettler
 {
     public class Program
@@ -7,6 +11,13 @@ namespace TownOfStettler
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            builder.Services.AddDbContext<DatabaseContext>(options =>
+                options.UseMySql(connectionString, new MySqlServerVersion(new Version(10, 4, 24))));
+            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<DatabaseContext>();
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
