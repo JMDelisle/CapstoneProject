@@ -34,15 +34,15 @@ namespace TownOfStettler.Controllers
                 return NotFound();
             }
 
-            var secondaryDrife = await _context.SecondaryDrives
+            var SecondaryDrive = await _context.SecondaryDrives
                 .Include(s => s.Device)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (secondaryDrife == null)
+            if (SecondaryDrive == null)
             {
                 return NotFound();
             }
 
-            return View(secondaryDrife);
+            return View(SecondaryDrive);
         }
 
         // GET: SecondaryDrives/Create
@@ -57,16 +57,16 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DeviceId,Type,Removable,SerialNumber,Destroyed,Notes")] SecondaryDrive secondaryDrife)
+        public async Task<IActionResult> Create([Bind("Id,DeviceId,Type,Removable,SerialNumber,Destroyed,Notes")] SecondaryDrive SecondaryDrive)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(secondaryDrife);
+                _context.Add(SecondaryDrive);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", secondaryDrife.DeviceId);
-            return View(secondaryDrife);
+            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", SecondaryDrive.DeviceId);
+            return View(SecondaryDrive);
         }
 
         // GET: SecondaryDrives/Edit/5
@@ -77,13 +77,13 @@ namespace TownOfStettler.Controllers
                 return NotFound();
             }
 
-            var secondaryDrife = await _context.SecondaryDrives.FindAsync(id);
-            if (secondaryDrife == null)
+            var SecondaryDrive = await _context.SecondaryDrives.FindAsync(id);
+            if (SecondaryDrive == null)
             {
                 return NotFound();
             }
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", secondaryDrife.DeviceId);
-            return View(secondaryDrife);
+            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", SecondaryDrive.DeviceId);
+            return View(SecondaryDrive);
         }
 
         // POST: SecondaryDrives/Edit/5
@@ -91,9 +91,9 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DeviceId,Type,Removable,SerialNumber,Destroyed,Notes")] SecondaryDrive secondaryDrife)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DeviceId,Type,Removable,SerialNumber,Destroyed,Notes")] SecondaryDrive SecondaryDrive)
         {
-            if (id != secondaryDrife.Id)
+            if (id != SecondaryDrive.Id)
             {
                 return NotFound();
             }
@@ -102,12 +102,12 @@ namespace TownOfStettler.Controllers
             {
                 try
                 {
-                    _context.Update(secondaryDrife);
+                    _context.Update(SecondaryDrive);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SecondaryDrifeExists(secondaryDrife.Id))
+                    if (!SecondaryDriveExists(SecondaryDrive.Id))
                     {
                         return NotFound();
                     }
@@ -118,8 +118,8 @@ namespace TownOfStettler.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", secondaryDrife.DeviceId);
-            return View(secondaryDrife);
+            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", SecondaryDrive.DeviceId);
+            return View(SecondaryDrive);
         }
 
         // GET: SecondaryDrives/Delete/5
@@ -130,15 +130,15 @@ namespace TownOfStettler.Controllers
                 return NotFound();
             }
 
-            var secondaryDrife = await _context.SecondaryDrives
+            var SecondaryDrive = await _context.SecondaryDrives
                 .Include(s => s.Device)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (secondaryDrife == null)
+            if (SecondaryDrive == null)
             {
                 return NotFound();
             }
 
-            return View(secondaryDrife);
+            return View(SecondaryDrive);
         }
 
         // POST: SecondaryDrives/Delete/5
@@ -150,17 +150,17 @@ namespace TownOfStettler.Controllers
             {
                 return Problem("Entity set 'DatabaseContext.SecondaryDrives'  is null.");
             }
-            var secondaryDrife = await _context.SecondaryDrives.FindAsync(id);
-            if (secondaryDrife != null)
+            var SecondaryDrive = await _context.SecondaryDrives.FindAsync(id);
+            if (SecondaryDrive != null)
             {
-                _context.SecondaryDrives.Remove(secondaryDrife);
+                _context.SecondaryDrives.Remove(SecondaryDrive);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SecondaryDrifeExists(int id)
+        private bool SecondaryDriveExists(int id)
         {
           return _context.SecondaryDrives.Any(e => e.Id == id);
         }

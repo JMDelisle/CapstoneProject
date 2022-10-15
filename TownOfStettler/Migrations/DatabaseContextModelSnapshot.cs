@@ -745,7 +745,7 @@ namespace TownOfStettler.Migrations
                     b.ToTable("ram", (string)null);
                 });
 
-            modelBuilder.Entity("TownOfStettler.Models.SecondaryDrife", b =>
+            modelBuilder.Entity("TownOfStettler.Models.SecondaryDrive", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1168,7 +1168,7 @@ namespace TownOfStettler.Migrations
                         .HasForeignKey("RamId")
                         .HasConstraintName("modifications_ibfk_3");
 
-                    b.HasOne("TownOfStettler.Models.SecondaryDrife", "SecondaryDrive")
+                    b.HasOne("TownOfStettler.Models.SecondaryDrive", "SecondaryDrive")
                         .WithMany("Modifications")
                         .HasForeignKey("SecondaryDriveId")
                         .HasConstraintName("modifications_ibfk_4");
@@ -1253,7 +1253,7 @@ namespace TownOfStettler.Migrations
                         .HasForeignKey("RamId")
                         .HasConstraintName("parts_ibfk_3");
 
-                    b.HasOne("TownOfStettler.Models.SecondaryDrife", "SecondaryDrive")
+                    b.HasOne("TownOfStettler.Models.SecondaryDrive", "SecondaryDrive")
                         .WithMany("Parts")
                         .HasForeignKey("SecondaryDriveId")
                         .HasConstraintName("parts_ibfk_4");
@@ -1316,7 +1316,7 @@ namespace TownOfStettler.Migrations
                     b.Navigation("Device");
                 });
 
-            modelBuilder.Entity("TownOfStettler.Models.SecondaryDrife", b =>
+            modelBuilder.Entity("TownOfStettler.Models.SecondaryDrive", b =>
                 {
                     b.HasOne("TownOfStettler.Models.DeviceInformation", "Device")
                         .WithMany("SecondaryDrives")
@@ -1427,7 +1427,7 @@ namespace TownOfStettler.Migrations
                     b.Navigation("Parts");
                 });
 
-            modelBuilder.Entity("TownOfStettler.Models.SecondaryDrife", b =>
+            modelBuilder.Entity("TownOfStettler.Models.SecondaryDrive", b =>
                 {
                     b.Navigation("Modifications");
 

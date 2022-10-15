@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TownOfStettler.Migrations
 {
-    public partial class migrations : Migration
+    public partial class jmMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

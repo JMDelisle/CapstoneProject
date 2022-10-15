@@ -87,7 +87,7 @@ namespace TownOfStettler.Models
         public virtual ICollection<Printer> Printers { get; set; }
         public virtual ICollection<Processsor> Processsors { get; set; }
         public virtual ICollection<Ram> Rams { get; set; }
-        public virtual ICollection<SecondaryDrife> SecondaryDrives { get; set; }
+        public virtual ICollection<SecondaryDrive> SecondaryDrives { get; set; }
         public virtual ICollection<SoundCard> SoundCards { get; set; }
         public virtual ICollection<VideoCard> VideoCards { get; set; }
         public virtual ICollection<Warranty> Warranties { get; set; }

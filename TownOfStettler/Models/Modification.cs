@@ -17,7 +17,7 @@ namespace TownOfStettler.Models
         public virtual HardDrive? HardDrive { get; set; }
         public virtual Processsor? Processor { get; set; }
         public virtual Ram? Ram { get; set; }
-        public virtual SecondaryDrife? SecondaryDrive { get; set; }
+        public virtual SecondaryDrive? SecondaryDrive { get; set; }
         public virtual SoundCard? SoundCard { get; set; }
         public virtual VideoCard? VideoCard { get; set; }
     }
