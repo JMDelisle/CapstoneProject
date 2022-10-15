@@ -16,7 +16,7 @@ namespace TownOfStettler.Models
             Printers = new HashSet<Printer>();
             Processsors = new HashSet<Processsor>();
             Rams = new HashSet<Ram>();
-            SecondaryDrives = new HashSet<SecondaryDrife>();
+            SecondaryDrives = new HashSet<SecondaryDrive>();
             SoundCards = new HashSet<SoundCard>();
             VideoCards = new HashSet<VideoCard>();
             Warranties = new HashSet<Warranty>();

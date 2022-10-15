@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using TownOfStettler.Models;
@@ -31,7 +32,7 @@ namespace TownOfStettler.Data
         public virtual DbSet<Printer> Printers { get; set; } = null!;
         public virtual DbSet<Processsor> Processsors { get; set; } = null!;
         public virtual DbSet<Ram> Rams { get; set; } = null!;
-        public virtual DbSet<SecondaryDrife> SecondaryDrives { get; set; } = null!;
+        public virtual DbSet<SecondaryDrive> SecondaryDrives { get; set; } = null!;
         public virtual DbSet<Software> Softwares { get; set; } = null!;
         public virtual DbSet<SoundCard> SoundCards { get; set; } = null!;
         public virtual DbSet<VideoCard> VideoCards { get; set; } = null!;
@@ -336,6 +337,77 @@ namespace TownOfStettler.Data
                     .HasConstraintName("device information_ibfk_2");
             });
 
+            modelBuilder.Entity<DeviceInformation>().HasData(
+          new DeviceInformation
+          {
+              Id = 1,
+              DeviceTypeId = 1,
+              OwnerLocation = 1,
+              TosNumber = " TOS0705C",
+              SerialNumber = "NA",
+              ModelNumber = "NA",
+              PurchaseStore = "NA",
+              PurchasePrice = 3594,
+              PurchaseDate = 2007,
+              OperatingSystem = "Windows 2003 Server - Standard",
+              Destroyed = 0,
+              Notes = "NA",
+              InstalledSoftware01 = 0
+
+          },
+              new DeviceInformation
+              {
+                  Id = 2,
+                  DeviceTypeId = 2,
+                  OwnerLocation = 2,
+                  TosNumber = "TOS0805D",
+                  SerialNumber = "NA",
+                  ModelNumber = "NA",
+                  PurchaseStore = "NA",
+                  PurchasePrice = 7085,
+                  PurchaseDate = "May 2008",
+                  OperatingSystem = "Microsoft Windows 2008 Server w/downgrade Windows Server 2003 SP2 32 BIT X64, Microsoft Excel 2007",
+                  Destroyed = 0,
+                  Notes = "NA",
+
+
+              },
+              new DeviceInformation
+              {
+                  Id = 3,
+                  DeviceTypeId = 3,
+                  OwnerLocation = 3,
+                  TosNumber = "TOSL0907B",
+                  SerialNumber = "NA",
+                  ModelNumber = "NA",
+                  PurchaseStore = "NA",
+                  PurchasePrice = 964,
+                  PurchaseDate = "July 2009",
+                  OperatingSystem = "Windows Vista Business, Microsoft Office 2007 Small Business",
+                  Destroyed = 1,
+                  Notes = "NA",
+
+              },
+              new DeviceInformation
+              {
+                  Id = 4,
+                  DeviceTypeId = 4,
+                  OwnerLocation = 4,
+                  TosNumber = "  TOSL0907C",
+                  SerialNumber = "NA",
+                  ModelNumber = "NA",
+                  PurchaseStore = "NA",
+                  PurchasePrice = 964,
+                  PurchaseDate = "July 2009",
+                  OperatingSystem = "",
+                  Destroyed = 1,
+                  Notes = "NA",
+
+              });
+
+
+
+
             modelBuilder.Entity<DisplayMonitor>(entity =>
             {
                 entity.ToTable("display monitors");
@@ -384,7 +456,60 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("display monitors_ibfk_1");
             });
-
+            modelBuilder.Entity<DisplayMonitor>().HasData(
+               new DisplayMonitor
+               {
+                   Id = 1,
+                   DeviceId = 1,
+                   ViewSizeInches = 15,
+                   ViewType = "LG L15105",
+                   Resolution = "NA",
+                   RefreshRateHz = ,
+                   SerialNumber = "410MXFV0S379",
+                   OutputType = "NA",
+                   NumberOfOutputs = 1,
+                   Notes = "NA",
+               },
+                new DisplayMonitor
+                {
+                    Id = 2,
+                    DeviceId = 2,
+                    ViewSizeInches = 19,
+                    ViewType = "Samsung 940B",
+                    Resolution = "NA",
+                    RefreshRateHz = ,
+                    SerialNumber = "HA19HVEL211011M",
+                    OutputType = "DVI 8ms 700:1",
+                    NumberOfOutputs = 1,
+                    Notes = "NA",
+                },
+                 new DisplayMonitor
+                 {
+                     Id = 3,
+                     DeviceId = 3,
+                     ViewSizeInches = 17,
+                     ViewType = "Dell",
+                     Resolution = "NA",
+                     RefreshRateHz = ,
+                     SerialNumber = "CN-0FJ181-64180-67D-7GNS",
+                     OutputType = "",
+                     NumberOfOutputs = 1,
+                     Notes = "NA",
+                 },
+                 new DisplayMonitor
+                 {
+                     Id = 4,
+                     DeviceId = 4,
+                     ViewSizeInches = 20,
+                     ViewType = "Dell",
+                     Resolution = "",
+                     RefreshRateHz = ,
+                     SerialNumber = "MX-OHF730-46634-73F-1VCL",
+                     OutputType = "2007WFP Wide Digital Flat",
+                     NumberOfOutputs = 1,
+                     Notes = "NA"
+                 });
+            
             modelBuilder.Entity<EthernetNetwork>(entity =>
             {
                 entity.ToTable("ethernet/network");
@@ -413,6 +538,48 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("ethernet/network_ibfk_1");
             });
+
+            modelBuilder.Entity<EthernetNetwork>().HasData(
+               new EthernetNetwork
+               {
+                   Id = 1,
+                   DeviceId = 5,
+                   Speed = ,
+                   Wireless = ,
+                   SerialNumber = "",
+                   Destroyed = ,
+                   Notes = "NA",
+               },
+                new EthernetNetwork
+                {
+                    Id = 2,
+                    DeviceId = 5,
+                    Speed = ,
+                    Wireless = ,
+                    SerialNumber = "",
+                    Destroyed = ,
+                    Notes = "NA",
+                },
+                 new EthernetNetwork
+                 {
+                     Id = 3,
+                     DeviceId = 5,
+                     SerialNumber = "",
+                     Speed = ,
+                     Wireless = ,
+                     Destroyed = ,
+                     Notes = "NA",
+                 },
+                 new EthernetNetwork
+                 {
+                     Id = 4,
+                     DeviceId = 5,
+                     Speed = ,
+                     Wireless = ,
+                     SerialNumber = "",
+                     Destroyed = ,
+                     Notes = "NA"
+                 });
 
             modelBuilder.Entity<HardDrive>(entity =>
             {
@@ -447,6 +614,54 @@ namespace TownOfStettler.Data
                     .HasConstraintName("hard drive_ibfk_1");
             });
 
+            modelBuilder.Entity<HardDrive>().HasData(
+            new HardDrive
+            {
+                Id = 1,
+                DeviceId = ,
+                Type = ,
+                SizeGb = ,
+                SerialNumber = "",
+                Destroyed = ,
+                Notes = "NA"
+
+            },
+            new HardDrive
+            {
+                Id = 1,
+                DeviceId = ,
+                Type = ,
+                SizeGb = ,
+                SerialNumber = "",
+                Destroyed = ,
+                Notes = "NA"
+
+            },
+            new HardDrive
+            {
+                Id = 1,
+                DeviceId = ,
+                Type = ,
+                SizeGb = ,
+                SerialNumber = "",
+                Destroyed = ,
+                Notes = "NA"
+
+            },
+            new HardDrive
+            {
+                Id = 1,
+                DeviceId = ,
+                Type = ,
+                SizeGb = ,
+                SerialNumber = "",
+                Destroyed = ,
+                Notes = "NA"
+
+            });
+
+
+
             modelBuilder.Entity<HardwareDevice>(entity =>
             {
                 entity.ToTable("hardware device");
@@ -459,7 +674,31 @@ namespace TownOfStettler.Data
                     .HasMaxLength(10)
                     .HasColumnName("Type of Hardware");
             });
+            modelBuilder.Entity<HardwareDevice>().HasData(
+           new HardwareDevice
+           {
+               Id = 1,
+               TypeOfHardware = ,
 
+           },
+           new HardwareDevice
+           {
+               Id = 1,
+               TypeOfHardware = ,
+
+           },
+           new HardwareDevice
+           {
+               Id = 1,
+               TypeOfHardware = ,
+
+           },
+           new HardwareDevice
+           {
+               Id = 1,
+               TypeOfHardware = ,
+
+           });
             modelBuilder.Entity<History>(entity =>
             {
                 entity.ToTable("history");
@@ -504,8 +743,58 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("history_ibfk_2");
             });
+            modelBuilder.Entity<History>().HasData(
+            new History
+            {
+                Id = 1,
+                DeviceId = ,
+                PartsChanged = ,
+                PastOwnerS = ,
+                Wiped = ,
+                PartsRemoved = ,
+                DateOfChanges = ,
+                OutOfServiceDate = ,
+                Notes = ,
+            },
+            new History
+            {
+                Id = 1,
+                DeviceId = ,
+                PartsChanged = ,
+                PastOwnerS = ,
+                Wiped = ,
+                PartsRemoved = ,
+                DateOfChanges = ,
+                OutOfServiceDate = ,
+                Notes = ,
+            },
+            new History
+            {
+                Id = 1,
+                DeviceId = ,
+                PartsChanged = ,
+                PastOwnerS = ,
+                Wiped = ,
+                PartsRemoved = ,
+                DateOfChanges = ,
+                OutOfServiceDate = ,
+                Notes = ,
+            },
+            new History
+            {
+                Id = 1,
+                DeviceId = ,
+                PartsChanged = ,
+                PastOwnerS = ,
+                Wiped = ,
+                PartsRemoved = ,
+                DateOfChanges = ,
+                OutOfServiceDate = ,
+                Notes = ,
+            });
 
-            modelBuilder.Entity<Modification>(entity =>
+
+           modelBuilder.Entity<Modification>(entity =>
             {
                 entity.ToTable("modifications");
 
@@ -582,7 +871,58 @@ namespace TownOfStettler.Data
                     .HasConstraintName("modifications_ibfk_6");
             });
 
-            modelBuilder.Entity<OtherHardware>(entity =>
+            modelBuilder.Entity<Modification>().HasData(
+           new Modification
+           {
+               Id = 1,
+               ProcessorId = ,
+               RamId = ,
+               HardDriveId = ,
+               SecondaryDriveId = ,
+               SoundCardId = ,
+               VideoCardId  = ,
+               Notes = ,
+
+           },
+              new Modification
+              {
+                  Id = 1,
+                  ProcessorId = ,
+                  RamId = ,
+                  HardDriveId = ,
+                  SecondaryDriveId = ,
+                  SoundCardId = ,
+                  VideoCardId = ,
+                  Notes = ,
+
+              },
+                 new Modification
+                 {
+                     Id = 1,
+                     ProcessorId = ,
+                     RamId = ,
+                     HardDriveId = ,
+                     SecondaryDriveId = ,
+                     SoundCardId = ,
+                     VideoCardId = ,
+                     Notes = ,
+
+                 },
+                    new Modification
+                    {
+                        Id = 1,
+                        ProcessorId = ,
+                        RamId = ,
+                        HardDriveId = ,
+                        SecondaryDriveId = ,
+                        SoundCardId = ,
+                        VideoCardId = ,
+                        Notes = ,
+
+                    });
+
+
+           modelBuilder.Entity<OtherHardware>(entity =>
             {
                 entity.ToTable("other hardware");
 
@@ -611,6 +951,45 @@ namespace TownOfStettler.Data
                     .HasConstraintName("other hardware_ibfk_1");
             });
 
+            modelBuilder.Entity<OtherHardware>().HasData(
+           new OtherHardware
+           { 
+               Id = 1,
+               OwnerLocation = "",
+               TosNumber = "",
+               Type = "",
+               Destroyed = ,
+               Notes = ,
+           },
+               new OtherHardware
+               {
+                   Id = 1,
+                   OwnerLocation = "",
+                   TosNumber = "",
+                   Type = "",
+                   Destroyed = ,
+                   Notes = ,
+               },
+                   new OtherHardware
+                   {
+                       Id = 1,
+                       OwnerLocation = "",
+                       TosNumber = "",
+                       Type = "",
+                       Destroyed = ,
+                       Notes = ,
+                   },
+                       new OtherHardware
+                       {
+                           Id = 1,
+                           OwnerLocation = "",
+                           TosNumber = "",
+                           Type = "",
+                           Destroyed = ,
+                           Notes = ,
+                       });
+
+
             modelBuilder.Entity<Output>(entity =>
             {
                 entity.HasKey(e => e.Type)
@@ -638,8 +1017,38 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("outputs_ibfk_1");
             });
+            modelBuilder.Entity<Output>().HasData(
+        new Output
+        { Type = "",
+          VideoCardId = ,
+          NumberOfOutputs = ,
+          Notes = "",
+        },
+          new Output
+          {
+              Type = "",
+              VideoCardId = ,
+              NumberOfOutputs = ,
+              Notes = "",
+          },
+            new Output
+            {
+                Type = "",
+                VideoCardId = ,
+                NumberOfOutputs = ,
+                Notes = "",
+            },
+              new Output
+              {
+                  Type = "",
+                  VideoCardId = ,
+                  NumberOfOutputs = ,
+                  Notes = "",
+              });
 
-            modelBuilder.Entity<OwnerLocation>(entity =>
+
+
+         modelBuilder.Entity<OwnerLocation>(entity =>
             {
                 entity.ToTable("owner/location");
 
@@ -669,8 +1078,48 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("owner/location_ibfk_1");
             });
+            modelBuilder.Entity<OwnerLocation>().HasData(
+      new OwnerLocation
+      {
+          Id = 1,
+          DeviceId = ,
+          Name = "",
+          Address = "",
+          PhoneNumber = ,
+          Notes = "",
 
-            modelBuilder.Entity<Part>(entity =>
+      },
+         new OwnerLocation
+         {
+             Id = 1,
+             DeviceId = ,
+             Name = "",
+             Address = "",
+             PhoneNumber = ,
+             Notes = "",
+
+         },
+            new OwnerLocation
+            {
+                Id = 1,
+                DeviceId = ,
+                Name = "",
+                Address = "",
+                PhoneNumber = ,
+                Notes = "",
+
+            },
+             new OwnerLocation
+             {
+               Id = 1,
+               DeviceId = ,
+               Name = "",
+               Address = "",
+               PhoneNumber = ,
+               Notes = "",
+             });
+
+          modelBuilder.Entity<Part>(entity =>
             {
                 entity.ToTable("parts");
 
@@ -759,6 +1208,58 @@ namespace TownOfStettler.Data
                     .HasForeignKey(d => d.VideoCardId)
                     .HasConstraintName("parts_ibfk_6");
             });
+            modelBuilder.Entity<Part>().HasData(
+                new Part
+                {
+                    Id = 1,
+                    OriginalDeviceId = ,
+                    DeviceHistoryId = ,
+                    RamId = ,
+                    HardDriveId = ,
+                    SecondaryDriveId = ,
+                    VideoCardId = ,
+                    SoundCardId = ,
+                    Notes = "",
+                },
+                 new Part
+                 {
+                     Id = 2,
+                     OriginalDeviceId = ,
+                     DeviceHistoryId = ,
+                     RamId = ,
+                     HardDriveId = ,
+                     SecondaryDriveId = ,
+                     VideoCardId = ,
+                     SoundCardId = ,
+                     Notes = "",
+                 },
+                 new Part
+                 {
+                     Id = 3,
+                     OriginalDeviceId = ,
+                     DeviceHistoryId = ,
+                     RamId = ,
+                     HardDriveId = ,
+                     SecondaryDriveId = ,
+                     VideoCardId = ,
+                     SoundCardId = ,
+                     Notes = "",
+                 },
+                 new Part
+                 {
+                     Id = 4,
+                     OriginalDeviceId = ,
+                     DeviceHistoryId = ,
+                     RamId = ,
+                     HardDriveId = ,
+                     SecondaryDriveId = ,
+                     VideoCardId = ,
+                     SoundCardId = ,
+                     Notes = "",
+                 });
+
+
+
 
             modelBuilder.Entity<Printer>(entity =>
             {
@@ -788,6 +1289,43 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("printers_ibfk_1");
             });
+            modelBuilder.Entity<Printer>().HasData(
+                new Printer
+                {
+                    Id = 1,
+                    DeviceId = ,
+                    Type = "",
+                    ConnectionType = "",
+                    Notes = "",
+                },
+                   new Printer
+                   {
+                       Id = 2,
+                       DeviceId = ,
+                       Type = "",
+                       ConnectionType = "",
+                       Notes = "",
+                   },
+                    new Printer
+                    {
+                        Id = 3,
+                        DeviceId = ,
+                        Type = "",
+                        ConnectionType = "",
+                        Notes = "",
+                    },
+                      new Printer
+                      {
+                          Id = 4,
+                          DeviceId = ,
+                          Type = "",
+                          ConnectionType = "",
+                          Notes = "",
+                      });
+
+
+
+
 
             modelBuilder.Entity<Processsor>(entity =>
             {
@@ -827,6 +1365,58 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("processsor_ibfk_1");
             });
+            modelBuilder.Entity<Processsor>().HasData(
+           new Processsor
+           {
+              Id = 1,
+              DeviceId = ,
+              Type = "",
+              SpeedGhz = ,
+              SerialNumber = ,
+              Generation = ,
+              CoreCount = ,
+              Destroyed = ,
+              Notes ="",
+           },
+           new Processsor
+           {
+               Id = 2,
+               DeviceId = ,
+               Type = "",
+               SpeedGhz = ,
+               SerialNumber = ,
+               Generation = ,
+               CoreCount = ,
+               Destroyed = ,
+               Notes = "",
+           },
+           new Processsor
+           {
+               Id = 3,
+               DeviceId = ,
+               Type = "",
+               SpeedGhz = ,
+               SerialNumber = ,
+               Generation = ,
+               CoreCount = ,
+               Destroyed = ,
+               Notes = "",
+           },
+            new Processsor
+            {
+                Id = 4,
+                DeviceId = ,
+                Type = "",
+                SpeedGhz = ,
+                SerialNumber = ,
+                Generation = ,
+                CoreCount = ,
+                Destroyed = ,
+                Notes = "",
+            });
+
+
+
 
             modelBuilder.Entity<Ram>(entity =>
             {
@@ -862,8 +1452,53 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("ram_ibfk_1");
             });
+            modelBuilder.Entity<Ram>().HasData(
+          new Ram
+          {
+              Id = 1,
+              DeviceId = ,
+              Type = "",
+              Size = ,
+              SpeedMhz = ,
+              SerialNumber = ,
+              Destroyed = ,
+              Notes ="",
+          },
+          new Ram
+            {
+              Id = 2,
+              DeviceId = ,
+              Type = "",
+              Size = ,
+              SpeedMhz = ,
+              SerialNumber = ,
+              Destroyed = ,
+              Notes = "",
+          },
+           new Ram
+           {
+               Id = 3,
+               DeviceId = ,
+               Type = "",
+               Size = ,
+               SpeedMhz = ,
+               SerialNumber = ,
+               Destroyed = ,
+               Notes = "",
+           },
+            new Ram
+            {
+                Id = 4,
+                DeviceId = ,
+                Type = "",
+                Size = ,
+                SpeedMhz = ,
+                SerialNumber = ,
+                Destroyed = ,
+                Notes = "",
+            });
 
-            modelBuilder.Entity<SecondaryDrife>(entity =>
+          modelBuilder.Entity<SecondaryDrive>(entity =>
             {
                 entity.ToTable("secondary drives");
 
@@ -891,7 +1526,47 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("secondary drives_ibfk_1");
             });
-
+            modelBuilder.Entity<SecondaryDrive>().HasData(
+          new SecondaryDrive
+          {
+            Id = 1,
+            DeviceId = ,
+            Type = "",
+            Removable = ,
+            SerialNumber = "",
+            Destroyed = ,
+            Notes = "",
+          },
+           new SecondaryDrive
+           {
+               Id = 2,
+               DeviceId = ,
+               Type = "",
+               Removable = ,
+               SerialNumber = "",
+               Destroyed = ,
+               Notes = "",
+           },
+            new SecondaryDrive
+            {
+                Id = 3,
+                DeviceId = ,
+                Type = "",
+                Removable = ,
+                SerialNumber = "",
+                Destroyed = ,
+                Notes = "",
+            },
+             new SecondaryDrive
+             {
+                 Id = 4,
+                 DeviceId = ,
+                 Type = "",
+                 Removable = ,
+                 SerialNumber = "",
+                 Destroyed = ,
+                 Notes = "",
+             });
             modelBuilder.Entity<Software>(entity =>
             {
                 entity.ToTable("software");
@@ -926,8 +1601,60 @@ namespace TownOfStettler.Data
 
                 entity.Property(e => e.SubscriptionEndDate).HasColumnName("Subscription End Date");
             });
+            modelBuilder.Entity<Software>().HasData(
+        new Software
+        {
+          Id = 1,
+          ProductKey = ,
+          SoftwareName ="",
+          AssociatedAccount = ,
+          Subscription = ,
+          SubscriptionEndDate = ,
+          PurchaseDate = ,
+          PurchasePrice = ,
+          DevicesAllowed = ,
+          EndOfSupportDate = ,
+        },
+          new Software
+          {
+              Id = 2,
+              ProductKey = ,
+              SoftwareName = "",
+              AssociatedAccount = ,
+              Subscription = ,
+              SubscriptionEndDate = ,
+              PurchaseDate = ,
+              PurchasePrice = ,
+              DevicesAllowed = ,
+              EndOfSupportDate = ,
+          }, new Software
+          {
+              Id = 3,
+              ProductKey = ,
+              SoftwareName = "",
+              AssociatedAccount = ,
+              Subscription = ,
+              SubscriptionEndDate = ,
+              PurchaseDate = ,
+              PurchasePrice = ,
+              DevicesAllowed = ,
+              EndOfSupportDate = ,
+          },
+            new Software
+            {
+                Id = 4,
+                ProductKey = ,
+                SoftwareName = "",
+                AssociatedAccount = ,
+                Subscription = ,
+                SubscriptionEndDate = ,
+                PurchaseDate = ,
+                PurchasePrice = ,
+                DevicesAllowed = ,
+                EndOfSupportDate = ,
+            });
 
-            modelBuilder.Entity<SoundCard>(entity =>
+          modelBuilder.Entity<SoundCard>(entity =>
             {
                 entity.ToTable("sound card");
 
@@ -951,8 +1678,41 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("sound card_ibfk_1");
             });
+            modelBuilder.Entity<SoundCard>().HasData(
+            new SoundCard
+            {
+                Id = 1,
+                DeviceId = ,
+                Brand = "",
+                Destroyed = ,
+                Notes = "",
+            },
+               new SoundCard
+               {
+                   Id = 2,
+                   DeviceId = ,
+                   Brand = "",
+                   Destroyed = ,
+                   Notes = "",
+               },
+                  new SoundCard
+                  {
+                      Id = 3,
+                      DeviceId = ,
+                      Brand = "",
+                      Destroyed = ,
+                      Notes = "",
+                  },
+                        new SoundCard
+                        {
+                            Id = 4,
+                            DeviceId = ,
+                            Brand = "",
+                            Destroyed = ,
+                            Notes = "",
+                        });
 
-            modelBuilder.Entity<VideoCard>(entity =>
+         modelBuilder.Entity<VideoCard>(entity =>
             {
                 entity.ToTable("video card");
 
@@ -984,8 +1744,49 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("video card_ibfk_1");
             });
+            modelBuilder.Entity<VideoCard>().HasData(
+           new VideoCard
+           {
+             Id = 1,
+             DeviceId = ,
+             Brand = ,
+             RamSizeGb = ,
+             SerialNumber = ,
+             Destroyed = ,
+             Notes ="",
+           },
+              new VideoCard
+              {
+                  Id = 2,
+                  DeviceId = ,
+                  Brand = ,
+                  RamSizeGb = ,
+                  SerialNumber = ,
+                  Destroyed = ,
+                  Notes = "",
+              },
+                 new VideoCard
+                 {
+                     Id = 3,
+                     DeviceId = ,
+                     Brand = ,
+                     RamSizeGb = ,
+                     SerialNumber = ,
+                     Destroyed = ,
+                     Notes = "",
+                 },
+                    new VideoCard
+                    {
+                        Id = 4,
+                        DeviceId = ,
+                        Brand = ,
+                        RamSizeGb = ,
+                        SerialNumber = ,
+                        Destroyed = ,
+                        Notes = "",
+                    });
 
-            modelBuilder.Entity<Warranty>(entity =>
+           modelBuilder.Entity<Warranty>(entity =>
             {
                 entity.ToTable("warranty");
 
@@ -1017,7 +1818,44 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("warranty_ibfk_1");
             });
-
+            modelBuilder.Entity<Warranty>().HasData(
+           new Warranty
+           {
+             Id = 1,
+             DeviceId = ,
+             TypeOfWarranty = ,
+             LengthOfWarranty = ,
+             WarrantyExpiryDate = ,
+             Notes = "",
+           },
+              new Warranty
+              {
+                  Id = 2,
+                  DeviceId = ,
+                  TypeOfWarranty = ,
+                  LengthOfWarranty = ,
+                  WarrantyExpiryDate = ,
+                  Notes = "",
+              },
+                 new Warranty
+                 {
+                     Id = 3,
+                     DeviceId = ,
+                     TypeOfWarranty = ,
+                     LengthOfWarranty = ,
+                     WarrantyExpiryDate = ,
+                     Notes = "",
+                 },
+                    new Warranty
+                    {
+                        Id = 4,
+                        DeviceId = ,
+                        TypeOfWarranty = ,
+                        LengthOfWarranty = ,
+                        WarrantyExpiryDate = ,
+                        Notes = "",
+                    }
+           );
             OnModelCreatingPartial(modelBuilder);
         }
 
