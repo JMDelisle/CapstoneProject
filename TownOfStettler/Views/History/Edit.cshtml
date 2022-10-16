@@ -14,17 +14,17 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="DeviceId" class="control-label"></label>
+                <label asp-for="DeviceId" class="control-label">Device ID:</label>
                 <select asp-for="DeviceId" class="form-control" asp-items="ViewBag.DeviceId"></select>
                 <span asp-validation-for="DeviceId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PartsChanged" class="control-label"></label>
+                <label asp-for="PartsChanged" class="control-label">Parts Changed:</label>
                 <input asp-for="PartsChanged" class="form-control" />
                 <span asp-validation-for="PartsChanged" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PastOwnerS" class="control-label"></label>
+                <label asp-for="PastOwnerS" class="control-label">Past Owner:</label>
                 <select asp-for="PastOwnerS" class="form-control" asp-items="ViewBag.PastOwnerS"></select>
                 <span asp-validation-for="PastOwnerS" class="text-danger"></span>
             </div>
@@ -39,17 +39,17 @@
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="DateOfChanges" class="control-label"></label>
+                <label asp-for="DateOfChanges" class="control-label">Date Of Changes:</label>
                 <input asp-for="DateOfChanges" class="form-control" />
                 <span asp-validation-for="DateOfChanges" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OutOfServiceDate" class="control-label"></label>
+                <label asp-for="OutOfServiceDate" class="control-label">Out Of Service Date:</label>
                 <input asp-for="OutOfServiceDate" class="form-control" />
                 <span asp-validation-for="OutOfServiceDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Notes" class="control-label"></label>
+                <label asp-for="Notes" class="control-label">Notes</label>
                 <input asp-for="Notes" class="form-control" />
                 <span asp-validation-for="Notes" class="text-danger"></span>
             </div>
