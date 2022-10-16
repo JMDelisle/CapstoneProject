@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using TownOfStettler.Models;
-
+//using System.Web.ModelBinding;
 namespace TownOfStettler.Controllers
 {
     public class HomeController : Controller
@@ -17,6 +18,21 @@ namespace TownOfStettler.Controllers
         {
             return View();
         }
+
+        //public async Task<IActionResult> Index(string SearchString)
+        //{
+        //    ViewData["CurrentFilter"] = SearchString;
+        //    var info = from i in _context.DeviceInformations
+        //               select i;
+        //    if (!string.IsNullOrEmpty(SearchString))
+        //    {
+        //        info = info.Where(i => i.TosNumber.Contains(SearchString));
+        //    }
+        //    return View();
+        //}
+
+
+
 
         public IActionResult Privacy()
         {
