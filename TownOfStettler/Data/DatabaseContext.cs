@@ -339,73 +339,73 @@ namespace TownOfStettler.Data
                     .HasConstraintName("device information_ibfk_2");
             });
 
-            //  modelBuilder.Entity<DeviceInformation>().HasData(
-            //new DeviceInformation
-            //{
-            //    Id = 1,
-            //    DeviceTypeId = 1,
-            //    OwnerLocation = 1,
-            //    TosNumber = " TOS0705C",
-            //    SerialNumber = "NA",
-            //    ModelNumber = "NA",
-            //    PurchaseStore = "NA",
-            //    PurchasePrice = 3594,
-            //    PurchaseDate = 2007,
-            //    OperatingSystem = "Windows 2003 Server - Standard",
-            //    Destroyed = 0,
-            //    Notes = "NA",
-            //    InstalledSoftware01 = 0
+          //  modelBuilder.Entity<DeviceInformation>().HasData(
+          //new DeviceInformation
+          //{
+          //    Id = 1,
+          //    DeviceTypeId = 1,
+          //    OwnerLocation = 1,
+          //    TosNumber = " TOS0705C",
+          //    SerialNumber = "NA",
+          //    ModelNumber = "NA",
+          //    PurchaseStore = "NA",
+          //    PurchasePrice = 3594,
+          //    PurchaseDate = 2007,
+          //    OperatingSystem = "Windows 2003 Server - Standard",
+          //    Destroyed = 0,
+          //    Notes = "NA",
+          //    InstalledSoftware01 = 0
 
-            //},
-            //    new DeviceInformation
-            //    {
-            //        Id = 2,
-            //        DeviceTypeId = 2,
-            //        OwnerLocation = 2,
-            //        TosNumber = "TOS0805D",
-            //        SerialNumber = "NA",
-            //        ModelNumber = "NA",
-            //        PurchaseStore = "NA",
-            //        PurchasePrice = 7085,
-            //        PurchaseDate = "May 2008",
-            //        OperatingSystem = "Microsoft Windows 2008 Server w/downgrade Windows Server 2003 SP2 32 BIT X64, Microsoft Excel 2007",
-            //        Destroyed = 0,
-            //        Notes = "NA",
+          //},
+          //    new DeviceInformation
+          //    {
+          //        Id = 2,
+          //        DeviceTypeId = 2,
+          //        OwnerLocation = 2,
+          //        TosNumber = "TOS0805D",
+          //        SerialNumber = "NA",
+          //        ModelNumber = "NA",
+          //        PurchaseStore = "NA",
+          //        PurchasePrice = 7085,
+          //        PurchaseDate = 2,
+          //        OperatingSystem = "Microsoft Windows 2008 Server w/downgrade Windows Server 2003 SP2 32 BIT X64, Microsoft Excel 2007",
+          //        Destroyed = 0,
+          //        Notes = "NA",
 
 
-            //    },
-            //    new DeviceInformation
-            //    {
-            //        Id = 3,
-            //        DeviceTypeId = 3,
-            //        OwnerLocation = 3,
-            //        TosNumber = "TOSL0907B",
-            //        SerialNumber = "NA",
-            //        ModelNumber = "NA",
-            //        PurchaseStore = "NA",
-            //        PurchasePrice = 964,
-            //        PurchaseDate = "July 2009",
-            //        OperatingSystem = "Windows Vista Business, Microsoft Office 2007 Small Business",
-            //        Destroyed = 1,
-            //        Notes = "NA",
+          //    },
+          //    new DeviceInformation
+          //    {
+          //        Id = 3,
+          //        DeviceTypeId = 3,
+          //        OwnerLocation = 3,
+          //        TosNumber = "TOSL0907B",
+          //        SerialNumber = "NA",
+          //        ModelNumber = "NA",
+          //        PurchaseStore = "NA",
+          //        PurchasePrice = 964,
+          //        PurchaseDate = ,
+          //        OperatingSystem = "Windows Vista Business, Microsoft Office 2007 Small Business",
+          //        Destroyed = 1,
+          //        Notes = "NA",
 
-            //    },
-            //    new DeviceInformation
-            //    {
-            //        Id = 4,
-            //        DeviceTypeId = 4,
-            //        OwnerLocation = 4,
-            //        TosNumber = "  TOSL0907C",
-            //        SerialNumber = "NA",
-            //        ModelNumber = "NA",
-            //        PurchaseStore = "NA",
-            //        PurchasePrice = 964,
-            //        PurchaseDate = "July 2009",
-            //        OperatingSystem = "",
-            //        Destroyed = 1,
-            //        Notes = "NA",
+          //    },
+          //    new DeviceInformation
+          //    {
+          //        Id = 4,
+          //        DeviceTypeId = 4,
+          //        OwnerLocation = 4,
+          //        TosNumber = "  TOSL0907C",
+          //        SerialNumber = "NA",
+          //        ModelNumber = "NA",
+          //        PurchaseStore = "NA",
+          //        PurchasePrice = 964,
+          //        PurchaseDate = "July 2009",
+          //        OperatingSystem = "",
+          //        Destroyed = 1,
+          //        Notes = "NA",
 
-            //    });
+          //    });
 
 
 

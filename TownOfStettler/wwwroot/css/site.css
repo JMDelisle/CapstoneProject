@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+form-group{
+    width: 100px;
+    color:aquamarine;
+}

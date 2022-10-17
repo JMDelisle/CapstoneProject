@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using TownOfStettler.Data;
 using TownOfStettler.Models;
 //using System.Web.ModelBinding;
 
@@ -8,29 +9,47 @@ namespace TownOfStettler.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        //public async Task<IActionResult> Index(string SearchString)
+        //public HomeController(ILogger<HomeController> logger)
         //{
-        //    ViewData["CurrentFilter"] = SearchString;
-        //    var info = from i in _context.DeviceInformations
-        //               select i;
-        //    if (!string.IsNullOrEmpty(SearchString))
-        //    {
-        //        info = info.Where(i => i.TosNumber.Contains(SearchString));
-        //    }
+        //    _logger = logger;
+        //}
+
+        private readonly DatabaseContext _context;
+
+        public HomeController(DatabaseContext context)
+        {
+            _context = context;
+        }
+
+
+
+        //public async Task<IActionResult> Index()
+        //{
+        //    var DatabaseContext = _context.DeviceInformations.Include(a => a.DeviceTypeId).Include(a => a.TosNumber).OrderBy(a => a.Id);
+        //    return View(await DatabaseContext.ToListAsync());
+        //}
+
+
+
+
+        //public IActionResult Index()
+        //{
         //    return View();
         //}
+
+        public async Task<IActionResult> Index(string searchstring)
+        {
+            ViewData["CurrentFilter"] = searchstring;
+            var info = from i in _context.DeviceInformations
+                       select i;
+            if (!string.IsNullOrEmpty(searchstring))
+            {
+                info = info.Where(i => i.TosNumber.Contains(searchstring));
+            }
+            return View();
+        }
 
         [HttpPost]
         public IActionResult Index(int table_number)

@@ -17,7 +17,7 @@
                             { "Printer", "Printer", "Index"},
                             { "Processor", "Processsor", "Index"},
                             { "Ram", "Ram", "Index" },
-                            { "Secondary Driver", "SecondaryDrivers", "Index"},
+                            { "Secondary Drive", "SecondaryDrives", "Index"},
                             { "Software", "Software", "Index" },
                             { "Sound Card", "SoundCard", "Index"},
                             { "Video Card", "VideoCard", "Index"},
@@ -33,13 +33,7 @@
     <h1 class="display-4">Welcome</h1>
 
 
-    <form asp-action="Index" method="get">
-        <div class="form-group">
-            <label for="SearchString">Search Item</label>
-            <input type="text" class="form-control" name="SearchString" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Search" class="btn btn-primary" />
-        </div>
-    </form>
+    
 
 
     <ul>
@@ -72,7 +66,13 @@
         </li>
     </ul>
 
-
+    <form asp-action="Index" method="get">
+        <div class="form-group">
+            <label for="SearchString">Search Item</label>
+            <input type="text" class="form-control" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    </form>
 
 
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
