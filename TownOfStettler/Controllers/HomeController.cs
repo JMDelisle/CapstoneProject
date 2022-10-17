@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using TownOfStettler.Models;
 //using System.Web.ModelBinding;
+
 namespace TownOfStettler.Controllers
 {
     public class HomeController : Controller
@@ -31,6 +32,12 @@ namespace TownOfStettler.Controllers
         //    return View();
         //}
 
+        [HttpPost]
+        public IActionResult Index(int table_number)
+        {
+            ViewBag.tableNumber = table_number;
+            return View();
+        }
 
 
 
