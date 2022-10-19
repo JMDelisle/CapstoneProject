@@ -52,6 +52,10 @@
                 @Html.DisplayNameFor(model => model.DisplayMonitorNavigation)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.OwnerLocationNavigation)
+            </th>
+
+            <th>
                 @Html.DisplayNameFor(model => model.InstalledSoftware01Navigation)
             </th>
             <th>
@@ -111,123 +115,122 @@
             <th>
                 @Html.DisplayNameFor(model => model.InstalledSoftware20Navigation)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OwnerLocationNavigation)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TosNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SerialNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModelNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PowerSupply)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PurchaseStore)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PurchasePrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PurchaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OperatingSystem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Destroyed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DisplayMonitorNavigationId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeviceType.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DisplayMonitorNavigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware01Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware02Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware03Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware04Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware05Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware06Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware07Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware08Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware09Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware10Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware11Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware12Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware13Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware14Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware15Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware16Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware17Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware18Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware19Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InstalledSoftware20Navigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OwnerLocationNavigation.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TosNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SerialNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModelNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PowerSupply)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseStore)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchasePrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OperatingSystem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destroyed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisplayMonitorNavigationId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeviceType.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DisplayMonitorNavigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerLocationNavigation.Id)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware01Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware02Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware03Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware04Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware05Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware06Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware07Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware08Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware09Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware10Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware11Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware12Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware13Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware14Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware15Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware16Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware17Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware18Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware19Navigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstalledSoftware20Navigation.Id)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
