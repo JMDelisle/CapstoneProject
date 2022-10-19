@@ -10,17 +10,34 @@ namespace TownOfStettler.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+
+        private readonly DatabaseContext _context;
+
+        public HomeController(DatabaseContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+
+
+        public async Task<IActionResult> Index(string SearchString)
         {
-            return View();
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.DeviceInformations
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                Info = Info.Where(i => i.TosNumber.Contains(SearchString));
+            }
+            return View(Info);
         }
+
 
 
 

@@ -20,11 +20,25 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: DeviceInformation
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var databaseContext = _context.DeviceInformations.Include(d => d.DeviceType).Include(d => d.DisplayMonitorNavigation).Include(d => d.InstalledSoftware01Navigation).Include(d => d.InstalledSoftware02Navigation).Include(d => d.InstalledSoftware03Navigation).Include(d => d.InstalledSoftware04Navigation).Include(d => d.InstalledSoftware05Navigation).Include(d => d.InstalledSoftware06Navigation).Include(d => d.InstalledSoftware07Navigation).Include(d => d.InstalledSoftware08Navigation).Include(d => d.InstalledSoftware09Navigation).Include(d => d.InstalledSoftware10Navigation).Include(d => d.InstalledSoftware11Navigation).Include(d => d.InstalledSoftware12Navigation).Include(d => d.InstalledSoftware13Navigation).Include(d => d.InstalledSoftware14Navigation).Include(d => d.InstalledSoftware15Navigation).Include(d => d.InstalledSoftware16Navigation).Include(d => d.InstalledSoftware17Navigation).Include(d => d.InstalledSoftware18Navigation).Include(d => d.InstalledSoftware19Navigation).Include(d => d.InstalledSoftware20Navigation).Include(d => d.OwnerLocationNavigation);
+        //    return View(await databaseContext.ToListAsync());
+        //}
+
+        public async Task<IActionResult> Index(string SearchString)
         {
-            var databaseContext = _context.DeviceInformations.Include(d => d.DeviceType).Include(d => d.DisplayMonitorNavigation).Include(d => d.InstalledSoftware01Navigation).Include(d => d.InstalledSoftware02Navigation).Include(d => d.InstalledSoftware03Navigation).Include(d => d.InstalledSoftware04Navigation).Include(d => d.InstalledSoftware05Navigation).Include(d => d.InstalledSoftware06Navigation).Include(d => d.InstalledSoftware07Navigation).Include(d => d.InstalledSoftware08Navigation).Include(d => d.InstalledSoftware09Navigation).Include(d => d.InstalledSoftware10Navigation).Include(d => d.InstalledSoftware11Navigation).Include(d => d.InstalledSoftware12Navigation).Include(d => d.InstalledSoftware13Navigation).Include(d => d.InstalledSoftware14Navigation).Include(d => d.InstalledSoftware15Navigation).Include(d => d.InstalledSoftware16Navigation).Include(d => d.InstalledSoftware17Navigation).Include(d => d.InstalledSoftware18Navigation).Include(d => d.InstalledSoftware19Navigation).Include(d => d.InstalledSoftware20Navigation).Include(d => d.OwnerLocationNavigation);
-            return View(await databaseContext.ToListAsync());
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.DeviceInformations
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                Info = Info.Where(i => i.TosNumber.Contains(SearchString));
+
+            }
+            return View(Info);
         }
+
 
         // GET: DeviceInformation/Details/5
         public async Task<IActionResult> Details(int? id)
