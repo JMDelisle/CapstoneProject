@@ -17,7 +17,7 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-image: url(../../Images/stettlerTrain.jpg);
+    background-image: url('../images/stettlertrain.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -60,4 +60,19 @@ h4, th, label {
 form-group {
     width: 100px;
     color: aquamarine;
+}
+
+form {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.Edits, .Details, .Deletes {
+    background-color:antiquewhite;
+    border-radius: 5px;
+}
+
+td {
+    margin-left: auto;
+    margin-right: auto;
 }
