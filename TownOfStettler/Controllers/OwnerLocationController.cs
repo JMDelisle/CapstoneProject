@@ -22,8 +22,7 @@ namespace TownOfStettler.Controllers
         // GET: OwnerLocation
         public async Task<IActionResult> Index()
         {
-            var databaseContext = _context.OwnerLocations.Include(o => o.Device);
-            return View(await databaseContext.ToListAsync());
+              return View(await _context.OwnerLocations.ToListAsync());
         }
 
         // GET: OwnerLocation/Details/5
@@ -35,7 +34,6 @@ namespace TownOfStettler.Controllers
             }
 
             var ownerLocation = await _context.OwnerLocations
-                .Include(o => o.Device)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (ownerLocation == null)
             {
@@ -48,7 +46,6 @@ namespace TownOfStettler.Controllers
         // GET: OwnerLocation/Create
         public IActionResult Create()
         {
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id");
             return View();
         }
 
@@ -57,7 +54,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DeviceId,Name,Address,PhoneNumber,Notes")] OwnerLocation ownerLocation)
+        public async Task<IActionResult> Create([Bind("Id,Name,Address,PhoneNumber,Notes")] OwnerLocation ownerLocation)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +62,6 @@ namespace TownOfStettler.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", ownerLocation.DeviceId);
             return View(ownerLocation);
         }
 
@@ -82,7 +78,6 @@ namespace TownOfStettler.Controllers
             {
                 return NotFound();
             }
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", ownerLocation.DeviceId);
             return View(ownerLocation);
         }
 
@@ -91,7 +86,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DeviceId,Name,Address,PhoneNumber,Notes")] OwnerLocation ownerLocation)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Address,PhoneNumber,Notes")] OwnerLocation ownerLocation)
         {
             if (id != ownerLocation.Id)
             {
@@ -118,7 +113,6 @@ namespace TownOfStettler.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", ownerLocation.DeviceId);
             return View(ownerLocation);
         }
 
@@ -131,7 +125,6 @@ namespace TownOfStettler.Controllers
             }
 
             var ownerLocation = await _context.OwnerLocations
-                .Include(o => o.Device)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (ownerLocation == null)
             {

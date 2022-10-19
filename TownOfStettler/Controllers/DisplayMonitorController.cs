@@ -22,7 +22,7 @@ namespace TownOfStettler.Controllers
         // GET: DisplayMonitor
         public async Task<IActionResult> Index()
         {
-            var databaseContext = _context.DisplayMonitors.Include(d => d.Device);
+            var databaseContext = _context.DisplayMonitors.Include(d => d.HistoryNavigation);
             return View(await databaseContext.ToListAsync());
         }
 
@@ -35,7 +35,7 @@ namespace TownOfStettler.Controllers
             }
 
             var displayMonitor = await _context.DisplayMonitors
-                .Include(d => d.Device)
+                .Include(d => d.HistoryNavigation)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (displayMonitor == null)
             {
@@ -48,7 +48,7 @@ namespace TownOfStettler.Controllers
         // GET: DisplayMonitor/Create
         public IActionResult Create()
         {
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id");
+            ViewData["History"] = new SelectList(_context.Histories, "Id", "Id");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DeviceId,ViewSizeInches,ViewType,Resolution,RefreshRateHz,SerialNumber,OutputType,NumberOfOutputs,Notes")] DisplayMonitor displayMonitor)
+        public async Task<IActionResult> Create([Bind("Id,TosNumber,ViewSizeInches,ViewType,Resolution,RefreshRateHz,SerialNumber,OutputType,NumberOfOutputs,History,Notes")] DisplayMonitor displayMonitor)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace TownOfStettler.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", displayMonitor.DeviceId);
+            ViewData["History"] = new SelectList(_context.Histories, "Id", "Id", displayMonitor.History);
             return View(displayMonitor);
         }
 
@@ -82,7 +82,7 @@ namespace TownOfStettler.Controllers
             {
                 return NotFound();
             }
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", displayMonitor.DeviceId);
+            ViewData["History"] = new SelectList(_context.Histories, "Id", "Id", displayMonitor.History);
             return View(displayMonitor);
         }
 
@@ -91,7 +91,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DeviceId,ViewSizeInches,ViewType,Resolution,RefreshRateHz,SerialNumber,OutputType,NumberOfOutputs,Notes")] DisplayMonitor displayMonitor)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,TosNumber,ViewSizeInches,ViewType,Resolution,RefreshRateHz,SerialNumber,OutputType,NumberOfOutputs,History,Notes")] DisplayMonitor displayMonitor)
         {
             if (id != displayMonitor.Id)
             {
@@ -118,7 +118,7 @@ namespace TownOfStettler.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", displayMonitor.DeviceId);
+            ViewData["History"] = new SelectList(_context.Histories, "Id", "Id", displayMonitor.History);
             return View(displayMonitor);
         }
 
@@ -131,7 +131,7 @@ namespace TownOfStettler.Controllers
             }
 
             var displayMonitor = await _context.DisplayMonitors
-                .Include(d => d.Device)
+                .Include(d => d.HistoryNavigation)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (displayMonitor == null)
             {

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Owner Location Index</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,19 +13,16 @@
     <thead>
         <tr>
             <th>
-                @*@Html.DisplayNameFor(model => model.Name)*@Name
+                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.Address)*@Address
+                @Html.DisplayNameFor(model => model.Address)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.PhoneNumber)*@Phone Number
+                @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.Notes)*@Notes
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Device)*@Device
+                @Html.DisplayNameFor(model => model.Notes)
             </th>
             <th></th>
         </tr>
@@ -44,9 +41,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Device.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

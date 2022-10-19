@@ -57,7 +57,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DeviceId,Type,Size,SpeedMhz,SerialNumber,Destroyed,Notes")] Ram ram)
+        public async Task<IActionResult> Create([Bind("Id,DeviceId,Type,SizeGb,SpeedMhz,SerialNumber,Destroyed,Notes")] Ram ram)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DeviceId,Type,Size,SpeedMhz,SerialNumber,Destroyed,Notes")] Ram ram)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DeviceId,Type,SizeGb,SpeedMhz,SerialNumber,Destroyed,Notes")] Ram ram)
         {
             if (id != ram.Id)
             {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Linq;
 using TownOfStettler.Data;
 using TownOfStettler.Models;
 //using System.Web.ModelBinding;
@@ -9,47 +10,19 @@ namespace TownOfStettler.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> _logger;
 
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
-        private readonly DatabaseContext _context;
-
-        public HomeController(DatabaseContext context)
+        public HomeController(ILogger<HomeController> logger)
         {
-            _context = context;
+            _logger = logger;
         }
 
-
-
-        //public async Task<IActionResult> Index()
-        //{
-        //    var DatabaseContext = _context.DeviceInformations.Include(a => a.DeviceTypeId).Include(a => a.TosNumber).OrderBy(a => a.Id);
-        //    return View(await DatabaseContext.ToListAsync());
-        //}
-
-
-
-
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        public async Task<IActionResult> Index(string searchstring)
+        public IActionResult Index()
         {
-            ViewData["CurrentFilter"] = searchstring;
-            var info = from i in _context.DeviceInformations
-                       select i;
-            if (!string.IsNullOrEmpty(searchstring))
-            {
-                info = info.Where(i => i.TosNumber.Contains(searchstring));
-            }
             return View();
         }
+
+
 
         [HttpPost]
         public IActionResult Index(int table_number)
@@ -57,8 +30,6 @@ namespace TownOfStettler.Controllers
             ViewBag.tableNumber = table_number;
             return View();
         }
-
-
 
         public IActionResult Privacy()
         {

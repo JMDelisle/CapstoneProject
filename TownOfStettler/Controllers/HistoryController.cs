@@ -22,7 +22,7 @@ namespace TownOfStettler.Controllers
         // GET: History
         public async Task<IActionResult> Index()
         {
-            var databaseContext = _context.Histories.Include(h => h.Device).Include(h => h.PastOwnerSNavigation);
+            var databaseContext = _context.Histories.Include(h => h.Device).Include(h => h.PartsChangedNavigation).Include(h => h.PastOwnerSNavigation);
             return View(await databaseContext.ToListAsync());
         }
 
@@ -36,6 +36,7 @@ namespace TownOfStettler.Controllers
 
             var history = await _context.Histories
                 .Include(h => h.Device)
+                .Include(h => h.PartsChangedNavigation)
                 .Include(h => h.PastOwnerSNavigation)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (history == null)
@@ -50,6 +51,7 @@ namespace TownOfStettler.Controllers
         public IActionResult Create()
         {
             ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id");
+            ViewData["PartsChanged"] = new SelectList(_context.Modifications, "Id", "Id");
             ViewData["PastOwnerS"] = new SelectList(_context.OwnerLocations, "Id", "Id");
             return View();
         }
@@ -68,6 +70,7 @@ namespace TownOfStettler.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", history.DeviceId);
+            ViewData["PartsChanged"] = new SelectList(_context.Modifications, "Id", "Id", history.PartsChanged);
             ViewData["PastOwnerS"] = new SelectList(_context.OwnerLocations, "Id", "Id", history.PastOwnerS);
             return View(history);
         }
@@ -86,6 +89,7 @@ namespace TownOfStettler.Controllers
                 return NotFound();
             }
             ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", history.DeviceId);
+            ViewData["PartsChanged"] = new SelectList(_context.Modifications, "Id", "Id", history.PartsChanged);
             ViewData["PastOwnerS"] = new SelectList(_context.OwnerLocations, "Id", "Id", history.PastOwnerS);
             return View(history);
         }
@@ -123,6 +127,7 @@ namespace TownOfStettler.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", history.DeviceId);
+            ViewData["PartsChanged"] = new SelectList(_context.Modifications, "Id", "Id", history.PartsChanged);
             ViewData["PastOwnerS"] = new SelectList(_context.OwnerLocations, "Id", "Id", history.PastOwnerS);
             return View(history);
         }
@@ -137,6 +142,7 @@ namespace TownOfStettler.Controllers
 
             var history = await _context.Histories
                 .Include(h => h.Device)
+                .Include(h => h.PartsChangedNavigation)
                 .Include(h => h.PastOwnerSNavigation)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (history == null)

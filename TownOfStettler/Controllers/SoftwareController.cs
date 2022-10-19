@@ -54,7 +54,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ProductKey,SoftwareName,AssociatedAccount,Subscription,SubscriptionEndDate,PurchaseDate,PurchasePrice,DevicesAllowed,EndOfSupportDate")] Software software)
+        public async Task<IActionResult> Create([Bind("Id,ProductKey,SoftwareName,AssociatedAccount,Subscription,SubscriptionEndDate,PurchaseDate,PurchasePrice,DevicesAllowed,EndOfSupportDate,Notes")] Software software)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProductKey,SoftwareName,AssociatedAccount,Subscription,SubscriptionEndDate,PurchaseDate,PurchasePrice,DevicesAllowed,EndOfSupportDate")] Software software)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProductKey,SoftwareName,AssociatedAccount,Subscription,SubscriptionEndDate,PurchaseDate,PurchasePrice,DevicesAllowed,EndOfSupportDate,Notes")] Software software)
         {
             if (id != software.Id)
             {

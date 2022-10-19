@@ -14,49 +14,54 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="ProductKey" class="control-label">Product Key:</label>
+                <label asp-for="ProductKey" class="control-label"></label>
                 <input asp-for="ProductKey" class="form-control" />
                 <span asp-validation-for="ProductKey" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SoftwareName" class="control-label">Software Name:</label>
+                <label asp-for="SoftwareName" class="control-label"></label>
                 <input asp-for="SoftwareName" class="form-control" />
                 <span asp-validation-for="SoftwareName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AssociatedAccount" class="control-label">Associated Account:</label>
+                <label asp-for="AssociatedAccount" class="control-label"></label>
                 <input asp-for="AssociatedAccount" class="form-control" />
                 <span asp-validation-for="AssociatedAccount" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Subscription" /> @Html.DisplayNameFor(model => model.Subscription)
-                </label>
+            <div class="form-group">
+                <label asp-for="Subscription" class="control-label"></label>
+                <input asp-for="Subscription" class="form-control" />
+                <span asp-validation-for="Subscription" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SubscriptionEndDate" class="control-label">Subcription End Date:</label>
+                <label asp-for="SubscriptionEndDate" class="control-label"></label>
                 <input asp-for="SubscriptionEndDate" class="form-control" />
                 <span asp-validation-for="SubscriptionEndDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PurchaseDate" class="control-label">Purchase Date:</label>
+                <label asp-for="PurchaseDate" class="control-label"></label>
                 <input asp-for="PurchaseDate" class="form-control" />
                 <span asp-validation-for="PurchaseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PurchasePrice" class="control-label">Purchase Price:</label>
+                <label asp-for="PurchasePrice" class="control-label"></label>
                 <input asp-for="PurchasePrice" class="form-control" />
                 <span asp-validation-for="PurchasePrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DevicesAllowed" class="control-label">Device Allowed:</label>
+                <label asp-for="DevicesAllowed" class="control-label"></label>
                 <input asp-for="DevicesAllowed" class="form-control" />
                 <span asp-validation-for="DevicesAllowed" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EndOfSupportDate" class="control-label">End Of Support Date:</label>
+                <label asp-for="EndOfSupportDate" class="control-label"></label>
                 <input asp-for="EndOfSupportDate" class="form-control" />
                 <span asp-validation-for="EndOfSupportDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

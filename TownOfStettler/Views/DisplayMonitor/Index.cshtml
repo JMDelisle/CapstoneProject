@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Display Monitor Index</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,31 +13,34 @@
     <thead>
         <tr>
             <th>
-                View Size In Inches
+                @Html.DisplayNameFor(model => model.TosNumber)
             </th>
             <th>
-                View Type
+                @Html.DisplayNameFor(model => model.ViewSizeInches)
             </th>
             <th>
-                Resolution
+                @Html.DisplayNameFor(model => model.ViewType)
             </th>
             <th>
-                Refresh Rate Hz
+                @Html.DisplayNameFor(model => model.Resolution)
             </th>
             <th>
-                Serial Number
+                @Html.DisplayNameFor(model => model.RefreshRateHz)
             </th>
             <th>
-                Output Type
+                @Html.DisplayNameFor(model => model.SerialNumber)
             </th>
             <th>
-                Number Of Outputs
+                @Html.DisplayNameFor(model => model.OutputType)
             </th>
             <th>
-                Notes
+                @Html.DisplayNameFor(model => model.NumberOfOutputs)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.Device)*@Device
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HistoryNavigation)
             </th>
             <th></th>
         </tr>
@@ -45,6 +48,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TosNumber)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ViewSizeInches)
             </td>
@@ -70,7 +76,7 @@
                 @Html.DisplayFor(modelItem => item.Notes)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Device.Id)
+                @Html.DisplayFor(modelItem => item.HistoryNavigation.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

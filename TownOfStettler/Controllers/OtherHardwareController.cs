@@ -22,7 +22,7 @@ namespace TownOfStettler.Controllers
         // GET: OtherHardware
         public async Task<IActionResult> Index()
         {
-            var databaseContext = _context.OtherHardwares.Include(o => o.OwnerLocationNavigation);
+            var databaseContext = _context.OtherHardwares.Include(o => o.HistoryNavigation).Include(o => o.OwnerLocationNavigation);
             return View(await databaseContext.ToListAsync());
         }
 
@@ -35,6 +35,7 @@ namespace TownOfStettler.Controllers
             }
 
             var otherHardware = await _context.OtherHardwares
+                .Include(o => o.HistoryNavigation)
                 .Include(o => o.OwnerLocationNavigation)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (otherHardware == null)
@@ -48,6 +49,7 @@ namespace TownOfStettler.Controllers
         // GET: OtherHardware/Create
         public IActionResult Create()
         {
+            ViewData["History"] = new SelectList(_context.Histories, "Id", "Id");
             ViewData["OwnerLocation"] = new SelectList(_context.OwnerLocations, "Id", "Id");
             return View();
         }
@@ -57,7 +59,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,OwnerLocation,TosNumber,Type,Destroyed,Notes")] OtherHardware otherHardware)
+        public async Task<IActionResult> Create([Bind("Id,OwnerLocation,TosNumber,TypeOfDevice,Destroyed,History,Notes")] OtherHardware otherHardware)
         {
             if (ModelState.IsValid)
             {
@@ -65,6 +67,7 @@ namespace TownOfStettler.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["History"] = new SelectList(_context.Histories, "Id", "Id", otherHardware.History);
             ViewData["OwnerLocation"] = new SelectList(_context.OwnerLocations, "Id", "Id", otherHardware.OwnerLocation);
             return View(otherHardware);
         }
@@ -82,6 +85,7 @@ namespace TownOfStettler.Controllers
             {
                 return NotFound();
             }
+            ViewData["History"] = new SelectList(_context.Histories, "Id", "Id", otherHardware.History);
             ViewData["OwnerLocation"] = new SelectList(_context.OwnerLocations, "Id", "Id", otherHardware.OwnerLocation);
             return View(otherHardware);
         }
@@ -91,7 +95,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,OwnerLocation,TosNumber,Type,Destroyed,Notes")] OtherHardware otherHardware)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,OwnerLocation,TosNumber,TypeOfDevice,Destroyed,History,Notes")] OtherHardware otherHardware)
         {
             if (id != otherHardware.Id)
             {
@@ -118,6 +122,7 @@ namespace TownOfStettler.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["History"] = new SelectList(_context.Histories, "Id", "Id", otherHardware.History);
             ViewData["OwnerLocation"] = new SelectList(_context.OwnerLocations, "Id", "Id", otherHardware.OwnerLocation);
             return View(otherHardware);
         }
@@ -131,6 +136,7 @@ namespace TownOfStettler.Controllers
             }
 
             var otherHardware = await _context.OtherHardwares
+                .Include(o => o.HistoryNavigation)
                 .Include(o => o.OwnerLocationNavigation)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (otherHardware == null)

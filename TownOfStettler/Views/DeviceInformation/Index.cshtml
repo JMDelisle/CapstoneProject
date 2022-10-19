@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Device Information Index</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,101 +13,106 @@
     <thead>
         <tr>
             <th>
-                @*@Html.DisplayNameFor(model => model.TosNumber)*@TOS Number
+                @Html.DisplayNameFor(model => model.TosNumber)
             </th>
             <th>
-               @* @Html.DisplayNameFor(model => model.SerialNumber)*@Serial Number
+                @Html.DisplayNameFor(model => model.SerialNumber)
             </th>
             <th>
-@*                @Html.DisplayNameFor(model => model.ModelNumber)*@Model Number
+                @Html.DisplayNameFor(model => model.ModelNumber)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.PowerSupply)*@Power Supply
+                @Html.DisplayNameFor(model => model.PowerSupply)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.PurchaseStore)*@Purchase Store
+                @Html.DisplayNameFor(model => model.PurchaseStore)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.PurchasePrice)*@Purchase Price
+                @Html.DisplayNameFor(model => model.PurchasePrice)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.PurchaseDate)*@Purchase Date
+                @Html.DisplayNameFor(model => model.PurchaseDate)
             </th>
             <th>
-               @* @Html.DisplayNameFor(model => model.OperatingSystem)*@Operating System
+                @Html.DisplayNameFor(model => model.OperatingSystem)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.Destroyed)*@Destroyed
+                @Html.DisplayNameFor(model => model.Destroyed)
             </th>
             <th>
-                Device Type
+                @Html.DisplayNameFor(model => model.Notes)
             </th>
             <th>
-                Owner Location
+                @Html.DisplayNameFor(model => model.DisplayMonitorNavigationId)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.Notes)*@Notes
-            </th>
-
-            <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware01Navigation)*@Installed Software 01
+                @Html.DisplayNameFor(model => model.DeviceType)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware02Navigation)*@Installed Software 02
+                @Html.DisplayNameFor(model => model.DisplayMonitorNavigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware03Navigation)*@Installed Software 03
+                @Html.DisplayNameFor(model => model.InstalledSoftware01Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware04Navigation)*@Installed Software 04
+                @Html.DisplayNameFor(model => model.InstalledSoftware02Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware05Navigation)*@Installed Software 05
+                @Html.DisplayNameFor(model => model.InstalledSoftware03Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware06Navigation)*@Installed Software 06
+                @Html.DisplayNameFor(model => model.InstalledSoftware04Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware07Navigation)*@Installed Software 07
+                @Html.DisplayNameFor(model => model.InstalledSoftware05Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware08Navigation)*@Installed Software 08
+                @Html.DisplayNameFor(model => model.InstalledSoftware06Navigation)
             </th>
             <th>
-                @* @Html.DisplayNameFor(model => model.InstalledSoftware09Navigation)*@Installed Software 09
+                @Html.DisplayNameFor(model => model.InstalledSoftware07Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware10Navigation)*@Installed Software 10
+                @Html.DisplayNameFor(model => model.InstalledSoftware08Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware11Navigation)*@Installed Software 11
+                @Html.DisplayNameFor(model => model.InstalledSoftware09Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware12Navigation)*@Installed Software 12
+                @Html.DisplayNameFor(model => model.InstalledSoftware10Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware13Navigation)*@Installed Software 13
+                @Html.DisplayNameFor(model => model.InstalledSoftware11Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware14Navigation)*@Installed Software 14
+                @Html.DisplayNameFor(model => model.InstalledSoftware12Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware15Navigation)*@Installed Software 15
+                @Html.DisplayNameFor(model => model.InstalledSoftware13Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware16Navigation)*@Installed Software 16
+                @Html.DisplayNameFor(model => model.InstalledSoftware14Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware17Navigation)*@Installed Software 17
+                @Html.DisplayNameFor(model => model.InstalledSoftware15Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware18Navigation)*@Installed Software 18
+                @Html.DisplayNameFor(model => model.InstalledSoftware16Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware19Navigation)*@Installed Software 19
+                @Html.DisplayNameFor(model => model.InstalledSoftware17Navigation)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.InstalledSoftware20Navigation)*@Installed Software 20
+                @Html.DisplayNameFor(model => model.InstalledSoftware18Navigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstalledSoftware19Navigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstalledSoftware20Navigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerLocationNavigation)
             </th>
             <th></th>
         </tr>
@@ -146,7 +151,13 @@
                 @Html.DisplayFor(modelItem => item.Notes)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.DisplayMonitorNavigationId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.DeviceType.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DisplayMonitorNavigation.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.InstalledSoftware01Navigation.Id)
