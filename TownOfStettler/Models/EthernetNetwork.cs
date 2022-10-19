@@ -9,9 +9,9 @@ namespace TownOfStettler.Models
         public int DeviceId { get; set; }
         public string Speed { get; set; } = null!;
         public bool Wireless { get; set; }
-        public bool? Bluetooth { get; set; }
+        public bool Bluetooth { get; set; }
         public string SerialNumber { get; set; } = null!;
-        public double Destroyed { get; set; }
+        public bool Destroyed { get; set; }
         public string? Notes { get; set; }
 
         public virtual DeviceInformation Device { get; set; } = null!;

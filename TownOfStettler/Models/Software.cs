@@ -33,12 +33,13 @@ namespace TownOfStettler.Models
         public string? ProductKey { get; set; }
         public string SoftwareName { get; set; } = null!;
         public string? AssociatedAccount { get; set; }
-        public bool Subscription { get; set; }
+        public bool? Subscription { get; set; }
         public DateOnly? SubscriptionEndDate { get; set; }
         public DateOnly? PurchaseDate { get; set; }
         public decimal? PurchasePrice { get; set; }
-        public int DevicesAllowed { get; set; }
+        public int? DevicesAllowed { get; set; }
         public DateOnly? EndOfSupportDate { get; set; }
+        public string? Notes { get; set; }
 
         public virtual ICollection<DeviceInformation> DeviceInformationInstalledSoftware01Navigations { get; set; }
         public virtual ICollection<DeviceInformation> DeviceInformationInstalledSoftware02Navigations { get; set; }

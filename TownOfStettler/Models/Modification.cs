@@ -5,6 +5,11 @@ namespace TownOfStettler.Models
 {
     public partial class Modification
     {
+        public Modification()
+        {
+            Histories = new HashSet<History>();
+        }
+
         public int Id { get; set; }
         public int? ProcessorId { get; set; }
         public int? RamId { get; set; }
@@ -15,10 +20,11 @@ namespace TownOfStettler.Models
         public string? Notes { get; set; }
 
         public virtual HardDrive? HardDrive { get; set; }
-        public virtual Processsor? Processor { get; set; }
+        public virtual Processor? Processor { get; set; }
         public virtual Ram? Ram { get; set; }
         public virtual SecondaryDrive? SecondaryDrive { get; set; }
         public virtual SoundCard? SoundCard { get; set; }
         public virtual VideoCard? VideoCard { get; set; }
+        public virtual ICollection<History> Histories { get; set; }
     }
 }

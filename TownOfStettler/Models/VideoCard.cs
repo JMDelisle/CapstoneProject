@@ -14,7 +14,7 @@ namespace TownOfStettler.Models
 
         public int Id { get; set; }
         public int DeviceId { get; set; }
-        public string Brand { get; set; } = null!;
+        public string? Brand { get; set; }
         public int RamSizeGb { get; set; }
         public string SerialNumber { get; set; } = null!;
         public bool Destroyed { get; set; }
