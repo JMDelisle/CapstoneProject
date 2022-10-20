@@ -161,14 +161,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.OtherHardwares.Remove(otherHardware);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool OtherHardwareExists(int id)
         {
-          return _context.OtherHardwares.Any(e => e.Id == id);
+            return _context.OtherHardwares.Any(e => e.Id == id);
         }
     }
 }

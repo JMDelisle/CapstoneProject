@@ -36,92 +36,6 @@ namespace TownOfStettler.Migrations
                         .HasColumnType("int(11)")
                         .HasColumnName("Device Type ID");
 
-                    b.Property<int?>("DisplayMonitor")
-                        .HasColumnType("int(11)");
-
-                    b.Property<int?>("DisplayMonitorNavigationId")
-                        .HasColumnType("int(11)");
-
-                    b.Property<int?>("InstalledSoftware01")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (01)");
-
-                    b.Property<int?>("InstalledSoftware02")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (02)");
-
-                    b.Property<int?>("InstalledSoftware03")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (03)");
-
-                    b.Property<int?>("InstalledSoftware04")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (04)");
-
-                    b.Property<int?>("InstalledSoftware05")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (05)");
-
-                    b.Property<int?>("InstalledSoftware06")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (06)");
-
-                    b.Property<int?>("InstalledSoftware07")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (07)");
-
-                    b.Property<int?>("InstalledSoftware08")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (08)");
-
-                    b.Property<int?>("InstalledSoftware09")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (09)");
-
-                    b.Property<int?>("InstalledSoftware10")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (10)");
-
-                    b.Property<int?>("InstalledSoftware11")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (11)");
-
-                    b.Property<int?>("InstalledSoftware12")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (12)");
-
-                    b.Property<int?>("InstalledSoftware13")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (13)");
-
-                    b.Property<int?>("InstalledSoftware14")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (14)");
-
-                    b.Property<int?>("InstalledSoftware15")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (15)");
-
-                    b.Property<int?>("InstalledSoftware16")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (16)");
-
-                    b.Property<int?>("InstalledSoftware17")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (17)");
-
-                    b.Property<int?>("InstalledSoftware18")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (18)");
-
-                    b.Property<int?>("InstalledSoftware19")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (19)");
-
-                    b.Property<int?>("InstalledSoftware20")
-                        .HasColumnType("int(11)")
-                        .HasColumnName("Installed Software (20)");
-
                     b.Property<string>("ModelNumber")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -175,51 +89,9 @@ namespace TownOfStettler.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "DisplayMonitor" }, "DisplayMonitor");
-
                     b.HasIndex(new[] { "DeviceTypeId" }, "device information_ibfk_1");
 
-                    b.HasIndex(new[] { "InstalledSoftware08" }, "device information_ibfk_10");
-
-                    b.HasIndex(new[] { "InstalledSoftware09" }, "device information_ibfk_11");
-
-                    b.HasIndex(new[] { "InstalledSoftware10" }, "device information_ibfk_12");
-
-                    b.HasIndex(new[] { "InstalledSoftware11" }, "device information_ibfk_13");
-
-                    b.HasIndex(new[] { "InstalledSoftware12" }, "device information_ibfk_14");
-
-                    b.HasIndex(new[] { "InstalledSoftware13" }, "device information_ibfk_15");
-
-                    b.HasIndex(new[] { "InstalledSoftware14" }, "device information_ibfk_16");
-
-                    b.HasIndex(new[] { "InstalledSoftware15" }, "device information_ibfk_17");
-
-                    b.HasIndex(new[] { "InstalledSoftware16" }, "device information_ibfk_18");
-
-                    b.HasIndex(new[] { "InstalledSoftware17" }, "device information_ibfk_19");
-
                     b.HasIndex(new[] { "OwnerLocation" }, "device information_ibfk_2");
-
-                    b.HasIndex(new[] { "InstalledSoftware18" }, "device information_ibfk_20");
-
-                    b.HasIndex(new[] { "InstalledSoftware19" }, "device information_ibfk_21");
-
-                    b.HasIndex(new[] { "InstalledSoftware20" }, "device information_ibfk_22");
-
-                    b.HasIndex(new[] { "InstalledSoftware01" }, "device information_ibfk_3");
-
-                    b.HasIndex(new[] { "InstalledSoftware02" }, "device information_ibfk_4");
-
-                    b.HasIndex(new[] { "InstalledSoftware03" }, "device information_ibfk_5");
-
-                    b.HasIndex(new[] { "InstalledSoftware04" }, "device information_ibfk_6");
-
-                    b.HasIndex(new[] { "InstalledSoftware05" }, "device information_ibfk_7");
-
-                    b.HasIndex(new[] { "InstalledSoftware06" }, "device information_ibfk_8");
-
-                    b.HasIndex(new[] { "InstalledSoftware07" }, "device information_ibfk_9");
 
                     b.ToTable("device information", (string)null);
 
@@ -229,9 +101,6 @@ namespace TownOfStettler.Migrations
                             Id = 1,
                             Destroyed = false,
                             DeviceTypeId = 1,
-                            InstalledSoftware01 = 1,
-                            InstalledSoftware02 = 4,
-                            InstalledSoftware03 = 5,
                             ModelNumber = "NA",
                             Notes = "Dell Poweredge 840 Dual Core Xeon 2.13 Ghz",
                             OperatingSystem = "Windows 2003 Server - Standard",
@@ -262,7 +131,6 @@ namespace TownOfStettler.Migrations
                             Id = 3,
                             Destroyed = false,
                             DeviceTypeId = 1,
-                            InstalledSoftware01 = 1,
                             ModelNumber = "NA",
                             Notes = "Dell Poweredge 2900/EQT5134/Spare",
                             OperatingSystem = "Windows 2008 Server w/Downgrade Windows Server 2003 SP2 32 bit X64",
@@ -279,8 +147,6 @@ namespace TownOfStettler.Migrations
                             Id = 4,
                             Destroyed = true,
                             DeviceTypeId = 3,
-                            DisplayMonitor = 1,
-                            InstalledSoftware01 = 3,
                             ModelNumber = "unknown",
                             Notes = "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018",
                             OperatingSystem = "Windows Vista Buisness",
@@ -297,8 +163,6 @@ namespace TownOfStettler.Migrations
                             Id = 5,
                             Destroyed = true,
                             DeviceTypeId = 3,
-                            DisplayMonitor = 1,
-                            InstalledSoftware01 = 3,
                             ModelNumber = "unknown",
                             Notes = "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018",
                             OperatingSystem = "Windows Vista Buisness",
@@ -315,8 +179,6 @@ namespace TownOfStettler.Migrations
                             Id = 6,
                             Destroyed = true,
                             DeviceTypeId = 3,
-                            DisplayMonitor = 1,
-                            InstalledSoftware01 = 3,
                             ModelNumber = "unknown",
                             Notes = "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018",
                             OperatingSystem = "Windows Vista Buisness",
@@ -348,9 +210,6 @@ namespace TownOfStettler.Migrations
                             Id = 8,
                             Destroyed = false,
                             DeviceTypeId = 3,
-                            DisplayMonitor = 2,
-                            InstalledSoftware01 = 6,
-                            InstalledSoftware02 = 8,
                             ModelNumber = "unknown",
                             Notes = "TOSL1005B/Dell Precision M6400",
                             OperatingSystem = "Windows 7 pro",
@@ -367,8 +226,6 @@ namespace TownOfStettler.Migrations
                             Id = 9,
                             Destroyed = false,
                             DeviceTypeId = 1,
-                            InstalledSoftware01 = 9,
-                            InstalledSoftware02 = 10,
                             ModelNumber = "unknown",
                             Notes = "Spare/EQT5148/Dell Poweredge R710/VMWare Server/8M Cache/Turbo/HT/1066MHz Max Mem/1333 MHZ Dual Ranked RDIMMs/iDRAC6 Enterprise/Ultra 320 SCSI PCI3 Host Adapter",
                             OperatingSystem = "Windows 2008 Small Business SErver Standard w/5 CAL",
@@ -385,9 +242,6 @@ namespace TownOfStettler.Migrations
                             Id = 10,
                             Destroyed = false,
                             DeviceTypeId = 3,
-                            DisplayMonitor = 3,
-                            InstalledSoftware01 = 6,
-                            InstalledSoftware02 = 11,
                             ModelNumber = "unknown",
                             Notes = "HP ProBook 6500B WX303UT/EQT5153",
                             OperatingSystem = "Windows 7 Pro 64 Bit",
@@ -404,8 +258,6 @@ namespace TownOfStettler.Migrations
                             Id = 11,
                             Destroyed = true,
                             DeviceTypeId = 3,
-                            InstalledSoftware01 = 6,
-                            InstalledSoftware02 = 11,
                             ModelNumber = "unknown",
                             Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
                             OperatingSystem = "Windows 7 PRo 64 Bit",
@@ -422,8 +274,6 @@ namespace TownOfStettler.Migrations
                             Id = 12,
                             Destroyed = true,
                             DeviceTypeId = 3,
-                            InstalledSoftware01 = 6,
-                            InstalledSoftware02 = 11,
                             ModelNumber = "unknown",
                             Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
                             OperatingSystem = "Windows 7 PRo 64 Bit",
@@ -440,8 +290,6 @@ namespace TownOfStettler.Migrations
                             Id = 13,
                             Destroyed = true,
                             DeviceTypeId = 3,
-                            InstalledSoftware01 = 6,
-                            InstalledSoftware02 = 11,
                             ModelNumber = "V1116390",
                             Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
                             OperatingSystem = "Windows 7 PRo 64 Bit",
@@ -458,8 +306,6 @@ namespace TownOfStettler.Migrations
                             Id = 14,
                             Destroyed = true,
                             DeviceTypeId = 3,
-                            InstalledSoftware01 = 6,
-                            InstalledSoftware02 = 11,
                             ModelNumber = "V1116391",
                             Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
                             OperatingSystem = "Windows 7 PRo 64 Bit",
@@ -476,8 +322,6 @@ namespace TownOfStettler.Migrations
                             Id = 15,
                             Destroyed = false,
                             DeviceTypeId = 3,
-                            InstalledSoftware01 = 6,
-                            InstalledSoftware02 = 11,
                             ModelNumber = "V1116380",
                             Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
                             OperatingSystem = "Windows 7 Pro 64 Bit",
@@ -493,8 +337,6 @@ namespace TownOfStettler.Migrations
                             Id = 16,
                             Destroyed = false,
                             DeviceTypeId = 3,
-                            InstalledSoftware01 = 6,
-                            InstalledSoftware02 = 11,
                             ModelNumber = "V1210920",
                             Notes = "EQT5160/Touch Intel P-Series/Mouse/Keyboard",
                             OperatingSystem = "Windows 7 Pro 64 Bit",
@@ -510,7 +352,6 @@ namespace TownOfStettler.Migrations
                             Id = 17,
                             Destroyed = false,
                             DeviceTypeId = 6,
-                            DisplayMonitor = 4,
                             ModelNumber = "unknown",
                             Notes = "EQT5160/Apple iPad3 w/wifi/Black/Front&Rear Cameras/Smart Cover&Logitech wireless keyboard w/stand",
                             OperatingSystem = "iOS",
@@ -1130,13 +971,17 @@ namespace TownOfStettler.Migrations
                         .HasColumnType("int(11)")
                         .HasColumnName("ID");
 
-                    b.Property<DateOnly?>("DateOfChanges")
+                    b.Property<DateOnly>("DateOfChanges")
                         .HasColumnType("date")
                         .HasColumnName("Date of Changes");
 
                     b.Property<int?>("DeviceId")
                         .HasColumnType("int(11)")
                         .HasColumnName("Device ID");
+
+                    b.Property<int>("DeviceTypeId")
+                        .HasColumnType("int(11)")
+                        .HasColumnName("Device Type ID");
 
                     b.Property<string>("Notes")
                         .HasColumnType("text");
@@ -1162,6 +1007,8 @@ namespace TownOfStettler.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex(new[] { "DeviceTypeId" }, "Device Type ID");
+
                     b.HasIndex(new[] { "DeviceId" }, "history_ibfk_1");
 
                     b.HasIndex(new[] { "PastOwnerS" }, "history_ibfk_2");
@@ -1174,72 +1021,331 @@ namespace TownOfStettler.Migrations
                         new
                         {
                             Id = 1,
+                            DateOfChanges = new DateOnly(1, 1, 1),
                             DeviceId = 2,
+                            DeviceTypeId = 2,
                             Notes = "Dell Dimension E520",
                             Wiped = true
                         },
                         new
                         {
                             Id = 2,
+                            DateOfChanges = new DateOnly(1, 1, 1),
                             DeviceId = 4,
+                            DeviceTypeId = 3,
                             Notes = "NA",
                             OutOfServiceDate = new DateOnly(2018, 7, 1)
                         },
                         new
                         {
                             Id = 3,
+                            DateOfChanges = new DateOnly(1, 1, 1),
                             DeviceId = 5,
+                            DeviceTypeId = 3,
                             Notes = "NA",
                             OutOfServiceDate = new DateOnly(2018, 7, 1)
                         },
                         new
                         {
                             Id = 4,
+                            DateOfChanges = new DateOnly(1, 1, 1),
                             DeviceId = 6,
+                            DeviceTypeId = 3,
                             Notes = "NA",
                             OutOfServiceDate = new DateOnly(2018, 7, 1)
                         },
                         new
                         {
                             Id = 5,
+                            DateOfChanges = new DateOnly(1, 1, 1),
                             DeviceId = 10,
+                            DeviceTypeId = 3,
                             Notes = "NA",
                             Wiped = true
                         },
                         new
                         {
                             Id = 6,
+                            DateOfChanges = new DateOnly(1, 1, 1),
                             DeviceId = 11,
+                            DeviceTypeId = 3,
                             Notes = "NA",
                             OutOfServiceDate = new DateOnly(2018, 7, 1)
                         },
                         new
                         {
                             Id = 7,
+                            DateOfChanges = new DateOnly(1, 1, 1),
                             DeviceId = 12,
+                            DeviceTypeId = 3,
                             Notes = "NA",
                             OutOfServiceDate = new DateOnly(2018, 7, 1)
                         },
                         new
                         {
                             Id = 8,
+                            DateOfChanges = new DateOnly(1, 1, 1),
                             DeviceId = 13,
+                            DeviceTypeId = 3,
                             Notes = "NA",
                             OutOfServiceDate = new DateOnly(2018, 7, 1)
                         },
                         new
                         {
                             Id = 9,
+                            DateOfChanges = new DateOnly(1, 1, 1),
                             DeviceId = 14,
+                            DeviceTypeId = 3,
                             Notes = "NA",
                             OutOfServiceDate = new DateOnly(2018, 7, 1)
                         },
                         new
                         {
                             Id = 10,
+                            DateOfChanges = new DateOnly(1, 1, 1),
                             DeviceId = 16,
+                            DeviceTypeId = 3,
                             Notes = "NA",
                             Wiped = true
+                        });
+                });
+
+            modelBuilder.Entity("TownOfStettler.Models.InstalledSoftware", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int(11)")
+                        .HasColumnName("ID");
+
+                    b.Property<int>("DeviceId")
+                        .HasColumnType("int(11)")
+                        .HasColumnName("Device ID");
+
+                    b.Property<int>("SoftwareId")
+                        .HasColumnType("int(11)")
+                        .HasColumnName("Software ID");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "DeviceId" }, "Device ID");
+
+                    b.HasIndex(new[] { "SoftwareId" }, "Software ID");
+
+                    b.ToTable("installed software", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DeviceId = 1,
+                            SoftwareId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DeviceId = 1,
+                            SoftwareId = 4
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DeviceId = 1,
+                            SoftwareId = 5
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DeviceId = 3,
+                            SoftwareId = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DeviceId = 1,
+                            SoftwareId = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DeviceId = 5,
+                            SoftwareId = 3
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DeviceId = 6,
+                            SoftwareId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            DeviceId = 8,
+                            SoftwareId = 6
+                        },
+                        new
+                        {
+                            Id = 9,
+                            DeviceId = 8,
+                            SoftwareId = 8
+                        },
+                        new
+                        {
+                            Id = 10,
+                            DeviceId = 9,
+                            SoftwareId = 9
+                        },
+                        new
+                        {
+                            Id = 11,
+                            DeviceId = 9,
+                            SoftwareId = 10
+                        },
+                        new
+                        {
+                            Id = 12,
+                            DeviceId = 10,
+                            SoftwareId = 6
+                        },
+                        new
+                        {
+                            Id = 13,
+                            DeviceId = 10,
+                            SoftwareId = 11
+                        },
+                        new
+                        {
+                            Id = 14,
+                            DeviceId = 11,
+                            SoftwareId = 6
+                        },
+                        new
+                        {
+                            Id = 15,
+                            DeviceId = 11,
+                            SoftwareId = 11
+                        },
+                        new
+                        {
+                            Id = 16,
+                            DeviceId = 12,
+                            SoftwareId = 6
+                        },
+                        new
+                        {
+                            Id = 17,
+                            DeviceId = 12,
+                            SoftwareId = 11
+                        },
+                        new
+                        {
+                            Id = 18,
+                            DeviceId = 13,
+                            SoftwareId = 6
+                        },
+                        new
+                        {
+                            Id = 19,
+                            DeviceId = 13,
+                            SoftwareId = 11
+                        },
+                        new
+                        {
+                            Id = 20,
+                            DeviceId = 14,
+                            SoftwareId = 6
+                        },
+                        new
+                        {
+                            Id = 21,
+                            DeviceId = 14,
+                            SoftwareId = 11
+                        },
+                        new
+                        {
+                            Id = 22,
+                            DeviceId = 15,
+                            SoftwareId = 6
+                        },
+                        new
+                        {
+                            Id = 23,
+                            DeviceId = 15,
+                            SoftwareId = 11
+                        },
+                        new
+                        {
+                            Id = 24,
+                            DeviceId = 16,
+                            SoftwareId = 6
+                        },
+                        new
+                        {
+                            Id = 25,
+                            DeviceId = 16,
+                            SoftwareId = 11
+                        });
+                });
+
+            modelBuilder.Entity("TownOfStettler.Models.InuseMonitor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int(11)")
+                        .HasColumnName("ID");
+
+                    b.Property<int>("DeviceId")
+                        .HasColumnType("int(11)")
+                        .HasColumnName("Device ID");
+
+                    b.Property<int>("MonitorId")
+                        .HasColumnType("int(11)")
+                        .HasColumnName("Monitor ID");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "DeviceId" }, "Device ID")
+                        .HasDatabaseName("Device ID1");
+
+                    b.HasIndex(new[] { "MonitorId" }, "Monitor ID");
+
+                    b.ToTable("inuse monitors", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DeviceId = 4,
+                            MonitorId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DeviceId = 5,
+                            MonitorId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DeviceId = 6,
+                            MonitorId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DeviceId = 8,
+                            MonitorId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DeviceId = 10,
+                            MonitorId = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DeviceId = 17,
+                            MonitorId = 4
                         });
                 });
 
@@ -1327,8 +1433,7 @@ namespace TownOfStettler.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "History" }, "History")
-                        .HasDatabaseName("History1");
+                    b.HasIndex(new[] { "History" }, "History1");
 
                     b.HasIndex(new[] { "OwnerLocation" }, "other hardware_ibfk_1");
 
@@ -1568,6 +1673,12 @@ namespace TownOfStettler.Migrations
                         .HasColumnType("int(11)")
                         .HasColumnName("Owner/Location");
 
+                    b.Property<string>("TosNumber")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("varchar(25)")
+                        .HasColumnName("TOS Number");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -1575,8 +1686,7 @@ namespace TownOfStettler.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "History" }, "History")
-                        .HasDatabaseName("History2");
+                    b.HasIndex(new[] { "History" }, "History2");
 
                     b.HasIndex(new[] { "DeviceId" }, "printers_ibfk_1");
 
@@ -2573,111 +2683,6 @@ namespace TownOfStettler.Migrations
                         .IsRequired()
                         .HasConstraintName("device information_ibfk_1");
 
-                    b.HasOne("TownOfStettler.Models.DisplayMonitor", "DisplayMonitorNavigation")
-                        .WithMany("DeviceInformations")
-                        .HasForeignKey("DisplayMonitor")
-                        .HasConstraintName("device information_ibfk_23");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware01Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware01Navigations")
-                        .HasForeignKey("InstalledSoftware01")
-                        .HasConstraintName("device information_ibfk_3");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware02Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware02Navigations")
-                        .HasForeignKey("InstalledSoftware02")
-                        .HasConstraintName("device information_ibfk_4");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware03Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware03Navigations")
-                        .HasForeignKey("InstalledSoftware03")
-                        .HasConstraintName("device information_ibfk_5");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware04Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware04Navigations")
-                        .HasForeignKey("InstalledSoftware04")
-                        .HasConstraintName("device information_ibfk_6");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware05Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware05Navigations")
-                        .HasForeignKey("InstalledSoftware05")
-                        .HasConstraintName("device information_ibfk_7");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware06Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware06Navigations")
-                        .HasForeignKey("InstalledSoftware06")
-                        .HasConstraintName("device information_ibfk_8");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware07Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware07Navigations")
-                        .HasForeignKey("InstalledSoftware07")
-                        .HasConstraintName("device information_ibfk_9");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware08Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware08Navigations")
-                        .HasForeignKey("InstalledSoftware08")
-                        .HasConstraintName("device information_ibfk_10");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware09Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware09Navigations")
-                        .HasForeignKey("InstalledSoftware09")
-                        .HasConstraintName("device information_ibfk_11");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware10Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware10Navigations")
-                        .HasForeignKey("InstalledSoftware10")
-                        .HasConstraintName("device information_ibfk_12");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware11Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware11Navigations")
-                        .HasForeignKey("InstalledSoftware11")
-                        .HasConstraintName("device information_ibfk_13");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware12Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware12Navigations")
-                        .HasForeignKey("InstalledSoftware12")
-                        .HasConstraintName("device information_ibfk_14");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware13Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware13Navigations")
-                        .HasForeignKey("InstalledSoftware13")
-                        .HasConstraintName("device information_ibfk_15");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware14Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware14Navigations")
-                        .HasForeignKey("InstalledSoftware14")
-                        .HasConstraintName("device information_ibfk_16");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware15Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware15Navigations")
-                        .HasForeignKey("InstalledSoftware15")
-                        .HasConstraintName("device information_ibfk_17");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware16Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware16Navigations")
-                        .HasForeignKey("InstalledSoftware16")
-                        .HasConstraintName("device information_ibfk_18");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware17Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware17Navigations")
-                        .HasForeignKey("InstalledSoftware17")
-                        .HasConstraintName("device information_ibfk_19");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware18Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware18Navigations")
-                        .HasForeignKey("InstalledSoftware18")
-                        .HasConstraintName("device information_ibfk_20");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware19Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware19Navigations")
-                        .HasForeignKey("InstalledSoftware19")
-                        .HasConstraintName("device information_ibfk_21");
-
-                    b.HasOne("TownOfStettler.Models.Software", "InstalledSoftware20Navigation")
-                        .WithMany("DeviceInformationInstalledSoftware20Navigations")
-                        .HasForeignKey("InstalledSoftware20")
-                        .HasConstraintName("device information_ibfk_22");
-
                     b.HasOne("TownOfStettler.Models.OwnerLocation", "OwnerLocationNavigation")
                         .WithMany("DeviceInformations")
                         .HasForeignKey("OwnerLocation")
@@ -2685,48 +2690,6 @@ namespace TownOfStettler.Migrations
                         .HasConstraintName("device information_ibfk_2");
 
                     b.Navigation("DeviceType");
-
-                    b.Navigation("DisplayMonitorNavigation");
-
-                    b.Navigation("InstalledSoftware01Navigation");
-
-                    b.Navigation("InstalledSoftware02Navigation");
-
-                    b.Navigation("InstalledSoftware03Navigation");
-
-                    b.Navigation("InstalledSoftware04Navigation");
-
-                    b.Navigation("InstalledSoftware05Navigation");
-
-                    b.Navigation("InstalledSoftware06Navigation");
-
-                    b.Navigation("InstalledSoftware07Navigation");
-
-                    b.Navigation("InstalledSoftware08Navigation");
-
-                    b.Navigation("InstalledSoftware09Navigation");
-
-                    b.Navigation("InstalledSoftware10Navigation");
-
-                    b.Navigation("InstalledSoftware11Navigation");
-
-                    b.Navigation("InstalledSoftware12Navigation");
-
-                    b.Navigation("InstalledSoftware13Navigation");
-
-                    b.Navigation("InstalledSoftware14Navigation");
-
-                    b.Navigation("InstalledSoftware15Navigation");
-
-                    b.Navigation("InstalledSoftware16Navigation");
-
-                    b.Navigation("InstalledSoftware17Navigation");
-
-                    b.Navigation("InstalledSoftware18Navigation");
-
-                    b.Navigation("InstalledSoftware19Navigation");
-
-                    b.Navigation("InstalledSoftware20Navigation");
 
                     b.Navigation("OwnerLocationNavigation");
                 });
@@ -2770,6 +2733,12 @@ namespace TownOfStettler.Migrations
                         .HasForeignKey("DeviceId")
                         .HasConstraintName("history_ibfk_1");
 
+                    b.HasOne("TownOfStettler.Models.HardwareDevice", "DeviceType")
+                        .WithMany("Histories")
+                        .HasForeignKey("DeviceTypeId")
+                        .IsRequired()
+                        .HasConstraintName("history_ibfk_4");
+
                     b.HasOne("TownOfStettler.Models.Modification", "PartsChangedNavigation")
                         .WithMany("Histories")
                         .HasForeignKey("PartsChanged")
@@ -2782,9 +2751,49 @@ namespace TownOfStettler.Migrations
 
                     b.Navigation("Device");
 
+                    b.Navigation("DeviceType");
+
                     b.Navigation("PartsChangedNavigation");
 
                     b.Navigation("PastOwnerSNavigation");
+                });
+
+            modelBuilder.Entity("TownOfStettler.Models.InstalledSoftware", b =>
+                {
+                    b.HasOne("TownOfStettler.Models.DeviceInformation", "Device")
+                        .WithMany("InstalledSoftwares")
+                        .HasForeignKey("DeviceId")
+                        .IsRequired()
+                        .HasConstraintName("installed software_ibfk_1");
+
+                    b.HasOne("TownOfStettler.Models.Software", "Software")
+                        .WithMany("InstalledSoftwares")
+                        .HasForeignKey("SoftwareId")
+                        .IsRequired()
+                        .HasConstraintName("installed software_ibfk_2");
+
+                    b.Navigation("Device");
+
+                    b.Navigation("Software");
+                });
+
+            modelBuilder.Entity("TownOfStettler.Models.InuseMonitor", b =>
+                {
+                    b.HasOne("TownOfStettler.Models.DeviceInformation", "Device")
+                        .WithMany("InuseMonitors")
+                        .HasForeignKey("DeviceId")
+                        .IsRequired()
+                        .HasConstraintName("inuse monitors_ibfk_1");
+
+                    b.HasOne("TownOfStettler.Models.DisplayMonitor", "Monitor")
+                        .WithMany("InuseMonitors")
+                        .HasForeignKey("MonitorId")
+                        .IsRequired()
+                        .HasConstraintName("inuse monitors_ibfk_2");
+
+                    b.Navigation("Device");
+
+                    b.Navigation("Monitor");
                 });
 
             modelBuilder.Entity("TownOfStettler.Models.Modification", b =>
@@ -3014,6 +3023,10 @@ namespace TownOfStettler.Migrations
 
                     b.Navigation("Histories");
 
+                    b.Navigation("InstalledSoftwares");
+
+                    b.Navigation("InuseMonitors");
+
                     b.Navigation("Parts");
 
                     b.Navigation("Printers");
@@ -3033,7 +3046,7 @@ namespace TownOfStettler.Migrations
 
             modelBuilder.Entity("TownOfStettler.Models.DisplayMonitor", b =>
                 {
-                    b.Navigation("DeviceInformations");
+                    b.Navigation("InuseMonitors");
                 });
 
             modelBuilder.Entity("TownOfStettler.Models.HardDrive", b =>
@@ -3046,6 +3059,8 @@ namespace TownOfStettler.Migrations
             modelBuilder.Entity("TownOfStettler.Models.HardwareDevice", b =>
                 {
                     b.Navigation("DeviceInformations");
+
+                    b.Navigation("Histories");
                 });
 
             modelBuilder.Entity("TownOfStettler.Models.History", b =>
@@ -3096,45 +3111,7 @@ namespace TownOfStettler.Migrations
 
             modelBuilder.Entity("TownOfStettler.Models.Software", b =>
                 {
-                    b.Navigation("DeviceInformationInstalledSoftware01Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware02Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware03Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware04Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware05Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware06Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware07Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware08Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware09Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware10Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware11Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware12Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware13Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware14Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware15Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware16Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware17Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware18Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware19Navigations");
-
-                    b.Navigation("DeviceInformationInstalledSoftware20Navigations");
+                    b.Navigation("InstalledSoftwares");
                 });
 
             modelBuilder.Entity("TownOfStettler.Models.SoundCard", b =>

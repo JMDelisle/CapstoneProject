@@ -155,14 +155,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.Rams.Remove(ram);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool RamExists(int id)
         {
-          return _context.Rams.Any(e => e.Id == id);
+            return _context.Rams.Any(e => e.Id == id);
         }
     }
 }

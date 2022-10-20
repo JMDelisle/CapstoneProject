@@ -155,14 +155,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.Processors.Remove(processor);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProcessorExists(int id)
         {
-          return _context.Processors.Any(e => e.Id == id);
+            return _context.Processors.Any(e => e.Id == id);
         }
     }
 }

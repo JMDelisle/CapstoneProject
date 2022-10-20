@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using System.Linq;
-using TownOfStettler.Data;
 using TownOfStettler.Models;
-//using System.Web.ModelBinding;
 
 namespace TownOfStettler.Controllers
 {
@@ -19,15 +15,6 @@ namespace TownOfStettler.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-
-
-        [HttpPost]
-        public IActionResult Index(int table_number)
-        {
-            ViewBag.tableNumber = table_number;
             return View();
         }
 

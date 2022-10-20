@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TownOfStettler.Migrations
 {
-    public partial class migrateBITCH : Migration
+    public partial class seedDataInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -89,7 +89,6 @@ namespace TownOfStettler.Migrations
                     OwnerLocation = table.Column<int>(name: "Owner/Location", type: "int(11)", nullable: false),
                     TOSNumber = table.Column<string>(name: "TOS Number", type: "varchar(25)", maxLength: 25, nullable: false, collation: "utf8mb4_general_ci")
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    DisplayMonitor = table.Column<int>(type: "int(11)", nullable: true),
                     SerialNumber = table.Column<string>(name: "Serial Number", type: "varchar(30)", maxLength: 30, nullable: false, collation: "utf8mb4_general_ci")
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ModelNumber = table.Column<string>(name: "Model Number", type: "varchar(50)", maxLength: 50, nullable: false, collation: "utf8mb4_general_ci")
@@ -104,28 +103,7 @@ namespace TownOfStettler.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Destroyed = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     Notes = table.Column<string>(type: "text", nullable: true, collation: "utf8mb4_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    InstalledSoftware01 = table.Column<int>(name: "Installed Software (01)", type: "int(11)", nullable: true),
-                    InstalledSoftware02 = table.Column<int>(name: "Installed Software (02)", type: "int(11)", nullable: true),
-                    InstalledSoftware03 = table.Column<int>(name: "Installed Software (03)", type: "int(11)", nullable: true),
-                    InstalledSoftware04 = table.Column<int>(name: "Installed Software (04)", type: "int(11)", nullable: true),
-                    InstalledSoftware05 = table.Column<int>(name: "Installed Software (05)", type: "int(11)", nullable: true),
-                    InstalledSoftware06 = table.Column<int>(name: "Installed Software (06)", type: "int(11)", nullable: true),
-                    InstalledSoftware07 = table.Column<int>(name: "Installed Software (07)", type: "int(11)", nullable: true),
-                    InstalledSoftware08 = table.Column<int>(name: "Installed Software (08)", type: "int(11)", nullable: true),
-                    InstalledSoftware09 = table.Column<int>(name: "Installed Software (09)", type: "int(11)", nullable: true),
-                    InstalledSoftware10 = table.Column<int>(name: "Installed Software (10)", type: "int(11)", nullable: true),
-                    InstalledSoftware11 = table.Column<int>(name: "Installed Software (11)", type: "int(11)", nullable: true),
-                    InstalledSoftware12 = table.Column<int>(name: "Installed Software (12)", type: "int(11)", nullable: true),
-                    InstalledSoftware13 = table.Column<int>(name: "Installed Software (13)", type: "int(11)", nullable: true),
-                    InstalledSoftware14 = table.Column<int>(name: "Installed Software (14)", type: "int(11)", nullable: true),
-                    InstalledSoftware15 = table.Column<int>(name: "Installed Software (15)", type: "int(11)", nullable: true),
-                    InstalledSoftware16 = table.Column<int>(name: "Installed Software (16)", type: "int(11)", nullable: true),
-                    InstalledSoftware17 = table.Column<int>(name: "Installed Software (17)", type: "int(11)", nullable: true),
-                    InstalledSoftware18 = table.Column<int>(name: "Installed Software (18)", type: "int(11)", nullable: true),
-                    InstalledSoftware19 = table.Column<int>(name: "Installed Software (19)", type: "int(11)", nullable: true),
-                    InstalledSoftware20 = table.Column<int>(name: "Installed Software (20)", type: "int(11)", nullable: true),
-                    DisplayMonitorNavigationId = table.Column<int>(type: "int(11)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -136,109 +114,9 @@ namespace TownOfStettler.Migrations
                         principalTable: "hardware device",
                         principalColumn: "ID");
                     table.ForeignKey(
-                        name: "device information_ibfk_10",
-                        column: x => x.InstalledSoftware08,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_11",
-                        column: x => x.InstalledSoftware09,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_12",
-                        column: x => x.InstalledSoftware10,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_13",
-                        column: x => x.InstalledSoftware11,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_14",
-                        column: x => x.InstalledSoftware12,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_15",
-                        column: x => x.InstalledSoftware13,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_16",
-                        column: x => x.InstalledSoftware14,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_17",
-                        column: x => x.InstalledSoftware15,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_18",
-                        column: x => x.InstalledSoftware16,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_19",
-                        column: x => x.InstalledSoftware17,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
                         name: "device information_ibfk_2",
                         column: x => x.OwnerLocation,
                         principalTable: "owner/location",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_20",
-                        column: x => x.InstalledSoftware18,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_21",
-                        column: x => x.InstalledSoftware19,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_22",
-                        column: x => x.InstalledSoftware20,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_3",
-                        column: x => x.InstalledSoftware01,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_4",
-                        column: x => x.InstalledSoftware02,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_5",
-                        column: x => x.InstalledSoftware03,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_6",
-                        column: x => x.InstalledSoftware04,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_7",
-                        column: x => x.InstalledSoftware05,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_8",
-                        column: x => x.InstalledSoftware06,
-                        principalTable: "software",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "device information_ibfk_9",
-                        column: x => x.InstalledSoftware07,
-                        principalTable: "software",
                         principalColumn: "ID");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4")
@@ -296,6 +174,32 @@ namespace TownOfStettler.Migrations
                         name: "hard drive_ibfk_1",
                         column: x => x.DeviceID,
                         principalTable: "device information",
+                        principalColumn: "ID");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
+
+            migrationBuilder.CreateTable(
+                name: "installed software",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int(11)", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    DeviceID = table.Column<int>(name: "Device ID", type: "int(11)", nullable: false),
+                    SoftwareID = table.Column<int>(name: "Software ID", type: "int(11)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_installed software", x => x.ID);
+                    table.ForeignKey(
+                        name: "installed software_ibfk_1",
+                        column: x => x.DeviceID,
+                        principalTable: "device information",
+                        principalColumn: "ID");
+                    table.ForeignKey(
+                        name: "installed software_ibfk_2",
+                        column: x => x.SoftwareID,
+                        principalTable: "software",
                         principalColumn: "ID");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4")
@@ -549,12 +453,13 @@ namespace TownOfStettler.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    DeviceTypeID = table.Column<int>(name: "Device Type ID", type: "int(11)", nullable: false),
                     DeviceID = table.Column<int>(name: "Device ID", type: "int(11)", nullable: true),
                     PartsChanged = table.Column<int>(name: "Parts Changed", type: "int(11)", nullable: true),
                     PastOwners = table.Column<int>(name: "Past Owner(s)", type: "int(11)", nullable: true),
                     Wiped = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     PartsRemoved = table.Column<int>(name: "Parts Removed", type: "int(11)", nullable: true),
-                    DateofChanges = table.Column<DateOnly>(name: "Date of Changes", type: "date", nullable: true),
+                    DateofChanges = table.Column<DateOnly>(name: "Date of Changes", type: "date", nullable: false),
                     OutofServiceDate = table.Column<DateOnly>(name: "Out of Service Date", type: "date", nullable: true),
                     Notes = table.Column<string>(type: "text", nullable: true, collation: "utf8mb4_general_ci")
                         .Annotation("MySql:CharSet", "utf8mb4")
@@ -576,6 +481,11 @@ namespace TownOfStettler.Migrations
                         name: "history_ibfk_3",
                         column: x => x.PartsChanged,
                         principalTable: "modifications",
+                        principalColumn: "ID");
+                    table.ForeignKey(
+                        name: "history_ibfk_4",
+                        column: x => x.DeviceTypeID,
+                        principalTable: "hardware device",
                         principalColumn: "ID");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4")
@@ -713,6 +623,8 @@ namespace TownOfStettler.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    TOSNumber = table.Column<string>(name: "TOS Number", type: "varchar(25)", maxLength: 25, nullable: false, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     OwnerLocation = table.Column<int>(name: "Owner/Location", type: "int(11)", nullable: false),
                     DeviceID = table.Column<int>(name: "Device ID", type: "int(11)", nullable: true),
                     Type = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false, collation: "utf8mb4_general_ci")
@@ -740,6 +652,32 @@ namespace TownOfStettler.Migrations
                         name: "printers_ibfk_3",
                         column: x => x.History,
                         principalTable: "history",
+                        principalColumn: "ID");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
+
+            migrationBuilder.CreateTable(
+                name: "inuse monitors",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int(11)", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    DeviceID = table.Column<int>(name: "Device ID", type: "int(11)", nullable: false),
+                    MonitorID = table.Column<int>(name: "Monitor ID", type: "int(11)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_inuse monitors", x => x.ID);
+                    table.ForeignKey(
+                        name: "inuse monitors_ibfk_1",
+                        column: x => x.DeviceID,
+                        principalTable: "device information",
+                        principalColumn: "ID");
+                    table.ForeignKey(
+                        name: "inuse monitors_ibfk_2",
+                        column: x => x.MonitorID,
+                        principalTable: "display monitors",
                         principalColumn: "ID");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4")
@@ -805,26 +743,26 @@ namespace TownOfStettler.Migrations
 
             migrationBuilder.InsertData(
                 table: "device information",
-                columns: new[] { "ID", "Destroyed", "Device Type ID", "DisplayMonitor", "DisplayMonitorNavigationId", "Installed Software (01)", "Installed Software (02)", "Installed Software (03)", "Installed Software (04)", "Installed Software (05)", "Installed Software (06)", "Installed Software (07)", "Installed Software (08)", "Installed Software (09)", "Installed Software (10)", "Installed Software (11)", "Installed Software (12)", "Installed Software (13)", "Installed Software (14)", "Installed Software (15)", "Installed Software (16)", "Installed Software (17)", "Installed Software (18)", "Installed Software (19)", "Installed Software (20)", "Model Number", "Notes", "Operating System", "Owner/Location", "Power Supply", "Purchase Date", "Purchase Price", "Purchase Store", "Serial Number", "TOS Number" },
+                columns: new[] { "ID", "Destroyed", "Device Type ID", "Model Number", "Notes", "Operating System", "Owner/Location", "Power Supply", "Purchase Date", "Purchase Price", "Purchase Store", "Serial Number", "TOS Number" },
                 values: new object[,]
                 {
-                    { 1, false, 1, null, null, 1, 4, 5, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "NA", "Dell Poweredge 840 Dual Core Xeon 2.13 Ghz", "Windows 2003 Server - Standard", 1, null, new DateOnly(2007, 5, 1), 3594.00m, "NA", "NA", " TOS0705C" },
-                    { 2, false, 2, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "NA", "Dell Dimension E520/EQT5131", "unknown", 2, null, new DateOnly(2007, 3, 1), 1.00m, "NA", "NA", "TOSO703AA" },
-                    { 3, false, 1, null, null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "NA", "Dell Poweredge 2900/EQT5134/Spare", "Windows 2008 Server w/Downgrade Windows Server 2003 SP2 32 bit X64", 4, "Redundant Power Supply", new DateOnly(2008, 5, 1), 7085.00m, "NA", "NA", "TOS0805D" },
-                    { 4, true, 3, 1, null, 3, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "unknown", "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018", "Windows Vista Buisness", 3, "6 Cell Lithium Ion Battery", new DateOnly(2009, 7, 1), 964.00m, "unknown", "unknown", "TOSL0907B" },
-                    { 5, true, 3, 1, null, 3, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "unknown", "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018", "Windows Vista Buisness", 3, "6 Cell Lithium Ion Battery", new DateOnly(2009, 7, 1), 964.00m, "unknown", "unknown", "TOSL0907C" },
-                    { 6, true, 3, 1, null, 3, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "unknown", "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018", "Windows Vista Buisness", 3, "6 Cell Lithium Ion Battery", new DateOnly(2009, 7, 1), 964.00m, "unknown", "unknown", "TOSL0907E" },
-                    { 7, false, 2, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "unknown", "EQT5145/Motherboard-ASUS P6T6 WS Revolution X58 ATX", "Windows 7 Pro 64 bit", 5, null, new DateOnly(2009, 12, 1), 1.00m, "unknown", "unknown", "TOS0912" },
-                    { 8, false, 3, 2, null, 6, 8, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "unknown", "TOSL1005B/Dell Precision M6400", "Windows 7 pro", 6, "Battery", new DateOnly(2010, 6, 15), 1.00m, "unknown", "unknown", "TOSL1004" },
-                    { 9, false, 1, null, null, 9, 10, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "unknown", "Spare/EQT5148/Dell Poweredge R710/VMWare Server/8M Cache/Turbo/HT/1066MHz Max Mem/1333 MHZ Dual Ranked RDIMMs/iDRAC6 Enterprise/Ultra 320 SCSI PCI3 Host Adapter", "Windows 2008 Small Business SErver Standard w/5 CAL", 7, "Redundant 570 Watt", new DateOnly(2010, 2, 1), 15000.00m, "unknown", "unknown", "TOS" },
-                    { 10, false, 3, 3, null, 6, 11, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "unknown", "HP ProBook 6500B WX303UT/EQT5153", "Windows 7 Pro 64 Bit", 8, "Battery", new DateOnly(2011, 3, 1), 1300.00m, "unknown", "CNU1080527", "TOSL1103" },
-                    { 11, true, 3, null, null, 6, 11, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "unknown", "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard", "Windows 7 PRo 64 Bit", 3, "Battery", new DateOnly(2011, 11, 1), 1730.00m, "unknown", "unknown", "TOS1111C" },
-                    { 12, true, 3, null, null, 6, 11, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "unknown", "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard", "Windows 7 PRo 64 Bit", 3, "Battery", new DateOnly(2011, 11, 1), 1730.00m, "unknown", "unknown", "TOS1111D" },
-                    { 13, true, 3, null, null, 6, 11, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "V1116390", "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard", "Windows 7 PRo 64 Bit", 3, "Battery", new DateOnly(2011, 11, 1), 1843.00m, "unknown", "124973", "TOS1111B" },
-                    { 14, true, 3, null, null, 6, 11, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "V1116391", "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard", "Windows 7 PRo 64 Bit", 3, "Battery", new DateOnly(2011, 11, 1), 1627.00m, "unknown", "124974", "TOS1111A" },
-                    { 15, false, 3, null, null, 6, 11, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "V1116380", "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard", "Windows 7 Pro 64 Bit", 1, null, new DateOnly(2011, 11, 1), 1726.00m, "unknown", "124975", "TOS1111E" },
-                    { 16, false, 3, null, null, 6, 11, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "V1210920", "EQT5160/Touch Intel P-Series/Mouse/Keyboard", "Windows 7 Pro 64 Bit", 8, null, new DateOnly(2011, 11, 1), 1703.00m, "unknown", "125409", "TOS1205" },
-                    { 17, false, 6, 4, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "unknown", "EQT5160/Apple iPad3 w/wifi/Black/Front&Rear Cameras/Smart Cover&Logitech wireless keyboard w/stand", "iOS", 9, null, new DateOnly(2012, 10, 1), 710.00m, "unknown", "unknown", "TOS1210" }
+                    { 1, false, 1, "NA", "Dell Poweredge 840 Dual Core Xeon 2.13 Ghz", "Windows 2003 Server - Standard", 1, null, new DateOnly(2007, 5, 1), 3594.00m, "NA", "NA", " TOS0705C" },
+                    { 2, false, 2, "NA", "Dell Dimension E520/EQT5131", "unknown", 2, null, new DateOnly(2007, 3, 1), 1.00m, "NA", "NA", "TOSO703AA" },
+                    { 3, false, 1, "NA", "Dell Poweredge 2900/EQT5134/Spare", "Windows 2008 Server w/Downgrade Windows Server 2003 SP2 32 bit X64", 4, "Redundant Power Supply", new DateOnly(2008, 5, 1), 7085.00m, "NA", "NA", "TOS0805D" },
+                    { 4, true, 3, "unknown", "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018", "Windows Vista Buisness", 3, "6 Cell Lithium Ion Battery", new DateOnly(2009, 7, 1), 964.00m, "unknown", "unknown", "TOSL0907B" },
+                    { 5, true, 3, "unknown", "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018", "Windows Vista Buisness", 3, "6 Cell Lithium Ion Battery", new DateOnly(2009, 7, 1), 964.00m, "unknown", "unknown", "TOSL0907C" },
+                    { 6, true, 3, "unknown", "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018", "Windows Vista Buisness", 3, "6 Cell Lithium Ion Battery", new DateOnly(2009, 7, 1), 964.00m, "unknown", "unknown", "TOSL0907E" },
+                    { 7, false, 2, "unknown", "EQT5145/Motherboard-ASUS P6T6 WS Revolution X58 ATX", "Windows 7 Pro 64 bit", 5, null, new DateOnly(2009, 12, 1), 1.00m, "unknown", "unknown", "TOS0912" },
+                    { 8, false, 3, "unknown", "TOSL1005B/Dell Precision M6400", "Windows 7 pro", 6, "Battery", new DateOnly(2010, 6, 15), 1.00m, "unknown", "unknown", "TOSL1004" },
+                    { 9, false, 1, "unknown", "Spare/EQT5148/Dell Poweredge R710/VMWare Server/8M Cache/Turbo/HT/1066MHz Max Mem/1333 MHZ Dual Ranked RDIMMs/iDRAC6 Enterprise/Ultra 320 SCSI PCI3 Host Adapter", "Windows 2008 Small Business SErver Standard w/5 CAL", 7, "Redundant 570 Watt", new DateOnly(2010, 2, 1), 15000.00m, "unknown", "unknown", "TOS" },
+                    { 10, false, 3, "unknown", "HP ProBook 6500B WX303UT/EQT5153", "Windows 7 Pro 64 Bit", 8, "Battery", new DateOnly(2011, 3, 1), 1300.00m, "unknown", "CNU1080527", "TOSL1103" },
+                    { 11, true, 3, "unknown", "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard", "Windows 7 PRo 64 Bit", 3, "Battery", new DateOnly(2011, 11, 1), 1730.00m, "unknown", "unknown", "TOS1111C" },
+                    { 12, true, 3, "unknown", "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard", "Windows 7 PRo 64 Bit", 3, "Battery", new DateOnly(2011, 11, 1), 1730.00m, "unknown", "unknown", "TOS1111D" },
+                    { 13, true, 3, "V1116390", "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard", "Windows 7 PRo 64 Bit", 3, "Battery", new DateOnly(2011, 11, 1), 1843.00m, "unknown", "124973", "TOS1111B" },
+                    { 14, true, 3, "V1116391", "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard", "Windows 7 PRo 64 Bit", 3, "Battery", new DateOnly(2011, 11, 1), 1627.00m, "unknown", "124974", "TOS1111A" },
+                    { 15, false, 3, "V1116380", "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard", "Windows 7 Pro 64 Bit", 1, null, new DateOnly(2011, 11, 1), 1726.00m, "unknown", "124975", "TOS1111E" },
+                    { 16, false, 3, "V1210920", "EQT5160/Touch Intel P-Series/Mouse/Keyboard", "Windows 7 Pro 64 Bit", 8, null, new DateOnly(2011, 11, 1), 1703.00m, "unknown", "125409", "TOS1205" },
+                    { 17, false, 6, "unknown", "EQT5160/Apple iPad3 w/wifi/Black/Front&Rear Cameras/Smart Cover&Logitech wireless keyboard w/stand", "iOS", 9, null, new DateOnly(2012, 10, 1), 710.00m, "unknown", "unknown", "TOS1210" }
                 });
 
             migrationBuilder.InsertData(
@@ -888,19 +826,64 @@ namespace TownOfStettler.Migrations
 
             migrationBuilder.InsertData(
                 table: "history",
-                columns: new[] { "ID", "Date of Changes", "Device ID", "Notes", "Out of Service Date", "Parts Changed", "Parts Removed", "Past Owner(s)", "Wiped" },
+                columns: new[] { "ID", "Date of Changes", "Device ID", "Device Type ID", "Notes", "Out of Service Date", "Parts Changed", "Parts Removed", "Past Owner(s)", "Wiped" },
                 values: new object[,]
                 {
-                    { 1, null, 2, "Dell Dimension E520", null, null, null, null, true },
-                    { 2, null, 4, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
-                    { 3, null, 5, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
-                    { 4, null, 6, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
-                    { 5, null, 10, "NA", null, null, null, null, true },
-                    { 6, null, 11, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
-                    { 7, null, 12, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
-                    { 8, null, 13, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
-                    { 9, null, 14, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
-                    { 10, null, 16, "NA", null, null, null, null, true }
+                    { 1, new DateOnly(1, 1, 1), 2, 2, "Dell Dimension E520", null, null, null, null, true },
+                    { 2, new DateOnly(1, 1, 1), 4, 3, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
+                    { 3, new DateOnly(1, 1, 1), 5, 3, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
+                    { 4, new DateOnly(1, 1, 1), 6, 3, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
+                    { 5, new DateOnly(1, 1, 1), 10, 3, "NA", null, null, null, null, true },
+                    { 6, new DateOnly(1, 1, 1), 11, 3, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
+                    { 7, new DateOnly(1, 1, 1), 12, 3, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
+                    { 8, new DateOnly(1, 1, 1), 13, 3, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
+                    { 9, new DateOnly(1, 1, 1), 14, 3, "NA", new DateOnly(2018, 7, 1), null, null, null, null },
+                    { 10, new DateOnly(1, 1, 1), 16, 3, "NA", null, null, null, null, true }
+                });
+
+            migrationBuilder.InsertData(
+                table: "installed software",
+                columns: new[] { "ID", "Device ID", "Software ID" },
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 1, 4 },
+                    { 3, 1, 5 },
+                    { 4, 3, 1 },
+                    { 5, 1, 3 },
+                    { 6, 5, 3 },
+                    { 7, 6, 3 },
+                    { 8, 8, 6 },
+                    { 9, 8, 8 },
+                    { 10, 9, 9 },
+                    { 11, 9, 10 },
+                    { 12, 10, 6 },
+                    { 13, 10, 11 },
+                    { 14, 11, 6 },
+                    { 15, 11, 11 },
+                    { 16, 12, 6 },
+                    { 17, 12, 11 },
+                    { 18, 13, 6 },
+                    { 19, 13, 11 },
+                    { 20, 14, 6 },
+                    { 21, 14, 11 },
+                    { 22, 15, 6 },
+                    { 23, 15, 11 },
+                    { 24, 16, 6 },
+                    { 25, 16, 11 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "inuse monitors",
+                columns: new[] { "ID", "Device ID", "Monitor ID" },
+                values: new object[,]
+                {
+                    { 1, 4, 1 },
+                    { 2, 5, 1 },
+                    { 3, 6, 1 },
+                    { 4, 8, 2 },
+                    { 5, 10, 3 },
+                    { 6, 17, 4 }
                 });
 
             migrationBuilder.InsertData(
@@ -1006,114 +989,9 @@ namespace TownOfStettler.Migrations
                 column: "Device Type ID");
 
             migrationBuilder.CreateIndex(
-                name: "device information_ibfk_10",
-                table: "device information",
-                column: "Installed Software (08)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_11",
-                table: "device information",
-                column: "Installed Software (09)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_12",
-                table: "device information",
-                column: "Installed Software (10)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_13",
-                table: "device information",
-                column: "Installed Software (11)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_14",
-                table: "device information",
-                column: "Installed Software (12)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_15",
-                table: "device information",
-                column: "Installed Software (13)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_16",
-                table: "device information",
-                column: "Installed Software (14)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_17",
-                table: "device information",
-                column: "Installed Software (15)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_18",
-                table: "device information",
-                column: "Installed Software (16)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_19",
-                table: "device information",
-                column: "Installed Software (17)");
-
-            migrationBuilder.CreateIndex(
                 name: "device information_ibfk_2",
                 table: "device information",
                 column: "Owner/Location");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_20",
-                table: "device information",
-                column: "Installed Software (18)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_21",
-                table: "device information",
-                column: "Installed Software (19)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_22",
-                table: "device information",
-                column: "Installed Software (20)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_3",
-                table: "device information",
-                column: "Installed Software (01)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_4",
-                table: "device information",
-                column: "Installed Software (02)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_5",
-                table: "device information",
-                column: "Installed Software (03)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_6",
-                table: "device information",
-                column: "Installed Software (04)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_7",
-                table: "device information",
-                column: "Installed Software (05)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_8",
-                table: "device information",
-                column: "Installed Software (06)");
-
-            migrationBuilder.CreateIndex(
-                name: "device information_ibfk_9",
-                table: "device information",
-                column: "Installed Software (07)");
-
-            migrationBuilder.CreateIndex(
-                name: "DisplayMonitor",
-                table: "device information",
-                column: "DisplayMonitor");
 
             migrationBuilder.CreateIndex(
                 name: "History",
@@ -1131,6 +1009,11 @@ namespace TownOfStettler.Migrations
                 column: "Device ID");
 
             migrationBuilder.CreateIndex(
+                name: "Device Type ID",
+                table: "history",
+                column: "Device Type ID");
+
+            migrationBuilder.CreateIndex(
                 name: "history_ibfk_1",
                 table: "history",
                 column: "Device ID");
@@ -1144,6 +1027,26 @@ namespace TownOfStettler.Migrations
                 name: "history_ibfk_3",
                 table: "history",
                 column: "Parts Changed");
+
+            migrationBuilder.CreateIndex(
+                name: "Device ID",
+                table: "installed software",
+                column: "Device ID");
+
+            migrationBuilder.CreateIndex(
+                name: "Software ID",
+                table: "installed software",
+                column: "Software ID");
+
+            migrationBuilder.CreateIndex(
+                name: "Device ID1",
+                table: "inuse monitors",
+                column: "Device ID");
+
+            migrationBuilder.CreateIndex(
+                name: "Monitor ID",
+                table: "inuse monitors",
+                column: "Monitor ID");
 
             migrationBuilder.CreateIndex(
                 name: "modifications_ibfk_1",
@@ -1269,115 +1172,18 @@ namespace TownOfStettler.Migrations
                 name: "warranty_ibfk_1",
                 table: "warranty",
                 column: "Device ID");
-
-            migrationBuilder.AddForeignKey(
-                name: "device information_ibfk_23",
-                table: "device information",
-                column: "DisplayMonitor",
-                principalTable: "display monitors",
-                principalColumn: "ID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_1",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_10",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_11",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_12",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_13",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_14",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_15",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_16",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_17",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_18",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_19",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_20",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_21",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_22",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_3",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_4",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_5",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_6",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_7",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_8",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_9",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_2",
-                table: "device information");
-
-            migrationBuilder.DropForeignKey(
-                name: "history_ibfk_2",
-                table: "history");
-
-            migrationBuilder.DropForeignKey(
-                name: "device information_ibfk_23",
-                table: "device information");
-
             migrationBuilder.DropTable(
                 name: "ethernet/network");
+
+            migrationBuilder.DropTable(
+                name: "installed software");
+
+            migrationBuilder.DropTable(
+                name: "inuse monitors");
 
             migrationBuilder.DropTable(
                 name: "other hardware");
@@ -1395,13 +1201,7 @@ namespace TownOfStettler.Migrations
                 name: "warranty");
 
             migrationBuilder.DropTable(
-                name: "hardware device");
-
-            migrationBuilder.DropTable(
                 name: "software");
-
-            migrationBuilder.DropTable(
-                name: "owner/location");
 
             migrationBuilder.DropTable(
                 name: "display monitors");
@@ -1432,6 +1232,12 @@ namespace TownOfStettler.Migrations
 
             migrationBuilder.DropTable(
                 name: "device information");
+
+            migrationBuilder.DropTable(
+                name: "hardware device");
+
+            migrationBuilder.DropTable(
+                name: "owner/location");
         }
     }
 }

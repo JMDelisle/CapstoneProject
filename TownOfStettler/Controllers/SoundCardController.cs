@@ -155,14 +155,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.SoundCards.Remove(soundCard);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool SoundCardExists(int id)
         {
-          return _context.SoundCards.Any(e => e.Id == id);
+            return _context.SoundCards.Any(e => e.Id == id);
         }
     }
 }

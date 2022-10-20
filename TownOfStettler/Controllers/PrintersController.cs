@@ -61,7 +61,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,OwnerLocation,DeviceId,Type,ConnectionType,History,Notes")] Printer printer)
+        public async Task<IActionResult> Create([Bind("Id,TosNumber,OwnerLocation,DeviceId,Type,ConnectionType,History,Notes")] Printer printer)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,OwnerLocation,DeviceId,Type,ConnectionType,History,Notes")] Printer printer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,TosNumber,OwnerLocation,DeviceId,Type,ConnectionType,History,Notes")] Printer printer)
         {
             if (id != printer.Id)
             {
@@ -167,14 +167,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.Printers.Remove(printer);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PrinterExists(int id)
         {
-          return _context.Printers.Any(e => e.Id == id);
+            return _context.Printers.Any(e => e.Id == id);
         }
     }
 }

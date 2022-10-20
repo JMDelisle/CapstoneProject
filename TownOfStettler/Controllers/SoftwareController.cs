@@ -22,7 +22,7 @@ namespace TownOfStettler.Controllers
         // GET: Software
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Softwares.ToListAsync());
+            return View(await _context.Softwares.ToListAsync());
         }
 
         // GET: Software/Details/5
@@ -148,14 +148,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.Softwares.Remove(software);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool SoftwareExists(int id)
         {
-          return _context.Softwares.Any(e => e.Id == id);
+            return _context.Softwares.Any(e => e.Id == id);
         }
     }
 }

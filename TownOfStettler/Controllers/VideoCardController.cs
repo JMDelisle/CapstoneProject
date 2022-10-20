@@ -155,14 +155,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.VideoCards.Remove(videoCard);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool VideoCardExists(int id)
         {
-          return _context.VideoCards.Any(e => e.Id == id);
+            return _context.VideoCards.Any(e => e.Id == id);
         }
     }
 }

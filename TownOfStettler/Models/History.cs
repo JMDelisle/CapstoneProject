@@ -14,16 +14,18 @@ namespace TownOfStettler.Models
         }
 
         public int Id { get; set; }
+        public int DeviceTypeId { get; set; }
         public int? DeviceId { get; set; }
         public int? PartsChanged { get; set; }
         public int? PastOwnerS { get; set; }
         public bool? Wiped { get; set; }
         public int? PartsRemoved { get; set; }
-        public DateOnly? DateOfChanges { get; set; }
+        public DateOnly DateOfChanges { get; set; }
         public DateOnly? OutOfServiceDate { get; set; }
         public string? Notes { get; set; }
 
         public virtual DeviceInformation? Device { get; set; }
+        public virtual HardwareDevice DeviceType { get; set; } = null!;
         public virtual Modification? PartsChangedNavigation { get; set; }
         public virtual OwnerLocation? PastOwnerSNavigation { get; set; }
         public virtual ICollection<DisplayMonitor> DisplayMonitors { get; set; }

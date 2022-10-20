@@ -191,14 +191,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.Parts.Remove(part);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PartExists(int id)
         {
-          return _context.Parts.Any(e => e.Id == id);
+            return _context.Parts.Any(e => e.Id == id);
         }
     }
 }

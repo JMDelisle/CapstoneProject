@@ -22,7 +22,7 @@ namespace TownOfStettler.Controllers
         // GET: OwnerLocation
         public async Task<IActionResult> Index()
         {
-              return View(await _context.OwnerLocations.ToListAsync());
+            return View(await _context.OwnerLocations.ToListAsync());
         }
 
         // GET: OwnerLocation/Details/5
@@ -148,14 +148,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.OwnerLocations.Remove(ownerLocation);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool OwnerLocationExists(int id)
         {
-          return _context.OwnerLocations.Any(e => e.Id == id);
+            return _context.OwnerLocations.Any(e => e.Id == id);
         }
     }
 }

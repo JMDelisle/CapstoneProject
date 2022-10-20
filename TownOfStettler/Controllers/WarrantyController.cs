@@ -155,14 +155,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.Warranties.Remove(warranty);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool WarrantyExists(int id)
         {
-          return _context.Warranties.Any(e => e.Id == id);
+            return _context.Warranties.Any(e => e.Id == id);
         }
     }
 }

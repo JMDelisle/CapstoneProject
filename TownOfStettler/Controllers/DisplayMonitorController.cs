@@ -155,14 +155,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.DisplayMonitors.Remove(displayMonitor);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool DisplayMonitorExists(int id)
         {
-          return _context.DisplayMonitors.Any(e => e.Id == id);
+            return _context.DisplayMonitors.Any(e => e.Id == id);
         }
     }
 }

@@ -23,6 +23,8 @@ namespace TownOfStettler.Data
         public virtual DbSet<HardDrive> HardDrives { get; set; } = null!;
         public virtual DbSet<HardwareDevice> HardwareDevices { get; set; } = null!;
         public virtual DbSet<History> Histories { get; set; } = null!;
+        public virtual DbSet<InstalledSoftware> InstalledSoftwares { get; set; } = null!;
+        public virtual DbSet<InuseMonitor> InuseMonitors { get; set; } = null!;
         public virtual DbSet<Modification> Modifications { get; set; } = null!;
         public virtual DbSet<OtherHardware> OtherHardwares { get; set; } = null!;
         public virtual DbSet<Output> Outputs { get; set; } = null!;
@@ -55,51 +57,9 @@ namespace TownOfStettler.Data
             {
                 entity.ToTable("device information");
 
-                entity.HasIndex(e => e.DisplayMonitor, "DisplayMonitor");
-
                 entity.HasIndex(e => e.DeviceTypeId, "device information_ibfk_1");
 
-                entity.HasIndex(e => e.InstalledSoftware08, "device information_ibfk_10");
-
-                entity.HasIndex(e => e.InstalledSoftware09, "device information_ibfk_11");
-
-                entity.HasIndex(e => e.InstalledSoftware10, "device information_ibfk_12");
-
-                entity.HasIndex(e => e.InstalledSoftware11, "device information_ibfk_13");
-
-                entity.HasIndex(e => e.InstalledSoftware12, "device information_ibfk_14");
-
-                entity.HasIndex(e => e.InstalledSoftware13, "device information_ibfk_15");
-
-                entity.HasIndex(e => e.InstalledSoftware14, "device information_ibfk_16");
-
-                entity.HasIndex(e => e.InstalledSoftware15, "device information_ibfk_17");
-
-                entity.HasIndex(e => e.InstalledSoftware16, "device information_ibfk_18");
-
-                entity.HasIndex(e => e.InstalledSoftware17, "device information_ibfk_19");
-
                 entity.HasIndex(e => e.OwnerLocation, "device information_ibfk_2");
-
-                entity.HasIndex(e => e.InstalledSoftware18, "device information_ibfk_20");
-
-                entity.HasIndex(e => e.InstalledSoftware19, "device information_ibfk_21");
-
-                entity.HasIndex(e => e.InstalledSoftware20, "device information_ibfk_22");
-
-                entity.HasIndex(e => e.InstalledSoftware01, "device information_ibfk_3");
-
-                entity.HasIndex(e => e.InstalledSoftware02, "device information_ibfk_4");
-
-                entity.HasIndex(e => e.InstalledSoftware03, "device information_ibfk_5");
-
-                entity.HasIndex(e => e.InstalledSoftware04, "device information_ibfk_6");
-
-                entity.HasIndex(e => e.InstalledSoftware05, "device information_ibfk_7");
-
-                entity.HasIndex(e => e.InstalledSoftware06, "device information_ibfk_8");
-
-                entity.HasIndex(e => e.InstalledSoftware07, "device information_ibfk_9");
 
                 entity.Property(e => e.Id)
                     .HasColumnType("int(11)")
@@ -108,90 +68,6 @@ namespace TownOfStettler.Data
                 entity.Property(e => e.DeviceTypeId)
                     .HasColumnType("int(11)")
                     .HasColumnName("Device Type ID");
-
-                entity.Property(e => e.DisplayMonitor).HasColumnType("int(11)");
-
-                entity.Property(e => e.DisplayMonitorNavigationId).HasColumnType("int(11)");
-
-                entity.Property(e => e.InstalledSoftware01)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (01)");
-
-                entity.Property(e => e.InstalledSoftware02)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (02)");
-
-                entity.Property(e => e.InstalledSoftware03)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (03)");
-
-                entity.Property(e => e.InstalledSoftware04)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (04)");
-
-                entity.Property(e => e.InstalledSoftware05)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (05)");
-
-                entity.Property(e => e.InstalledSoftware06)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (06)");
-
-                entity.Property(e => e.InstalledSoftware07)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (07)");
-
-                entity.Property(e => e.InstalledSoftware08)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (08)");
-
-                entity.Property(e => e.InstalledSoftware09)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (09)");
-
-                entity.Property(e => e.InstalledSoftware10)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (10)");
-
-                entity.Property(e => e.InstalledSoftware11)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (11)");
-
-                entity.Property(e => e.InstalledSoftware12)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (12)");
-
-                entity.Property(e => e.InstalledSoftware13)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (13)");
-
-                entity.Property(e => e.InstalledSoftware14)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (14)");
-
-                entity.Property(e => e.InstalledSoftware15)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (15)");
-
-                entity.Property(e => e.InstalledSoftware16)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (16)");
-
-                entity.Property(e => e.InstalledSoftware17)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (17)");
-
-                entity.Property(e => e.InstalledSoftware18)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (18)");
-
-                entity.Property(e => e.InstalledSoftware19)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (19)");
-
-                entity.Property(e => e.InstalledSoftware20)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Installed Software (20)");
 
                 entity.Property(e => e.ModelNumber)
                     .HasMaxLength(50)
@@ -235,117 +111,318 @@ namespace TownOfStettler.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("device information_ibfk_1");
 
-                entity.HasOne(d => d.DisplayMonitorNavigation)
-                    .WithMany(p => p.DeviceInformations)
-                    .HasForeignKey(d => d.DisplayMonitor)
-                    .HasConstraintName("device information_ibfk_23");
-
-                entity.HasOne(d => d.InstalledSoftware01Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware01Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware01)
-                    .HasConstraintName("device information_ibfk_3");
-
-                entity.HasOne(d => d.InstalledSoftware02Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware02Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware02)
-                    .HasConstraintName("device information_ibfk_4");
-
-                entity.HasOne(d => d.InstalledSoftware03Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware03Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware03)
-                    .HasConstraintName("device information_ibfk_5");
-
-                entity.HasOne(d => d.InstalledSoftware04Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware04Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware04)
-                    .HasConstraintName("device information_ibfk_6");
-
-                entity.HasOne(d => d.InstalledSoftware05Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware05Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware05)
-                    .HasConstraintName("device information_ibfk_7");
-
-                entity.HasOne(d => d.InstalledSoftware06Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware06Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware06)
-                    .HasConstraintName("device information_ibfk_8");
-
-                entity.HasOne(d => d.InstalledSoftware07Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware07Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware07)
-                    .HasConstraintName("device information_ibfk_9");
-
-                entity.HasOne(d => d.InstalledSoftware08Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware08Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware08)
-                    .HasConstraintName("device information_ibfk_10");
-
-                entity.HasOne(d => d.InstalledSoftware09Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware09Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware09)
-                    .HasConstraintName("device information_ibfk_11");
-
-                entity.HasOne(d => d.InstalledSoftware10Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware10Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware10)
-                    .HasConstraintName("device information_ibfk_12");
-
-                entity.HasOne(d => d.InstalledSoftware11Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware11Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware11)
-                    .HasConstraintName("device information_ibfk_13");
-
-                entity.HasOne(d => d.InstalledSoftware12Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware12Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware12)
-                    .HasConstraintName("device information_ibfk_14");
-
-                entity.HasOne(d => d.InstalledSoftware13Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware13Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware13)
-                    .HasConstraintName("device information_ibfk_15");
-
-                entity.HasOne(d => d.InstalledSoftware14Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware14Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware14)
-                    .HasConstraintName("device information_ibfk_16");
-
-                entity.HasOne(d => d.InstalledSoftware15Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware15Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware15)
-                    .HasConstraintName("device information_ibfk_17");
-
-                entity.HasOne(d => d.InstalledSoftware16Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware16Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware16)
-                    .HasConstraintName("device information_ibfk_18");
-
-                entity.HasOne(d => d.InstalledSoftware17Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware17Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware17)
-                    .HasConstraintName("device information_ibfk_19");
-
-                entity.HasOne(d => d.InstalledSoftware18Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware18Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware18)
-                    .HasConstraintName("device information_ibfk_20");
-
-                entity.HasOne(d => d.InstalledSoftware19Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware19Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware19)
-                    .HasConstraintName("device information_ibfk_21");
-
-                entity.HasOne(d => d.InstalledSoftware20Navigation)
-                    .WithMany(p => p.DeviceInformationInstalledSoftware20Navigations)
-                    .HasForeignKey(d => d.InstalledSoftware20)
-                    .HasConstraintName("device information_ibfk_22");
-
                 entity.HasOne(d => d.OwnerLocationNavigation)
                     .WithMany(p => p.DeviceInformations)
                     .HasForeignKey(d => d.OwnerLocation)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("device information_ibfk_2");
             });
+
+            modelBuilder.Entity<DeviceInformation>().HasData(
+            new DeviceInformation
+            {
+                Id = 1,
+                DeviceTypeId = 1,
+                OwnerLocation = 1,
+                TosNumber = " TOS0705C",
+                SerialNumber = "NA",
+                ModelNumber = "NA",
+                PurchaseStore = "NA",
+                PurchasePrice = 3594.00m,
+                PurchaseDate = new DateOnly(2007, 05, 01),
+                OperatingSystem = "Windows 2003 Server - Standard",
+                Destroyed = false,
+                Notes = "Dell Poweredge 840 Dual Core Xeon 2.13 Ghz",
+            },
+            new DeviceInformation
+            {
+                Id = 2,
+                DeviceTypeId = 2,
+                OwnerLocation = 2,
+                TosNumber = "TOSO703AA",
+                SerialNumber = "NA",
+                ModelNumber = "NA",
+                PurchaseStore = "NA",
+                PurchasePrice = 1.00m,
+                PurchaseDate = new DateOnly(2007, 03, 01),
+                OperatingSystem = "unknown",
+                Destroyed = false,
+                Notes = "Dell Dimension E520/EQT5131",
+            },
+            new DeviceInformation
+            {
+                Id = 3,
+                DeviceTypeId = 1,
+                OwnerLocation = 4,
+                TosNumber = "TOS0805D",
+                SerialNumber = "NA",
+                ModelNumber = "NA",
+                PowerSupply = "Redundant Power Supply",
+                PurchaseStore = "NA",
+                PurchasePrice = 7085.00m,
+                PurchaseDate = new DateOnly(2008, 05, 01),
+                OperatingSystem = "Windows 2008 Server w/Downgrade Windows Server 2003 SP2 32 bit X64",
+                Destroyed = false,
+                Notes = "Dell Poweredge 2900/EQT5134/Spare",
+            },
+            new DeviceInformation
+            {
+                Id = 4,
+                DeviceTypeId = 3,
+                OwnerLocation = 3,
+                TosNumber = "TOSL0907B",
+                SerialNumber = "unknown",
+                ModelNumber = "unknown",
+                PowerSupply = "6 Cell Lithium Ion Battery",
+                PurchaseStore = "unknown",
+                PurchasePrice = 964.00m,
+                PurchaseDate = new DateOnly(2009, 07, 01),
+                OperatingSystem = "Windows Vista Buisness",
+                Destroyed = true,
+                Notes = "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018",
+            },
+            new DeviceInformation
+            {
+                Id = 5,
+                DeviceTypeId = 3,
+                OwnerLocation = 3,
+                TosNumber = "TOSL0907C",
+                SerialNumber = "unknown",
+                ModelNumber = "unknown",
+                PowerSupply = "6 Cell Lithium Ion Battery",
+                PurchaseStore = "unknown",
+                PurchasePrice = 964.00m,
+                PurchaseDate = new DateOnly(2009, 07, 01),
+                OperatingSystem = "Windows Vista Buisness",
+                Destroyed = true,
+                Notes = "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018",
+            },
+            new DeviceInformation
+            {
+                Id = 6,
+                DeviceTypeId = 3,
+                OwnerLocation = 3,
+                TosNumber = "TOSL0907E",
+                SerialNumber = "unknown",
+                ModelNumber = "unknown",
+                PowerSupply = "6 Cell Lithium Ion Battery",
+                PurchaseStore = "unknown",
+                PurchasePrice = 964.00m,
+                PurchaseDate = new DateOnly(2009, 07, 01),
+                OperatingSystem = "Windows Vista Buisness",
+                Destroyed = true,
+                Notes = "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018",
+            },
+            new DeviceInformation
+            {
+                Id = 7,
+                DeviceTypeId = 2,
+                OwnerLocation = 5,
+                TosNumber = "TOS0912",
+                SerialNumber = "unknown",
+                ModelNumber = "unknown",
+                PurchaseStore = "unknown",
+                PurchasePrice = 1.00m,
+                PurchaseDate = new DateOnly(2009, 12, 01),
+                OperatingSystem = "Windows 7 Pro 64 bit",
+                Destroyed = false,
+                Notes = "EQT5145/Motherboard-ASUS P6T6 WS Revolution X58 ATX",
+            },
+            new DeviceInformation
+            {
+                Id = 8,
+                DeviceTypeId = 3,
+                OwnerLocation = 6,
+                TosNumber = "TOSL1004",
+                SerialNumber = "unknown",
+                ModelNumber = "unknown",
+                PowerSupply = "Battery",
+                PurchaseStore = "unknown",
+                PurchasePrice = 1.00m,
+                PurchaseDate = new DateOnly(2010, 06, 15),
+                OperatingSystem = "Windows 7 pro",
+                Destroyed = false,
+                Notes = "TOSL1005B/Dell Precision M6400",
+            },
+            new DeviceInformation
+            {
+                Id = 9,
+                DeviceTypeId = 1,
+                OwnerLocation = 7,
+                TosNumber = "TOS",
+                SerialNumber = "unknown",
+                ModelNumber = "unknown",
+                PowerSupply = "Redundant 570 Watt",
+                PurchaseStore = "unknown",
+                PurchasePrice = 15000.00m,
+                PurchaseDate = new DateOnly(2010, 02, 01),
+                OperatingSystem = "Windows 2008 Small Business SErver Standard w/5 CAL",
+                Destroyed = false,
+                Notes = "Spare/EQT5148/Dell Poweredge R710/VMWare Server/8M Cache/Turbo/HT/1066MHz Max Mem/1333 MHZ Dual Ranked RDIMMs/iDRAC6 Enterprise/Ultra 320 SCSI PCI3 Host Adapter",
+            },
+            new DeviceInformation
+            {
+                Id = 10,
+                DeviceTypeId = 3,
+                OwnerLocation = 8,
+                TosNumber = "TOSL1103",
+                SerialNumber = "CNU1080527",
+                ModelNumber = "unknown",
+                PowerSupply = "Battery",
+                PurchaseStore = "unknown",
+                PurchasePrice = 1300.00m,
+                PurchaseDate = new DateOnly(2011, 03, 01),
+                OperatingSystem = "Windows 7 Pro 64 Bit",
+                Destroyed = false,
+                Notes = "HP ProBook 6500B WX303UT/EQT5153",
+            },
+            new DeviceInformation
+            {
+                Id = 11,
+                DeviceTypeId = 3,
+                OwnerLocation = 3,
+                TosNumber = "TOS1111C",
+                SerialNumber = "unknown",
+                ModelNumber = "unknown",
+                PowerSupply = "Battery",
+                PurchaseStore = "unknown",
+                PurchasePrice = 1730.00m,
+                PurchaseDate = new DateOnly(2011, 11, 01),
+                OperatingSystem = "Windows 7 PRo 64 Bit",
+                Destroyed = true,
+                Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
+            },
+            new DeviceInformation
+            {
+                Id = 12,
+                DeviceTypeId = 3,
+                OwnerLocation = 3,
+                TosNumber = "TOS1111D",
+                SerialNumber = "unknown",
+                ModelNumber = "unknown",
+                PowerSupply = "Battery",
+                PurchaseStore = "unknown",
+                PurchasePrice = 1730.00m,
+                PurchaseDate = new DateOnly(2011, 11, 01),
+                OperatingSystem = "Windows 7 PRo 64 Bit",
+                Destroyed = true,
+                Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
+            },
+            new DeviceInformation
+            {
+                Id = 13,
+                DeviceTypeId = 3,
+                OwnerLocation = 3,
+                TosNumber = "TOS1111B",
+                SerialNumber = "124973",
+                ModelNumber = "V1116390",
+                PowerSupply = "Battery",
+                PurchaseStore = "unknown",
+                PurchasePrice = 1843.00m,
+                PurchaseDate = new DateOnly(2011, 11, 01),
+                OperatingSystem = "Windows 7 PRo 64 Bit",
+                Destroyed = true,
+                Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
+            },
+            new DeviceInformation
+            {
+                Id = 14,
+                DeviceTypeId = 3,
+                OwnerLocation = 3,
+                TosNumber = "TOS1111A",
+                SerialNumber = "124974",
+                ModelNumber = "V1116391",
+                PowerSupply = "Battery",
+                PurchaseStore = "unknown",
+                PurchasePrice = 1627.00m,
+                PurchaseDate = new DateOnly(2011, 11, 01),
+                OperatingSystem = "Windows 7 PRo 64 Bit",
+                Destroyed = true,
+                Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
+            },
+            new DeviceInformation
+            {
+                Id = 15,
+                DeviceTypeId = 3,
+                OwnerLocation = 1,
+                TosNumber = "TOS1111E",
+                SerialNumber = "124975",
+                ModelNumber = "V1116380",
+                PurchaseStore = "unknown",
+                PurchasePrice = 1726.00m,
+                PurchaseDate = new DateOnly(2011, 11, 01),
+                OperatingSystem = "Windows 7 Pro 64 Bit",
+                Destroyed = false,
+                Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
+            },
+            new DeviceInformation
+            {
+                Id = 16,
+                DeviceTypeId = 3,
+                OwnerLocation = 8,
+                TosNumber = "TOS1205",
+                SerialNumber = "125409",
+                ModelNumber = "V1210920",
+                PurchaseStore = "unknown",
+                PurchasePrice = 1703.00m,
+                PurchaseDate = new DateOnly(2011, 11, 01),
+                OperatingSystem = "Windows 7 Pro 64 Bit",
+                Destroyed = false,
+                Notes = "EQT5160/Touch Intel P-Series/Mouse/Keyboard",
+            },
+            new DeviceInformation
+            {
+                Id = 17,
+                DeviceTypeId = 6,
+                OwnerLocation = 9,
+                TosNumber = "TOS1210",
+                SerialNumber = "unknown",
+                ModelNumber = "unknown",
+                PurchaseStore = "unknown",
+                PurchasePrice = 710.00m,
+                PurchaseDate = new DateOnly(2012, 10, 01),
+                OperatingSystem = "iOS",
+                Destroyed = false,
+                Notes = "EQT5160/Apple iPad3 w/wifi/Black/Front&Rear Cameras/Smart Cover&Logitech wireless keyboard w/stand",
+                //},
+                //new DeviceInformation
+                //{
+                //    Id = 18,  //int PK
+                //    DeviceTypeId = 2,  //int FK
+                //    OwnerLocation = 8,  //int FK
+                //    TosNumber = "TOS1211A", //varchar(25)
+                //    SerialNumber = "unknown",  //varchar(30)
+                //    ModelNumber = "unknown",  //varchar(50)
+                //    PowerSupply = "",  //varchar(75) (nullable)
+                //    PurchaseStore = "unknown",  //varchar(30)
+                //    PurchasePrice = m,  //decimal(6,2)
+                //    PurchaseDate = new DateOnly(),  //date
+                //    OperatingSystem = "",  //varchar(30)
+                //    Destroyed = ,  //bool
+                //    Notes = "EQT5160/Wiped",  //text (nullable)
+
+                // *******NOT MAPPED PROPERTIES********
+                //    InstalledSoftware = ,
+                //    InuseMonitors = ,  
+            }
+            //new DeviceInformation
+            //{
+            //    Id = ,  //int PK
+            //    DeviceTypeId = ,  //int FK
+            //    OwnerLocation = ,  //int FK
+            //    TosNumber = "TOS", //varchar(25)
+            //    DisplayMonitor = ,  //int FK (nullable)
+            //    SerialNumber = "unknown",  //varchar(30)
+            //    ModelNumber = "unknown",  //varchar(50)
+            //    PowerSupply = "",  //varchar(75) (nullable)
+            //    PurchaseStore = "unknown",  //varchar(30)
+            //    PurchasePrice = m,  //decimal(6,2)
+            //    PurchaseDate = new DateOnly(),  //date
+            //    OperatingSystem = "",  //varchar(30)
+            //    Destroyed = ,  //bool
+            //    Notes = "",  //text (nullable)
+            //}
+            );
 
             modelBuilder.Entity<DisplayMonitor>(entity =>
             {
@@ -396,986 +473,6 @@ namespace TownOfStettler.Data
                     .HasForeignKey(d => d.History)
                     .HasConstraintName("display monitors_ibfk_2");
             });
-
-            modelBuilder.Entity<EthernetNetwork>(entity =>
-            {
-                entity.ToTable("ethernet/network");
-
-                entity.HasIndex(e => e.DeviceId, "ethernet/network_ibfk_1");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.DeviceId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Device ID");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.SerialNumber)
-                    .HasMaxLength(30)
-                    .HasColumnName("Serial Number");
-
-                entity.Property(e => e.Speed).HasMaxLength(30);
-
-                entity.HasOne(d => d.Device)
-                    .WithMany(p => p.EthernetNetworks)
-                    .HasForeignKey(d => d.DeviceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("ethernet/network_ibfk_1");
-            });
-
-            modelBuilder.Entity<HardDrive>(entity =>
-            {
-                entity.ToTable("hard drive");
-
-                entity.HasIndex(e => e.DeviceId, "hard drive_ibfk_1");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.DeviceId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Device ID");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.SerialNumber)
-                    .HasMaxLength(30)
-                    .HasColumnName("Serial Number");
-
-                entity.Property(e => e.SizeGb)
-                    .HasColumnType("int(7)")
-                    .HasColumnName("Size (Gb)");
-
-                entity.Property(e => e.Type).HasMaxLength(20);
-
-                entity.HasOne(d => d.Device)
-                    .WithMany(p => p.HardDrives)
-                    .HasForeignKey(d => d.DeviceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("hard drive_ibfk_1");
-            });
-
-            modelBuilder.Entity<HardwareDevice>(entity =>
-            {
-                entity.ToTable("hardware device");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.TypeOfHardware)
-                    .HasMaxLength(20)
-                    .HasColumnName("Type of Hardware");
-            });
-
-            modelBuilder.Entity<History>(entity =>
-            {
-                entity.ToTable("history");
-
-                entity.HasIndex(e => e.DeviceId, "history_ibfk_1");
-
-                entity.HasIndex(e => e.PastOwnerS, "history_ibfk_2");
-
-                entity.HasIndex(e => e.PartsChanged, "history_ibfk_3");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.DateOfChanges).HasColumnName("Date of Changes");
-
-                entity.Property(e => e.DeviceId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Device ID");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.OutOfServiceDate).HasColumnName("Out of Service Date");
-
-                entity.Property(e => e.PartsChanged)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Parts Changed");
-
-                entity.Property(e => e.PartsRemoved)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Parts Removed");
-
-                entity.Property(e => e.PastOwnerS)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Past Owner(s)");
-
-                entity.HasOne(d => d.Device)
-                    .WithMany(p => p.Histories)
-                    .HasForeignKey(d => d.DeviceId)
-                    .HasConstraintName("history_ibfk_1");
-
-                entity.HasOne(d => d.PartsChangedNavigation)
-                    .WithMany(p => p.Histories)
-                    .HasForeignKey(d => d.PartsChanged)
-                    .HasConstraintName("history_ibfk_3");
-
-                entity.HasOne(d => d.PastOwnerSNavigation)
-                    .WithMany(p => p.Histories)
-                    .HasForeignKey(d => d.PastOwnerS)
-                    .HasConstraintName("history_ibfk_2");
-            });
-
-            modelBuilder.Entity<Modification>(entity =>
-            {
-                entity.ToTable("modifications");
-
-                entity.HasIndex(e => e.HardDriveId, "modifications_ibfk_1");
-
-                entity.HasIndex(e => e.ProcessorId, "modifications_ibfk_2");
-
-                entity.HasIndex(e => e.RamId, "modifications_ibfk_3");
-
-                entity.HasIndex(e => e.SecondaryDriveId, "modifications_ibfk_4");
-
-                entity.HasIndex(e => e.SoundCardId, "modifications_ibfk_5");
-
-                entity.HasIndex(e => e.VideoCardId, "modifications_ibfk_6");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.HardDriveId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Hard Drive ID");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.ProcessorId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Processor ID");
-
-                entity.Property(e => e.RamId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("RAM ID");
-
-                entity.Property(e => e.SecondaryDriveId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Secondary Drive ID");
-
-                entity.Property(e => e.SoundCardId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Sound Card ID");
-
-                entity.Property(e => e.VideoCardId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Video Card ID");
-
-                entity.HasOne(d => d.HardDrive)
-                    .WithMany(p => p.Modifications)
-                    .HasForeignKey(d => d.HardDriveId)
-                    .HasConstraintName("modifications_ibfk_1");
-
-                entity.HasOne(d => d.Processor)
-                    .WithMany(p => p.Modifications)
-                    .HasForeignKey(d => d.ProcessorId)
-                    .HasConstraintName("modifications_ibfk_2");
-
-                entity.HasOne(d => d.Ram)
-                    .WithMany(p => p.Modifications)
-                    .HasForeignKey(d => d.RamId)
-                    .HasConstraintName("modifications_ibfk_3");
-
-                entity.HasOne(d => d.SecondaryDrive)
-                    .WithMany(p => p.Modifications)
-                    .HasForeignKey(d => d.SecondaryDriveId)
-                    .HasConstraintName("modifications_ibfk_4");
-
-                entity.HasOne(d => d.SoundCard)
-                    .WithMany(p => p.Modifications)
-                    .HasForeignKey(d => d.SoundCardId)
-                    .HasConstraintName("modifications_ibfk_5");
-
-                entity.HasOne(d => d.VideoCard)
-                    .WithMany(p => p.Modifications)
-                    .HasForeignKey(d => d.VideoCardId)
-                    .HasConstraintName("modifications_ibfk_6");
-            });
-
-            modelBuilder.Entity<OtherHardware>(entity =>
-            {
-                entity.ToTable("other hardware");
-
-                entity.HasIndex(e => e.History, "History");
-
-                entity.HasIndex(e => e.OwnerLocation, "other hardware_ibfk_1");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.History).HasColumnType("int(11)");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.OwnerLocation)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Owner/Location");
-
-                entity.Property(e => e.TosNumber)
-                    .HasMaxLength(20)
-                    .HasColumnName("TOS Number");
-
-                entity.Property(e => e.TypeOfDevice).HasMaxLength(40);
-
-                entity.HasOne(d => d.HistoryNavigation)
-                    .WithMany(p => p.OtherHardwares)
-                    .HasForeignKey(d => d.History)
-                    .HasConstraintName("other hardware_ibfk_2");
-
-                entity.HasOne(d => d.OwnerLocationNavigation)
-                    .WithMany(p => p.OtherHardwares)
-                    .HasForeignKey(d => d.OwnerLocation)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("other hardware_ibfk_1");
-            });
-
-            modelBuilder.Entity<Output>(entity =>
-            {
-                entity.HasKey(e => e.Type)
-                    .HasName("PRIMARY");
-
-                entity.ToTable("outputs");
-
-                entity.HasIndex(e => e.VideoCardId, "outputs_ibfk_1");
-
-                entity.Property(e => e.Type).HasMaxLength(10);
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.NumberOfOutputs)
-                    .HasColumnType("int(2)")
-                    .HasColumnName("Number of Outputs");
-
-                entity.Property(e => e.VideoCardId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Video Card ID");
-
-                entity.HasOne(d => d.VideoCard)
-                    .WithMany(p => p.Outputs)
-                    .HasForeignKey(d => d.VideoCardId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("outputs_ibfk_1");
-            });
-
-            modelBuilder.Entity<OwnerLocation>(entity =>
-            {
-                entity.ToTable("owner/location");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.Address).HasMaxLength(75);
-
-                entity.Property(e => e.Name).HasMaxLength(60);
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.PhoneNumber)
-                    .HasMaxLength(14)
-                    .HasColumnName("Phone Number");
-            });
-
-            modelBuilder.Entity<Part>(entity =>
-            {
-                entity.ToTable("parts");
-
-                entity.HasIndex(e => e.HardDriveId, "parts_ibfk_2");
-
-                entity.HasIndex(e => e.RamId, "parts_ibfk_3");
-
-                entity.HasIndex(e => e.SecondaryDriveId, "parts_ibfk_4");
-
-                entity.HasIndex(e => e.SoundCardId, "parts_ibfk_5");
-
-                entity.HasIndex(e => e.VideoCardId, "parts_ibfk_6");
-
-                entity.HasIndex(e => e.DeviceHistoryId, "parts_ibfk_7");
-
-                entity.HasIndex(e => e.OriginalDeviceId, "parts_ibfk_8");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.DeviceHistoryId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Device History ID");
-
-                entity.Property(e => e.HardDriveId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Hard Drive ID");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.OriginalDeviceId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Original Device ID");
-
-                entity.Property(e => e.RamId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("RAM ID");
-
-                entity.Property(e => e.SecondaryDriveId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Secondary Drive ID");
-
-                entity.Property(e => e.SoundCardId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Sound Card ID");
-
-                entity.Property(e => e.VideoCardId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Video Card ID");
-
-                entity.HasOne(d => d.DeviceHistory)
-                    .WithMany(p => p.Parts)
-                    .HasForeignKey(d => d.DeviceHistoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("parts_ibfk_7");
-
-                entity.HasOne(d => d.HardDrive)
-                    .WithMany(p => p.Parts)
-                    .HasForeignKey(d => d.HardDriveId)
-                    .HasConstraintName("parts_ibfk_2");
-
-                entity.HasOne(d => d.OriginalDevice)
-                    .WithMany(p => p.Parts)
-                    .HasForeignKey(d => d.OriginalDeviceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("parts_ibfk_8");
-
-                entity.HasOne(d => d.Ram)
-                    .WithMany(p => p.Parts)
-                    .HasForeignKey(d => d.RamId)
-                    .HasConstraintName("parts_ibfk_3");
-
-                entity.HasOne(d => d.SecondaryDrive)
-                    .WithMany(p => p.Parts)
-                    .HasForeignKey(d => d.SecondaryDriveId)
-                    .HasConstraintName("parts_ibfk_4");
-
-                entity.HasOne(d => d.SoundCard)
-                    .WithMany(p => p.Parts)
-                    .HasForeignKey(d => d.SoundCardId)
-                    .HasConstraintName("parts_ibfk_5");
-
-                entity.HasOne(d => d.VideoCard)
-                    .WithMany(p => p.Parts)
-                    .HasForeignKey(d => d.VideoCardId)
-                    .HasConstraintName("parts_ibfk_6");
-            });
-
-            modelBuilder.Entity<Printer>(entity =>
-            {
-                entity.ToTable("printers");
-
-                entity.HasIndex(e => e.History, "History");
-
-                entity.HasIndex(e => e.DeviceId, "printers_ibfk_1");
-
-                entity.HasIndex(e => e.OwnerLocation, "printers_ibfk_2");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.ConnectionType)
-                    .HasMaxLength(15)
-                    .HasColumnName("Connection Type");
-
-                entity.Property(e => e.DeviceId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Device ID");
-
-                entity.Property(e => e.History).HasColumnType("int(11)");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.OwnerLocation)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Owner/Location");
-
-                entity.Property(e => e.Type).HasMaxLength(20);
-
-                entity.HasOne(d => d.Device)
-                    .WithMany(p => p.Printers)
-                    .HasForeignKey(d => d.DeviceId)
-                    .HasConstraintName("printers_ibfk_1");
-
-                entity.HasOne(d => d.HistoryNavigation)
-                    .WithMany(p => p.Printers)
-                    .HasForeignKey(d => d.History)
-                    .HasConstraintName("printers_ibfk_3");
-
-                entity.HasOne(d => d.OwnerLocationNavigation)
-                    .WithMany(p => p.Printers)
-                    .HasForeignKey(d => d.OwnerLocation)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("printers_ibfk_2");
-            });
-
-            modelBuilder.Entity<Processor>(entity =>
-            {
-                entity.ToTable("processor");
-
-                entity.HasIndex(e => e.DeviceId, "processor_ibfk_1");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.CoreCount)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Core Count");
-
-                entity.Property(e => e.DeviceId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Device ID");
-
-                entity.Property(e => e.Generation).HasColumnType("int(11)");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.SerialNumber)
-                    .HasMaxLength(30)
-                    .HasColumnName("Serial Number");
-
-                entity.Property(e => e.SpeedGhz)
-                    .HasPrecision(5, 3)
-                    .HasColumnName("Speed (GHz)");
-
-                entity.Property(e => e.Type).HasMaxLength(25);
-
-                entity.HasOne(d => d.Device)
-                    .WithMany(p => p.Processors)
-                    .HasForeignKey(d => d.DeviceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("processor_ibfk_1");
-            });
-
-            modelBuilder.Entity<Ram>(entity =>
-            {
-                entity.ToTable("ram");
-
-                entity.HasIndex(e => e.DeviceId, "ram_ibfk_1");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.DeviceId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Device ID");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.SerialNumber)
-                    .HasMaxLength(30)
-                    .HasColumnName("Serial Number");
-
-                entity.Property(e => e.SizeGb)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Size (Gb)");
-
-                entity.Property(e => e.SpeedMhz)
-                    .HasColumnType("int(5)")
-                    .HasColumnName("Speed (MHz)");
-
-                entity.Property(e => e.Type).HasMaxLength(15);
-
-                entity.HasOne(d => d.Device)
-                    .WithMany(p => p.Rams)
-                    .HasForeignKey(d => d.DeviceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("ram_ibfk_1");
-            });
-
-            modelBuilder.Entity<SecondaryDrive>(entity =>
-            {
-                entity.ToTable("secondary drives");
-
-                entity.HasIndex(e => e.DeviceId, "secondary drives_ibfk_1");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.DeviceId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Device ID");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.SerialNumber)
-                    .HasMaxLength(30)
-                    .HasColumnName("Serial Number");
-
-                entity.Property(e => e.Type).HasMaxLength(30);
-
-                entity.HasOne(d => d.Device)
-                    .WithMany(p => p.SecondaryDrives)
-                    .HasForeignKey(d => d.DeviceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("secondary drives_ibfk_1");
-            });
-
-            modelBuilder.Entity<Software>(entity =>
-            {
-                entity.ToTable("software");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(50)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.AssociatedAccount)
-                    .HasMaxLength(50)
-                    .HasColumnName("Associated Account");
-
-                entity.Property(e => e.DevicesAllowed)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Devices Allowed");
-
-                entity.Property(e => e.EndOfSupportDate).HasColumnName("End of Support Date");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.ProductKey)
-                    .HasMaxLength(60)
-                    .HasColumnName("Product Key");
-
-                entity.Property(e => e.PurchaseDate).HasColumnName("Purchase Date");
-
-                entity.Property(e => e.PurchasePrice)
-                    .HasPrecision(5, 2)
-                    .HasColumnName("Purchase Price");
-
-                entity.Property(e => e.SoftwareName)
-                    .HasMaxLength(75)
-                    .HasColumnName("Software Name");
-
-                entity.Property(e => e.SubscriptionEndDate).HasColumnName("Subscription End Date");
-            });
-
-            modelBuilder.Entity<SoundCard>(entity =>
-            {
-                entity.ToTable("sound card");
-
-                entity.HasIndex(e => e.DeviceId, "sound card_ibfk_1");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.Brand).HasMaxLength(20);
-
-                entity.Property(e => e.DeviceId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Device ID");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.HasOne(d => d.Device)
-                    .WithMany(p => p.SoundCards)
-                    .HasForeignKey(d => d.DeviceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("sound card_ibfk_1");
-            });
-
-            modelBuilder.Entity<VideoCard>(entity =>
-            {
-                entity.ToTable("video card");
-
-                entity.HasIndex(e => e.DeviceId, "video card_ibfk_1");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.Brand).HasMaxLength(20);
-
-                entity.Property(e => e.DeviceId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Device ID");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.RamSizeGb)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Ram Size (GB)");
-
-                entity.Property(e => e.SerialNumber)
-                    .HasMaxLength(30)
-                    .HasColumnName("Serial Number");
-
-                entity.HasOne(d => d.Device)
-                    .WithMany(p => p.VideoCards)
-                    .HasForeignKey(d => d.DeviceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("video card_ibfk_1");
-            });
-
-            modelBuilder.Entity<Warranty>(entity =>
-            {
-                entity.ToTable("warranty");
-
-                entity.HasIndex(e => e.DeviceId, "warranty_ibfk_1");
-
-                entity.Property(e => e.Id)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ID");
-
-                entity.Property(e => e.DeviceId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("Device ID");
-
-                entity.Property(e => e.LengthOfWarranty)
-                    .HasMaxLength(15)
-                    .HasColumnName("Length of Warranty");
-
-                entity.Property(e => e.Notes).HasColumnType("text");
-
-                entity.Property(e => e.TypeOfWarranty)
-                    .HasMaxLength(100)
-                    .HasColumnName("Type of Warranty");
-
-                entity.Property(e => e.WarrantyExpiryDate).HasColumnName("Warranty Expiry Date");
-
-                entity.HasOne(d => d.Device)
-                    .WithMany(p => p.Warranties)
-                    .HasForeignKey(d => d.DeviceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("warranty_ibfk_1");
-            });
-
-            modelBuilder.Entity<DeviceInformation>().HasData(
-            new DeviceInformation
-            {
-                Id = 1,
-                DeviceTypeId = 1,
-                OwnerLocation = 1,
-                TosNumber = " TOS0705C",
-                SerialNumber = "NA",
-                ModelNumber = "NA",
-                PurchaseStore = "NA",
-                PurchasePrice = 3594.00m,
-                PurchaseDate = new DateOnly(2007, 05, 01),
-                OperatingSystem = "Windows 2003 Server - Standard",
-                Destroyed = false,
-                Notes = "Dell Poweredge 840 Dual Core Xeon 2.13 Ghz",
-                InstalledSoftware01 = 1,
-                InstalledSoftware02 = 4,
-                InstalledSoftware03 = 5
-            },
-            new DeviceInformation
-            {
-                Id = 2,
-                DeviceTypeId = 2,
-                OwnerLocation = 2,
-                TosNumber = "TOSO703AA",
-                SerialNumber = "NA",
-                ModelNumber = "NA",
-                PurchaseStore = "NA",
-                PurchasePrice = 1.00m,
-                PurchaseDate = new DateOnly(2007, 03, 01),
-                OperatingSystem = "unknown",
-                Destroyed = false,
-                Notes = "Dell Dimension E520/EQT5131",
-            },
-            new DeviceInformation
-            {
-                Id = 3,
-                DeviceTypeId = 1,
-                OwnerLocation = 4,
-                TosNumber = "TOS0805D",
-                SerialNumber = "NA",
-                ModelNumber = "NA",
-                PowerSupply = "Redundant Power Supply",
-                PurchaseStore = "NA",
-                PurchasePrice = 7085.00m,
-                PurchaseDate = new DateOnly(2008, 05, 01),
-                OperatingSystem = "Windows 2008 Server w/Downgrade Windows Server 2003 SP2 32 bit X64",
-                Destroyed = false,
-                Notes = "Dell Poweredge 2900/EQT5134/Spare",
-                InstalledSoftware01 = 1,
-            },
-            new DeviceInformation
-            {
-                Id = 4,
-                DeviceTypeId = 3,
-                OwnerLocation = 3,
-                TosNumber = "TOSL0907B",
-                DisplayMonitor = 1,
-                SerialNumber = "unknown",
-                ModelNumber = "unknown",
-                PowerSupply = "6 Cell Lithium Ion Battery",
-                PurchaseStore = "unknown",
-                PurchasePrice = 964.00m,
-                PurchaseDate = new DateOnly(2009, 07, 01),
-                OperatingSystem = "Windows Vista Buisness",
-                Destroyed = true,
-                Notes = "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018",
-                InstalledSoftware01 = 3,
-            },
-            new DeviceInformation
-            {
-                Id = 5,
-                DeviceTypeId = 3,
-                OwnerLocation = 3,
-                TosNumber = "TOSL0907C",
-                DisplayMonitor = 1,
-                SerialNumber = "unknown",
-                ModelNumber = "unknown",
-                PowerSupply = "6 Cell Lithium Ion Battery",
-                PurchaseStore = "unknown",
-                PurchasePrice = 964.00m,
-                PurchaseDate = new DateOnly(2009, 07, 01),
-                OperatingSystem = "Windows Vista Buisness",
-                Destroyed = true,
-                Notes = "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018",
-                InstalledSoftware01 = 3,
-            },
-            new DeviceInformation
-            {
-                Id = 6,
-                DeviceTypeId = 3,
-                OwnerLocation = 3,
-                TosNumber = "TOSL0907E",
-                DisplayMonitor = 1,
-                SerialNumber = "unknown",
-                ModelNumber = "unknown",
-                PowerSupply = "6 Cell Lithium Ion Battery",
-                PurchaseStore = "unknown",
-                PurchasePrice = 964.00m,
-                PurchaseDate = new DateOnly(2009, 07, 01),
-                OperatingSystem = "Windows Vista Buisness",
-                Destroyed = true,
-                Notes = "Dell Vostro 1520 Celeron 575/EQT5136/Disposed in 2018",
-                InstalledSoftware01 = 3,
-            },
-            new DeviceInformation
-            {
-                Id = 7,
-                DeviceTypeId = 2,
-                OwnerLocation = 5,
-                TosNumber = "TOS0912",
-                SerialNumber = "unknown",
-                ModelNumber = "unknown",
-                PurchaseStore = "unknown",
-                PurchasePrice = 1.00m,
-                PurchaseDate = new DateOnly(2009, 12, 01),
-                OperatingSystem = "Windows 7 Pro 64 bit",
-                Destroyed = false,
-                Notes = "EQT5145/Motherboard-ASUS P6T6 WS Revolution X58 ATX",
-            },
-            new DeviceInformation
-            {
-                Id = 8,
-                DeviceTypeId = 3,
-                OwnerLocation = 6,
-                TosNumber = "TOSL1004",
-                DisplayMonitor = 2,
-                SerialNumber = "unknown",
-                ModelNumber = "unknown",
-                PowerSupply = "Battery",
-                PurchaseStore = "unknown",
-                PurchasePrice = 1.00m,
-                PurchaseDate = new DateOnly(2010, 06, 15),
-                OperatingSystem = "Windows 7 pro",
-                Destroyed = false,
-                Notes = "TOSL1005B/Dell Precision M6400",
-                InstalledSoftware01 = 6,
-                InstalledSoftware02 = 8,
-            },
-            new DeviceInformation
-            {
-                Id = 9,
-                DeviceTypeId = 1,
-                OwnerLocation = 7,
-                TosNumber = "TOS",
-                SerialNumber = "unknown",
-                ModelNumber = "unknown",
-                PowerSupply = "Redundant 570 Watt",
-                PurchaseStore = "unknown",
-                PurchasePrice = 15000.00m,
-                PurchaseDate = new DateOnly(2010, 02, 01),
-                OperatingSystem = "Windows 2008 Small Business SErver Standard w/5 CAL",
-                Destroyed = false,
-                Notes = "Spare/EQT5148/Dell Poweredge R710/VMWare Server/8M Cache/Turbo/HT/1066MHz Max Mem/1333 MHZ Dual Ranked RDIMMs/iDRAC6 Enterprise/Ultra 320 SCSI PCI3 Host Adapter",
-                InstalledSoftware01 = 9,
-                InstalledSoftware02 = 10,
-            },
-            new DeviceInformation
-            {
-                Id = 10,
-                DeviceTypeId = 3,
-                OwnerLocation = 8,
-                TosNumber = "TOSL1103",
-                DisplayMonitor = 3,
-                SerialNumber = "CNU1080527",
-                ModelNumber = "unknown",
-                PowerSupply = "Battery",
-                PurchaseStore = "unknown",
-                PurchasePrice = 1300.00m,
-                PurchaseDate = new DateOnly(2011, 03, 01),
-                OperatingSystem = "Windows 7 Pro 64 Bit",
-                Destroyed = false,
-                Notes = "HP ProBook 6500B WX303UT/EQT5153",
-                InstalledSoftware01 = 6,
-                InstalledSoftware02 = 11,
-            },
-            new DeviceInformation
-            {
-                Id = 11,
-                DeviceTypeId = 3,
-                OwnerLocation = 3,
-                TosNumber = "TOS1111C",
-                SerialNumber = "unknown",
-                ModelNumber = "unknown",
-                PowerSupply = "Battery",
-                PurchaseStore = "unknown",
-                PurchasePrice = 1730.00m,
-                PurchaseDate = new DateOnly(2011, 11, 01),
-                OperatingSystem = "Windows 7 PRo 64 Bit",
-                Destroyed = true,
-                Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
-                InstalledSoftware01 = 6,
-                InstalledSoftware02 = 11,
-            },
-            new DeviceInformation
-            {
-                Id = 12,
-                DeviceTypeId = 3,
-                OwnerLocation = 3,
-                TosNumber = "TOS1111D",
-                SerialNumber = "unknown",
-                ModelNumber = "unknown",
-                PowerSupply = "Battery",
-                PurchaseStore = "unknown",
-                PurchasePrice = 1730.00m,
-                PurchaseDate = new DateOnly(2011, 11, 01),
-                OperatingSystem = "Windows 7 PRo 64 Bit",
-                Destroyed = true,
-                Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
-                InstalledSoftware01 = 6,
-                InstalledSoftware02 = 11,
-            },
-            new DeviceInformation
-            {
-                Id = 13,
-                DeviceTypeId = 3,
-                OwnerLocation = 3,
-                TosNumber = "TOS1111B",
-                SerialNumber = "124973",
-                ModelNumber = "V1116390",
-                PowerSupply = "Battery",
-                PurchaseStore = "unknown",
-                PurchasePrice = 1843.00m,
-                PurchaseDate = new DateOnly(2011, 11, 01),
-                OperatingSystem = "Windows 7 PRo 64 Bit",
-                Destroyed = true,
-                Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
-                InstalledSoftware01 = 6,
-                InstalledSoftware02 = 11,
-            },
-            new DeviceInformation
-            {
-                Id = 14,
-                DeviceTypeId = 3,
-                OwnerLocation = 3,
-                TosNumber = "TOS1111A",
-                SerialNumber = "124974",
-                ModelNumber = "V1116391",
-                PowerSupply = "Battery",
-                PurchaseStore = "unknown",
-                PurchasePrice = 1627.00m,
-                PurchaseDate = new DateOnly(2011, 11, 01),
-                OperatingSystem = "Windows 7 PRo 64 Bit",
-                Destroyed = true,
-                Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
-                InstalledSoftware01 = 6,
-                InstalledSoftware02 = 11,
-            },
-            new DeviceInformation
-            {
-                Id = 15,
-                DeviceTypeId = 3,
-                OwnerLocation = 1,
-                TosNumber = "TOS1111E",
-                SerialNumber = "124975",
-                ModelNumber = "V1116380",
-                PurchaseStore = "unknown",
-                PurchasePrice = 1726.00m,
-                PurchaseDate = new DateOnly(2011, 11, 01),
-                OperatingSystem = "Windows 7 Pro 64 Bit",
-                Destroyed = false,
-                Notes = "EQT5153/Touch Intel P-Series/Speakers/Mouse/Keyboard",
-                InstalledSoftware01 = 6,
-                InstalledSoftware02 = 11
-            },
-            new DeviceInformation
-            {
-                Id = 16,
-                DeviceTypeId = 3,
-                OwnerLocation = 8,
-                TosNumber = "TOS1205",
-                SerialNumber = "125409",
-                ModelNumber = "V1210920",
-                PurchaseStore = "unknown",
-                PurchasePrice = 1703.00m,
-                PurchaseDate = new DateOnly(2011, 11, 01),
-                OperatingSystem = "Windows 7 Pro 64 Bit",
-                Destroyed = false,
-                Notes = "EQT5160/Touch Intel P-Series/Mouse/Keyboard",
-                InstalledSoftware01 = 6,
-                InstalledSoftware02 = 11,
-            },
-            new DeviceInformation
-            {
-                Id = 17,
-                DeviceTypeId = 6,
-                OwnerLocation = 9,
-                TosNumber = "TOS1210",
-                DisplayMonitor = 4,
-                SerialNumber = "unknown",
-                ModelNumber = "unknown",
-                PurchaseStore = "unknown",
-                PurchasePrice = 710.00m,
-                PurchaseDate = new DateOnly(2012, 10, 01),
-                OperatingSystem = "iOS",
-                Destroyed = false,
-                Notes = "EQT5160/Apple iPad3 w/wifi/Black/Front&Rear Cameras/Smart Cover&Logitech wireless keyboard w/stand",
-            }
-            //new DeviceInformation
-            //{
-            //    Id = ,  //int PK
-            //    DeviceTypeId = ,  //int FK
-            //    OwnerLocation = ,  //int FK
-            //    TosNumber = "TOS", //varchar(25)
-            //    DisplayMonitor = ,  //int FK (nullable)
-            //    SerialNumber = "unknown",  //varchar(30)
-            //    ModelNumber = "unknown",  //varchar(50)
-            //    PowerSupply = "",  //varchar(75) (nullable)
-            //    PurchaseStore = "unknown",  //varchar(30)
-            //    PurchasePrice = m,  //decimal(6,2)
-            //    PurchaseDate = new DateOnly(),  //date
-            //    OperatingSystem = "",  //varchar(30)
-            //    Destroyed = ,  //bool
-            //    Notes = "",  //text (nullable)
-            //    InstalledSoftware01 = ,  //int FK (nullable)
-            //    InstalledSoftware02 = ,  //int FK (nullable)
-            //},
-            );
 
             modelBuilder.Entity<DisplayMonitor>().HasData(
             new DisplayMonitor
@@ -1436,6 +533,35 @@ namespace TownOfStettler.Data
             //    Notes = "",  //text (nullable)
             //},
             );
+
+            modelBuilder.Entity<EthernetNetwork>(entity =>
+            {
+                entity.ToTable("ethernet/network");
+
+                entity.HasIndex(e => e.DeviceId, "ethernet/network_ibfk_1");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.DeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device ID");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.SerialNumber)
+                    .HasMaxLength(30)
+                    .HasColumnName("Serial Number");
+
+                entity.Property(e => e.Speed).HasMaxLength(30);
+
+                entity.HasOne(d => d.Device)
+                    .WithMany(p => p.EthernetNetworks)
+                    .HasForeignKey(d => d.DeviceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("ethernet/network_ibfk_1");
+            });
 
             modelBuilder.Entity<EthernetNetwork>().HasData(
             new EthernetNetwork
@@ -1560,6 +686,39 @@ namespace TownOfStettler.Data
             //    Notes = "NA",  //text (nullable)
             //}                
             );
+
+            modelBuilder.Entity<HardDrive>(entity =>
+            {
+                entity.ToTable("hard drive");
+
+                entity.HasIndex(e => e.DeviceId, "hard drive_ibfk_1");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.DeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device ID");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.SerialNumber)
+                    .HasMaxLength(30)
+                    .HasColumnName("Serial Number");
+
+                entity.Property(e => e.SizeGb)
+                    .HasColumnType("int(7)")
+                    .HasColumnName("Size (Gb)");
+
+                entity.Property(e => e.Type).HasMaxLength(20);
+
+                entity.HasOne(d => d.Device)
+                    .WithMany(p => p.HardDrives)
+                    .HasForeignKey(d => d.DeviceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("hard drive_ibfk_1");
+            });
 
             modelBuilder.Entity<HardDrive>().HasData(
             new HardDrive
@@ -1824,6 +983,19 @@ namespace TownOfStettler.Data
             //}
             );
 
+            modelBuilder.Entity<HardwareDevice>(entity =>
+            {
+                entity.ToTable("hardware device");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.TypeOfHardware)
+                    .HasMaxLength(20)
+                    .HasColumnName("Type of Hardware");
+            });
+
             modelBuilder.Entity<HardwareDevice>().HasData(
             new HardwareDevice
             {
@@ -1862,10 +1034,75 @@ namespace TownOfStettler.Data
             //}
             );
 
+            modelBuilder.Entity<History>(entity =>
+            {
+                entity.ToTable("history");
+
+                entity.HasIndex(e => e.DeviceTypeId, "Device Type ID");
+
+                entity.HasIndex(e => e.DeviceId, "history_ibfk_1");
+
+                entity.HasIndex(e => e.PastOwnerS, "history_ibfk_2");
+
+                entity.HasIndex(e => e.PartsChanged, "history_ibfk_3");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.DateOfChanges).HasColumnName("Date of Changes");
+
+                entity.Property(e => e.DeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device ID");
+
+                entity.Property(e => e.DeviceTypeId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device Type ID");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.OutOfServiceDate).HasColumnName("Out of Service Date");
+
+                entity.Property(e => e.PartsChanged)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Parts Changed");
+
+                entity.Property(e => e.PartsRemoved)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Parts Removed");
+
+                entity.Property(e => e.PastOwnerS)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Past Owner(s)");
+
+                entity.HasOne(d => d.Device)
+                    .WithMany(p => p.Histories)
+                    .HasForeignKey(d => d.DeviceId)
+                    .HasConstraintName("history_ibfk_1");
+
+                entity.HasOne(d => d.DeviceType)
+                    .WithMany(p => p.Histories)
+                    .HasForeignKey(d => d.DeviceTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("history_ibfk_4");
+
+                entity.HasOne(d => d.PartsChangedNavigation)
+                    .WithMany(p => p.Histories)
+                    .HasForeignKey(d => d.PartsChanged)
+                    .HasConstraintName("history_ibfk_3");
+
+                entity.HasOne(d => d.PastOwnerSNavigation)
+                    .WithMany(p => p.Histories)
+                    .HasForeignKey(d => d.PastOwnerS)
+                    .HasConstraintName("history_ibfk_2");
+            });
+
             modelBuilder.Entity<History>().HasData(
             new History
             {
                 Id = 1,
+                DeviceTypeId = 2,
                 DeviceId = 2,
                 Wiped = true,
                 Notes = "Dell Dimension E520",
@@ -1873,6 +1110,7 @@ namespace TownOfStettler.Data
             new History
             {
                 Id = 2,
+                DeviceTypeId = 3,
                 DeviceId = 4,
                 OutOfServiceDate = new DateOnly(2018, 07, 01),
                 Notes = "NA",
@@ -1880,6 +1118,7 @@ namespace TownOfStettler.Data
             new History
             {
                 Id = 3,
+                DeviceTypeId = 3,
                 DeviceId = 5,
                 OutOfServiceDate = new DateOnly(2018, 07, 01),
                 Notes = "NA",
@@ -1887,6 +1126,7 @@ namespace TownOfStettler.Data
             new History
             {
                 Id = 4,
+                DeviceTypeId = 3,
                 DeviceId = 6,
                 OutOfServiceDate = new DateOnly(2018, 07, 01),
                 Notes = "NA",
@@ -1894,6 +1134,7 @@ namespace TownOfStettler.Data
             new History
             {
                 Id = 5,
+                DeviceTypeId = 3,
                 DeviceId = 10,
                 Wiped = true,
                 Notes = "NA",
@@ -1901,6 +1142,7 @@ namespace TownOfStettler.Data
             new History
             {
                 Id = 6,
+                DeviceTypeId = 3,
                 DeviceId = 11,
                 OutOfServiceDate = new DateOnly(2018, 07, 01),
                 Notes = "NA",
@@ -1908,6 +1150,7 @@ namespace TownOfStettler.Data
             new History
             {
                 Id = 7,
+                DeviceTypeId = 3,
                 DeviceId = 12,
                 OutOfServiceDate = new DateOnly(2018, 07, 01),
                 Notes = "NA",
@@ -1915,6 +1158,7 @@ namespace TownOfStettler.Data
             new History
             {
                 Id = 8,
+                DeviceTypeId = 3,
                 DeviceId = 13,
                 OutOfServiceDate = new DateOnly(2018, 07, 01),
                 Notes = "NA",
@@ -1922,6 +1166,7 @@ namespace TownOfStettler.Data
             new History
             {
                 Id = 9,
+                DeviceTypeId = 3,
                 DeviceId = 14,
                 OutOfServiceDate = new DateOnly(2018, 07, 01),
                 Notes = "NA",
@@ -1929,6 +1174,7 @@ namespace TownOfStettler.Data
             new History
             {
                 Id = 10,
+                DeviceTypeId = 3,
                 DeviceId = 16,
                 Wiped = true,
                 Notes = "NA",
@@ -1936,6 +1182,7 @@ namespace TownOfStettler.Data
             //new History
             //{
             //    Id = 1,  //int PK
+            //    DeviceTypeId = ,  //int FK
             //    DeviceId = ,  //int FK (nullable)
             //    PartsChanged = ,  //int FK (nullable)
             //    PastOwnerS = ,  //int FK (nullable)
@@ -1946,6 +1193,353 @@ namespace TownOfStettler.Data
             //    Notes = "NA",  //text (nullable)
             //},
             );
+
+            modelBuilder.Entity<InstalledSoftware>(entity =>
+            {
+                entity.ToTable("installed software");
+
+                entity.HasIndex(e => e.DeviceId, "Device ID");
+
+                entity.HasIndex(e => e.SoftwareId, "Software ID");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.DeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device ID");
+
+                entity.Property(e => e.SoftwareId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Software ID");
+
+                entity.HasOne(d => d.Device)
+                    .WithMany(p => p.InstalledSoftwares)
+                    .HasForeignKey(d => d.DeviceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("installed software_ibfk_1");
+
+                entity.HasOne(d => d.Software)
+                    .WithMany(p => p.InstalledSoftwares)
+                    .HasForeignKey(d => d.SoftwareId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("installed software_ibfk_2");
+            });
+
+            modelBuilder.Entity<InstalledSoftware>().HasData(
+                new InstalledSoftware
+                {
+                    Id = 1,
+                    DeviceId = 1,
+                    SoftwareId = 1,
+                },
+                new InstalledSoftware
+                {
+                    Id = 2,
+                    DeviceId = 1,
+                    SoftwareId = 4,
+                },
+                new InstalledSoftware
+                {
+                    Id = 3,
+                    DeviceId = 1,
+                    SoftwareId = 5,
+                },
+                new InstalledSoftware
+                {
+                    Id = 4,
+                    DeviceId = 3,
+                    SoftwareId = 1,
+                },
+                new InstalledSoftware
+                {
+                    Id = 5,
+                    DeviceId = 1,
+                    SoftwareId = 3,
+                },
+                new InstalledSoftware
+                {
+                    Id = 6,
+                    DeviceId = 5,
+                    SoftwareId = 3,
+                },
+                new InstalledSoftware
+                {
+                    Id = 7,
+                    DeviceId = 6,
+                    SoftwareId = 3,
+                },
+                new InstalledSoftware
+                {
+                    Id = 8,
+                    DeviceId = 8,
+                    SoftwareId = 6,
+                },
+                new InstalledSoftware
+                {
+                    Id = 9,
+                    DeviceId = 8,
+                    SoftwareId = 8,
+                },
+                new InstalledSoftware
+                {
+                    Id = 10,
+                    DeviceId = 9,
+                    SoftwareId = 9,
+                },
+                new InstalledSoftware
+                {
+                    Id = 11,
+                    DeviceId = 9,
+                    SoftwareId = 10,
+                },
+                new InstalledSoftware
+                {
+                    Id = 12,
+                    DeviceId = 10,
+                    SoftwareId = 6,
+                },
+                new InstalledSoftware
+                {
+                    Id = 13,
+                    DeviceId = 10,
+                    SoftwareId = 11,
+                },
+                new InstalledSoftware
+                {
+                    Id = 14,
+                    DeviceId = 11,
+                    SoftwareId = 6,
+                },
+                new InstalledSoftware
+                {
+                    Id = 15,
+                    DeviceId = 11,
+                    SoftwareId = 11,
+                },
+                new InstalledSoftware
+                {
+                    Id = 16,
+                    DeviceId = 12,
+                    SoftwareId = 6,
+                },
+                new InstalledSoftware
+                {
+                    Id = 17,
+                    DeviceId = 12,
+                    SoftwareId = 11,
+                },
+                new InstalledSoftware
+                {
+                    Id = 18,
+                    DeviceId = 13,
+                    SoftwareId = 6,
+                },
+                new InstalledSoftware
+                {
+                    Id = 19,
+                    DeviceId = 13,
+                    SoftwareId = 11,
+                },
+                new InstalledSoftware
+                {
+                    Id = 20,
+                    DeviceId = 14,
+                    SoftwareId = 6,
+                },
+                new InstalledSoftware
+                {
+                    Id = 21,
+                    DeviceId = 14,
+                    SoftwareId = 11,
+                },
+                new InstalledSoftware
+                {
+                    Id = 22,
+                    DeviceId = 15,
+                    SoftwareId = 6,
+                },
+                new InstalledSoftware
+                {
+                    Id = 23,
+                    DeviceId = 15,
+                    SoftwareId = 11,
+                },
+                new InstalledSoftware
+                {
+                    Id = 24,
+                    DeviceId = 16,
+                    SoftwareId = 6,
+                },
+                new InstalledSoftware
+                {
+                    Id = 25,
+                    DeviceId = 16,
+                    SoftwareId = 11,
+                }
+                //new InstalledSoftware
+                //{
+                //    Id = ,  //int FK
+                //    DeviceId = ,  //int FK
+                //    SoftwareId = ,  //int FK
+                //}
+                );
+
+            modelBuilder.Entity<InuseMonitor>(entity =>
+            {
+                entity.ToTable("inuse monitors");
+
+                entity.HasIndex(e => e.DeviceId, "Device ID");
+
+                entity.HasIndex(e => e.MonitorId, "Monitor ID");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.DeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device ID");
+
+                entity.Property(e => e.MonitorId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Monitor ID");
+
+                entity.HasOne(d => d.Device)
+                    .WithMany(p => p.InuseMonitors)
+                    .HasForeignKey(d => d.DeviceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("inuse monitors_ibfk_1");
+
+                entity.HasOne(d => d.Monitor)
+                    .WithMany(p => p.InuseMonitors)
+                    .HasForeignKey(d => d.MonitorId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("inuse monitors_ibfk_2");
+            });
+
+            modelBuilder.Entity<InuseMonitor>().HasData(
+            new InuseMonitor
+            {
+                Id = 1,
+                DeviceId = 4,
+                MonitorId = 1,
+            },
+            new InuseMonitor
+            {
+                Id = 2,
+                DeviceId = 5,
+                MonitorId = 1,
+            },
+            new InuseMonitor
+            {
+                Id = 3,
+                DeviceId = 6,
+                MonitorId = 1,
+            },
+            new InuseMonitor
+            {
+                Id = 4,
+                DeviceId = 8,
+                MonitorId = 2,
+            },
+            new InuseMonitor
+            {
+                Id = 5,
+                DeviceId = 10,
+                MonitorId = 3,
+            },
+            new InuseMonitor
+            {
+                Id = 6,
+                DeviceId = 17,
+                MonitorId = 4,
+            }
+            //new InuseMonitor
+            //{
+            //    Id = ,  //int PK
+            //    DeviceId = ,  //int FK
+            //    MonitorId = ,  //int FK
+            //},
+            );
+
+            modelBuilder.Entity<Modification>(entity =>
+            {
+                entity.ToTable("modifications");
+
+                entity.HasIndex(e => e.HardDriveId, "modifications_ibfk_1");
+
+                entity.HasIndex(e => e.ProcessorId, "modifications_ibfk_2");
+
+                entity.HasIndex(e => e.RamId, "modifications_ibfk_3");
+
+                entity.HasIndex(e => e.SecondaryDriveId, "modifications_ibfk_4");
+
+                entity.HasIndex(e => e.SoundCardId, "modifications_ibfk_5");
+
+                entity.HasIndex(e => e.VideoCardId, "modifications_ibfk_6");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.HardDriveId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Hard Drive ID");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.ProcessorId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Processor ID");
+
+                entity.Property(e => e.RamId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("RAM ID");
+
+                entity.Property(e => e.SecondaryDriveId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Secondary Drive ID");
+
+                entity.Property(e => e.SoundCardId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Sound Card ID");
+
+                entity.Property(e => e.VideoCardId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Video Card ID");
+
+                entity.HasOne(d => d.HardDrive)
+                    .WithMany(p => p.Modifications)
+                    .HasForeignKey(d => d.HardDriveId)
+                    .HasConstraintName("modifications_ibfk_1");
+
+                entity.HasOne(d => d.Processor)
+                    .WithMany(p => p.Modifications)
+                    .HasForeignKey(d => d.ProcessorId)
+                    .HasConstraintName("modifications_ibfk_2");
+
+                entity.HasOne(d => d.Ram)
+                    .WithMany(p => p.Modifications)
+                    .HasForeignKey(d => d.RamId)
+                    .HasConstraintName("modifications_ibfk_3");
+
+                entity.HasOne(d => d.SecondaryDrive)
+                    .WithMany(p => p.Modifications)
+                    .HasForeignKey(d => d.SecondaryDriveId)
+                    .HasConstraintName("modifications_ibfk_4");
+
+                entity.HasOne(d => d.SoundCard)
+                    .WithMany(p => p.Modifications)
+                    .HasForeignKey(d => d.SoundCardId)
+                    .HasConstraintName("modifications_ibfk_5");
+
+                entity.HasOne(d => d.VideoCard)
+                    .WithMany(p => p.Modifications)
+                    .HasForeignKey(d => d.VideoCardId)
+                    .HasConstraintName("modifications_ibfk_6");
+            });
 
             // modelBuilder.Entity<Modification>().HasData(
             //new Modification
@@ -1971,6 +1565,44 @@ namespace TownOfStettler.Data
             //    Notes = "NA",//text (nullable)
             //}
             //);
+
+            modelBuilder.Entity<OtherHardware>(entity =>
+            {
+                entity.ToTable("other hardware");
+
+                entity.HasIndex(e => e.History, "History1");
+
+                entity.HasIndex(e => e.OwnerLocation, "other hardware_ibfk_1");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.History).HasColumnType("int(11)");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.OwnerLocation)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Owner/Location");
+
+                entity.Property(e => e.TosNumber)
+                    .HasMaxLength(20)
+                    .HasColumnName("TOS Number");
+
+                entity.Property(e => e.TypeOfDevice).HasMaxLength(40);
+
+                entity.HasOne(d => d.HistoryNavigation)
+                    .WithMany(p => p.OtherHardwares)
+                    .HasForeignKey(d => d.History)
+                    .HasConstraintName("other hardware_ibfk_2");
+
+                entity.HasOne(d => d.OwnerLocationNavigation)
+                    .WithMany(p => p.OtherHardwares)
+                    .HasForeignKey(d => d.OwnerLocation)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("other hardware_ibfk_1");
+            });
 
             modelBuilder.Entity<OtherHardware>().HasData(
             new OtherHardware
@@ -2012,6 +1644,34 @@ namespace TownOfStettler.Data
             //}
             );
 
+            modelBuilder.Entity<Output>(entity =>
+            {
+                entity.HasKey(e => e.Type)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("outputs");
+
+                entity.HasIndex(e => e.VideoCardId, "outputs_ibfk_1");
+
+                entity.Property(e => e.Type).HasMaxLength(10);
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.NumberOfOutputs)
+                    .HasColumnType("int(2)")
+                    .HasColumnName("Number of Outputs");
+
+                entity.Property(e => e.VideoCardId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Video Card ID");
+
+                entity.HasOne(d => d.VideoCard)
+                    .WithMany(p => p.Outputs)
+                    .HasForeignKey(d => d.VideoCardId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("outputs_ibfk_1");
+            });
+
             //modelBuilder.Entity<Output>().HasData(
             //  new Output
             //  {
@@ -2028,6 +1688,25 @@ namespace TownOfStettler.Data
             //      Notes = "NA",  //text (nullable)
             //      }
             //);
+
+            modelBuilder.Entity<OwnerLocation>(entity =>
+            {
+                entity.ToTable("owner/location");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Address).HasMaxLength(75);
+
+                entity.Property(e => e.Name).HasMaxLength(60);
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.PhoneNumber)
+                    .HasMaxLength(14)
+                    .HasColumnName("Phone Number");
+            });
 
             modelBuilder.Entity<OwnerLocation>().HasData(
             new OwnerLocation
@@ -2103,6 +1782,96 @@ namespace TownOfStettler.Data
             //},            
             );
 
+            modelBuilder.Entity<Part>(entity =>
+            {
+                entity.ToTable("parts");
+
+                entity.HasIndex(e => e.HardDriveId, "parts_ibfk_2");
+
+                entity.HasIndex(e => e.RamId, "parts_ibfk_3");
+
+                entity.HasIndex(e => e.SecondaryDriveId, "parts_ibfk_4");
+
+                entity.HasIndex(e => e.SoundCardId, "parts_ibfk_5");
+
+                entity.HasIndex(e => e.VideoCardId, "parts_ibfk_6");
+
+                entity.HasIndex(e => e.DeviceHistoryId, "parts_ibfk_7");
+
+                entity.HasIndex(e => e.OriginalDeviceId, "parts_ibfk_8");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.DeviceHistoryId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device History ID");
+
+                entity.Property(e => e.HardDriveId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Hard Drive ID");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.OriginalDeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Original Device ID");
+
+                entity.Property(e => e.RamId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("RAM ID");
+
+                entity.Property(e => e.SecondaryDriveId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Secondary Drive ID");
+
+                entity.Property(e => e.SoundCardId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Sound Card ID");
+
+                entity.Property(e => e.VideoCardId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Video Card ID");
+
+                entity.HasOne(d => d.DeviceHistory)
+                    .WithMany(p => p.Parts)
+                    .HasForeignKey(d => d.DeviceHistoryId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("parts_ibfk_7");
+
+                entity.HasOne(d => d.HardDrive)
+                    .WithMany(p => p.Parts)
+                    .HasForeignKey(d => d.HardDriveId)
+                    .HasConstraintName("parts_ibfk_2");
+
+                entity.HasOne(d => d.OriginalDevice)
+                    .WithMany(p => p.Parts)
+                    .HasForeignKey(d => d.OriginalDeviceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("parts_ibfk_8");
+
+                entity.HasOne(d => d.Ram)
+                    .WithMany(p => p.Parts)
+                    .HasForeignKey(d => d.RamId)
+                    .HasConstraintName("parts_ibfk_3");
+
+                entity.HasOne(d => d.SecondaryDrive)
+                    .WithMany(p => p.Parts)
+                    .HasForeignKey(d => d.SecondaryDriveId)
+                    .HasConstraintName("parts_ibfk_4");
+
+                entity.HasOne(d => d.SoundCard)
+                    .WithMany(p => p.Parts)
+                    .HasForeignKey(d => d.SoundCardId)
+                    .HasConstraintName("parts_ibfk_5");
+
+                entity.HasOne(d => d.VideoCard)
+                    .WithMany(p => p.Parts)
+                    .HasForeignKey(d => d.VideoCardId)
+                    .HasConstraintName("parts_ibfk_6");
+            });
+
             //modelBuilder.Entity<Part>().HasData(
             //    new Part
             //    {
@@ -2130,6 +1899,59 @@ namespace TownOfStettler.Data
             //     }
             //);
 
+            modelBuilder.Entity<Printer>(entity =>
+            {
+                entity.ToTable("printers");
+
+                entity.HasIndex(e => e.History, "History2");
+
+                entity.HasIndex(e => e.DeviceId, "printers_ibfk_1");
+
+                entity.HasIndex(e => e.OwnerLocation, "printers_ibfk_2");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.ConnectionType)
+                    .HasMaxLength(15)
+                    .HasColumnName("Connection Type");
+
+                entity.Property(e => e.DeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device ID");
+
+                entity.Property(e => e.History).HasColumnType("int(11)");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.OwnerLocation)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Owner/Location");
+
+                entity.Property(e => e.TosNumber)
+                    .HasMaxLength(25)
+                    .HasColumnName("TOS Number");
+
+                entity.Property(e => e.Type).HasMaxLength(20);
+
+                entity.HasOne(d => d.Device)
+                    .WithMany(p => p.Printers)
+                    .HasForeignKey(d => d.DeviceId)
+                    .HasConstraintName("printers_ibfk_1");
+
+                entity.HasOne(d => d.HistoryNavigation)
+                    .WithMany(p => p.Printers)
+                    .HasForeignKey(d => d.History)
+                    .HasConstraintName("printers_ibfk_3");
+
+                entity.HasOne(d => d.OwnerLocationNavigation)
+                    .WithMany(p => p.Printers)
+                    .HasForeignKey(d => d.OwnerLocation)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("printers_ibfk_2");
+            });
+
             //modelBuilder.Entity<Printer>().HasData(
             //    new Printer
             //    {
@@ -2151,6 +1973,45 @@ namespace TownOfStettler.Data
             //        Notes = "NA",  //text (nullable)
             //    }
             //);
+
+            modelBuilder.Entity<Processor>(entity =>
+            {
+                entity.ToTable("processor");
+
+                entity.HasIndex(e => e.DeviceId, "processor_ibfk_1");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.CoreCount)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Core Count");
+
+                entity.Property(e => e.DeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device ID");
+
+                entity.Property(e => e.Generation).HasColumnType("int(11)");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.SerialNumber)
+                    .HasMaxLength(30)
+                    .HasColumnName("Serial Number");
+
+                entity.Property(e => e.SpeedGhz)
+                    .HasPrecision(5, 3)
+                    .HasColumnName("Speed (GHz)");
+
+                entity.Property(e => e.Type).HasMaxLength(25);
+
+                entity.HasOne(d => d.Device)
+                    .WithMany(p => p.Processors)
+                    .HasForeignKey(d => d.DeviceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("processor_ibfk_1");
+            });
 
             modelBuilder.Entity<Processor>().HasData(
             new Processor
@@ -2287,6 +2148,43 @@ namespace TownOfStettler.Data
             //    Notes = "NA",  //text (nullable)
             //}
             );
+
+            modelBuilder.Entity<Ram>(entity =>
+            {
+                entity.ToTable("ram");
+
+                entity.HasIndex(e => e.DeviceId, "ram_ibfk_1");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.DeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device ID");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.SerialNumber)
+                    .HasMaxLength(30)
+                    .HasColumnName("Serial Number");
+
+                entity.Property(e => e.SizeGb)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Size (Gb)");
+
+                entity.Property(e => e.SpeedMhz)
+                    .HasColumnType("int(5)")
+                    .HasColumnName("Speed (MHz)");
+
+                entity.Property(e => e.Type).HasMaxLength(15);
+
+                entity.HasOne(d => d.Device)
+                    .WithMany(p => p.Rams)
+                    .HasForeignKey(d => d.DeviceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("ram_ibfk_1");
+            });
 
             modelBuilder.Entity<Ram>().HasData(
             new Ram
@@ -2467,6 +2365,35 @@ namespace TownOfStettler.Data
             //    Notes = "",  //text (nullable)
             //}
             );
+
+            modelBuilder.Entity<SecondaryDrive>(entity =>
+            {
+                entity.ToTable("secondary drives");
+
+                entity.HasIndex(e => e.DeviceId, "secondary drives_ibfk_1");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.DeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device ID");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.SerialNumber)
+                    .HasMaxLength(30)
+                    .HasColumnName("Serial Number");
+
+                entity.Property(e => e.Type).HasMaxLength(30);
+
+                entity.HasOne(d => d.Device)
+                    .WithMany(p => p.SecondaryDrives)
+                    .HasForeignKey(d => d.DeviceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("secondary drives_ibfk_1");
+            });
 
             modelBuilder.Entity<SecondaryDrive>().HasData(
             new SecondaryDrive
@@ -2671,6 +2598,43 @@ namespace TownOfStettler.Data
             //}
             );
 
+            modelBuilder.Entity<Software>(entity =>
+            {
+                entity.ToTable("software");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(50)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.AssociatedAccount)
+                    .HasMaxLength(50)
+                    .HasColumnName("Associated Account");
+
+                entity.Property(e => e.DevicesAllowed)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Devices Allowed");
+
+                entity.Property(e => e.EndOfSupportDate).HasColumnName("End of Support Date");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.ProductKey)
+                    .HasMaxLength(60)
+                    .HasColumnName("Product Key");
+
+                entity.Property(e => e.PurchaseDate).HasColumnName("Purchase Date");
+
+                entity.Property(e => e.PurchasePrice)
+                    .HasPrecision(5, 2)
+                    .HasColumnName("Purchase Price");
+
+                entity.Property(e => e.SoftwareName)
+                    .HasMaxLength(75)
+                    .HasColumnName("Software Name");
+
+                entity.Property(e => e.SubscriptionEndDate).HasColumnName("Subscription End Date");
+            });
+
             modelBuilder.Entity<Software>().HasData(
             new Software
             {
@@ -2754,6 +2718,31 @@ namespace TownOfStettler.Data
             //}
             );
 
+            modelBuilder.Entity<SoundCard>(entity =>
+            {
+                entity.ToTable("sound card");
+
+                entity.HasIndex(e => e.DeviceId, "sound card_ibfk_1");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Brand).HasMaxLength(20);
+
+                entity.Property(e => e.DeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device ID");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.HasOne(d => d.Device)
+                    .WithMany(p => p.SoundCards)
+                    .HasForeignKey(d => d.DeviceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("sound card_ibfk_1");
+            });
+
             //modelBuilder.Entity<SoundCard>().HasData(
             //new SoundCard
             //{
@@ -2773,78 +2762,144 @@ namespace TownOfStettler.Data
             //}
             //);
 
+            modelBuilder.Entity<VideoCard>(entity =>
+            {
+                entity.ToTable("video card");
+
+                entity.HasIndex(e => e.DeviceId, "video card_ibfk_1");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Brand).HasMaxLength(20);
+
+                entity.Property(e => e.DeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device ID");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.RamSizeGb)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Ram Size (GB)");
+
+                entity.Property(e => e.SerialNumber)
+                    .HasMaxLength(30)
+                    .HasColumnName("Serial Number");
+
+                entity.HasOne(d => d.Device)
+                    .WithMany(p => p.VideoCards)
+                    .HasForeignKey(d => d.DeviceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("video card_ibfk_1");
+            });
+
             modelBuilder.Entity<VideoCard>().HasData(
-            new VideoCard
+           new VideoCard
+           {
+               Id = 1,
+               DeviceId = 11,
+               Brand = "Quadro NVS290",
+               RamSizeGb = 1,
+               SerialNumber = "Unknown",
+               Destroyed = false,
+               Notes = "Low Profile",
+           },
+           new VideoCard
+           {
+               Id = 2,
+               DeviceId = 12,
+               Brand = "Quadro NVS290",
+               RamSizeGb = 1,
+               SerialNumber = "Unknown",
+               Destroyed = false,
+               Notes = "Low Profile",
+           },
+           new VideoCard
+           {
+               Id = 3,
+               DeviceId = 13,
+               Brand = "Quadro 600",
+               RamSizeGb = 1,
+               SerialNumber = "Unknown",
+               Destroyed = true,
+               Notes = "128 bit",
+           },
+           new VideoCard
+           {
+               Id = 4,
+               DeviceId = 14,
+               Brand = "Quadro 600",
+               RamSizeGb = 1,
+               SerialNumber = "Unknown",
+               Destroyed = true,
+               Notes = "128 bit",
+           },
+           new VideoCard
+           {
+               Id = 5,
+               DeviceId = 15,
+               Brand = "Quadro NVS290",
+               RamSizeGb = 1,
+               SerialNumber = "Unknown",
+               Destroyed = false,
+               Notes = "Low Profile",
+           },
+           new VideoCard
+           {
+               Id = 6,
+               DeviceId = 16,
+               Brand = "PNY Quadro NVS600",
+               RamSizeGb = 1,
+               SerialNumber = "Unknown",
+               Destroyed = false,
+               Notes = "Low Profile",
+           }
+           //new VideoCard
+           //{
+           //    Id = ,  //int PK
+           //    DeviceId = ,  //int FK
+           //    Brand = ,  //varchar(20) (nullable)
+           //    RamSizeGb = ,  //int(11)
+           //    SerialNumber = ,  //varchar(30)
+           //    Destroyed = ,  //bool
+           //    Notes = "",  //text (nullable)
+           //}
+           );
+
+            modelBuilder.Entity<Warranty>(entity =>
             {
-                Id = 1,
-                DeviceId = 11,
-                Brand = "Quadro NVS290",
-                RamSizeGb = 1,
-                SerialNumber = "Unknown",
-                Destroyed = false,
-                Notes = "Low Profile",
-            },
-            new VideoCard
-            {
-                Id = 2,
-                DeviceId = 12,
-                Brand = "Quadro NVS290",
-                RamSizeGb = 1,
-                SerialNumber = "Unknown",
-                Destroyed = false,
-                Notes = "Low Profile",
-            },
-            new VideoCard
-            {
-                Id = 3,
-                DeviceId = 13,
-                Brand = "Quadro 600",
-                RamSizeGb = 1,
-                SerialNumber = "Unknown",
-                Destroyed = true,
-                Notes = "128 bit",
-            },
-            new VideoCard
-            {
-                Id = 4,
-                DeviceId = 14,
-                Brand = "Quadro 600",
-                RamSizeGb = 1,
-                SerialNumber = "Unknown",
-                Destroyed = true,
-                Notes = "128 bit",
-            },
-            new VideoCard
-            {
-                Id = 5,
-                DeviceId = 15,
-                Brand = "Quadro NVS290",
-                RamSizeGb = 1,
-                SerialNumber = "Unknown",
-                Destroyed = false,
-                Notes = "Low Profile",
-            },
-            new VideoCard
-            {
-                Id = 6,
-                DeviceId = 16,
-                Brand = "PNY Quadro NVS600",
-                RamSizeGb = 1,
-                SerialNumber = "Unknown",
-                Destroyed = false,
-                Notes = "Low Profile",
-            }
-            //new VideoCard
-            //{
-            //    Id = ,  //int PK
-            //    DeviceId = ,  //int FK
-            //    Brand = ,  //varchar(20) (nullable)
-            //    RamSizeGb = ,  //int(11)
-            //    SerialNumber = ,  //varchar(30)
-            //    Destroyed = ,  //bool
-            //    Notes = "",  //text (nullable)
-            //}
-            );
+                entity.ToTable("warranty");
+
+                entity.HasIndex(e => e.DeviceId, "warranty_ibfk_1");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.DeviceId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("Device ID");
+
+                entity.Property(e => e.LengthOfWarranty)
+                    .HasMaxLength(15)
+                    .HasColumnName("Length of Warranty");
+
+                entity.Property(e => e.Notes).HasColumnType("text");
+
+                entity.Property(e => e.TypeOfWarranty)
+                    .HasMaxLength(100)
+                    .HasColumnName("Type of Warranty");
+
+                entity.Property(e => e.WarrantyExpiryDate).HasColumnName("Warranty Expiry Date");
+
+                entity.HasOne(d => d.Device)
+                    .WithMany(p => p.Warranties)
+                    .HasForeignKey(d => d.DeviceId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("warranty_ibfk_1");
+            });
 
             modelBuilder.Entity<Warranty>().HasData(
             new Warranty

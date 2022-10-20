@@ -10,6 +10,8 @@ namespace TownOfStettler.Models
             EthernetNetworks = new HashSet<EthernetNetwork>();
             HardDrives = new HashSet<HardDrive>();
             Histories = new HashSet<History>();
+            InstalledSoftwares = new HashSet<InstalledSoftware>();
+            InuseMonitors = new HashSet<InuseMonitor>();
             Parts = new HashSet<Part>();
             Printers = new HashSet<Printer>();
             Processors = new HashSet<Processor>();
@@ -24,7 +26,6 @@ namespace TownOfStettler.Models
         public int DeviceTypeId { get; set; }
         public int OwnerLocation { get; set; }
         public string TosNumber { get; set; } = null!;
-        public int? DisplayMonitor { get; set; }
         public string SerialNumber { get; set; } = null!;
         public string ModelNumber { get; set; } = null!;
         public string? PowerSupply { get; set; }
@@ -34,54 +35,14 @@ namespace TownOfStettler.Models
         public string OperatingSystem { get; set; } = null!;
         public bool Destroyed { get; set; }
         public string? Notes { get; set; }
-        public int? InstalledSoftware01 { get; set; }
-        public int? InstalledSoftware02 { get; set; }
-        public int? InstalledSoftware03 { get; set; }
-        public int? InstalledSoftware04 { get; set; }
-        public int? InstalledSoftware05 { get; set; }
-        public int? InstalledSoftware06 { get; set; }
-        public int? InstalledSoftware07 { get; set; }
-        public int? InstalledSoftware08 { get; set; }
-        public int? InstalledSoftware09 { get; set; }
-        public int? InstalledSoftware10 { get; set; }
-        public int? InstalledSoftware11 { get; set; }
-        public int? InstalledSoftware12 { get; set; }
-        public int? InstalledSoftware13 { get; set; }
-        public int? InstalledSoftware14 { get; set; }
-        public int? InstalledSoftware15 { get; set; }
-        public int? InstalledSoftware16 { get; set; }
-        public int? InstalledSoftware17 { get; set; }
-        public int? InstalledSoftware18 { get; set; }
-        public int? InstalledSoftware19 { get; set; }
-        public int? InstalledSoftware20 { get; set; }
-        public int? DisplayMonitorNavigationId { get; set; }
 
         public virtual HardwareDevice DeviceType { get; set; } = null!;
-        public virtual DisplayMonitor? DisplayMonitorNavigation { get; set; }
-        public virtual Software? InstalledSoftware01Navigation { get; set; }
-        public virtual Software? InstalledSoftware02Navigation { get; set; }
-        public virtual Software? InstalledSoftware03Navigation { get; set; }
-        public virtual Software? InstalledSoftware04Navigation { get; set; }
-        public virtual Software? InstalledSoftware05Navigation { get; set; }
-        public virtual Software? InstalledSoftware06Navigation { get; set; }
-        public virtual Software? InstalledSoftware07Navigation { get; set; }
-        public virtual Software? InstalledSoftware08Navigation { get; set; }
-        public virtual Software? InstalledSoftware09Navigation { get; set; }
-        public virtual Software? InstalledSoftware10Navigation { get; set; }
-        public virtual Software? InstalledSoftware11Navigation { get; set; }
-        public virtual Software? InstalledSoftware12Navigation { get; set; }
-        public virtual Software? InstalledSoftware13Navigation { get; set; }
-        public virtual Software? InstalledSoftware14Navigation { get; set; }
-        public virtual Software? InstalledSoftware15Navigation { get; set; }
-        public virtual Software? InstalledSoftware16Navigation { get; set; }
-        public virtual Software? InstalledSoftware17Navigation { get; set; }
-        public virtual Software? InstalledSoftware18Navigation { get; set; }
-        public virtual Software? InstalledSoftware19Navigation { get; set; }
-        public virtual Software? InstalledSoftware20Navigation { get; set; }
         public virtual OwnerLocation OwnerLocationNavigation { get; set; } = null!;
         public virtual ICollection<EthernetNetwork> EthernetNetworks { get; set; }
         public virtual ICollection<HardDrive> HardDrives { get; set; }
         public virtual ICollection<History> Histories { get; set; }
+        public virtual ICollection<InstalledSoftware> InstalledSoftwares { get; set; }
+        public virtual ICollection<InuseMonitor> InuseMonitors { get; set; }
         public virtual ICollection<Part> Parts { get; set; }
         public virtual ICollection<Printer> Printers { get; set; }
         public virtual ICollection<Processor> Processors { get; set; }

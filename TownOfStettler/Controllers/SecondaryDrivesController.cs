@@ -155,14 +155,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.SecondaryDrives.Remove(secondaryDrive);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool SecondaryDriveExists(int id)
         {
-          return _context.SecondaryDrives.Any(e => e.Id == id);
+            return _context.SecondaryDrives.Any(e => e.Id == id);
         }
     }
 }

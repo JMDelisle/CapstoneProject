@@ -10,90 +10,94 @@ using TownOfStettler.Models;
 
 namespace TownOfStettler.Controllers
 {
-    public class EthernetNetworkController : Controller
+    public class InuseMonitorsController : Controller
     {
         private readonly DatabaseContext _context;
 
-        public EthernetNetworkController(DatabaseContext context)
+        public InuseMonitorsController(DatabaseContext context)
         {
             _context = context;
         }
 
-        // GET: EthernetNetwork
+        // GET: InuseMonitors
         public async Task<IActionResult> Index()
         {
-            var databaseContext = _context.EthernetNetworks.Include(e => e.Device);
+            var databaseContext = _context.InuseMonitors.Include(i => i.Device).Include(i => i.Monitor);
             return View(await databaseContext.ToListAsync());
         }
 
-        // GET: EthernetNetwork/Details/5
+        // GET: InuseMonitors/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.EthernetNetworks == null)
+            if (id == null || _context.InuseMonitors == null)
             {
                 return NotFound();
             }
 
-            var ethernetNetwork = await _context.EthernetNetworks
-                .Include(e => e.Device)
+            var inuseMonitor = await _context.InuseMonitors
+                .Include(i => i.Device)
+                .Include(i => i.Monitor)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (ethernetNetwork == null)
+            if (inuseMonitor == null)
             {
                 return NotFound();
             }
 
-            return View(ethernetNetwork);
+            return View(inuseMonitor);
         }
 
-        // GET: EthernetNetwork/Create
+        // GET: InuseMonitors/Create
         public IActionResult Create()
         {
             ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id");
+            ViewData["MonitorId"] = new SelectList(_context.DisplayMonitors, "Id", "Id");
             return View();
         }
 
-        // POST: EthernetNetwork/Create
+        // POST: InuseMonitors/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DeviceId,Speed,Wireless,Bluetooth,SerialNumber,Destroyed,Notes")] EthernetNetwork ethernetNetwork)
+        public async Task<IActionResult> Create([Bind("Id,DeviceId,MonitorId")] InuseMonitor inuseMonitor)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(ethernetNetwork);
+                _context.Add(inuseMonitor);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", ethernetNetwork.DeviceId);
-            return View(ethernetNetwork);
+            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", inuseMonitor.DeviceId);
+            ViewData["MonitorId"] = new SelectList(_context.DisplayMonitors, "Id", "Id", inuseMonitor.MonitorId);
+            return View(inuseMonitor);
         }
 
-        // GET: EthernetNetwork/Edit/5
+        // GET: InuseMonitors/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.EthernetNetworks == null)
+            if (id == null || _context.InuseMonitors == null)
             {
                 return NotFound();
             }
 
-            var ethernetNetwork = await _context.EthernetNetworks.FindAsync(id);
-            if (ethernetNetwork == null)
+            var inuseMonitor = await _context.InuseMonitors.FindAsync(id);
+            if (inuseMonitor == null)
             {
                 return NotFound();
             }
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", ethernetNetwork.DeviceId);
-            return View(ethernetNetwork);
+            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", inuseMonitor.DeviceId);
+            ViewData["MonitorId"] = new SelectList(_context.DisplayMonitors, "Id", "Id", inuseMonitor.MonitorId);
+            return View(inuseMonitor);
         }
 
-        // POST: EthernetNetwork/Edit/5
+        // POST: InuseMonitors/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DeviceId,Speed,Wireless,Bluetooth,SerialNumber,Destroyed,Notes")] EthernetNetwork ethernetNetwork)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DeviceId,MonitorId")] InuseMonitor inuseMonitor)
         {
-            if (id != ethernetNetwork.Id)
+            if (id != inuseMonitor.Id)
             {
                 return NotFound();
             }
@@ -102,12 +106,12 @@ namespace TownOfStettler.Controllers
             {
                 try
                 {
-                    _context.Update(ethernetNetwork);
+                    _context.Update(inuseMonitor);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EthernetNetworkExists(ethernetNetwork.Id))
+                    if (!InuseMonitorExists(inuseMonitor.Id))
                     {
                         return NotFound();
                     }
@@ -118,51 +122,53 @@ namespace TownOfStettler.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", ethernetNetwork.DeviceId);
-            return View(ethernetNetwork);
+            ViewData["DeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", inuseMonitor.DeviceId);
+            ViewData["MonitorId"] = new SelectList(_context.DisplayMonitors, "Id", "Id", inuseMonitor.MonitorId);
+            return View(inuseMonitor);
         }
 
-        // GET: EthernetNetwork/Delete/5
+        // GET: InuseMonitors/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.EthernetNetworks == null)
+            if (id == null || _context.InuseMonitors == null)
             {
                 return NotFound();
             }
 
-            var ethernetNetwork = await _context.EthernetNetworks
-                .Include(e => e.Device)
+            var inuseMonitor = await _context.InuseMonitors
+                .Include(i => i.Device)
+                .Include(i => i.Monitor)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (ethernetNetwork == null)
+            if (inuseMonitor == null)
             {
                 return NotFound();
             }
 
-            return View(ethernetNetwork);
+            return View(inuseMonitor);
         }
 
-        // POST: EthernetNetwork/Delete/5
+        // POST: InuseMonitors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.EthernetNetworks == null)
+            if (_context.InuseMonitors == null)
             {
-                return Problem("Entity set 'DatabaseContext.EthernetNetworks'  is null.");
+                return Problem("Entity set 'DatabaseContext.InuseMonitors'  is null.");
             }
-            var ethernetNetwork = await _context.EthernetNetworks.FindAsync(id);
-            if (ethernetNetwork != null)
+            var inuseMonitor = await _context.InuseMonitors.FindAsync(id);
+            if (inuseMonitor != null)
             {
-                _context.EthernetNetworks.Remove(ethernetNetwork);
+                _context.InuseMonitors.Remove(inuseMonitor);
             }
-
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EthernetNetworkExists(int id)
+        private bool InuseMonitorExists(int id)
         {
-            return _context.EthernetNetworks.Any(e => e.Id == id);
+          return _context.InuseMonitors.Any(e => e.Id == id);
         }
     }
 }

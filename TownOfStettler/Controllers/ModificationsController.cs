@@ -185,14 +185,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.Modifications.Remove(modification);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ModificationExists(int id)
         {
-          return _context.Modifications.Any(e => e.Id == id);
+            return _context.Modifications.Any(e => e.Id == id);
         }
     }
 }

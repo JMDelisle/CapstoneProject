@@ -6,6 +6,7 @@ namespace TownOfStettler.Models
     public partial class Printer
     {
         public int Id { get; set; }
+        public string TosNumber { get; set; } = null!;
         public int OwnerLocation { get; set; }
         public int? DeviceId { get; set; }
         public string Type { get; set; } = null!;

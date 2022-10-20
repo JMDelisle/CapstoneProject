@@ -22,7 +22,7 @@ namespace TownOfStettler.Controllers
         // GET: HardwareDevice
         public async Task<IActionResult> Index()
         {
-              return View(await _context.HardwareDevices.ToListAsync());
+            return View(await _context.HardwareDevices.ToListAsync());
         }
 
         // GET: HardwareDevice/Details/5
@@ -148,14 +148,14 @@ namespace TownOfStettler.Controllers
             {
                 _context.HardwareDevices.Remove(hardwareDevice);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool HardwareDeviceExists(int id)
         {
-          return _context.HardwareDevices.Any(e => e.Id == id);
+            return _context.HardwareDevices.Any(e => e.Id == id);
         }
     }
 }

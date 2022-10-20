@@ -7,7 +7,7 @@ namespace TownOfStettler.Models
     {
         public DisplayMonitor()
         {
-            DeviceInformations = new HashSet<DeviceInformation>();
+            InuseMonitors = new HashSet<InuseMonitor>();
         }
 
         public int Id { get; set; }
@@ -23,6 +23,6 @@ namespace TownOfStettler.Models
         public string? Notes { get; set; }
 
         public virtual History? HistoryNavigation { get; set; }
-        public virtual ICollection<DeviceInformation> DeviceInformations { get; set; }
+        public virtual ICollection<InuseMonitor> InuseMonitors { get; set; }
     }
 }
