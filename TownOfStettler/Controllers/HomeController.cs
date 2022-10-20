@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TownOfStettler.Models;
+using TownOfStettler.Data;
 
 namespace TownOfStettler.Controllers
 {
