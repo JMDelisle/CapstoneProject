@@ -4,43 +4,49 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Device Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-action="Index" method="get">
+    <p>
+        Menu Search: <input type="text" name="SearchString" value="@ViewData["Filter"]" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TosNumber)
+                @*@Html.DisplayNameFor(model => model.TosNumber)*@TOS Number
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SerialNumber)
+                @* @Html.DisplayNameFor(model => model.SerialNumber)*@Serial Number
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ModelNumber)
+                @*                @Html.DisplayNameFor(model => model.ModelNumber)*@Model Number
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PowerSupply)
+                @*@Html.DisplayNameFor(model => model.PowerSupply)*@Power Supply
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PurchaseStore)
+                @*@Html.DisplayNameFor(model => model.PurchaseStore)*@Purchase Store
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PurchasePrice)
+                @*@Html.DisplayNameFor(model => model.PurchasePrice)*@Purchase Price
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PurchaseDate)
+                @*@Html.DisplayNameFor(model => model.PurchaseDate)*@Purchase Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OperatingSystem)
+                @* @Html.DisplayNameFor(model => model.OperatingSystem)*@Operating System
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Destroyed)
+                @*@Html.DisplayNameFor(model => model.Destroyed)*@Destroyed
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Notes)
+                @*@Html.DisplayNameFor(model => model.Notes)*@Notes
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DeviceType)

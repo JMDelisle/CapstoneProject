@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace TownOfStettler.Models
 {
     public partial class DeviceInformation
