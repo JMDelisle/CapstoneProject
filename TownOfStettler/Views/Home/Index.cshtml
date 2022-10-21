@@ -1,7 +1,7 @@
 ﻿@using PagedList.Mvc;
 @{
     ViewData["Title"] = "Home Page";
-    ViewData["DeviceInformation"] = "Index";
+    
     string[,] allTables = new string[,] {
                             { "", "Home", "Index"},
                             { "Device Information", "DeviceInformation", "Index"},
@@ -10,13 +10,15 @@
                             { "Hard Drive", "HardDrive", "Index"},
                             { "Hardware Device", "HardwareDevice", "Index"},
                             { "History", "History", "Index" },
-                            { "Modification", "Modification", "Index"},
+                            { "Installed Software", "InstalledSoftware", "Index"},
+                            { "Inuse Monitor", "InuseMonitors", "Index"},
+                            { "Modification", "Modifications", "Index"},
                             { "Other Hardware", "OtherHardware", "Index"},
-                            { "Output", "Output", "Index"},
-                            { "OwnerLocation", "OwnerLocation", "Index"},
-                            { "Part", "Part", "Index" },
-                            { "Printer", "Printer", "Index"},
-                            { "Processor", "Processsor", "Index"},
+                            { "Output", "Outputs", "Index"},
+                            { "Owner Location", "OwnerLocation", "Index"},
+                            { "Part", "Parts", "Index" },
+                            { "Printer", "Printers", "Index"},
+                            { "Processor", "Processors", "Index"},
                             { "Ram", "Ram", "Index" },
                             { "Secondary Drive", "SecondaryDrives", "Index"},
                             { "Software", "Software", "Index" },
@@ -60,36 +62,36 @@
                    asp-controller=@allTables[@tableNumber, 1]
                    asp-action=@allTables[@tableNumber, 2]>Go</a>
             </button>
-            
+
             <form asp-action="Index" method="get">
-              <p>
-               Menu Search: <input type="text" name="SearchString" value="@ViewData["Filter"]" />
-               <input type="submit" value="Filter" />
-              </p>
+                <p>
+                    Menu Search: <input type="text" name="SearchString" value="@ViewData["Filter"]" />
+                    <input type="submit" value="Filter" />
+                </p>
             </form>
-           
+
         </li>
     </ul>
 
-       @*<table class="table">
-         <thead>
-           <tr>
-             <th>
-               @Html.DisplayNameFor(model => model.TosNumber)
-             </th>
-           </tr>
-         </thead>
-          <tbody>
-           @foreach (var item in Model)
-           {
-            <tr>
-              <td>
-                  @Html.DisplayFor(modelItem => item.TosNumber)
-              </td>
-            </tr>
-           }
-          </tbody>
-       </table>*@
+    @*<table class="table">
+    <thead>
+    <tr>
+    <th>
+    @Html.DisplayNameFor(model => model.TosNumber)
+    </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+    <tr>
+    <td>
+    @Html.DisplayFor(modelItem => item.TosNumber)
+    </td>
+    </tr>
+    }
+    </tbody>
+    </table>*@
 
 
 </div>

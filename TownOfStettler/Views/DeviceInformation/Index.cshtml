@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Device Index</h1>
+<h1>Device Information Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -22,10 +22,10 @@
                 @*@Html.DisplayNameFor(model => model.TosNumber)*@TOS Number
             </th>
             <th>
-                @* @Html.DisplayNameFor(model => model.SerialNumber)*@Serial Number
+                @*@Html.DisplayNameFor(model => model.SerialNumber)*@Serial Number
             </th>
             <th>
-                @*                @Html.DisplayNameFor(model => model.ModelNumber)*@Model Number
+                @*@Html.DisplayNameFor(model => model.ModelNumber)*@Model Number
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.PowerSupply)*@Power Supply
@@ -79,7 +79,7 @@
                 @Html.DisplayFor(modelItem => item.PurchasePrice)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PurchaseDate)
+                    @Html.DisplayFor(modelItem => item.StrIntDate) @*Dates properly changed here*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OperatingSystem)

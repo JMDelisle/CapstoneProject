@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace TownOfStettler.Models
@@ -52,5 +53,17 @@ namespace TownOfStettler.Models
         public virtual ICollection<SoundCard> SoundCards { get; set; }
         public virtual ICollection<VideoCard> VideoCards { get; set; }
         public virtual ICollection<Warranty> Warranties { get; set; }
+
+        [NotMapped]
+        public string StrIntDate
+        {
+            get
+            {
+                // return (InterestAppliedDate.ToString("yyyy, dd MMMM"));
+                return (PurchaseDate.ToString("yyyy-MM-dd"));
+
+            }
+        }
+
     }
 }

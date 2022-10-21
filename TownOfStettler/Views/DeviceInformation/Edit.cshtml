@@ -11,10 +11,10 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger">Model Only:</div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="DeviceTypeId" class="control-label"></label>
+                <label asp-for="DeviceTypeId" class="control-label">Model Only:</label>
                 <select asp-for="DeviceTypeId" class="form-control" asp-items="ViewBag.DeviceTypeId"></select>
                 <span asp-validation-for="DeviceTypeId" class="text-danger"></span>
             </div>
@@ -29,7 +29,7 @@
                 <span asp-validation-for="TosNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SerialNumber" class="control-label"></label>
+                <label asp-for="SerialNumber" class="control-label">Serial Number:</label>
                 <input asp-for="SerialNumber" class="form-control" />
                 <span asp-validation-for="SerialNumber" class="text-danger"></span>
             </div>
@@ -39,7 +39,7 @@
                 <span asp-validation-for="ModelNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PowerSupply" class="control-label">Power Supply</label>
+                <label asp-for="PowerSupply" class="control-label">Power Supply:</label>
                 <input asp-for="PowerSupply" class="form-control" />
                 <span asp-validation-for="PowerSupply" class="text-danger"></span>
             </div>

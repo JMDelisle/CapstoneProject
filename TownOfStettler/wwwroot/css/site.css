@@ -46,7 +46,7 @@ ul {
 }
 */
 
-h1 {
+h1, h3 {
     color: white;
 }
 
@@ -76,4 +76,10 @@ td {
     margin-left: auto;
     margin-right: auto;
     color:white;
+}
+dd {
+    color:white;
+}
+dt {
+    color: #fec751;
 }

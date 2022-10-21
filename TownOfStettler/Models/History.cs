@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TownOfStettler.Models
 {
@@ -32,5 +33,18 @@ namespace TownOfStettler.Models
         public virtual ICollection<OtherHardware> OtherHardwares { get; set; }
         public virtual ICollection<Part> Parts { get; set; }
         public virtual ICollection<Printer> Printers { get; set; }
+
+        [NotMapped]
+        public string StrIntDate
+        {
+            get
+            {
+                // return (InterestAppliedDate.ToString("yyyy, dd MMMM"));
+                return (DateOfChanges.ToString("yyyy-MM-dd"));
+
+            }
+        }
+
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TownOfStettler.Models
 {
@@ -13,5 +14,17 @@ namespace TownOfStettler.Models
         public string? Notes { get; set; }
 
         public virtual DeviceInformation Device { get; set; } = null!;
+
+        //[NotMapped]
+        //public string StrIntDate
+        //{
+        //    get
+        //    {
+        //        // return (InterestAppliedDate.ToString("yyyy, dd MMMM"));
+        //        return (WarrantyExpiryDate.ToString("yyyy-MM-dd"));
+
+        //    }
+        //}
+
     }
 }
