@@ -1,7 +1,7 @@
 ﻿@using PagedList.Mvc;
 @{
     ViewData["Title"] = "Home Page";
-    
+
     string[,] allTables = new string[,] {
                             { "", "Home", "Index"},
                             { "Device Information", "DeviceInformation", "Index"},
@@ -63,16 +63,16 @@
                    asp-action=@allTables[@tableNumber, 2]>Go</a>
             </button>
 
-            <form asp-action="Index" method="get">
-                <p>
-                    Menu Search: <input type="text" name="SearchString" value="@ViewData["Filter"]" />
-                    <input type="submit" value="Filter" />
-                </p>
-            </form>
+                <form asp-action="Index" method="get">
+                    <p>
+                        Menu Search: <input type="text" name="searchString" value="@ViewData["homeFilter"]" />
+                        <input type="submit" value="Filter" />
+                    </p>
+                </form>
 
         </li>
     </ul>
-
+    <p>@ViewBag.HomeInfo</p>
     @*<table class="table">
     <thead>
     <tr>
