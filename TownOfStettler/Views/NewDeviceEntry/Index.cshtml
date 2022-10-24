@@ -1,0 +1,194 @@
+﻿@using TownOfStettler.Models.Exceptions
+
+@{
+    ViewData["Title"] = "New Device Entry";
+}
+<h1> Add A New Device to the Database</h1>
+<h4>New Device from Invoice</h4>
+<hr />
+
+@if (ViewData["Exceptions"] != null)
+{
+    <ul>
+        @foreach (Exception sub in (ViewData["Exceptions"] as ValidationException).SubExceptions)
+        {
+            <li>@sub.Message</li>
+        }
+    </ul>
+}
+
+<div class="row"> 
+    <div class="col-md-4">
+        <form asp-action="EnterNewDevice">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <div class="form-group">
+                <label class="control-label">hardwareDevice</label>
+                <input name="hardwareDevice" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">TOSNumber</label>
+                <input name="TOSNumber" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">monitorSize</label>
+                <input name="monitorSize" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">monitorType</label>
+                <input name="monitorType" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">monitorResolution</label>
+                <input name="monitorResolution" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">monitorRefreshRate</label>
+                <input name="monitorRefreshRate" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">monitorSerialNumber</label>
+                <input name="monitorSerialNumber" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">monitorOutput</label>
+                <input name="monitorOutput" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">networkCardSpeed</label>
+                <input name="networkCardSpeed" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">networkCardWireless</label>
+                <input name="networkCardWireless" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">networkCardBluetooth</label>
+                <input name="networkCardBluetooth" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">hardDriveType</label>
+                <input name="hardDriveType" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">hardDriveSize</label>
+                <input name="hardDriveSize" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">ownerLocationName</label>
+                <input name="ownerLocationName" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">ownerAddress</label>
+                <input nameownerAddress class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">ownerPhoneNumber</label>
+                <input name="ownerPhoneNumber" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">processorType</label>
+                <input name="processorType" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">processorSpeed</label>
+                <input name="processorSpeed" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">processorGeneration</label>
+                <input name="processorGeneration" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">processorCoreCount</label>
+                <input name="processorCoreCount" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">ramType</label>
+                <input name="ramType" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">RamSize</label>
+                <input name="RamSize" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">ramSpeed</label>
+                <input name="ramSpeed" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">secondaryDriveType</label>
+                <input name="secondaryDriveType" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">secondaryDriveRemoveable</label>
+                <input name="secondaryDriveRemoveable" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">soundCardBrand</label>
+                <input name="soundCardBrand" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">videoCardBrand</label>
+                <input name="videoCardBrand" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">videoCardRamSize,</label>
+                <input name="videoCardRamSize," class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">videoCardOutputType</label>
+                <input name="videoCardOutputType" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">videoCardOutputNumber</label>
+                <input name="videoCardOutputNumber" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">warrantyType</label>
+                <input name="warrantyType" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">warrantyLength</label>
+                <input name="warrantyLength" class="form-control" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">warrantyExpiryDate</label>
+                <input name="warrantyExpiryDate" class="form-control" />
+            </div>
+            <p></p>
+
+        </form>
+
+</div></div>
