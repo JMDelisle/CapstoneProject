@@ -20,12 +20,25 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Printers
-        public async Task<IActionResult> Index()
-        {
-            var databaseContext = _context.Printers.Include(p => p.Device).Include(p => p.HistoryNavigation).Include(p => p.OwnerLocationNavigation);
-            return View(await databaseContext.ToListAsync());
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    var databaseContext = _context.Printers.Include(p => p.Device).Include(p => p.HistoryNavigation).Include(p => p.OwnerLocationNavigation);
+        //    return View(await databaseContext.ToListAsync());
+        //}
 
+        //Search TosNumber
+        public async Task<IActionResult> Index(string SearchString)
+        {
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.Printers
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                Info = Info.Where(i => i.TosNumber.Contains(SearchString));
+
+            }
+            return View(Info);
+        }
         // GET: Printers/Details/5
         public async Task<IActionResult> Details(int? id)
         {

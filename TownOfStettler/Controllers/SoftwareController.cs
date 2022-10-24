@@ -20,9 +20,23 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Software
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.Softwares.ToListAsync());
+        //}
+
+        //Search SoftwareName
+        public async Task<IActionResult> Index(string SearchString)
         {
-            return View(await _context.Softwares.ToListAsync());
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.Softwares
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                Info = Info.Where(i => i.SoftwareName.Contains(SearchString));
+
+            }
+            return View(Info);
         }
 
         // GET: Software/Details/5

@@ -20,12 +20,25 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: SecondaryDrives
-        public async Task<IActionResult> Index()
-        {
-            var databaseContext = _context.SecondaryDrives.Include(s => s.Device);
-            return View(await databaseContext.ToListAsync());
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    var databaseContext = _context.SecondaryDrives.Include(s => s.Device);
+        //    return View(await databaseContext.ToListAsync());
+        //}
 
+        //Search SerialNumber
+        public async Task<IActionResult> Index(string SearchString)
+        {
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.SecondaryDrives
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                Info = Info.Where(i => i.SerialNumber.Contains(SearchString));
+
+            }
+            return View(Info);
+        }
         // GET: SecondaryDrives/Details/5
         public async Task<IActionResult> Details(int? id)
         {

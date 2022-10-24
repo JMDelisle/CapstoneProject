@@ -20,11 +20,24 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: OwnerLocation
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.OwnerLocations.ToListAsync());
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.OwnerLocations.ToListAsync());
+        //}
 
+        //Search Name
+        public async Task<IActionResult> Index(string SearchString)
+        {
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.OwnerLocations
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                Info = Info.Where(i => i.Name.Contains(SearchString));
+
+            }
+            return View(Info);
+        }
         // GET: OwnerLocation/Details/5
         public async Task<IActionResult> Details(int? id)
         {

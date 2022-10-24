@@ -19,11 +19,25 @@ namespace TownOfStettler.Controllers
             _context = context;
         }
 
-        // GET: OtherHardware
-        public async Task<IActionResult> Index()
+        //// GET: OtherHardware
+        //public async Task<IActionResult> Index()
+        //{
+        //    var databaseContext = _context.OtherHardwares.Include(o => o.HistoryNavigation).Include(o => o.OwnerLocationNavigation);
+        //    return View(await databaseContext.ToListAsync());
+        //}
+
+        //Search TosNumber
+        public async Task<IActionResult> Index(string SearchString)
         {
-            var databaseContext = _context.OtherHardwares.Include(o => o.HistoryNavigation).Include(o => o.OwnerLocationNavigation);
-            return View(await databaseContext.ToListAsync());
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.OtherHardwares
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                Info = Info.Where(i => i.TosNumber.Contains(SearchString));
+
+            }
+            return View(Info);
         }
 
         // GET: OtherHardware/Details/5

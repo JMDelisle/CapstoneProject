@@ -20,10 +20,24 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Warranty
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var databaseContext = _context.Warranties.Include(w => w.Device);
+        //    return View(await databaseContext.ToListAsync());
+        //}
+
+        //Search TypeOfWarranty
+        public async Task<IActionResult> Index(string SearchString)
         {
-            var databaseContext = _context.Warranties.Include(w => w.Device);
-            return View(await databaseContext.ToListAsync());
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.Warranties
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                Info = Info.Where(i => i.TypeOfWarranty.Contains(SearchString));
+
+            }
+            return View(Info);
         }
 
         // GET: Warranty/Details/5

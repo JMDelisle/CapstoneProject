@@ -25,6 +25,18 @@ namespace TownOfStettler.Controllers
             var databaseContext = _context.Histories.Include(h => h.Device).Include(h => h.DeviceType).Include(h => h.PartsChangedNavigation).Include(h => h.PastOwnerSNavigation);
             return View(await databaseContext.ToListAsync());
         }
+        //public async Task<IActionResult> Index(string SearchString)
+        //{
+        //    ViewData["Filter"] = SearchString;
+        //    var Info = from i in _context.Histories
+        //               select i;
+        //    if (!String.IsNullOrEmpty(SearchString))
+        //    {
+        //        Info = Info.Where(i => i.PartsChanged.Contains(SearchString));
+
+        //    }
+        //    return View(Info);
+        //}
 
         // GET: History/Details/5
         public async Task<IActionResult> Details(int? id)

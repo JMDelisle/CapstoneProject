@@ -20,10 +20,24 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Processors
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var databaseContext = _context.Processors.Include(p => p.Device);
+        //    return View(await databaseContext.ToListAsync());
+        //}
+
+        //Search Type
+        public async Task<IActionResult> Index(string SearchString)
         {
-            var databaseContext = _context.Processors.Include(p => p.Device);
-            return View(await databaseContext.ToListAsync());
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.Processors
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                Info = Info.Where(i => i.Type.Contains(SearchString));
+
+            }
+            return View(Info);
         }
 
         // GET: Processors/Details/5

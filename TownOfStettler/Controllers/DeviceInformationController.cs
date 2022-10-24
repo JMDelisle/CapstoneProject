@@ -26,6 +26,7 @@ namespace TownOfStettler.Controllers
         //    return View(await databaseContext.ToListAsync());
         //}
 
+        //Search TosNumber
         public async Task<IActionResult> Index(string SearchString)
         {
             ViewData["Filter"] = SearchString;
