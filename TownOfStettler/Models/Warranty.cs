@@ -30,22 +30,5 @@ namespace TownOfStettler.Models
             }
         }
 
-        //[NotMapped]
-        //public string WarrentyExpired
-        //{
-        //    get
-        //    {
-        //        if (WarrantyExpiryDate == null)
-        //        {
-        //            return "";
-        //        }
-        //        else
-        //        {
-        //            return (WarrantyExpiryDate?.ToString("yyyy-MM-dd"));
-        //        }
-
-        //    }
-        //}
-
     }
 }
