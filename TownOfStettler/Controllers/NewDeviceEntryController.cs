@@ -22,7 +22,7 @@ namespace TownOfStettler.Controllers
             return View();
         }
 
-        public IActionResult EnterNewDevice(string hardwareDevice, string monitorSize, string monitorType, string monitorResolution, string monitorRefreshRate, string monitorSerialNumber, string monitorOutput, string networkCardSpeed, string networkCardWireless, string networkCardBluetooth, string hardDriveType, string hardDriveSize, string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string processorType, string processorSpeed, string processorGeneration, string processorCoreCount, string ramType, string RamSize, string ramSpeed, string secondaryDriveType, string secondaryDriveRemoveable, string soundCardBrand, string videoCardBrand, string videoCardRamSize, string videoCardOutputType, string videoCardOutputNumber, string warrantyType, string warrantyLength, string warrantyExpiryDate, string TOSnumber, string cpuSerNumber, string cpuModel, string store, string price, string date, string cpuOS, string notes, string monTOSNum, string monSerNum, string monOutNum, string networkCardSerNum, string HDDserNum, string hrdwreTOSnum, string hrdwreType, string pwrSupply, string processorSerNum, string ramSerNum, string miscDriveSerNum)
+        public IActionResult EnterNewDevice(string hardwareDevice, string monitorSize, string monitorType, string monitorResolution, string monitorRefreshRate, string monitorSerialNumber, string monitorOutput, string networkCardSpeed, string networkCardWireless, string networkCardBluetooth, string hardDriveType, string hardDriveSize, string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string processorType, string processorSpeed, string processorGeneration, string processorCoreCount, string ramType, string RamSize, string ramSpeed, string secondaryDriveType, string secondaryDriveRemoveable, string soundCardBrand, string videoCardBrand, string videoCardRamSize, string videoCardOutputType, string videoCardOutputNumber, string warrantyType, string warrantyLength, string warrantyExpiryDate, string TOSnumber, string cpuSerNumber, string cpuModel, string store, string price, string date, string cpuOS, string notes, string monTOSNum, string monSerNum, string monOutNum, string networkCardSerNum, string HDDserNum, string hrdwreTOSnum, string hrdwreType, string pwrSupply, string processorSerNum, string ramSerNum, string miscDriveSerNum, string vidCardSerNum)
         {
             //ValidationException validationState = new ValidationException();
 
@@ -201,9 +201,26 @@ namespace TownOfStettler.Controllers
                     Brand = soundCardBrand,  //varchar(20) (nullable)
                     Destroyed = false, //bool
                 };
+
                 _context.SoundCards.Add(soundCard);
+                _context.SaveChanges();
             }
 
+            while (videoCardRamSize != null)
+            {
+                if (videoCardBrand != null || videoCardRamSize != null || vidCardSerNum != null)
+                {
+                    VideoCard videoCard = new VideoCard()
+                    {
+                        DeviceId = _context.DeviceInformations.Id,  //int FK
+                        Brand = videoCardBrand,  //varchar(20) (nullable)
+                        RamSizeGb = int.Parse(videoCardRamSize),  //int(11)
+                        SerialNumber = vidCardSerNum,  //varchar(30)
+                        Destroyed = false,  //bool
+                    };
+
+                }
+            }
 
         }
     }
