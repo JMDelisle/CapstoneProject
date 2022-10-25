@@ -1637,7 +1637,7 @@ namespace TownOfStettler.Data
             //  Id = ,  //int PK
             //  OwnerLocation = "",  //int FK
             //  TosNumber = "",  //varchar(20)
-            //  Type = "",  //varchar(40)
+            //  TypeOfDevice = "",  //varchar(40)
             //  Destroyed = ,  //bool
             //  History = ,  //int FK (nullable)
             //  Notes = "NA",  //text (nullable)
