@@ -1956,7 +1956,7 @@ namespace TownOfStettler.Data
             //    new Printer
             //    {
             //        Id = 1,
-            //        Owner/Location = ,
+            //        OwnerLocation = ,
             //        DeviceId = ,
             //        Type = "",
             //        ConnectionType = "",
@@ -1965,7 +1965,7 @@ namespace TownOfStettler.Data
             //    new Printer
             //    {
             //        Id = ,  //int PK
-            //        Owner/Location = ,  //int FK
+            //        OwnerLocation = ,  //int FK
             //        DeviceId = ,  //int FK (nullable)
             //        Type = "",  //varchar(20)
             //        ConnectionType = "",  //varchar(15)
