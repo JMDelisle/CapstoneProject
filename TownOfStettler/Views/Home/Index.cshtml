@@ -12,6 +12,7 @@
                             { "History", "History", "Index" },
                             { "Installed Software", "InstalledSoftware", "Index"},
                             { "Inuse Monitor", "InuseMonitors", "Index"},
+                            { "Miscellaneous Drive/Reader", "SecondaryDrives", "Index"},
                             { "Modification", "Modifications", "Index"},
                             { "Other Hardware", "OtherHardware", "Index"},
                             { "Output", "Outputs", "Index"},
@@ -20,7 +21,6 @@
                             { "Printer", "Printers", "Index"},
                             { "Processor", "Processors", "Index"},
                             { "Ram", "Ram", "Index" },
-                            { "Secondary Drive", "SecondaryDrives", "Index"},
                             { "Software", "Software", "Index" },
                             { "Sound Card", "SoundCard", "Index"},
                             { "Video Card", "VideoCard", "Index"},
@@ -63,12 +63,12 @@
                    asp-action=@allTables[@tableNumber, 2]>Go</a>
             </button>
 
-                <form asp-action="Index" method="get">
-                    <p>
-                        Menu Search: <input type="text" name="searchString" value="@ViewData["homeFilter"]" />
-                        <input type="submit" value="Filter" />
-                    </p>
-                </form>
+            <form asp-action="Index" method="get">
+                <p>
+                    Menu Search: <input type="text" name="searchString" value="@ViewData["homeFilter"]" />
+                    <input type="submit" value="Filter" />
+                </p>
+            </form>
 
         </li>
     </ul>

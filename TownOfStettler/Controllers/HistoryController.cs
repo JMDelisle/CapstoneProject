@@ -103,7 +103,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DeviceTypeId,DeviceId,PartsChanged,PastOwnerS,Wiped,PartsRemoved,DateOfChanges,OutOfServiceDate,Notes")] History history)
+        public async Task<IActionResult> Edit(int id, string DateOfChanges, string OutOfServiceDate,[Bind("Id,DeviceTypeId,DeviceId,PartsChanged,PastOwnerS,Wiped,PartsRemoved,Notes")] History history)
         {
             if (id != history.Id)
             {
@@ -114,6 +114,8 @@ namespace TownOfStettler.Controllers
             {
                 try
                 {
+                    history.DateOfChanges = DateOnly.Parse(DateOfChanges);
+                    history.OutOfServiceDate = DateOnly.Parse(OutOfServiceDate);
                     _context.Update(history);
                     await _context.SaveChangesAsync();
                 }

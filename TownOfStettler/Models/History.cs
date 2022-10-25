@@ -35,12 +35,28 @@ namespace TownOfStettler.Models
         public virtual ICollection<Printer> Printers { get; set; }
 
         [NotMapped]
-        public string StrIntDate
+        public string StrDoC
         {
             get
             {
-                // return (InterestAppliedDate.ToString("yyyy, dd MMMM"));
                 return (DateOfChanges.ToString("yyyy-MM-dd"));
+
+            }
+        }
+
+        [NotMapped]
+        public string StrOos
+        {
+            get
+            {
+                if(OutOfServiceDate == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    return (OutOfServiceDate?.ToString("yyyy-MM-dd"));
+                }
 
             }
         }

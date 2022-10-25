@@ -91,7 +91,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DeviceId,TypeOfWarranty,LengthOfWarranty,WarrantyExpiryDate,Notes")] Warranty warranty)
+        public async Task<IActionResult> Edit(int id, string WarrantyExpiryDate, [Bind("Id,DeviceId,TypeOfWarranty,LengthOfWarranty,WarrantyExpiryDate,Notes")] Warranty warranty)
         {
             if (id != warranty.Id)
             {
@@ -102,6 +102,7 @@ namespace TownOfStettler.Controllers
             {
                 try
                 {
+                    warranty.WarrantyExpiryDate = DateOnly.Parse(WarrantyExpiryDate);
                     _context.Update(warranty);
                     await _context.SaveChangesAsync();
                 }

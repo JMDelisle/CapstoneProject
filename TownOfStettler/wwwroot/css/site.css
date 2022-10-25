@@ -41,11 +41,6 @@ ul {
     color: black;
 }
 
-/*th, label {
-    color: white;
-}
-*/
-
 h1, h3 {
     color: white;
 }
@@ -85,4 +80,8 @@ dt {
 }
 p {
     color: white;
+}
+
+a {
+    color: #fec751;
 }

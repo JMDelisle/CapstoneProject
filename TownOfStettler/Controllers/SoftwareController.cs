@@ -26,7 +26,7 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Software/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string SubscriptionEndDate, string PurchaseDate, string EndOfSupportDate)
         {
             if (id == null || _context.Softwares == null)
             {
@@ -37,6 +37,10 @@ namespace TownOfStettler.Controllers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (software == null)
             {
+                software.SubscriptionEndDate = DateOnly.Parse(SubscriptionEndDate);
+                software.PurchaseDate = DateOnly.Parse(PurchaseDate);
+                software.EndOfSupportDate = DateOnly.Parse(EndOfSupportDate);
+
                 return NotFound();
             }
 
@@ -86,7 +90,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProductKey,SoftwareName,AssociatedAccount,Subscription,SubscriptionEndDate,PurchaseDate,PurchasePrice,DevicesAllowed,EndOfSupportDate,Notes")] Software software)
+        public async Task<IActionResult> Edit(int id,string SubscriptionEndDate,string PurchaseDate,string EndOfSupportDate,[Bind("Id,ProductKey,SoftwareName,AssociatedAccount,Subscription,SubscriptionEndDate,PurchaseDate,PurchasePrice,DevicesAllowed,EndOfSupportDate,Notes")] Software software)
         {
             if (id != software.Id)
             {
@@ -95,8 +99,12 @@ namespace TownOfStettler.Controllers
 
             if (ModelState.IsValid)
             {
+                software.SubscriptionEndDate = DateOnly.Parse(SubscriptionEndDate);
                 try
                 {
+                    software.SubscriptionEndDate = DateOnly.Parse(SubscriptionEndDate);
+                    software.PurchaseDate = DateOnly.Parse(PurchaseDate);
+                    software.EndOfSupportDate = DateOnly.Parse(EndOfSupportDate);
                     _context.Update(software);
                     await _context.SaveChangesAsync();
                 }
@@ -117,7 +125,7 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Software/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, string SubscriptionEndDate, string PurchaseDate, string EndOfSupportDate)
         {
             if (id == null || _context.Softwares == null)
             {
@@ -128,6 +136,9 @@ namespace TownOfStettler.Controllers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (software == null)
             {
+                software.SubscriptionEndDate = DateOnly.Parse(SubscriptionEndDate);
+                software.PurchaseDate = DateOnly.Parse(PurchaseDate);
+                software.EndOfSupportDate = DateOnly.Parse(EndOfSupportDate);
                 return NotFound();
             }
 
