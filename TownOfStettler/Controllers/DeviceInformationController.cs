@@ -26,7 +26,7 @@ namespace TownOfStettler.Controllers
         //    return View(await databaseContext.ToListAsync());
         //}
 
-        //Search TosNumber
+       //Search TosNumber
         public async Task<IActionResult> Index(string SearchString)
         {
             ViewData["Filter"] = SearchString;
@@ -34,7 +34,18 @@ namespace TownOfStettler.Controllers
                        select i;
             if (!String.IsNullOrEmpty(SearchString))
             {
+                //Info = Info.Where(i => i.DeviceTypeId.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.OwnerLocation.ToString().Contains(SearchString));
                 Info = Info.Where(i => i.TosNumber.Contains(SearchString));
+                //Info = Info.Where(i => i.SerialNumber.Contains(SearchString));
+                //Info = Info.Where(i => i.ModelNumber.Contains(SearchString));
+                //Info = Info.Where(i => i.PowerSupply.Contains(SearchString));
+                //Info = Info.Where(i => i.PurchaseStore.Contains(SearchString));
+                //Info = Info.Where(i => i.PurchasePrice.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.PurchaseDate.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.OperatingSystem.Contains(SearchString));
+                //Info = Info.Where(i => i.Destroyed.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.Notes.Contains(SearchString));
 
             }
             return View(Info);

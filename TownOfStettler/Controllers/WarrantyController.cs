@@ -34,7 +34,11 @@ namespace TownOfStettler.Controllers
                        select i;
             if (!String.IsNullOrEmpty(SearchString))
             {
+                //Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
                 Info = Info.Where(i => i.TypeOfWarranty.Contains(SearchString));
+                //Info = Info.Where(i => i.LengthOfWarranty.Contains(SearchString));
+                //Info = Info.Where(i => i.WarrantyExpiryDate.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.Notes.Contains(SearchString));
 
             }
             return View(Info);

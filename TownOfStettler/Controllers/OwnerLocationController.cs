@@ -34,7 +34,9 @@ namespace TownOfStettler.Controllers
             if (!String.IsNullOrEmpty(SearchString))
             {
                 Info = Info.Where(i => i.Name.Contains(SearchString));
-
+                //Info = Info.Where(i => i.Address.Contains(SearchString));
+                //Info = Info.Where(i => i.PhoneNumber.Contains(SearchString));
+                //Info = Info.Where(i => i.Notes.Contains(SearchString));
             }
             return View(Info);
         }

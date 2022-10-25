@@ -20,23 +20,31 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Modifications
-        public async Task<IActionResult> Index()
-        {
-            var databaseContext = _context.Modifications.Include(m => m.HardDrive).Include(m => m.Processor).Include(m => m.Ram).Include(m => m.SecondaryDrive).Include(m => m.SoundCard).Include(m => m.VideoCard);
-            return View(await databaseContext.ToListAsync());
-        }
-        //public async Task<IActionResult> Index(string SearchString)
+        //public async Task<IActionResult> Index()
         //{
-        //    ViewData["Filter"] = SearchString;
-        //    var Info = from i in _context.Modifications
-        //               select i;
-        //    if (!String.IsNullOrEmpty(SearchString))
-        //    {
-        //        Info = Info.Where(i => i.SerialNumber.Contains(SearchString));
-
-        //    }
-        //    return View(Info);
+        //    var databaseContext = _context.Modifications.Include(m => m.HardDrive).Include(m => m.Processor).Include(m => m.Ram).Include(m => m.SecondaryDrive).Include(m => m.SoundCard).Include(m => m.VideoCard);
+        //    return View(await databaseContext.ToListAsync());
         //}
+
+      
+        public async Task<IActionResult> Index(string SearchString)
+        {
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.Modifications
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                Info = Info.Where(i => i.ProcessorId.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.RamId.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.HardDriveId.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.SecondaryDriveId.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.SoundCardId.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.VideoCardId.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.Notes.Contains(SearchString));
+
+            }
+            return View(Info);
+        }
         // GET: Modifications/Details/5
         public async Task<IActionResult> Details(int? id)
         {

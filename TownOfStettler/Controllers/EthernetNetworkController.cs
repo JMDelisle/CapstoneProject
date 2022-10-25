@@ -26,7 +26,6 @@ namespace TownOfStettler.Controllers
         //    return View(await databaseContext.ToListAsync());
         //}
 
-        //Search SerialNumber
         public async Task<IActionResult> Index(string SearchString)
         {
             ViewData["Filter"] = SearchString;
@@ -34,7 +33,13 @@ namespace TownOfStettler.Controllers
                        select i;
             if (!String.IsNullOrEmpty(SearchString))
             {
-                Info = Info.Where(i => i.SerialNumber.Contains(SearchString));
+                Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.Speed.Contains(SearchString));
+                //Info = Info.Where(i => i.Wireless.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.Bluetooth.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.SerialNumber.Contains(SearchString));
+                //Info = Info.Where(i => i.Destroyed.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.Notes.Contains(SearchString));
 
             }
             return View(Info);
