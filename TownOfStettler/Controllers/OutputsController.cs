@@ -20,10 +20,27 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Outputs
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var databaseContext = _context.Outputs.Include(o => o.VideoCard);
+        //    return View(await databaseContext.ToListAsync());
+        //}
+
+        //Search Type
+        public async Task<IActionResult> Index(string SearchString)
         {
-            var databaseContext = _context.Outputs.Include(o => o.VideoCard);
-            return View(await databaseContext.ToListAsync());
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.Outputs
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                Info = Info.Where(i => i.Type.Contains(SearchString));
+                //Info = Info.Where(i => i.VideoCardId.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.NumberOfOutputs.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.Notes.Contains(SearchString));
+
+            }
+            return View(Info);
         }
 
         // GET: Outputs/Details/5

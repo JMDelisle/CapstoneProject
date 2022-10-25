@@ -20,12 +20,25 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: InstalledSoftware
-        public async Task<IActionResult> Index()
-        {
-            var databaseContext = _context.InstalledSoftwares.Include(i => i.Device).Include(i => i.Software);
-            return View(await databaseContext.ToListAsync());
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    var databaseContext = _context.InstalledSoftwares.Include(i => i.Device).Include(i => i.Software);
+        //    return View(await databaseContext.ToListAsync());
+        //}
 
+        //Search SoftwareId
+        public async Task<IActionResult> Index(string SearchString)
+        {
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.InstalledSoftwares
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                //Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
+                Info = Info.Where(i => i.SoftwareId.ToString().Contains(SearchString));
+            }
+            return View(Info);
+        }
         // GET: InstalledSoftware/Details/5
         public async Task<IActionResult> Details(int? id)
         {

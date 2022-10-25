@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,10 +21,32 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: History
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var databaseContext = _context.Histories.Include(h => h.Device).Include(h => h.DeviceType).Include(h => h.PartsChangedNavigation).Include(h => h.PastOwnerSNavigation);
+        //    return View(await databaseContext.ToListAsync());
+        //}
+
+        //Search DeviceId
+        public async Task<IActionResult> Index(string SearchString)
         {
-            var databaseContext = _context.Histories.Include(h => h.Device).Include(h => h.DeviceType).Include(h => h.PartsChangedNavigation).Include(h => h.PastOwnerSNavigation);
-            return View(await databaseContext.ToListAsync());
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.Histories
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                //Info = Info.Where(i => i.DeviceTypeId.ToString().Contains(SearchString));
+                Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.PartsChanged.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.PastOwnerS.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.Wiped.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.PartsRemoved.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.DateOfChanges.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.OutOfServiceDate.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.Notes.Contains(SearchString));
+
+            }
+            return View(Info);
         }
 
         // GET: History/Details/5
