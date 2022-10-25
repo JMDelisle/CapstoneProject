@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TownOfStettler.Models
 {
@@ -13,6 +14,9 @@ namespace TownOfStettler.Models
         public string SerialNumber { get; set; } = null!;
         public bool Destroyed { get; set; }
         public string? Notes { get; set; }
+
+        //[NotMapped]
+        //public string DeviceIdName => DeviceId + " " + TosNumber;
 
         public virtual DeviceInformation Device { get; set; } = null!;
     }
