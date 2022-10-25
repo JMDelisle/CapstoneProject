@@ -193,7 +193,16 @@ namespace TownOfStettler.Controllers
                 _context.SaveChanges();
             }
 
-            if (sou)
+            if (soundCardBrand != null)
+            {
+                SoundCard soundCard = new SoundCard()
+                {
+                    DeviceId = _context.DeviceInformations.Id,  //int FK
+                    Brand = soundCardBrand,  //varchar(20) (nullable)
+                    Destroyed = false, //bool
+                };
+                _context.SoundCards.Add(soundCard);
+            }
 
 
         }
