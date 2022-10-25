@@ -20,10 +20,31 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Processors
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var databaseContext = _context.Processors.Include(p => p.Device);
+        //    return View(await databaseContext.ToListAsync());
+        //}
+
+        //Search Type
+        public async Task<IActionResult> Index(string SearchString)
         {
-            var databaseContext = _context.Processors.Include(p => p.Device);
-            return View(await databaseContext.ToListAsync());
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.Processors
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                //Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
+                Info = Info.Where(i => i.Type.Contains(SearchString));
+                //Info = Info.Where(i => i.SpeedGhz.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.SerialNumber.Contains(SearchString));
+                //Info = Info.Where(i => i.Generation.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.CoreCount.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.Destroyed.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.Notes.Contains(SearchString));
+
+            }
+            return View(Info);
         }
 
         // GET: Processors/Details/5

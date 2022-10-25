@@ -20,10 +20,28 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Warranty
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var databaseContext = _context.Warranties.Include(w => w.Device);
+        //    return View(await databaseContext.ToListAsync());
+        //}
+
+        //Search TypeOfWarranty
+        public async Task<IActionResult> Index(string SearchString)
         {
-            var databaseContext = _context.Warranties.Include(w => w.Device);
-            return View(await databaseContext.ToListAsync());
+            ViewData["Filter"] = SearchString;
+            var Info = from i in _context.Warranties
+                       select i;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                //Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
+                Info = Info.Where(i => i.TypeOfWarranty.Contains(SearchString));
+                //Info = Info.Where(i => i.LengthOfWarranty.Contains(SearchString));
+                //Info = Info.Where(i => i.WarrantyExpiryDate.ToString().Contains(SearchString));
+                //Info = Info.Where(i => i.Notes.Contains(SearchString));
+
+            }
+            return View(Info);
         }
 
         // GET: Warranty/Details/5
@@ -91,7 +109,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DeviceId,TypeOfWarranty,LengthOfWarranty,WarrantyExpiryDate,Notes")] Warranty warranty)
+        public async Task<IActionResult> Edit(int id, string WarrantyExpiryDate, [Bind("Id,DeviceId,TypeOfWarranty,LengthOfWarranty,WarrantyExpiryDate,Notes")] Warranty warranty)
         {
             if (id != warranty.Id)
             {
@@ -102,6 +120,7 @@ namespace TownOfStettler.Controllers
             {
                 try
                 {
+                    warranty.WarrantyExpiryDate = DateOnly.Parse(WarrantyExpiryDate);
                     _context.Update(warranty);
                     await _context.SaveChangesAsync();
                 }

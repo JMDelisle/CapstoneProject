@@ -9,6 +9,12 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-action="Index" method="get">
+    <p>
+        Menu Search: <input type="text" name="SearchString" value="@ViewData["Filter"]" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -34,11 +40,10 @@
                 @*@Html.DisplayNameFor(model => model.DeviceType)*@Device Type
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.PartsChangedNavigation)*@Parts Changed Navigation
+                @*@Html.DisplayNameFor(model => model.PartsChangedNavigation)*@Parts Changed
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.PastOwnerSNavigation)*@Past Owners Navigation
-            </th>
+                @*@Html.DisplayNameFor(model => model.PastOwnerSNavigation)*@Past Owners
             <th></th>
         </tr>
     </thead>
@@ -52,10 +57,10 @@
                 @Html.DisplayFor(modelItem => item.PartsRemoved)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StrIntDate)
+                    @Html.DisplayFor(modelItem => item.StrDoC)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OutOfServiceDate)
+                    @Html.DisplayFor(modelItem => item.StrOos)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Notes)

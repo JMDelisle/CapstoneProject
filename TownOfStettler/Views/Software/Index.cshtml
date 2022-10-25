@@ -9,6 +9,12 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-action="Index" method="get">
+    <p>
+        Menu Search: <input type="text" name="SearchString" value="@ViewData["Filter"]" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -25,7 +31,7 @@
                 @* @Html.DisplayNameFor(model => model.Subscription)*@Subscription
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.SubscriptionEndDate)*@SubscriptionEndDate
+                @*@Html.DisplayNameFor(model => model.SubscriptionEndDate)*@Subscription End Date
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.PurchaseDate)*@Purchase Date
@@ -61,10 +67,10 @@
                 @Html.DisplayFor(modelItem => item.Subscription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SubscriptionEndDate)
+                    @Html.DisplayFor(modelItem => item.SubEndDate) @*From not mapp field*@
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PurchaseDate)
+                    @Html.DisplayFor(modelItem => item.PurchDate) @*From not mapp field*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PurchasePrice)
@@ -73,7 +79,7 @@
                 @Html.DisplayFor(modelItem => item.DevicesAllowed)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EndOfSupportDate)
+                    @Html.DisplayFor(modelItem => item.EndOfSupport)@*From not mapp field*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Notes)
