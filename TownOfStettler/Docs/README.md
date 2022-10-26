@@ -6,9 +6,11 @@ We were paired up with a Client from Town Of Stettler to build an application th
 User Manual:
 Install XAMPP Control Panel v3.3.0
 Click start on Apache and MySQL, Then click on MySQL admin 
+Install Visual Studio 2022
 Using Visual Studio 2022
-Go to the tools setting and click on Nuget package manager then click on package manager console. 
-Type in dotnet ef database update to get the database from XAMPP
+Go to the tools setting and click on Nuget package manager,then click on package manager console. 
+Type in dotnet ef database update to get the database from XAMPP.
+Hit the start button to run the website.
 
 The home page has a option to use the menu on the navbar, or to use the drop down menu to search
 the database tables.The user can search the entire database with the search bar on the home page.
