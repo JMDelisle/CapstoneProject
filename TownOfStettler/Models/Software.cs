@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace TownOfStettler.Models
 {
@@ -16,10 +18,20 @@ namespace TownOfStettler.Models
         public string SoftwareName { get; set; } = null!;
         public string? AssociatedAccount { get; set; }
         public bool? Subscription { get; set; }
+        [Display(Name = "Start Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateOnly? SubscriptionEndDate { get; set; }
+        [Display(Name = "Start Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateOnly? PurchaseDate { get; set; }
         public decimal? PurchasePrice { get; set; }
         public int? DevicesAllowed { get; set; }
+        [Display(Name = "Start Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+
         public DateOnly? EndOfSupportDate { get; set; }
         public string? Notes { get; set; }
 

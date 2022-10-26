@@ -20,24 +20,24 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: HardwareDevice
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(await _context.HardwareDevices.ToListAsync());
-        //}
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.HardwareDevices.ToListAsync());
+        }
 
         //Search TypeOfHardware
-        public async Task<IActionResult> Index(string SearchString)
-        {
-            ViewData["Filter"] = SearchString;
-            var Info = from i in _context.HardwareDevices
-                       select i;
-            if (!String.IsNullOrEmpty(SearchString))
-            {
-                Info = Info.Where(i => i.TypeOfHardware.Contains(SearchString));
+        //public async Task<IActionResult> Index(string SearchString)
+        //{
+        //    ViewData["Filter"] = SearchString;
+        //    var Info = from i in _context.HardwareDevices
+        //               select i;
+        //    if (!String.IsNullOrEmpty(SearchString))
+        //    {
+        //        Info = Info.Where(i => i.TypeOfHardware.Contains(SearchString));
 
-            }
-            return View(Info);
-        }
+        //    }
+        //    return View(Info);
+        //}
 
         // GET: HardwareDevice/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -20,25 +20,27 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: InuseMonitors
-        //public async Task<IActionResult> Index()
-        //{
-        //    var databaseContext = _context.InuseMonitors.Include(i => i.Device).Include(i => i.Monitor);
-        //    return View(await databaseContext.ToListAsync());
-        //}
+        public async Task<IActionResult> Index()
+        {
+            var databaseContext = _context.InuseMonitors.Include(i => i.Device).Include(i => i.Monitor);
+            return View(await databaseContext.ToListAsync());
+        }
 
         //Search MonitorId
-        public async Task<IActionResult> Index(string SearchString)
-        {
-            ViewData["Filter"] = SearchString;
-            var Info = from i in _context.InuseMonitors
-                       select i;
-            if (!String.IsNullOrEmpty(SearchString))
-            {
-                //Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
-                Info = Info.Where(i => i.MonitorId.ToString().Contains(SearchString));
-            }
-            return View(Info);
-        }
+        //public async Task<IActionResult> Index(string SearchString)
+        //{
+        //    ViewData["Filter"] = SearchString;
+        //    var Info = from i in _context.InuseMonitors
+        //               select i;
+        //    if (!String.IsNullOrEmpty(SearchString))
+        //    {
+        //        //Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
+        //        Info = Info.Where(i => i.MonitorId.ToString().Contains(SearchString));
+        //    }
+        //    return View(Info);
+        //}
+
+
         // GET: InuseMonitors/Details/5
         public async Task<IActionResult> Details(int? id)
         {

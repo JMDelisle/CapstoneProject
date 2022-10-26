@@ -20,33 +20,33 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Software
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(await _context.Softwares.ToListAsync());
-        //}
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Softwares.ToListAsync());
+        }
 
         //Search SoftwareName
-        public async Task<IActionResult> Index(string SearchString)
-        {
-            ViewData["Filter"] = SearchString;
-            var Info = from i in _context.Softwares
-                       select i;
-            if (!String.IsNullOrEmpty(SearchString))
-            {
-                //Info = Info.Where(i => i.ProductKey.Contains(SearchString));
-                Info = Info.Where(i => i.SoftwareName.Contains(SearchString));
-                //Info = Info.Where(i => i.AssociatedAccount.Contains(SearchString));
-                //Info = Info.Where(i => i.Subscription.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.SubscriptionEndDate.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.PurchaseDate.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.PurchasePrice.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.DevicesAllowed.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.EndOfSupportDate.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.Notes.Contains(SearchString));
+        //public async Task<IActionResult> Index(string SearchString)
+        //{
+        //    ViewData["Filter"] = SearchString;
+        //    var Info = from i in _context.Softwares
+        //               select i;
+        //    if (!String.IsNullOrEmpty(SearchString))
+        //    {
+        //        //Info = Info.Where(i => i.ProductKey.Contains(SearchString));
+        //        Info = Info.Where(i => i.SoftwareName.Contains(SearchString));
+        //        //Info = Info.Where(i => i.AssociatedAccount.Contains(SearchString));
+        //        //Info = Info.Where(i => i.Subscription.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.SubscriptionEndDate.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.PurchaseDate.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.PurchasePrice.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.DevicesAllowed.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.EndOfSupportDate.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.Notes.Contains(SearchString));
 
-            }
-            return View(Info);
-        }
+        //    }
+        //    return View(Info);
+        //}
 
         // GET: Software/Details/5
         public async Task<IActionResult> Details(int? id, string SubscriptionEndDate, string PurchaseDate, string EndOfSupportDate)

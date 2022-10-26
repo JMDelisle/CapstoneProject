@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 
 namespace TownOfStettler.Models
@@ -33,6 +35,10 @@ namespace TownOfStettler.Models
         public string? PowerSupply { get; set; }
         public string PurchaseStore { get; set; } = null!;
         public decimal PurchasePrice { get; set; }
+        [Display(Name = "Start Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+
         public DateOnly PurchaseDate { get; set; }
         public string OperatingSystem { get; set; } = null!;
         public bool Destroyed { get; set; }
@@ -64,6 +70,10 @@ namespace TownOfStettler.Models
 
             }
         }
+
+        [NotMapped]
+        public string IdTos => DeviceTypeId + "-" + TosNumber;
+
 
     }
 }
