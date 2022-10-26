@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TownOfStettler.Models
 {
@@ -24,5 +25,9 @@ namespace TownOfStettler.Models
         public virtual ICollection<Modification> Modifications { get; set; }
         public virtual ICollection<Output> Outputs { get; set; }
         public virtual ICollection<Part> Parts { get; set; }
+
+        //[NotMapped]
+        //public string IdTos => DeviceId + "-" + SerialNumber;
+
     }
 }

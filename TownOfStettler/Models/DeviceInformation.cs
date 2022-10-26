@@ -38,7 +38,6 @@ namespace TownOfStettler.Models
         [Display(Name = "Start Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-
         public DateOnly PurchaseDate { get; set; }
         public string OperatingSystem { get; set; } = null!;
         public bool Destroyed { get; set; }

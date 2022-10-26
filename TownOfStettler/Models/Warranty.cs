@@ -30,5 +30,8 @@ namespace TownOfStettler.Models
             }
         }
 
+        //[NotMapped]
+        //public string IdTos => Device + "-" + TosNumber;
+
     }
 }
