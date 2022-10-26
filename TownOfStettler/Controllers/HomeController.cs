@@ -29,6 +29,7 @@ namespace TownOfStettler.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(string searchString)
         {
+            string Information = "";
             int foundInfo = 0;
             ViewData["homeFilter"] = searchString;
             var Info = from i in _context.DeviceInformations
@@ -36,15 +37,26 @@ namespace TownOfStettler.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 Info = Info.Where(i => i.TosNumber.Contains(searchString));
+              
                 foreach (var item in Info)
                 {
                     foundInfo = item.Id;
+                    Information = item.TosNumber;
+                    Information = item.SerialNumber;
                 }
-              
+                //foreach (var item in Info)
+                //{
+                //    Information = item.TosNumber;
+                //}
+                //foreach (var item in Info)
+                //{
+                //    Information = item.SerialNumber;
+                //}
 
             }
             ViewBag.HomeInfo = foundInfo;
-            return View(foundInfo);
+            ViewBag.HomeInfo = Information;
+            return View(Info);
         }
 
         //public async Task<IActionResult> FindFilters(string searchString)
