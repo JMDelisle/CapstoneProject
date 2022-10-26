@@ -39,7 +39,7 @@ namespace TownOfStettler.Controllers
                                             string soundCardBrand, string videoCardBrand, string videoCardRamSize, string videoCardOutputType,
                                             string videoCardOutputNumber, string warrantyType, string warrantyLength, string warrantyExpiryDate,
                                             string TOSnumber, string cpuSerNumber, string cpuModel, string store, string price, string date,
-                                            string cpuOS, string notes, string monTOSNum, string monSerNum, string monOutNum, string networkCardSerNum,
+                                            string cpuOS, string notes, string monTOSNum, string monOutNum, string networkCardSerNum,
                                             string HDDserNum, string hrdwreTOSnum, string hrdwreType, string pwrSupply, string processorSerNum,
                                             string ramSerNum, string miscDriveSerNum, string vidCardSerNum, string printerType, string connectionType)
         {
@@ -236,7 +236,7 @@ namespace TownOfStettler.Controllers
             if (convertedHardwareDevice == 3 || convertedHardwareDevice == 4 || convertedHardwareDevice == 5)
             {
 
-                if (monitorSize != null || monTOSNum != null || monitorType != null || monitorResolution != null || monSerNum != null)
+                if (monitorSize != null || monTOSNum != null || monitorType != null || monitorResolution != null || monitorSerialNumber != null)
                 {
                     DisplayMonitor displayMonitor = new DisplayMonitor()
                     {
@@ -245,7 +245,7 @@ namespace TownOfStettler.Controllers
                         ViewType = monitorType,  //varchar (30)
                         Resolution = monitorResolution,  //varchar(20)
                         RefreshRateHz = int.Parse(monitorRefreshRate),  //int(3) (nullable)
-                        SerialNumber = monSerNum,  //varchar(50)
+                        SerialNumber = monitorSerialNumber,  //varchar(50)
                         OutputType = monitorOutput,  //varchar(10) (nullable)
                         NumberOfOutputs = int.Parse(monOutNum),  //int (nullable)
                     };
