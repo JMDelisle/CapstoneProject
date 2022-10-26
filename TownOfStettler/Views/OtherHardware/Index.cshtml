@@ -22,7 +22,7 @@
     <thead>
         <tr>
             <th>
-               @* @Html.DisplayNameFor(model => model.TosNumber)*@TOS Number
+                @* @Html.DisplayNameFor(model => model.TosNumber)*@TOS Number
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.TypeOfDevice)*@Type Of Device
@@ -31,44 +31,47 @@
                 @*@Html.DisplayNameFor(model => model.Destroyed)*@Destroyed
             </th>
             <th>
+                @*@Html.DisplayNameFor(model => model.HistoryNavigation)*@History ID
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.OwnerLocationNavigation)*@Owner Location 
+            </th>
+            <th>
                 @*@Html.DisplayNameFor(model => model.Notes)*@Notes
             </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.HistoryNavigation)*@History Navigation
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.OwnerLocationNavigation)*@Owner Location Navigation
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TosNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeOfDevice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Destroyed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HistoryNavigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OwnerLocationNavigation.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TosNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeOfDevice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destroyed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HistoryNavigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerLocationNavigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

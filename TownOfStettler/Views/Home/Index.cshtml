@@ -76,126 +76,33 @@
             -->
 
             <form asp-area="" asp-controller="Home" asp-action="Index" method="get">
-                    <label class="control-label mx-auto mt-5 mb-1">Search Term</label>
-                    <br />
-                    <input type="text" name="searchString" value="@ViewData["homeFilter"]"
-                           class="form-control w-75 mx-auto" style="max-width:350px" />
-                    <input type="submit" class="btn btn-primary mt-2 px-3 py-1 fw-bold" value="Find" />
+                <label class="control-label mx-auto mt-5 mb-1">Filter Search</label>
+                <br />
+                <input type="text" name="searchString" value="@ViewData["homeFilter"]"
+                       class="form-control w-75 mx-auto" style="max-width:350px" />
+                <input type="submit" class="btn btn-primary mt-2 px-3 py-1 fw-bold" value="Find" />
+                <input type="reset" class="btn btn-primary mt-2 px-3 py-1 fw-bold" id="btnClear" value="Clear" />
             </form>
 
         </li>
     </ul>
 
-    @if (!String.IsNullOrWhiteSpace((string)ViewData["homeFilter"])) 
+    @if (!String.IsNullOrWhiteSpace((string)ViewData["homeFilter"]))
     {
         <span class="lh-sm fs-5 text-white" style="white-space: pre-line;">
-            @if (@searchResults=="") {
-                <span>NO MATCH TO "@ViewData["homeFilter"]"</span>
+            @if (@searchResults == "")
+            {
+                <span>No Match To - "@ViewData["homeFilter"]"</span>
             }
-            else {
+            else
+            {
                 <span>
-                    FOUND MATCH TO "@ViewData["homeFilter"]" IN:
+                    No Match To - "@ViewData["homeFilter"]" In:
                     <br />
                     @searchResults
                 </span>
             }
-        </span>       
+        </span>
     }
 
 </div>
-
-
-@*@using PagedList.Mvc;
-@{
-    ViewData["Title"] = "Home Page";
-
-    string[,] allTables = new string[,] {
-                            { "", "Home", "Index"},
-                            { "Device Information", "DeviceInformation", "Index"},
-                            { "Display Monitor", "DisplayMonitor", "Index"},
-                            { "Ethernet Network", "EthernetNetwork", "Index" },
-                            { "Hard Drive", "HardDrive", "Index"},
-                            { "Hardware Device", "HardwareDevice", "Index"},
-                            { "History", "History", "Index" },
-                            { "Installed Software", "InstalledSoftware", "Index"},
-                            { "Inuse Monitor", "InuseMonitors", "Index"},
-                            { "Miscellaneous Drive/Reader", "SecondaryDrives", "Index"},
-                            { "Modification", "Modifications", "Index"},
-                            { "Other Hardware", "OtherHardware", "Index"},
-                            { "Output", "Outputs", "Index"},
-                            { "Owner Location", "OwnerLocation", "Index"},
-                            { "Part", "Parts", "Index" },
-                            { "Printer", "Printers", "Index"},
-                            { "Processor", "Processors", "Index"},
-                            { "Ram", "Ram", "Index" },
-                            { "Software", "Software", "Index" },
-                            { "Sound Card", "SoundCard", "Index"},
-                            { "Video Card", "VideoCard", "Index"},
-                            { "Warranty", "Warranty", "Index" }
-
-    };
-    int tableNumber = ViewBag.tableNumber ?? 0;
-
-
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-
-    <ul>
-        <li class="nav-item mt-5">
-            <form method="post" enctype="multipart/form-data"
-                  asp-area="" asp-controller="Home" asp-action="Index">
-                <label class="control-label mx-auto mb-1">Select Database Table</label>
-                <select name="table_number" id="table_number" class="form-control w-75 mx-auto"
-                        style="max-width:350px" onchange="this.form.submit()">
-                    <option value=0 selected disabled hidden></option>
-                    @for (int i = 1; i < allTables.GetLength(0); i++)
-                    {
-                        @if (@i == @tableNumber)
-                        {
-                            <option value=@i selected>@allTables[@i, 0]</option>
-                        }
-                        else
-                        {
-                            <option value=@i>@allTables[@i, 0]</option>
-                        }
-                    }
-                </select>
-            </form>
-
-            <button class="btn btn-primary mt-2 px-0 py-0 fw-bold">
-                <a class="nav-link text-white px-4 py-1" asp-area=""
-                   asp-controller=@allTables[@tableNumber, 1]
-                   asp-action=@allTables[@tableNumber, 2]>Go</a>
-            </button>
-
-            <form asp-action="Index" method="get">
-                <p>
-                    Menu Search: <input type="text" name="searchString" value="@ViewData["homeFilter"]" />
-                    <input type="submit" value="Filter" />
-                </p>
-            </form>
-
-        </li>
-    </ul>
-    <p>@ViewBag.HomeInfo</p>
-    @*<table class="table">
-    <thead>
-    <tr>
-    <th>
-    @Html.DisplayNameFor(model => model.TosNumber)
-    </th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model)
-    {
-    <tr>
-    <td>
-    @Html.DisplayFor(modelItem => item.TosNumber)
-    </td>
-    </tr>
-    }
-    </tbody>
-    </table>*@
