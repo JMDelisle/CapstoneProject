@@ -7,6 +7,7 @@ using TownOfStettler.Models.Exceptions;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using MessagePack;
+using ValidationException = TownOfStettler.Models.Exceptions.ValidationException;
 
 namespace TownOfStettler.Controllers
 {
@@ -53,7 +54,7 @@ namespace TownOfStettler.Controllers
             //{
             //    validationState.SubExceptions.Add(new Exception("Please choose a Monitor Size."));
             //}
-            //if (string.IsNullOrEmpty(monitorType,))
+            //if (string.IsNullOrEmpty(monitorType))
             //{
             //    validationState.SubExceptions.Add(new Exception("Please choose a Monitor Type."));
             //}
@@ -65,16 +66,16 @@ namespace TownOfStettler.Controllers
             //{
             //    validationState.SubExceptions.Add(new Exception("Please choose a Monitor Refresh Rate."));
             //}
-            //if (string.IsNullOrEmpty(monitorType,))
+            //if (string.IsNullOrEmpty(monitorType))
             //{
             //    validationState.SubExceptions.Add(new Exception("Please choose a Monitor Type."));
             //}
 
-            int convertedLocation = int.Parse(ownerLocationName);
+            //int convertedLocation = int.Parse(ownerLocationName);
             OwnerLocation ownerLocation = null;
             foreach (OwnerLocation entry in _context.OwnerLocations)
             {
-                if (entry.Id == convertedLocation)
+                if (entry.Name == ownerLocationName)
                 {
                     ownerLocation = entry;
                 };
@@ -95,7 +96,7 @@ namespace TownOfStettler.Controllers
             DeviceInformation deviceInformation = new DeviceInformation()
             {
                 DeviceTypeId = convertedHardwareDevice,
-                OwnerLocation = convertedLocation,
+                OwnerLocation = ownerLocation.Id,
                 TosNumber = TOSnumber,
                 SerialNumber = cpuSerNumber,
                 ModelNumber = cpuModel,
@@ -241,7 +242,7 @@ namespace TownOfStettler.Controllers
                     DisplayMonitor displayMonitor = new DisplayMonitor()
                     {
                         TosNumber = monTOSNum, //varchar(25)
-                        ViewSizeInches = int.Parse(monitorSize),  //decimal (3,2)
+                        ViewSizeInches = Decimal.Parse(monitorSize),  //decimal (3,2)
                         ViewType = monitorType,  //varchar (30)
                         Resolution = monitorResolution,  //varchar(20)
                         RefreshRateHz = int.Parse(monitorRefreshRate),  //int(3) (nullable)
@@ -257,7 +258,7 @@ namespace TownOfStettler.Controllers
             {
                 Printer printer = new Printer()
                 {
-                    OwnerLocation = convertedLocation,  //int FK
+                    OwnerLocation = ownerLocation.Id,  //int FK
                     DeviceId = deviceInformation.Id,  //int FK (nullable)
                     Type = printerType,  //varchar(20)
                     ConnectionType = connectionType,  //varchar(15)
