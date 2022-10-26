@@ -20,29 +20,29 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Warranty
-        //public async Task<IActionResult> Index()
-        //{
-        //    var databaseContext = _context.Warranties.Include(w => w.Device);
-        //    return View(await databaseContext.ToListAsync());
-        //}
+        public async Task<IActionResult> Index()
+        {
+            var databaseContext = _context.Warranties.Include(w => w.Device);
+            return View(await databaseContext.ToListAsync());
+        }
 
         //Search TypeOfWarranty
-        public async Task<IActionResult> Index(string SearchString)
-        {
-            ViewData["Filter"] = SearchString;
-            var Info = from i in _context.Warranties
-                       select i;
-            if (!String.IsNullOrEmpty(SearchString))
-            {
-                //Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
-                Info = Info.Where(i => i.TypeOfWarranty.Contains(SearchString));
-                //Info = Info.Where(i => i.LengthOfWarranty.Contains(SearchString));
-                //Info = Info.Where(i => i.WarrantyExpiryDate.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.Notes.Contains(SearchString));
+        //public async Task<IActionResult> Index(string SearchString)
+        //{
+        //    ViewData["Filter"] = SearchString;
+        //    var Info = from i in _context.Warranties
+        //               select i;
+        //    if (!String.IsNullOrEmpty(SearchString))
+        //    {
+        //        //Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
+        //        Info = Info.Where(i => i.TypeOfWarranty.Contains(SearchString));
+        //        //Info = Info.Where(i => i.LengthOfWarranty.Contains(SearchString));
+        //        //Info = Info.Where(i => i.WarrantyExpiryDate.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.Notes.Contains(SearchString));
 
-            }
-            return View(Info);
-        }
+        //    }
+        //    return View(Info);
+        //}
 
         // GET: Warranty/Details/5
         public async Task<IActionResult> Details(int? id)

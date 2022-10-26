@@ -20,34 +20,34 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: DisplayMonitor
-        //public async Task<IActionResult> Index()
-        //{
-        //    var databaseContext = _context.DisplayMonitors.Include(d => d.HistoryNavigation);
-        //    return View(await databaseContext.ToListAsync());
-        //}
+        public async Task<IActionResult> Index()
+        {
+            var databaseContext = _context.DisplayMonitors.Include(d => d.HistoryNavigation);
+            return View(await databaseContext.ToListAsync());
+        }
 
         //Search TosNumber
-        public async Task<IActionResult> Index(string SearchString)
-        {
-            ViewData["Filter"] = SearchString;
-            var Info = from i in _context.DisplayMonitors
-                       select i;
-            if (!String.IsNullOrEmpty(SearchString))
-            {
-                Info = Info.Where(i => i.TosNumber.Contains(SearchString));
-                //Info = Info.Where(i => i.ViewSizeInches.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.ViewType.Contains(SearchString));
-                //Info = Info.Where(i => i.Resolution.Contains(SearchString));
-                //Info = Info.Where(i => i.RefreshRateHz.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.SerialNumber.Contains(SearchString));
-                //Info = Info.Where(i => i.OutputType.Contains(SearchString));
-                //Info = Info.Where(i => i.NumberOfOutputs.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.History.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.Notes.Contains(SearchString));
+        //public async Task<IActionResult> Index(string SearchString)
+        //{
+        //    ViewData["Filter"] = SearchString;
+        //    var Info = from i in _context.DisplayMonitors
+        //               select i;
+        //    if (!String.IsNullOrEmpty(SearchString))
+        //    {
+        //        Info = Info.Where(i => i.TosNumber.Contains(SearchString));
+        //        //Info = Info.Where(i => i.ViewSizeInches.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.ViewType.Contains(SearchString));
+        //        //Info = Info.Where(i => i.Resolution.Contains(SearchString));
+        //        //Info = Info.Where(i => i.RefreshRateHz.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.SerialNumber.Contains(SearchString));
+        //        //Info = Info.Where(i => i.OutputType.Contains(SearchString));
+        //        //Info = Info.Where(i => i.NumberOfOutputs.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.History.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.Notes.Contains(SearchString));
 
-            }
-            return View(Info);
-        }
+        //    }
+        //    return View(Info);
+        //}
 
 
 

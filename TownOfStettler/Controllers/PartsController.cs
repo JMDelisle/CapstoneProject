@@ -20,30 +20,33 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Parts
-        //public async Task<IActionResult> Index()
-        //{
-        //    var databaseContext = _context.Parts.Include(p => p.DeviceHistory).Include(p => p.HardDrive).Include(p => p.OriginalDevice).Include(p => p.Ram).Include(p => p.SecondaryDrive).Include(p => p.SoundCard).Include(p => p.VideoCard);
-        //    return View(await databaseContext.ToListAsync());
-        //}
-        public async Task<IActionResult> Index(string SearchString)
+        public async Task<IActionResult> Index()
         {
-            ViewData["Filter"] = SearchString;
-            var Info = from i in _context.Parts
-                       select i;
-            if (!String.IsNullOrEmpty(SearchString))
-            {
-                Info = Info.Where(i => i.OriginalDeviceId.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.DeviceHistoryId.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.RamId.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.HardDriveId.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.SecondaryDriveId.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.VideoCardId.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.SoundCardId.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.Notes.ToString().Contains(SearchString));
-
-            }
-            return View(Info);
+            var databaseContext = _context.Parts.Include(p => p.DeviceHistory).Include(p => p.HardDrive).Include(p => p.OriginalDevice).Include(p => p.Ram).Include(p => p.SecondaryDrive).Include(p => p.SoundCard).Include(p => p.VideoCard);
+            return View(await databaseContext.ToListAsync());
         }
+
+        //public async Task<IActionResult> Index(string SearchString)
+        //{
+        //    ViewData["Filter"] = SearchString;
+        //    var Info = from i in _context.Parts
+        //               select i;
+        //    if (!String.IsNullOrEmpty(SearchString))
+        //    {
+        //        Info = Info.Where(i => i.OriginalDeviceId.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.DeviceHistoryId.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.RamId.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.HardDriveId.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.SecondaryDriveId.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.VideoCardId.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.SoundCardId.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.Notes.ToString().Contains(SearchString));
+
+        //    }
+        //    return View(Info);
+        //}
+
+
         // GET: Parts/Details/5
         public async Task<IActionResult> Details(int? id)
         {

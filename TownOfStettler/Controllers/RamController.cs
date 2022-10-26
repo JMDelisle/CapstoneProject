@@ -20,31 +20,33 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: Ram
-        //public async Task<IActionResult> Index()
-        //{
-        //    var databaseContext = _context.Rams.Include(r => r.Device);
-        //    return View(await databaseContext.ToListAsync());
-        //}
+        public async Task<IActionResult> Index()
+        {
+            var databaseContext = _context.Rams.Include(r => r.Device);
+            return View(await databaseContext.ToListAsync());
+        }
 
         //Search SerialNumber
-        public async Task<IActionResult> Index(string SearchString)
-        {
-            ViewData["Filter"] = SearchString;
-            var Info = from i in _context.Rams
-                       select i;
-            if (!String.IsNullOrEmpty(SearchString))
-            {
-                //Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.Type.Contains(SearchString));
-                //Info = Info.Where(i => i.SizeGb.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.SpeedMhz.ToString().Contains(SearchString));
-                Info = Info.Where(i => i.SerialNumber.Contains(SearchString));
-                //Info = Info.Where(i => i.Destroyed.ToString().Contains(SearchString));
-                //Info = Info.Where(i => i.Notes.Contains(SearchString));
+        //public async Task<IActionResult> Index(string SearchString)
+        //{
+        //    ViewData["Filter"] = SearchString;
+        //    var Info = from i in _context.Rams
+        //               select i;
+        //    if (!String.IsNullOrEmpty(SearchString))
+        //    {
+        //        //Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.Type.Contains(SearchString));
+        //        //Info = Info.Where(i => i.SizeGb.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.SpeedMhz.ToString().Contains(SearchString));
+        //        Info = Info.Where(i => i.SerialNumber.Contains(SearchString));
+        //        //Info = Info.Where(i => i.Destroyed.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.Notes.Contains(SearchString));
 
-            }
-            return View(Info);
-        }
+        //    }
+        //    return View(Info);
+        //}
+
+
         // GET: Ram/Details/5
         public async Task<IActionResult> Details(int? id)
         {
