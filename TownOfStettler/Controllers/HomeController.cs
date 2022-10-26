@@ -26,25 +26,26 @@ namespace TownOfStettler.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> Index(string searchString)
+        {
+            int foundInfo = 0;
+            ViewData["homeFilter"] = searchString;
+            var Info = from i in _context.DeviceInformations
+                       select i;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Info = Info.Where(i => i.TosNumber.Contains(searchString));
+                foreach (var item in Info)
+                {
+                    foundInfo = item.Id;
+                }
+              
 
-        //public async Task<IActionResult> Index(string searchString)
-        //{
-        //    int foundInfo = 0;
-        //    ViewData["homeFilter"] = searchString;
-        //    var Info = from i in _context.DeviceInformations
-        //               select i;
-        //    if (!String.IsNullOrEmpty(searchString))
-        //    {
-        //        Info = Info.Where(i => i.TosNumber.Contains(searchString));
-        //       foreach(var item in Info)
-        //        {
-        //            foundInfo = item.Id;
-        //        }
-
-        //    }
-        //    ViewBag.HomeInfo = foundInfo;
-        //    return View();
-        //}
+            }
+            ViewBag.HomeInfo = foundInfo;
+            return View(foundInfo);
+        }
 
         //public async Task<IActionResult> FindFilters(string searchString)
         //{
