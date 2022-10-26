@@ -12,7 +12,7 @@ namespace TownOfStettler.Controllers
 {
     public class NewDeviceEntryController : Controller
     {
-        private readonly DatabaseContext _context; 
+        private readonly DatabaseContext _context;
         public NewDeviceEntryController(DatabaseContext context)
         {
             _context = context;
@@ -30,7 +30,18 @@ namespace TownOfStettler.Controllers
             return View();
         }
 
-        public IActionResult EnterNewDevice(string hardwareDevice, string monitorSize, string monitorType, string monitorResolution, string monitorRefreshRate, string monitorSerialNumber, string monitorOutput, string networkCardSpeed, string networkCardWireless, string networkCardBluetooth, string hardDriveType, string hardDriveSize, string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string processorType, string processorSpeed, string processorGeneration, string processorCoreCount, string ramType, string RamSize, string ramSpeed, string secondaryDriveType, string secondaryDriveRemoveable, string soundCardBrand, string videoCardBrand, string videoCardRamSize, string videoCardOutputType, string videoCardOutputNumber, string warrantyType, string warrantyLength, string warrantyExpiryDate, string TOSnumber, string cpuSerNumber, string cpuModel, string store, string price, string date, string cpuOS, string notes, string monTOSNum, string monSerNum, string monOutNum, string networkCardSerNum, string HDDserNum, string hrdwreTOSnum, string hrdwreType, string pwrSupply, string processorSerNum, string ramSerNum, string miscDriveSerNum, string vidCardSerNum, string printerType, string connectionType)
+        public IActionResult EnterNewDevice(string hardwareDevice, string monitorSize, string monitorType, string monitorResolution,
+                                            string monitorRefreshRate, string monitorSerialNumber, string monitorOutput, string networkCardSpeed,
+                                            string networkCardWireless, string networkCardBluetooth, string hardDriveType, string hardDriveSize,
+                                            string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string processorType,
+                                            string processorSpeed, string processorGeneration, string processorCoreCount, string ramType,
+                                            string RamSize, string ramSpeed, string secondaryDriveType, string secondaryDriveRemoveable,
+                                            string soundCardBrand, string videoCardBrand, string videoCardRamSize, string videoCardOutputType,
+                                            string videoCardOutputNumber, string warrantyType, string warrantyLength, string warrantyExpiryDate,
+                                            string TOSnumber, string cpuSerNumber, string cpuModel, string store, string price, string date,
+                                            string cpuOS, string notes, string monTOSNum, string monSerNum, string monOutNum, string networkCardSerNum,
+                                            string HDDserNum, string hrdwreTOSnum, string hrdwreType, string pwrSupply, string processorSerNum,
+                                            string ramSerNum, string miscDriveSerNum, string vidCardSerNum, string printerType, string connectionType)
         {
             //ValidationException validationState = new ValidationException();
 
@@ -60,10 +71,17 @@ namespace TownOfStettler.Controllers
             //}
 
             int convertedLocation = int.Parse(ownerLocationName);
-
-            if (_context.OwnerLocations.Id != convertedLocation)
+            OwnerLocation ownerLocation = null;
+            foreach (OwnerLocation entry in _context.OwnerLocations)
             {
-                OwnerLocation ownerLocation = new OwnerLocation()
+                if (entry.Id == convertedLocation)
+                {
+                    ownerLocation = entry;
+                };
+            }
+            if (ownerLocation is null)
+            {
+                ownerLocation = new OwnerLocation()
                 {
                     Name = ownerLocationName,  //varchar(60)
                     Address = ownerAddress,  //varchar(75)
@@ -74,32 +92,31 @@ namespace TownOfStettler.Controllers
             }
 
             int convertedHardwareDevice = int.Parse(hardwareDevice);
+            DeviceInformation deviceInformation = new DeviceInformation()
+            {
+                DeviceTypeId = convertedHardwareDevice,
+                OwnerLocation = convertedLocation,
+                TosNumber = TOSnumber,
+                SerialNumber = cpuSerNumber,
+                ModelNumber = cpuModel,
+                PowerSupply = pwrSupply,
+                PurchaseStore = store,
+                PurchasePrice = Math.Round(Decimal.Parse(price), 2),
+                PurchaseDate = DateOnly.Parse(date),
+                OperatingSystem = cpuOS,
+                Destroyed = false,
+                Notes = notes,
+            };
 
-            if (convertedHardwareDevice == 1 || convertedHardwareDevice == 2 || convertedHardwareDevice == 3) 
-                {
-                    DeviceInformation deviceInformation = new DeviceInformation()
-                    {
-                        DeviceTypeId = convertedHardwareDevice,
-                        OwnerLocation = convertedLocation,
-                        TosNumber = TOSnumber,
-                        SerialNumber = cpuSerNumber,
-                        ModelNumber = cpuModel,
-                        PowerSupply = pwrSupply,
-                        PurchaseStore = store,
-                        PurchasePrice = Math.Round(Decimal.Parse(price), 2),
-                        PurchaseDate = DateOnly.Parse(date),
-                        OperatingSystem = cpuOS,
-                        Destroyed = false,
-                        Notes = notes,
-                    };
+            _context.DeviceInformations.Add(deviceInformation);
 
-                    _context.DeviceInformations.Add(deviceInformation);
-
+            if (convertedHardwareDevice == 1 || convertedHardwareDevice == 2 || convertedHardwareDevice == 3)
+            {
                 if (networkCardSpeed != null || networkCardBluetooth != null || networkCardWireless != null || networkCardSerNum != null || networkCardSerNum != null)
                 {
                     EthernetNetwork ethernetNetwork = new EthernetNetwork()
                     {
-                        DeviceId = _context.DeviceInformations.Id,  //int FK
+                        DeviceId = deviceInformation.Id,  //int FK
                         Speed = networkCardSpeed,  //varchar (30)
                         Wireless = bool.Parse(networkCardWireless),  //bool
                         Bluetooth = bool.Parse(networkCardBluetooth),  //bool
@@ -113,7 +130,7 @@ namespace TownOfStettler.Controllers
                 {
                     HardDrive hardDrive = new HardDrive()
                     {
-                        DeviceId = _context.DeviceInformations.Id,  //int FK
+                        DeviceId = deviceInformation.Id,  //int FK
                         Type = hardDriveType,  //varchar(20)
                         SizeGb = int.Parse(hardDriveSize),  //int(7)
                         SerialNumber = HDDserNum,  //varchar(30)
@@ -126,7 +143,7 @@ namespace TownOfStettler.Controllers
                 {
                     OtherHardware hardware = new OtherHardware()
                     {
-                        OwnerLocation = _context.OwnerLocations.Id,  //int FK
+                        OwnerLocation = ownerLocation.Id,  //int FK
                         TosNumber = hrdwreTOSnum,  //varchar(20)
                         TypeOfDevice = hrdwreType,  //varchar(40)
                         Destroyed = false,  //bool
@@ -134,11 +151,11 @@ namespace TownOfStettler.Controllers
                     _context.OtherHardwares.Add(hardware);
                 }
 
-                if (processorType != null || processorSpeed != null || processorGeneration != null ||)
+                if (processorType != null || processorSpeed != null || processorGeneration != null)
                 {
                     Processor processor = new Processor()
                     {
-                        DeviceId = _context.DeviceInformations.Id,  //int FK
+                        DeviceId = deviceInformation.Id,  //int FK
                         Type = processorType,  //varchar(25)
                         SpeedGhz = Math.Round(Decimal.Parse(processorSpeed), 2),  //decimal(5,3)
                         SerialNumber = processorSerNum,  //varchar(30)
@@ -153,7 +170,7 @@ namespace TownOfStettler.Controllers
                 {
                     Ram ram = new Ram()
                     {
-                        DeviceId = _context.DeviceInformations.Id,  //int FK
+                        DeviceId = deviceInformation.Id,  //int FK
                         Type = ramType,  //varchar(15)
                         SizeGb = int.Parse(RamSize),  //int(11)
                         SpeedMhz = int.Parse(ramSpeed),  //int(5) (nullable)
@@ -167,7 +184,7 @@ namespace TownOfStettler.Controllers
                 {
                     SecondaryDrive secondaryDrive = new SecondaryDrive()
                     {
-                        DeviceId = _context.DeviceInformations.Id,  //int FK
+                        DeviceId = deviceInformation.Id,  //int FK
                         Type = secondaryDriveType,  //varchar(30)
                         Removable = bool.Parse(secondaryDriveRemoveable),  //bool
                         SerialNumber = miscDriveSerNum,  //varchar(30)
@@ -180,7 +197,7 @@ namespace TownOfStettler.Controllers
                 {
                     SoundCard soundCard = new SoundCard()
                     {
-                        DeviceId = _context.DeviceInformations.Id,  //int FK
+                        DeviceId = deviceInformation.Id,  //int FK
                         Brand = soundCardBrand,  //varchar(20) (nullable)
                         Destroyed = false, //bool
                     };
@@ -193,7 +210,7 @@ namespace TownOfStettler.Controllers
                     {
                         VideoCard videoCard = new VideoCard()
                         {
-                            DeviceId = _context.DeviceInformations.Id,  //int FK
+                            DeviceId = deviceInformation.Id,  //int FK
                             Brand = videoCardBrand,  //varchar(20) (nullable)
                             RamSizeGb = int.Parse(videoCardRamSize),  //int(11)
                             SerialNumber = vidCardSerNum,  //varchar(30)
@@ -206,7 +223,7 @@ namespace TownOfStettler.Controllers
                             Output output = new Output()
                             {
                                 Type = videoCardOutputType,  //varchar(10) PK
-                                VideoCardId = _context.VideoCards.Id,  //int FK
+                                VideoCardId = videoCard.Id,  //_context.VideoCards.Id,  //int FK
                                 NumberOfOutputs = int.Parse(videoCardOutputNumber),  //int(2)
                             };
                             _context.Outputs.Add(output);
@@ -216,8 +233,8 @@ namespace TownOfStettler.Controllers
                 }
             }
 
-            if (convertedHardwareDevice == 3 || convertedHardwareDevice == 4 || convertedHardwareDevice ==5) 
-                { 
+            if (convertedHardwareDevice == 3 || convertedHardwareDevice == 4 || convertedHardwareDevice == 5)
+            {
 
                 if (monitorSize != null || monTOSNum != null || monitorType != null || monitorResolution != null || monSerNum != null)
                 {
@@ -233,19 +250,7 @@ namespace TownOfStettler.Controllers
                         NumberOfOutputs = int.Parse(monOutNum),  //int (nullable)
                     };
                     _context.DisplayMonitors.Add(displayMonitor);
-                }
-
-                if (warrantyType != null || warrantyLength != null)
-                {
-                    Warranty warranty = new Warranty()
-                    {
-                        DeviceId = _context.DeviceInformations.Id,  //int FK
-                        TypeOfWarranty = warrantyType,  //varchar(100)
-                        LengthOfWarranty = warrantyLength,  //varchar(15)
-                        WarrantyExpiryDate = DateOnly.Parse(warrantyExpiryDate),  //date (nullable)
-                    };
-                    _context.Warranties.Add(warranty);
-                }
+                }                
             }
 
             if (convertedHardwareDevice == 5)
@@ -253,12 +258,25 @@ namespace TownOfStettler.Controllers
                 Printer printer = new Printer()
                 {
                     OwnerLocation = convertedLocation,  //int FK
-                    DeviceId = _context.DeviceInformations.Id,  //int FK (nullable)
+                    DeviceId = deviceInformation.Id,  //int FK (nullable)
                     Type = printerType,  //varchar(20)
                     ConnectionType = connectionType,  //varchar(15)
                 };
                 _context.Printers.Add(printer);
             }
+
+            if (warrantyType != null || warrantyLength != null)
+            {
+                Warranty warranty = new Warranty()
+                {
+                    DeviceId = deviceInformation.Id,  //int FK
+                    TypeOfWarranty = warrantyType,  //varchar(100)
+                    LengthOfWarranty = warrantyLength,  //varchar(15)
+                    WarrantyExpiryDate = DateOnly.Parse(warrantyExpiryDate),  //date (nullable)
+                };
+                _context.Warranties.Add(warranty);
+            }
+
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
