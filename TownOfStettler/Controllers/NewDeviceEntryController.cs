@@ -21,12 +21,12 @@ namespace TownOfStettler.Controllers
 
         public IActionResult Index()
         {
-            //// If there are exceptions, store them in the view data/bag
-            //if (TempData["Exceptions"] != null)
-            //{
-            //    ViewData["Exceptions"] =
-            //         JsonConvert.DeserializeObject(TempData["Exceptions"].ToString(), typeof(ValidationException));
-            //}
+            // If there are exceptions, store them in the view data/bag
+            if (TempData["Exceptions"] != null)
+            {
+                ViewData["Exceptions"] =
+                     JsonConvert.DeserializeObject(TempData["Exceptions"].ToString(), typeof(ValidationException));
+            }
 
             return View();
         }
@@ -44,32 +44,216 @@ namespace TownOfStettler.Controllers
                                             string HDDserNum, string hrdwreTOSnum, string hrdwreType, string pwrSupply, string processorSerNum,
                                             string ramSerNum, string miscDriveSerNum, string vidCardSerNum, string printerType, string connectionType)
         {
-            //ValidationException validationState = new ValidationException();
+            ValidationException validationState = new ValidationException();
 
-            //if (string.IsNullOrEmpty(hardwareDevice))
-            //{
-            //    validationState.SubExceptions.Add(new Exception("Please choose a Device Hardware Type."));
-            //}
-            //if (string.IsNullOrEmpty(monitorSize))
-            //{
-            //    validationState.SubExceptions.Add(new Exception("Please choose a Monitor Size."));
-            //}
-            //if (string.IsNullOrEmpty(monitorType))
-            //{
-            //    validationState.SubExceptions.Add(new Exception("Please choose a Monitor Type."));
-            //}
-            //if (string.IsNullOrEmpty(monitorResolution))
-            //{
-            //    validationState.SubExceptions.Add(new Exception("Please choose a Monitor Resolution."));
-            //}
-            //if (string.IsNullOrEmpty(monitorRefreshRate))
-            //{
-            //    validationState.SubExceptions.Add(new Exception("Please choose a Monitor Refresh Rate."));
-            //}
-            //if (string.IsNullOrEmpty(monitorType))
-            //{
-            //    validationState.SubExceptions.Add(new Exception("Please choose a Monitor Type."));
-            //}
+            if (string.IsNullOrEmpty(hardwareDevice))
+            {
+                validationState.SubExceptions.Add(new Exception("Please choose a Device Hardware Type."));
+            }
+            if (string.IsNullOrEmpty(monitorSize))
+            {
+                validationState.SubExceptions.Add(new Exception("Please choose a Monitor Size."));
+            }
+            if (string.IsNullOrEmpty(monitorType))
+            {
+                validationState.SubExceptions.Add(new Exception("Please choose a Monitor Type."));
+            }
+            if (string.IsNullOrEmpty(monitorResolution))
+            {
+                validationState.SubExceptions.Add(new Exception("Please choose a Monitor Resolution."));
+            }
+            if (string.IsNullOrEmpty(monitorRefreshRate))
+            {
+                validationState.SubExceptions.Add(new Exception("Please choose a Monitor Refresh Rate."));
+            }
+            if (string.IsNullOrEmpty(monitorSerialNumber))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(monitorOutput))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(networkCardSpeed))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(networkCardWireless))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(networkCardBluetooth))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(hardDriveType))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(hardDriveSize))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(ownerLocationName))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(ownerAddress))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(ownerPhoneNumber))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(processorType))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(processorSpeed))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(processorGeneration))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(processorCoreCount))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(ramType))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(RamSize))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(ramSpeed))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(secondaryDriveType))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(secondaryDriveRemoveable))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(soundCardBrand))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(videoCardBrand))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(videoCardRamSize))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(videoCardOutputType))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(videoCardOutputNumber))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(warrantyType))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(warrantyLength))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(warrantyExpiryDate))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(TOSnumber))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(cpuSerNumber))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(cpuModel))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(store))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(price))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(date))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(cpuOS))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(monTOSNum))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(monOutNum))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(networkCardSerNum))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(HDDserNum))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(hrdwreTOSnum))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(hrdwreType))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(pwrSupply))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(processorSerNum))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(ramSerNum))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(miscDriveSerNum))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(vidCardSerNum))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(printerType))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(connectionType))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
 
             //int convertedLocation = int.Parse(ownerLocationName);
             OwnerLocation ownerLocation = null;
@@ -90,6 +274,7 @@ namespace TownOfStettler.Controllers
                 };
 
                 _context.OwnerLocations.Add(ownerLocation);
+                _context.SaveChanges();
             }
 
             int convertedHardwareDevice = int.Parse(hardwareDevice);
@@ -110,6 +295,7 @@ namespace TownOfStettler.Controllers
             };
 
             _context.DeviceInformations.Add(deviceInformation);
+            _context.SaveChanges();
 
             if (convertedHardwareDevice == 1 || convertedHardwareDevice == 2 || convertedHardwareDevice == 3)
             {
@@ -125,6 +311,7 @@ namespace TownOfStettler.Controllers
                         Destroyed = false,
                     };
                     _context.EthernetNetworks.Add(ethernetNetwork);
+                    _context.SaveChanges();
 
                 }
                 if (hardDriveType != null || hardDriveSize != null || HDDserNum != null)
@@ -138,6 +325,7 @@ namespace TownOfStettler.Controllers
                         Destroyed = false,
                     };
                     _context.HardDrives.Add(hardDrive);
+                    _context.SaveChanges();
                 }
 
                 if (hrdwreTOSnum != null || hrdwreType != null)
@@ -150,6 +338,7 @@ namespace TownOfStettler.Controllers
                         Destroyed = false,  //bool
                     };
                     _context.OtherHardwares.Add(hardware);
+                    _context.SaveChanges();
                 }
 
                 if (processorType != null || processorSpeed != null || processorGeneration != null)
@@ -165,6 +354,7 @@ namespace TownOfStettler.Controllers
                         Destroyed = false,  //bool
                     };
                     _context.Processors.Add(processor);
+                    _context.SaveChanges();
                 }
 
                 if (ramType != null || RamSize != null || ramSpeed != null || ramSerNum != null)
@@ -179,6 +369,7 @@ namespace TownOfStettler.Controllers
                         Destroyed = false,  //bool
                     };
                     _context.Rams.Add(ram);
+                    _context.SaveChanges();
                 }
 
                 if (secondaryDriveType != null || secondaryDriveRemoveable != null)
@@ -192,6 +383,7 @@ namespace TownOfStettler.Controllers
                         Destroyed = false,  //bool
                     };
                     _context.SecondaryDrives.Add(secondaryDrive);
+                    _context.SaveChanges();
                 }
 
                 if (soundCardBrand != null)
@@ -203,6 +395,7 @@ namespace TownOfStettler.Controllers
                         Destroyed = false, //bool
                     };
                     _context.SoundCards.Add(soundCard);
+                    _context.SaveChanges();
                 }
 
                 while (videoCardRamSize != null)
@@ -218,6 +411,7 @@ namespace TownOfStettler.Controllers
                             Destroyed = false,  //bool
                         };
                         _context.VideoCards.Add(videoCard);
+                        _context.SaveChanges();
 
                         if (videoCardOutputNumber != null)
                         {
@@ -228,6 +422,7 @@ namespace TownOfStettler.Controllers
                                 NumberOfOutputs = int.Parse(videoCardOutputNumber),  //int(2)
                             };
                             _context.Outputs.Add(output);
+                            _context.SaveChanges();
                         }
                     }
 
@@ -251,6 +446,7 @@ namespace TownOfStettler.Controllers
                         NumberOfOutputs = int.Parse(monOutNum),  //int (nullable)
                     };
                     _context.DisplayMonitors.Add(displayMonitor);
+                    _context.SaveChanges();
                 }                
             }
 
@@ -264,6 +460,7 @@ namespace TownOfStettler.Controllers
                     ConnectionType = connectionType,  //varchar(15)
                 };
                 _context.Printers.Add(printer);
+                _context.SaveChanges();
             }
 
             if (warrantyType != null || warrantyLength != null)
