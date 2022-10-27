@@ -297,6 +297,8 @@ namespace TownOfStettler.Controllers
             _context.DeviceInformations.Add(deviceInformation);
             _context.SaveChanges();
 
+            // if statement to allow for laptop monitor goes here to make the Monitor TOS number the same as the Device TOS Number
+
             if (convertedHardwareDevice == 1 || convertedHardwareDevice == 2 || convertedHardwareDevice == 3)
             {
                 if (networkCardSpeed != null || networkCardBluetooth != null || networkCardWireless != null || networkCardSerNum != null || networkCardSerNum != null)
@@ -326,21 +328,7 @@ namespace TownOfStettler.Controllers
                     };
                     _context.HardDrives.Add(hardDrive);
                     _context.SaveChanges();
-                }
-
-                if (hrdwreTOSnum != null || hrdwreType != null)
-                {
-                    OtherHardware hardware = new OtherHardware()
-                    {
-                        OwnerLocation = ownerLocation.Id,  //int FK
-                        TosNumber = hrdwreTOSnum,  //varchar(20)
-                        TypeOfDevice = hrdwreType,  //varchar(40)
-                        Destroyed = false,  //bool
-                    };
-                    _context.OtherHardwares.Add(hardware);
-                    _context.SaveChanges();
-                }
-
+                }                
                 if (processorType != null || processorSpeed != null || processorGeneration != null)
                 {
                     Processor processor = new Processor()
@@ -415,6 +403,7 @@ namespace TownOfStettler.Controllers
 
                         if (videoCardOutputNumber != null)
                         {
+                            // if statement to check to see if the input (PK) is on the table 
                             Output output = new Output()
                             {
                                 Type = videoCardOutputType,  //varchar(10) PK
@@ -463,6 +452,21 @@ namespace TownOfStettler.Controllers
                 _context.SaveChanges();
             }
 
+            if (convertedHardwareDevice == 6)
+            {           
+                if (hrdwreTOSnum != null || hrdwreType != null)
+                {
+                    OtherHardware hardware = new OtherHardware()
+                    {
+                        OwnerLocation = ownerLocation.Id,  //int FK
+                        TosNumber = hrdwreTOSnum,  //varchar(20)
+                        TypeOfDevice = hrdwreType,  //varchar(40)
+                        Destroyed = false,  //bool
+                    };
+                    _context.OtherHardwares.Add(hardware);
+                    _context.SaveChanges();
+                }
+            }
             if (warrantyType != null || warrantyLength != null)
             {
                 Warranty warranty = new Warranty()

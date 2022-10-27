@@ -24,18 +24,84 @@
 
 
             <div class="form-group">
-                <label class="control-label">Hardware Device</label>
-                <input name="hardwareDevice" class="form-control" placeholder="Int null" />
+                <label class="control-label">Hardware Device Category ID #</label>
+                <input name="hardwareDevice" class="form-control" placeholder="Int  not null" />
+            </div>
+            <p></p>
+
+
+            <div class="form-group">
+                <label class="control-label">Owner/Location ID #</label>
+                <input name="ownerLocationName" class="form-control" placeholder="int not null" />
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">TOS Number</label>
-                <input name="TOSNumber" class="form-control" placeholder="String not null" />
+                <label class="control-label">Owner/Location Address</label>
+                <input nameownerAddress class="form-control" placeholder="String not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Owner/Location Phone Number</label>
+                <input name="ownerPhoneNumber" class="form-control" placeholder="String null" />
+            </div>
+            <p></p>
+
+
+            <div class="form-group">
+                <label class="control-label">New Device TOS Number</label>
+                <input name="TOSNumber" class="form-control" placeholder="New Device TOS Number String not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Device Serial Number (unknown if unavailable)</label>
+                <input name="cpuSerNumber" class="form-control" placeholder="String not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Device Model (unknown if unavailable)</label>
+                <input name="cpuModel" class="form-control" placeholder="String not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Power Supply Or Battery Info</label>
+                <input name="pwrSupply" class="form-control" placeholder="String null " />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Purchase Store</label>
+                <input name="store" class="form-control" placeholder="String not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Purchase Price</label>
+                <input name="price" class="form-control" placeholder="Decimal  not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Date Of Purchase</label>
+                <input name="date" class="form-control" placeholder="DateOnly  not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Device OS</label>
+                <input name="cpuOS" class="form-control" placeholder="String not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Notes</label>
+                <input name="notes" class="form-control" placeholder="String null" />
+            </div>
+            <p></p>
+
+
+            <div class="form-group">
+                <label class="control-label">Monitor TOS Num ***Skip if entering a Laptop***</label>
+                <input name="monTOSNum" class="form-control" placeholder="New Monitor TOS Number String not null" />
             </div>
             <p></p>
             <div class="form-group">
                 <label class="control-label">Monitor Size</label>
-                <input name="monitorSize" class="form-control" placeholder="Decimal null" />
+                <input name="monitorSize" class="form-control" placeholder="Decimal  not null" />
             </div>
             <p></p>
             <div class="form-group">
@@ -45,7 +111,7 @@
             <p></p>
             <div class="form-group">
                 <label class="control-label">Monitor Resolution</label>
-                <input name="monitorResolution" class="form-control" placeholder="String null"/>
+                <input name="monitorResolution" class="form-control" placeholder="String null" />
             </div>
             <p></p>
             <div class="form-group">
@@ -54,30 +120,43 @@
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">Monitor Serial Number</label>
+                <label class="control-label">Monitor Serial Number ***Unknown if Laptop***</label>
                 <input name="monitorSerialNumber" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">Monitor Output</label>
-                <input name="monitorOutput" class="form-control" placeholder="String null"/>
+                <label class="control-label">Monitor Output Type(s)</label>
+                <input name="monitorOutput" class="form-control" placeholder="String null" />
             </div>
             <p></p>
+            <div class="form-group">
+                <label class="control-label">Number of Outputs Monitor Has</label>
+                <input name="monOutNum" class="form-control" placeholder="int null" />
+            </div>
+            <p></p>
+
+
             <div class="form-group">
                 <label class="control-label">Network Card Speed</label>
                 <input name="networkCardSpeed" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">Network Card Wireless</label>
-                <input name="networkCardWireless" class="form-control" placeholder="Bool null" />
+                <label class="control-label">Network Card Wireless (True/False)</label>
+                <input name="networkCardWireless" class="form-control" placeholder="Bool not null" />
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">Network Card Bluetooth</label>
-                <input name="networkCardBluetooth" class="form-control" placeholder="Bool null" />
+                <label class="control-label">Network Card Bluetooth (True/False)</label>
+                <input name="networkCardBluetooth" class="form-control" placeholder="Bool not null" />
+            </div>
+            <p></p><div class="form-group">
+                <label class="control-label">Network Card Serial Number (unknown if unavailable)</label>
+                <input name="networkCardSerNum" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
+
+
             <div class="form-group">
                 <label class="control-label">Hard Drive Type</label>
                 <input name="hardDriveType" class="form-control" placeholder="String not null" />
@@ -85,78 +164,92 @@
             <p></p>
             <div class="form-group">
                 <label class="control-label">Hard Drive Size</label>
-                <input name="hardDriveSize" class="form-control" placeholder="Int null"/>
+                <input name="hardDriveSize" class="form-control" placeholder="Int null" />
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">Owner Location Name</label>
-                <input name="ownerLocationName" class="form-control" placeholder="String not null"/>
+                <label class="control-label">HDD Serial Number (unknown if unavailable)</label>
+                <input name="HDDserNum" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
-            <div class="form-group">
-                <label class="control-label">Owner Address</label>
-                <input nameownerAddress class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Owner Phone Number</label>
-                <input name="ownerPhoneNumber" class="form-control" placeholder="String null" />
-            </div>
-            <p></p>
+
+
             <div class="form-group">
                 <label class="control-label">Processor Type</label>
                 <input name="processorType" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">Processor Speed</label>
-                <input name="processorSpeed" class="form-control" placeholder="decimal null" />
+                <label class="control-label">Processor Speed (GHz)</label>
+                <input name="processorSpeed" class="form-control" placeholder="decimal  not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Processor Serial Number (unknown if unavailable)</label>
+                <input name="processorSerNum" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
             <div class="form-group">
                 <label class="control-label">Processor Generation</label>
-                <input name="processorGeneration" class="form-control" placeholder="Int null"/>
+                <input name="processorGeneration" class="form-control" placeholder="Int null" />
             </div>
             <p></p>
             <div class="form-group">
                 <label class="control-label">Processor Core Count</label>
-                <input name="processorCoreCount" class="form-control" placeholder="Int null"/>
+                <input name="processorCoreCount" class="form-control" placeholder="Int null" />
             </div>
             <p></p>
+
+
             <div class="form-group">
                 <label class="control-label">Ram Type</label>
                 <input name="ramType" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">Ram Size</label>
-                <input name="RamSize" class="form-control" placeholder="Int null"/>
+                <label class="control-label">Ram Size (GB)</label>
+                <input name="RamSize" class="form-control" placeholder="Int null" />
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">Ram Speed</label>
-                <input name="ramSpeed" class="form-control" placeholder="Int null"/>
+                <label class="control-label">Ram Speed (MHz)</label>
+                <input name="ramSpeed" class="form-control" placeholder="Int null" />
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">
-                    Miscellaneous Drive/Reader Index
-                    Type
-                </label>
-                <input name="secondaryDriveType" class="form-control" placeholder="String not null"/>
+                <label class="control-label">Ram Serial Number (unknown if unavailable)</label>
+                <input name="ramSerNum" class="form-control" placeholder="String not null" />
+            </div>
+            <p></p>
+
+
+            <div class="form-group">
+                <label class="control-label">Miscellaneous Drive/Reader Type(CD/DVD/Multi-Card/USB)</label>
+                <input name="secondaryDriveType" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">
-                    Miscellaneous Drive/Reader Index
-                    Removeable
-                </label>
+                <label class="control-label">Is the Miscellaneous Drive/Reader Removeable (true/false)</label>
                 <input name="secondaryDriveRemoveable" class="form-control" placeholder="Bool null" />
             </div>
             <p></p>
             <div class="form-group">
+                <label class="control-label">Miscellaneous Drive Serial Number (unknown if unavailable)</label>
+                <input name="miscDriveSerNum" class="form-control" placeholder="String not null" />
+            </div>
+            <p></p>
+
+
+            <div class="form-group">
                 <label class="control-label">Sound Card Brand</label>
-                <input name="soundCardBrand" class="form-control" placeholder="String null"/>
+                <input name="soundCardBrand" class="form-control" placeholder="String null" />
+            </div>
+            <p></p>
+
+
+            <div class="form-group">
+                <label class="control-label">Video Card Ram Size (GB),</label>
+                <input name="videoCardRamSize," class="form-control" placeholder="Int not null" />
             </div>
             <p></p>
             <div class="form-group">
@@ -165,20 +258,24 @@
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">Video Card Ram Size,</label>
-                <input name="videoCardRamSize," class="form-control" placeholder="Int null" />
+                <label class="control-label">Video Card Serial Number (unknown if unavailable)</label>
+                <input name="vidCardSerNum" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
+
+
             <div class="form-group">
-                <label class="control-label">Video Card Output Type</label>
+                <label class="control-label">Type of Outputs on Video Card</label>
                 <input name="videoCardOutputType" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
             <div class="form-group">
-                <label class="control-label">Video Card Output Number</label>
+                <label class="control-label">Number of Outputs on Video Card</label>
                 <input name="videoCardOutputNumber" class="form-control" placeholder="Int nul" />
             </div>
             <p></p>
+
+
             <div class="form-group">
                 <label class="control-label">Warranty Type</label>
                 <input name="warrantyType" class="form-control" placeholder="String not null" />
@@ -186,7 +283,7 @@
             <p></p>
             <div class="form-group">
                 <label class="control-label">Warranty Length</label>
-                <input name="warrantyLength" class="form-control" placeholder="String not null"  />
+                <input name="warrantyLength" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
             <div class="form-group">
@@ -194,108 +291,10 @@
                 <input name="warrantyExpiryDate" class="form-control" placeholder="DateOnly not null" />
             </div>
             <p></p>
+
+
             <div class="form-group">
-                <label class="control-label">Device TOS Number</label>
-                <input name="TOSnumber" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">CPU Ser Number</label>
-                <input name="cpuSerNumber" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">CPU Model</label>
-                <input name="cpuModel" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Store</label>
-                <input name="store" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Price</label>
-                <input name="price" class="form-control" placeholder="Decimal null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Date</label>
-                <input name="date" class="form-control" placeholder="DateOnly null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">CPU OS</label>
-                <input name="cpuOS" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Notes</label>
-                <input name="notes" class="form-control" placeholder="String null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Mon TOS Num</label>
-                <input name="monTOSNum" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Mon Ser Num</label>
-                <input name="monSerNum" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Mon Out Num</label>
-                <input name="monOutNum" class="form-control" placeholder="String null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Network Card Ser Num</label>
-                <input name="networkCardSerNum" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">HDD Ser Num</label>
-                <input name="HDDserNum" class="form-control" placeholder="String not null"/>
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Hrdwre TOS Num</label>
-                <input name="hrdwreTOSnum" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Hrdwre Type</label>
-                <input name="hrdwreType" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Pwr Supply</label>
-                <input name="pwrSupply" class="form-control" placeholder="String null " />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Processor Ser Num</label>
-                <input name="processorSerNum" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Ram Ser Num</label>
-                <input name="ramSerNum" class="form-control" placeholder="String not null"/>
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Misc Drive Ser Num</label>
-                <input name="miscDriveSerNum" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Vid Card Ser Num</label>
-                <input name="vidCardSerNum" class="form-control" placeholder="String not null" />
-            </div>
-            <p></p>
-            <div class="form-group">
-                <label class="control-label">Printer Type</label>
+                <label class="control-label">Printer Type (Ink/Laser/Dot Matrix/3D)</label>
                 <input name="printerType" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
@@ -304,8 +303,20 @@
                 <input name="connectionType" class="form-control" placeholder="String not null" />
             </div>
             <p></p>
+
+
             <div class="form-group">
-                <input type="submit" value="This is the GO button!" class="btn btn-primary"/>
+                <label class="control-label">Other Hardware TOS Number</label>
+                <input name="hrdwreTOSnum" class="form-control" placeholder="String not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Other Hardware Type (Mouse/Keyboard/Speakers/Etc)</label>
+                <input name="hrdwreType" class="form-control" placeholder="String not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <input type="submit" value="This is the GO button!" class="btn btn-primary" />
             </div>
 
 
