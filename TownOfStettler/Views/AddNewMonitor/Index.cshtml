@@ -1,5 +1,70 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using TownOfStettler.Models.Exceptions
+
 @{
+    ViewData["Title"] = "New Device Entry";
 }
+<h1> Add A New Monitor to the Database</h1>
+<h4>New Device from Invoice</h4>
+<hr />
+
+@if (ViewData["Exceptions"] != null)
+{
+    <ul>
+        @foreach (Exception sub in (ViewData["Exceptions"] as ValidationException).SubExceptions)
+        {
+            <li>@sub.Message</li>
+        }
+    </ul>
+}
+
+<div class="row"> 
+    <div class="col-md-4">
+        <form asp-action="EnterNewMonitor">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">New Monitor TOS Number</label>
+                <input name="monitorSize" class="form-control" placeholder="String  not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Monitor Size</label>
+                <input name="monitorSize" class="form-control" placeholder="Decimal  not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Monitor Type</label>
+                <input name="monitorType" class="form-control" placeholder="String not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Monitor Resolution</label>
+                <input name="monitorResolution" class="form-control" placeholder="String null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Monitor RefreshRate</label>
+                <input name="monitorRefreshRate" class="form-control" placeholder="Int null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Monitor Serial Number</label>
+                <input name="monitorSerialNumber" class="form-control" placeholder="String not null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Monitor Output Type(s)</label>
+                <input name="monitorOutput" class="form-control" placeholder="String null" />
+            </div>
+            <p></p>
+            <div class="form-group">
+                <label class="control-label">Number of Outputs Monitor Has</label>
+                <input name="monOutNum" class="form-control" placeholder="int null" />
+            </div>
+            <p></p>
+
+            <div class="form-group">
+                <input type="submit" value="This is the GO button!" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
