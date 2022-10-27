@@ -1373,9 +1373,9 @@ namespace TownOfStettler.Migrations
                         .HasColumnType("int(11)")
                         .HasColumnName("RAM ID");
 
-                    b.Property<int?>("SecondaryDriveId")
+                    b.Property<int?>("miscellaneousDriveId")
                         .HasColumnType("int(11)")
-                        .HasColumnName("Secondary Drive ID");
+                        .HasColumnName("Miscellaneous Drive ID");
 
                     b.Property<int?>("SoundCardId")
                         .HasColumnType("int(11)")
@@ -1393,7 +1393,7 @@ namespace TownOfStettler.Migrations
 
                     b.HasIndex(new[] { "RamId" }, "modifications_ibfk_3");
 
-                    b.HasIndex(new[] { "SecondaryDriveId" }, "modifications_ibfk_4");
+                    b.HasIndex(new[] { "miscellaneousDriveId" }, "modifications_ibfk_4");
 
                     b.HasIndex(new[] { "SoundCardId" }, "modifications_ibfk_5");
 
@@ -1617,9 +1617,9 @@ namespace TownOfStettler.Migrations
                         .HasColumnType("int(11)")
                         .HasColumnName("RAM ID");
 
-                    b.Property<int?>("SecondaryDriveId")
+                    b.Property<int?>("miscellaneousDriveId")
                         .HasColumnType("int(11)")
-                        .HasColumnName("Secondary Drive ID");
+                        .HasColumnName("Miscellaneous Drive ID");
 
                     b.Property<int?>("SoundCardId")
                         .HasColumnType("int(11)")
@@ -1635,7 +1635,7 @@ namespace TownOfStettler.Migrations
 
                     b.HasIndex(new[] { "RamId" }, "parts_ibfk_3");
 
-                    b.HasIndex(new[] { "SecondaryDriveId" }, "parts_ibfk_4");
+                    b.HasIndex(new[] { "miscellaneousDriveId" }, "parts_ibfk_4");
 
                     b.HasIndex(new[] { "SoundCardId" }, "parts_ibfk_5");
 
@@ -2078,7 +2078,7 @@ namespace TownOfStettler.Migrations
                         });
                 });
 
-            modelBuilder.Entity("TownOfStettler.Models.SecondaryDrive", b =>
+            modelBuilder.Entity("TownOfStettler.Models.miscellaneousDrive", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2111,9 +2111,9 @@ namespace TownOfStettler.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "DeviceId" }, "secondary drives_ibfk_1");
+                    b.HasIndex(new[] { "DeviceId" }, "miscellaneous drives_ibfk_1");
 
-                    b.ToTable("secondary drives", (string)null);
+                    b.ToTable("miscellaneous drives", (string)null);
 
                     b.HasData(
                         new
@@ -2815,9 +2815,9 @@ namespace TownOfStettler.Migrations
                         .HasForeignKey("RamId")
                         .HasConstraintName("modifications_ibfk_3");
 
-                    b.HasOne("TownOfStettler.Models.SecondaryDrive", "SecondaryDrive")
+                    b.HasOne("TownOfStettler.Models.miscellaneousDrive", "miscellaneousDrive")
                         .WithMany("Modifications")
-                        .HasForeignKey("SecondaryDriveId")
+                        .HasForeignKey("miscellaneousDriveId")
                         .HasConstraintName("modifications_ibfk_4");
 
                     b.HasOne("TownOfStettler.Models.SoundCard", "SoundCard")
@@ -2836,7 +2836,7 @@ namespace TownOfStettler.Migrations
 
                     b.Navigation("Ram");
 
-                    b.Navigation("SecondaryDrive");
+                    b.Navigation("miscellaneousDrive");
 
                     b.Navigation("SoundCard");
 
@@ -2896,9 +2896,9 @@ namespace TownOfStettler.Migrations
                         .HasForeignKey("RamId")
                         .HasConstraintName("parts_ibfk_3");
 
-                    b.HasOne("TownOfStettler.Models.SecondaryDrive", "SecondaryDrive")
+                    b.HasOne("TownOfStettler.Models.miscellaneousDrive", "miscellaneousDrive")
                         .WithMany("Parts")
-                        .HasForeignKey("SecondaryDriveId")
+                        .HasForeignKey("miscellaneousDriveId")
                         .HasConstraintName("parts_ibfk_4");
 
                     b.HasOne("TownOfStettler.Models.SoundCard", "SoundCard")
@@ -2919,7 +2919,7 @@ namespace TownOfStettler.Migrations
 
                     b.Navigation("Ram");
 
-                    b.Navigation("SecondaryDrive");
+                    b.Navigation("miscellaneousDrive");
 
                     b.Navigation("SoundCard");
 
@@ -2973,13 +2973,13 @@ namespace TownOfStettler.Migrations
                     b.Navigation("Device");
                 });
 
-            modelBuilder.Entity("TownOfStettler.Models.SecondaryDrive", b =>
+            modelBuilder.Entity("TownOfStettler.Models.miscellaneousDrive", b =>
                 {
                     b.HasOne("TownOfStettler.Models.DeviceInformation", "Device")
-                        .WithMany("SecondaryDrives")
+                        .WithMany("miscellaneousDrives")
                         .HasForeignKey("DeviceId")
                         .IsRequired()
-                        .HasConstraintName("secondary drives_ibfk_1");
+                        .HasConstraintName("miscellaneous drives_ibfk_1");
 
                     b.Navigation("Device");
                 });
@@ -3037,7 +3037,7 @@ namespace TownOfStettler.Migrations
 
                     b.Navigation("Rams");
 
-                    b.Navigation("SecondaryDrives");
+                    b.Navigation("miscellaneousDrives");
 
                     b.Navigation("SoundCards");
 
@@ -3104,7 +3104,7 @@ namespace TownOfStettler.Migrations
                     b.Navigation("Parts");
                 });
 
-            modelBuilder.Entity("TownOfStettler.Models.SecondaryDrive", b =>
+            modelBuilder.Entity("TownOfStettler.Models.miscellaneousDrive", b =>
                 {
                     b.Navigation("Modifications");
 

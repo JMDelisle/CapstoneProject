@@ -20,7 +20,7 @@ namespace TownOfStettler.Models
             Printers = new HashSet<Printer>();
             Processors = new HashSet<Processor>();
             Rams = new HashSet<Ram>();
-            SecondaryDrives = new HashSet<SecondaryDrive>();
+            MiscellaneousDrives = new HashSet<MiscellaneousDrive>();
             SoundCards = new HashSet<SoundCard>();
             VideoCards = new HashSet<VideoCard>();
             Warranties = new HashSet<Warranty>();
@@ -54,7 +54,7 @@ namespace TownOfStettler.Models
         public virtual ICollection<Printer> Printers { get; set; }
         public virtual ICollection<Processor> Processors { get; set; }
         public virtual ICollection<Ram> Rams { get; set; }
-        public virtual ICollection<SecondaryDrive> SecondaryDrives { get; set; }
+        public virtual ICollection<MiscellaneousDrive> MiscellaneousDrives { get; set; }
         public virtual ICollection<SoundCard> SoundCards { get; set; }
         public virtual ICollection<VideoCard> VideoCards { get; set; }
         public virtual ICollection<Warranty> Warranties { get; set; }

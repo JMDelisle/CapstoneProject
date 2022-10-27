@@ -1,22 +1,20 @@
-﻿@model TownOfStettler.Models.SecondaryDrive
+﻿@model TownOfStettler.Models.MiscellaneousDrive
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 
-<h1>Edit</h1>
+<h1>Create</h1>
 
-<h4>Miscellaneous Drive/Reader</h4>
+<h4>Miscellaneous Drive/Reader Index</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="DeviceId" class="control-label">Device ID:</label>
-                <select asp-for="DeviceId" class="form-control" asp-items="ViewBag.DeviceId"></select>
-                <span asp-validation-for="DeviceId" class="text-danger"></span>
+                <select asp-for="DeviceId" class ="form-control" asp-items="ViewBag.DeviceId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Type" class="control-label">Type:</label>
@@ -44,7 +42,7 @@
                 <span asp-validation-for="Notes" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>

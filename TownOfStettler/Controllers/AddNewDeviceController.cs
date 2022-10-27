@@ -11,10 +11,10 @@ using ValidationException = TownOfStettler.Models.Exceptions.ValidationException
 
 namespace TownOfStettler.Controllers
 {
-    public class NewDeviceEntryController : Controller
+    public class AddNewDeviceController : Controller
     {
         private readonly DatabaseContext _context;
-        public NewDeviceEntryController(DatabaseContext context)
+        public AddNewDeviceController(DatabaseContext context)
         {
             _context = context;
         }
@@ -36,7 +36,7 @@ namespace TownOfStettler.Controllers
                                             string networkCardWireless, string networkCardBluetooth, string hardDriveType, string hardDriveSize,
                                             string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string processorType,
                                             string processorSpeed, string processorGeneration, string processorCoreCount, string ramType,
-                                            string RamSize, string ramSpeed, string secondaryDriveType, string secondaryDriveRemoveable,
+                                            string RamSize, string ramSpeed, string MiscellaneousDriveType, string MiscellaneousDriveRemoveable,
                                             string soundCardBrand, string videoCardBrand, string videoCardRamSize, string videoCardOutputType,
                                             string videoCardOutputNumber, string warrantyType, string warrantyLength, string warrantyExpiryDate,
                                             string TOSnumber, string cpuSerNumber, string cpuModel, string store, string price, string date,
@@ -135,11 +135,11 @@ namespace TownOfStettler.Controllers
             {
                 validationState.SubExceptions.Add(new Exception("Error Message Here."));
             }
-            if (string.IsNullOrEmpty(secondaryDriveType))
+            if (string.IsNullOrEmpty(MiscellaneousDriveType))
             {
                 validationState.SubExceptions.Add(new Exception("Error Message Here."));
             }
-            if (string.IsNullOrEmpty(secondaryDriveRemoveable))
+            if (string.IsNullOrEmpty(MiscellaneousDriveRemoveable))
             {
                 validationState.SubExceptions.Add(new Exception("Error Message Here."));
             }
@@ -256,11 +256,11 @@ namespace TownOfStettler.Controllers
                 validationState.SubExceptions.Add(new Exception("Error Message Here."));
             }
 
-            int convertedLocation = int.Parse(ownerLocationName);
+            //int convertedLocation = int.Parse(ownerLocationName);
             OwnerLocation ownerLocation = null;
             foreach (OwnerLocation entry in _context.OwnerLocations)
             {
-                if (entry.Id == convertedLocation)
+                if (entry.Name == ownerLocationName)
                 {
                     ownerLocation = entry;
                 };
@@ -361,17 +361,17 @@ namespace TownOfStettler.Controllers
                     _context.SaveChanges();
                 }
 
-                if (secondaryDriveType != null || secondaryDriveRemoveable != null)
+                if (MiscellaneousDriveType != null || MiscellaneousDriveRemoveable != null)
                 {
-                    SecondaryDrive secondaryDrive = new SecondaryDrive()
+                    MiscellaneousDrive MiscellaneousDrive = new MiscellaneousDrive()
                     {
                         DeviceId = deviceInformation.Id,  //int FK
-                        Type = secondaryDriveType,  //varchar(30)
-                        Removable = bool.Parse(secondaryDriveRemoveable),  //bool
+                        Type = MiscellaneousDriveType,  //varchar(30)
+                        Removable = bool.Parse(MiscellaneousDriveRemoveable),  //bool
                         SerialNumber = miscDriveSerNum,  //varchar(30)
                         Destroyed = false,  //bool
                     };
-                    _context.SecondaryDrives.Add(secondaryDrive);
+                    _context.MiscellaneousDrives.Add(MiscellaneousDrive);
                     _context.SaveChanges();
                 }
 
@@ -418,8 +418,23 @@ namespace TownOfStettler.Controllers
 
                 }
             }
-
-            if (convertedHardwareDevice == 3 || convertedHardwareDevice == 4 || convertedHardwareDevice == 5)
+            if (convertedHardwareDevice == 3)
+            {
+                DisplayMonitor displayMonitor = new DisplayMonitor()
+                {
+                    TosNumber = deviceInformation.TosNumber, //varchar(25)
+                    ViewSizeInches = Decimal.Parse(monitorSize),  //decimal (3,2)
+                    ViewType = monitorType,  //varchar (30)
+                    Resolution = monitorResolution,  //varchar(20)
+                    RefreshRateHz = int.Parse(monitorRefreshRate),  //int(3) (nullable)
+                    SerialNumber = monitorSerialNumber,  //varchar(50)
+                    OutputType = monitorOutput,  //varchar(10) (nullable)
+                    NumberOfOutputs = int.Parse(monOutNum),  //int (nullable)
+                };
+                _context.DisplayMonitors.Add(displayMonitor);
+                _context.SaveChanges();
+            }
+            if (convertedHardwareDevice == 4 || convertedHardwareDevice == 5)
             {
 
                 if (monitorSize != null || monTOSNum != null || monitorType != null || monitorResolution != null || monitorSerialNumber != null)
