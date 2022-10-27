@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
-using TownOfStettler.Data;
+
 
 
 namespace TownOfStettler.Models
@@ -49,10 +49,7 @@ namespace TownOfStettler.Models
         {
             get
             {
-                string result = "#" + DateOfChanges.ToString();
-                using (DatabaseContext __dbcntxt = new())
-                    return (DateOfChanges.ToString("yyyy-MM-dd"));
-
+                return (DateOfChanges.ToString("yyyy-MM-dd"));
             }
         }
 
@@ -61,8 +58,6 @@ namespace TownOfStettler.Models
         {
             get
             {
-                string result = "#" + OutOfServiceDate.ToString();
-                using (DatabaseContext __dbcntxt = new())
                     if (OutOfServiceDate == null)
                 {
                     return "";
