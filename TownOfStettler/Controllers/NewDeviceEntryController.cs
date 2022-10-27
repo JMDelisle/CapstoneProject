@@ -50,6 +50,18 @@ namespace TownOfStettler.Controllers
             {
                 validationState.SubExceptions.Add(new Exception("Please choose a Device Hardware Type."));
             }
+            if (string.IsNullOrEmpty(ownerLocationName))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(ownerAddress))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
+            if (string.IsNullOrEmpty(ownerPhoneNumber))
+            {
+                validationState.SubExceptions.Add(new Exception("Error Message Here."));
+            }
             if (string.IsNullOrEmpty(monitorSize))
             {
                 validationState.SubExceptions.Add(new Exception("Please choose a Monitor Size."));
@@ -94,18 +106,7 @@ namespace TownOfStettler.Controllers
             {
                 validationState.SubExceptions.Add(new Exception("Error Message Here."));
             }
-            if (string.IsNullOrEmpty(ownerLocationName))
-            {
-                validationState.SubExceptions.Add(new Exception("Error Message Here."));
-            }
-            if (string.IsNullOrEmpty(ownerAddress))
-            {
-                validationState.SubExceptions.Add(new Exception("Error Message Here."));
-            }
-            if (string.IsNullOrEmpty(ownerPhoneNumber))
-            {
-                validationState.SubExceptions.Add(new Exception("Error Message Here."));
-            }
+           
             if (string.IsNullOrEmpty(processorType))
             {
                 validationState.SubExceptions.Add(new Exception("Error Message Here."));
@@ -255,11 +256,11 @@ namespace TownOfStettler.Controllers
                 validationState.SubExceptions.Add(new Exception("Error Message Here."));
             }
 
-            //int convertedLocation = int.Parse(ownerLocationName);
+            int convertedLocation = int.Parse(ownerLocationName);
             OwnerLocation ownerLocation = null;
             foreach (OwnerLocation entry in _context.OwnerLocations)
             {
-                if (entry.Name == ownerLocationName)
+                if (entry.Id == convertedLocation)
                 {
                     ownerLocation = entry;
                 };
@@ -276,7 +277,7 @@ namespace TownOfStettler.Controllers
                 _context.OwnerLocations.Add(ownerLocation);
                 _context.SaveChanges();
             }
-
+            
             int convertedHardwareDevice = int.Parse(hardwareDevice);
             DeviceInformation deviceInformation = new DeviceInformation()
             {
