@@ -21,11 +21,13 @@ namespace TownOfStettler.Controllers
         }
 
         // GET: DeviceInformation
-        //public async Task<IActionResult> Index()
-        //{
-        //    var databaseContext = _context.DeviceInformations.Include(d => d.DeviceType).Include(d => d.DisplayMonitorNavigation).Include(d => d.InstalledSoftware01Navigation).Include(d => d.InstalledSoftware02Navigation).Include(d => d.InstalledSoftware03Navigation).Include(d => d.InstalledSoftware04Navigation).Include(d => d.InstalledSoftware05Navigation).Include(d => d.InstalledSoftware06Navigation).Include(d => d.InstalledSoftware07Navigation).Include(d => d.InstalledSoftware08Navigation).Include(d => d.InstalledSoftware09Navigation).Include(d => d.InstalledSoftware10Navigation).Include(d => d.InstalledSoftware11Navigation).Include(d => d.InstalledSoftware12Navigation).Include(d => d.InstalledSoftware13Navigation).Include(d => d.InstalledSoftware14Navigation).Include(d => d.InstalledSoftware15Navigation).Include(d => d.InstalledSoftware16Navigation).Include(d => d.InstalledSoftware17Navigation).Include(d => d.InstalledSoftware18Navigation).Include(d => d.InstalledSoftware19Navigation).Include(d => d.InstalledSoftware20Navigation).Include(d => d.OwnerLocationNavigation);
-        //    return View(await databaseContext.ToListAsync());
-        //}
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var databaseContext = _context.DeviceInformations.Include(d => d.DeviceType).Include(d => d.OwnerLocationNavigation);
+            
+            return View(await databaseContext.ToListAsync());
+        }
 
         //Search arbitrary string in all fields
         public IActionResult Index(string SearchString)
@@ -54,7 +56,9 @@ namespace TownOfStettler.Controllers
                 }
                 Info = goodInfo;
             }
-            return View(Info);
+            ViewBag.Info = Info;
+            ViewData["Filter"] = "";
+            return View();
         }
 
 
@@ -89,6 +93,11 @@ namespace TownOfStettler.Controllers
         // POST: DeviceInformation/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
+       
+      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,DeviceTypeId,OwnerLocation,TosNumber,SerialNumber,ModelNumber,PowerSupply,PurchaseStore,PurchasePrice,PurchaseDate,OperatingSystem,Destroyed,Notes")] DeviceInformation deviceInformation)
@@ -101,6 +110,7 @@ namespace TownOfStettler.Controllers
             }
             ViewData["DeviceTypeId"] = new SelectList(_context.HardwareDevices, "Id", "Id", deviceInformation.DeviceTypeId);
             ViewData["OwnerLocation"] = new SelectList(_context.OwnerLocations, "Id", "Id", deviceInformation.OwnerLocation);
+       
             return View(deviceInformation);
         }
 
