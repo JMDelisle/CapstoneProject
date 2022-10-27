@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TownOfStettler.Models
 {
@@ -16,5 +17,9 @@ namespace TownOfStettler.Models
 
         public virtual ICollection<DeviceInformation> DeviceInformations { get; set; }
         public virtual ICollection<History> Histories { get; set; }
+
+        [NotMapped]
+        public string HardDevice => Id + " - " + TypeOfHardware;
+
     }
 }

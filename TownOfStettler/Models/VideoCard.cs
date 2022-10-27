@@ -26,8 +26,6 @@ namespace TownOfStettler.Models
         public virtual ICollection<Output> Outputs { get; set; }
         public virtual ICollection<Part> Parts { get; set; }
 
-        //[NotMapped]
-        //public string IdTos => DeviceId + "-" + SerialNumber;
 
     }
 }

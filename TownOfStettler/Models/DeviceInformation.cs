@@ -64,11 +64,11 @@ namespace TownOfStettler.Models
         {
             get
             {
-                // return (InterestAppliedDate.ToString("yyyy, dd MMMM"));
                 return (PurchaseDate.ToString("yyyy-MM-dd"));
 
             }
         }
+
 
         [NotMapped]
         public string IdTos => DeviceTypeId + "-" + TosNumber;

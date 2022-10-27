@@ -20,6 +20,15 @@ namespace TownOfStettler.Controllers
             _context = context;
         }
 
+        // GET: DeviceInformation
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var databaseContext = _context.DeviceInformations.Include(d => d.DeviceType).Include(d => d.OwnerLocationNavigation);
+            
+            return View(await databaseContext.ToListAsync());
+        }
+
         //Search arbitrary string in all fields
         public IActionResult Index(string SearchString)
         {
@@ -49,7 +58,6 @@ namespace TownOfStettler.Controllers
             }
             return View(Info);
         }
-
 
         // GET: DeviceInformation/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -82,6 +90,11 @@ namespace TownOfStettler.Controllers
         // POST: DeviceInformation/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
+       
+      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,DeviceTypeId,OwnerLocation,TosNumber,SerialNumber,ModelNumber,PowerSupply,PurchaseStore,PurchasePrice,PurchaseDate,OperatingSystem,Destroyed,Notes")] DeviceInformation deviceInformation)
@@ -94,6 +107,7 @@ namespace TownOfStettler.Controllers
             }
             ViewData["DeviceTypeId"] = new SelectList(_context.HardwareDevices, "Id", "Id", deviceInformation.DeviceTypeId);
             ViewData["OwnerLocation"] = new SelectList(_context.OwnerLocations, "Id", "Id", deviceInformation.OwnerLocation);
+       
             return View(deviceInformation);
         }
 

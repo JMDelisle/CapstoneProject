@@ -34,7 +34,7 @@
                 @*@Html.DisplayNameFor(model => model.OutOfServiceDate)*@Out Of Service Date
             </th>
 
-            <th>
+            <th class="px-10">
                 @*@Html.DisplayNameFor(model => model.Device)*@Device ID
             </th>
             <th>
@@ -52,42 +52,43 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Wiped)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PartsRemoved)
-            </td>
-            <td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wiped)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PartsRemoved)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.StrDoC)
-            </td>
-            <td>
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.StrOos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Device.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeviceType.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PartsChangedNavigation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PastOwnerSNavigation.Id)
-            </td>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeviceId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeviceType.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PartsChangedNavigation.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PastOwnerSNavigation.Id)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Notes)
                 </td>
 
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

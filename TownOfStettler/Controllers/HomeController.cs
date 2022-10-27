@@ -38,7 +38,7 @@ namespace TownOfStettler.Controllers
                             { "Hard Drive", _context.HardDrives },
                             { "Hardware Device", _context.HardwareDevices },
                             { "History", _context.Histories },
-                            { "Installed Softwar", _context.InstalledSoftwares },
+                            { "Installed Software", _context.InstalledSoftwares },
                             { "In-Use Monitor", _context.InuseMonitors.ToList() },
                             { "Miscellaneous Drive/Reader", _context.SecondaryDrives },
                             { "Modification", _context.Modifications },
