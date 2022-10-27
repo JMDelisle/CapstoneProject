@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace TownOfStettler.Models
 {
-    public partial class SecondaryDrive
+    public partial class MiscellaneousDrive
     {
-        public SecondaryDrive()
+        public MiscellaneousDrive()
         {
             Modifications = new HashSet<Modification>();
             Parts = new HashSet<Part>();
