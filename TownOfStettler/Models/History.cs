@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Linq;
-using TownOfStettler.Data;
-//using TownOfStettler.Data;
 
 namespace TownOfStettler.Models
 {
@@ -55,7 +52,7 @@ namespace TownOfStettler.Models
         }
 
         [NotMapped]
-        public string StrOos
+        public string StrOoS
         {
             get
             {
