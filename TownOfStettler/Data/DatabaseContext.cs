@@ -33,7 +33,7 @@ namespace TownOfStettler.Data
         public virtual DbSet<Printer> Printers { get; set; } = null!;
         public virtual DbSet<Processor> Processors { get; set; } = null!;
         public virtual DbSet<Ram> Rams { get; set; } = null!;
-        public virtual DbSet<SecondaryDrive> SecondaryDrives { get; set; } = null!;
+        public virtual DbSet<MiscellaneousDrive> MiscellaneousDrives { get; set; } = null!;
         public virtual DbSet<Software> Softwares { get; set; } = null!;
         public virtual DbSet<SoundCard> SoundCards { get; set; } = null!;
         public virtual DbSet<VideoCard> VideoCards { get; set; } = null!;
@@ -1474,7 +1474,7 @@ namespace TownOfStettler.Data
 
                 entity.HasIndex(e => e.RamId, "modifications_ibfk_3");
 
-                entity.HasIndex(e => e.SecondaryDriveId, "modifications_ibfk_4");
+                entity.HasIndex(e => e.MiscellaneousDriveId, "modifications_ibfk_4");
 
                 entity.HasIndex(e => e.SoundCardId, "modifications_ibfk_5");
 
@@ -1498,9 +1498,9 @@ namespace TownOfStettler.Data
                     .HasColumnType("int(11)")
                     .HasColumnName("RAM ID");
 
-                entity.Property(e => e.SecondaryDriveId)
+                entity.Property(e => e.MiscellaneousDriveId)
                     .HasColumnType("int(11)")
-                    .HasColumnName("Secondary Drive ID");
+                    .HasColumnName("Miscellaneous Drive ID");
 
                 entity.Property(e => e.SoundCardId)
                     .HasColumnType("int(11)")
@@ -1525,9 +1525,9 @@ namespace TownOfStettler.Data
                     .HasForeignKey(d => d.RamId)
                     .HasConstraintName("modifications_ibfk_3");
 
-                entity.HasOne(d => d.SecondaryDrive)
+                entity.HasOne(d => d.MiscellaneousDrive)
                     .WithMany(p => p.Modifications)
-                    .HasForeignKey(d => d.SecondaryDriveId)
+                    .HasForeignKey(d => d.MiscellaneousDriveId)
                     .HasConstraintName("modifications_ibfk_4");
 
                 entity.HasOne(d => d.SoundCard)
@@ -1548,7 +1548,7 @@ namespace TownOfStettler.Data
             //    ProcessorId = ,
             //    RamId = ,
             //    HardDriveId = ,
-            //    SecondaryDriveId = ,
+            //    MiscellaneousDriveId = ,
             //    SoundCardId = ,
             //    VideoCardId  = ,
             //    Notes = "NA",
@@ -1559,7 +1559,7 @@ namespace TownOfStettler.Data
             //    ProcessorId = ,  //int FK (nullable)
             //    RamId = ,  //int FK (nullable)
             //    HardDriveId = ,  //int FK (nullable)
-            //    SecondaryDriveId = ,  //int FK (nullable)
+            //    MiscellaneousDriveId = ,  //int FK (nullable)
             //    SoundCardId = ,  //int FK (nullable)
             //    VideoCardId  = ,  //int FK (nullable)
             //    Notes = "NA",//text (nullable)
@@ -1790,7 +1790,7 @@ namespace TownOfStettler.Data
 
                 entity.HasIndex(e => e.RamId, "parts_ibfk_3");
 
-                entity.HasIndex(e => e.SecondaryDriveId, "parts_ibfk_4");
+                entity.HasIndex(e => e.MiscellaneousDriveId, "parts_ibfk_4");
 
                 entity.HasIndex(e => e.SoundCardId, "parts_ibfk_5");
 
@@ -1822,9 +1822,9 @@ namespace TownOfStettler.Data
                     .HasColumnType("int(11)")
                     .HasColumnName("RAM ID");
 
-                entity.Property(e => e.SecondaryDriveId)
+                entity.Property(e => e.MiscellaneousDriveId)
                     .HasColumnType("int(11)")
-                    .HasColumnName("Secondary Drive ID");
+                    .HasColumnName("Miscellaneous Drive ID");
 
                 entity.Property(e => e.SoundCardId)
                     .HasColumnType("int(11)")
@@ -1856,9 +1856,9 @@ namespace TownOfStettler.Data
                     .HasForeignKey(d => d.RamId)
                     .HasConstraintName("parts_ibfk_3");
 
-                entity.HasOne(d => d.SecondaryDrive)
+                entity.HasOne(d => d.MiscellaneousDrive)
                     .WithMany(p => p.Parts)
-                    .HasForeignKey(d => d.SecondaryDriveId)
+                    .HasForeignKey(d => d.MiscellaneousDriveId)
                     .HasConstraintName("parts_ibfk_4");
 
                 entity.HasOne(d => d.SoundCard)
@@ -1880,7 +1880,7 @@ namespace TownOfStettler.Data
             //        DeviceHistoryId = ,
             //        RamId = ,
             //        HardDriveId = ,
-            //        SecondaryDriveId = ,
+            //        MiscellaneousDriveId = ,
             //        VideoCardId = ,
             //        SoundCardId = ,
             //        Notes = "",
@@ -1892,7 +1892,7 @@ namespace TownOfStettler.Data
             //        DeviceHistoryId = ,  //int FK
             //        RamId = ,  //int FK (nullable)
             //        HardDriveId = ,  //int FK (nullable)
-            //        SecondaryDriveId = ,  //int FK (nullable)
+            //        MiscellaneousDriveId = ,  //int FK (nullable)
             //        VideoCardId = ,  //int FK (nullable)
             //        SoundCardId = ,  //int FK (nullable)
             //        Notes = "NA",  //text (nullable)
@@ -2366,11 +2366,11 @@ namespace TownOfStettler.Data
             //}
             );
 
-            modelBuilder.Entity<SecondaryDrive>(entity =>
+            modelBuilder.Entity<MiscellaneousDrive>(entity =>
             {
-                entity.ToTable("secondary drives");
+                entity.ToTable("miscellaneous drives");
 
-                entity.HasIndex(e => e.DeviceId, "secondary drives_ibfk_1");
+                entity.HasIndex(e => e.DeviceId, "miscellaneous drives_ibfk_1");
 
                 entity.Property(e => e.Id)
                     .HasColumnType("int(11)")
@@ -2389,14 +2389,14 @@ namespace TownOfStettler.Data
                 entity.Property(e => e.Type).HasMaxLength(30);
 
                 entity.HasOne(d => d.Device)
-                    .WithMany(p => p.SecondaryDrives)
+                    .WithMany(p => p.MiscellaneousDrives)
                     .HasForeignKey(d => d.DeviceId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("secondary drives_ibfk_1");
+                    .HasConstraintName("miscellaneous drives_ibfk_1");
             });
 
-            modelBuilder.Entity<SecondaryDrive>().HasData(
-            new SecondaryDrive
+            modelBuilder.Entity<MiscellaneousDrive>().HasData(
+            new MiscellaneousDrive
             {
                 Id = 1,
                 DeviceId = 1,
@@ -2406,7 +2406,7 @@ namespace TownOfStettler.Data
                 Destroyed = false,
                 Notes = "NA",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 2,
                 DeviceId = 1,
@@ -2416,7 +2416,7 @@ namespace TownOfStettler.Data
                 Destroyed = false,
                 Notes = "NA",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 3,
                 DeviceId = 4,
@@ -2426,7 +2426,7 @@ namespace TownOfStettler.Data
                 Destroyed = true,
                 Notes = "NA",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 4,
                 DeviceId = 5,
@@ -2436,7 +2436,7 @@ namespace TownOfStettler.Data
                 Destroyed = true,
                 Notes = "NA",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 5,
                 DeviceId = 6,
@@ -2446,7 +2446,7 @@ namespace TownOfStettler.Data
                 Destroyed = true,
                 Notes = "NA",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 6,
                 DeviceId = 9,
@@ -2456,7 +2456,7 @@ namespace TownOfStettler.Data
                 Destroyed = false,
                 Notes = "LTO3 Backup Drive (TableTop)",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 7,
                 DeviceId = 10,
@@ -2466,7 +2466,7 @@ namespace TownOfStettler.Data
                 Destroyed = false,
                 Notes = "Supermulti DL LightScribe",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 8,
                 DeviceId = 11,
@@ -2476,7 +2476,7 @@ namespace TownOfStettler.Data
                 Destroyed = true,
                 Notes = "NA",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 9,
                 DeviceId = 12,
@@ -2486,7 +2486,7 @@ namespace TownOfStettler.Data
                 Destroyed = true,
                 Notes = "NA",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 10,
                 DeviceId = 13,
@@ -2496,7 +2496,7 @@ namespace TownOfStettler.Data
                 Destroyed = true,
                 Notes = "NA",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 11,
                 DeviceId = 14,
@@ -2506,7 +2506,7 @@ namespace TownOfStettler.Data
                 Destroyed = true,
                 Notes = "NA",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 12,
                 DeviceId = 11,
@@ -2516,7 +2516,7 @@ namespace TownOfStettler.Data
                 Destroyed = true,
                 Notes = "LG",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 13,
                 DeviceId = 12,
@@ -2526,7 +2526,7 @@ namespace TownOfStettler.Data
                 Destroyed = true,
                 Notes = "LG",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 14,
                 DeviceId = 13,
@@ -2536,7 +2536,7 @@ namespace TownOfStettler.Data
                 Destroyed = true,
                 Notes = "LG",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 15,
                 DeviceId = 14,
@@ -2546,7 +2546,7 @@ namespace TownOfStettler.Data
                 Destroyed = true,
                 Notes = "LG",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 16,
                 DeviceId = 15,
@@ -2556,7 +2556,7 @@ namespace TownOfStettler.Data
                 Destroyed = false,
                 Notes = "NA",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 17,
                 DeviceId = 15,
@@ -2566,7 +2566,7 @@ namespace TownOfStettler.Data
                 Destroyed = false,
                 Notes = "LG",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 18,
                 DeviceId = 16,
@@ -2576,7 +2576,7 @@ namespace TownOfStettler.Data
                 Destroyed = false,
                 Notes = "NA",
             },
-            new SecondaryDrive
+            new MiscellaneousDrive
             {
                 Id = 19,
                 DeviceId = 16,
@@ -2586,7 +2586,7 @@ namespace TownOfStettler.Data
                 Destroyed = false,
                 Notes = "LG",
             }
-            //new SecondaryDrive
+            //new MiscellaneousDrive
             //{
             //    Id = ,  //int PK
             //    DeviceId = ,  //int FK

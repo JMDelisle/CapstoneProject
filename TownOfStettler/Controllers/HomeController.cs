@@ -30,7 +30,7 @@ namespace TownOfStettler.Controllers
                             { "History", _context.Histories },
                             { "Installed Software", _context.InstalledSoftwares },
                             { "In-Use Monitor", _context.InuseMonitors.ToList() },
-                            { "Miscellaneous Drive/Reader", _context.SecondaryDrives },
+                            { "Miscellaneous Drive/Reader", _context.MiscellaneousDrives },
                             { "Modification", _context.Modifications },
                             { "Other Hardware", _context.OtherHardwares },
                             { "Output", _context.Outputs },

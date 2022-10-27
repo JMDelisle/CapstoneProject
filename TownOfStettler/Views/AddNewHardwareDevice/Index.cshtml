@@ -1,0 +1,44 @@
+﻿@using TownOfStettler.Models.Exceptions
+
+@{
+    ViewData["Title"] = "New Device Entry";
+}
+<h1> Add A New Hardware Device to the Database</h1>
+<h4>New Device from Invoice</h4>
+<hr />
+
+@if (ViewData["Exceptions"] != null)
+{
+    <ul>
+        @foreach (Exception sub in (ViewData["Exceptions"] as ValidationException).SubExceptions)
+        {
+            <li>@sub.Message</li>
+        }
+    </ul>
+}
+
+<div class="row"> 
+    <div class="col-md-4">
+        <form asp-action="EnterNewHardwareDevice">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </form>
+    </div>
+</div>

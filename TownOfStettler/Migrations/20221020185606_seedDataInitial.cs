@@ -265,7 +265,7 @@ namespace TownOfStettler.Migrations
                 .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
-                name: "secondary drives",
+                name: "miscellaneous drives",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
@@ -282,9 +282,9 @@ namespace TownOfStettler.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_secondary drives", x => x.ID);
+                    table.PrimaryKey("PK_miscellaneous drives", x => x.ID);
                     table.ForeignKey(
-                        name: "secondary drives_ibfk_1",
+                        name: "miscellaneous drives_ibfk_1",
                         column: x => x.DeviceID,
                         principalTable: "device information",
                         principalColumn: "ID");
@@ -381,7 +381,7 @@ namespace TownOfStettler.Migrations
                     ProcessorID = table.Column<int>(name: "Processor ID", type: "int(11)", nullable: true),
                     RAMID = table.Column<int>(name: "RAM ID", type: "int(11)", nullable: true),
                     HardDriveID = table.Column<int>(name: "Hard Drive ID", type: "int(11)", nullable: true),
-                    SecondaryDriveID = table.Column<int>(name: "Secondary Drive ID", type: "int(11)", nullable: true),
+                    MiscellaneousDriveID = table.Column<int>(name: "Miscellaneous Drive ID", type: "int(11)", nullable: true),
                     SoundCardID = table.Column<int>(name: "Sound Card ID", type: "int(11)", nullable: true),
                     VideoCardID = table.Column<int>(name: "Video Card ID", type: "int(11)", nullable: true),
                     Notes = table.Column<string>(type: "text", nullable: true, collation: "utf8mb4_general_ci")
@@ -407,8 +407,8 @@ namespace TownOfStettler.Migrations
                         principalColumn: "ID");
                     table.ForeignKey(
                         name: "modifications_ibfk_4",
-                        column: x => x.SecondaryDriveID,
-                        principalTable: "secondary drives",
+                        column: x => x.MiscellaneousDriveID,
+                        principalTable: "miscellaneous drives",
                         principalColumn: "ID");
                     table.ForeignKey(
                         name: "modifications_ibfk_5",
@@ -569,7 +569,7 @@ namespace TownOfStettler.Migrations
                     DeviceHistoryID = table.Column<int>(name: "Device History ID", type: "int(11)", nullable: false),
                     RAMID = table.Column<int>(name: "RAM ID", type: "int(11)", nullable: true),
                     HardDriveID = table.Column<int>(name: "Hard Drive ID", type: "int(11)", nullable: true),
-                    SecondaryDriveID = table.Column<int>(name: "Secondary Drive ID", type: "int(11)", nullable: true),
+                    MiscellaneousDriveID = table.Column<int>(name: "Miscellaneous Drive ID", type: "int(11)", nullable: true),
                     VideoCardID = table.Column<int>(name: "Video Card ID", type: "int(11)", nullable: true),
                     SoundCardID = table.Column<int>(name: "Sound Card ID", type: "int(11)", nullable: true),
                     Notes = table.Column<string>(type: "text", nullable: true, collation: "utf8mb4_general_ci")
@@ -590,8 +590,8 @@ namespace TownOfStettler.Migrations
                         principalColumn: "ID");
                     table.ForeignKey(
                         name: "parts_ibfk_4",
-                        column: x => x.SecondaryDriveID,
-                        principalTable: "secondary drives",
+                        column: x => x.MiscellaneousDriveID,
+                        principalTable: "miscellaneous drives",
                         principalColumn: "ID");
                     table.ForeignKey(
                         name: "parts_ibfk_5",
@@ -929,7 +929,7 @@ namespace TownOfStettler.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "secondary drives",
+                table: "miscellaneous drives",
                 columns: new[] { "ID", "Destroyed", "Device ID", "Notes", "Removable", "Serial Number", "Type" },
                 values: new object[,]
                 {
@@ -1066,7 +1066,7 @@ namespace TownOfStettler.Migrations
             migrationBuilder.CreateIndex(
                 name: "modifications_ibfk_4",
                 table: "modifications",
-                column: "Secondary Drive ID");
+                column: "Miscellaneous Drive ID");
 
             migrationBuilder.CreateIndex(
                 name: "modifications_ibfk_5",
@@ -1106,7 +1106,7 @@ namespace TownOfStettler.Migrations
             migrationBuilder.CreateIndex(
                 name: "parts_ibfk_4",
                 table: "parts",
-                column: "Secondary Drive ID");
+                column: "Miscellaneous Drive ID");
 
             migrationBuilder.CreateIndex(
                 name: "parts_ibfk_5",
@@ -1154,8 +1154,8 @@ namespace TownOfStettler.Migrations
                 column: "Device ID");
 
             migrationBuilder.CreateIndex(
-                name: "secondary drives_ibfk_1",
-                table: "secondary drives",
+                name: "miscellaneous drives_ibfk_1",
+                table: "miscellaneous drives",
                 column: "Device ID");
 
             migrationBuilder.CreateIndex(
@@ -1222,7 +1222,7 @@ namespace TownOfStettler.Migrations
                 name: "ram");
 
             migrationBuilder.DropTable(
-                name: "secondary drives");
+                name: "miscellaneous drives");
 
             migrationBuilder.DropTable(
                 name: "sound card");

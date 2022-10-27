@@ -22,7 +22,7 @@ namespace TownOfStettler.Controllers
         // GET: Parts
         public async Task<IActionResult> Index()
         {
-            var databaseContext = _context.Parts.Include(p => p.DeviceHistory).Include(p => p.HardDrive).Include(p => p.OriginalDevice).Include(p => p.Ram).Include(p => p.SecondaryDrive).Include(p => p.SoundCard).Include(p => p.VideoCard);
+            var databaseContext = _context.Parts.Include(p => p.DeviceHistory).Include(p => p.HardDrive).Include(p => p.OriginalDevice).Include(p => p.Ram).Include(p => p.MiscellaneousDrive).Include(p => p.SoundCard).Include(p => p.VideoCard);
             return View(await databaseContext.ToListAsync());
         }
 
@@ -37,7 +37,7 @@ namespace TownOfStettler.Controllers
         //        //Info = Info.Where(i => i.DeviceHistoryId.ToString().Contains(SearchString));
         //        //Info = Info.Where(i => i.RamId.ToString().Contains(SearchString));
         //        //Info = Info.Where(i => i.HardDriveId.ToString().Contains(SearchString));
-        //        //Info = Info.Where(i => i.SecondaryDriveId.ToString().Contains(SearchString));
+        //        //Info = Info.Where(i => i.MiscellaneousDriveId.ToString().Contains(SearchString));
         //        //Info = Info.Where(i => i.VideoCardId.ToString().Contains(SearchString));
         //        //Info = Info.Where(i => i.SoundCardId.ToString().Contains(SearchString));
         //        //Info = Info.Where(i => i.Notes.ToString().Contains(SearchString));
@@ -60,7 +60,7 @@ namespace TownOfStettler.Controllers
                 .Include(p => p.HardDrive)
                 .Include(p => p.OriginalDevice)
                 .Include(p => p.Ram)
-                .Include(p => p.SecondaryDrive)
+                .Include(p => p.MiscellaneousDrive)
                 .Include(p => p.SoundCard)
                 .Include(p => p.VideoCard)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -79,7 +79,7 @@ namespace TownOfStettler.Controllers
             ViewData["HardDriveId"] = new SelectList(_context.HardDrives, "Id", "Id");
             ViewData["OriginalDeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id");
             ViewData["RamId"] = new SelectList(_context.Rams, "Id", "Id");
-            ViewData["SecondaryDriveId"] = new SelectList(_context.SecondaryDrives, "Id", "Id");
+            ViewData["MiscellaneousDriveId"] = new SelectList(_context.MiscellaneousDrives, "Id", "Id");
             ViewData["SoundCardId"] = new SelectList(_context.SoundCards, "Id", "Id");
             ViewData["VideoCardId"] = new SelectList(_context.VideoCards, "Id", "Id");
             return View();
@@ -90,7 +90,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,OriginalDeviceId,DeviceHistoryId,RamId,HardDriveId,SecondaryDriveId,VideoCardId,SoundCardId,Notes")] Part part)
+        public async Task<IActionResult> Create([Bind("Id,OriginalDeviceId,DeviceHistoryId,RamId,HardDriveId,MiscellaneousDriveId,VideoCardId,SoundCardId,Notes")] Part part)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace TownOfStettler.Controllers
             ViewData["HardDriveId"] = new SelectList(_context.HardDrives, "Id", "Id", part.HardDriveId);
             ViewData["OriginalDeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", part.OriginalDeviceId);
             ViewData["RamId"] = new SelectList(_context.Rams, "Id", "Id", part.RamId);
-            ViewData["SecondaryDriveId"] = new SelectList(_context.SecondaryDrives, "Id", "Id", part.SecondaryDriveId);
+            ViewData["MiscellaneousDriveId"] = new SelectList(_context.MiscellaneousDrives, "Id", "Id", part.MiscellaneousDriveId);
             ViewData["SoundCardId"] = new SelectList(_context.SoundCards, "Id", "Id", part.SoundCardId);
             ViewData["VideoCardId"] = new SelectList(_context.VideoCards, "Id", "Id", part.VideoCardId);
             return View(part);
@@ -125,7 +125,7 @@ namespace TownOfStettler.Controllers
             ViewData["HardDriveId"] = new SelectList(_context.HardDrives, "Id", "Id", part.HardDriveId);
             ViewData["OriginalDeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", part.OriginalDeviceId);
             ViewData["RamId"] = new SelectList(_context.Rams, "Id", "Id", part.RamId);
-            ViewData["SecondaryDriveId"] = new SelectList(_context.SecondaryDrives, "Id", "Id", part.SecondaryDriveId);
+            ViewData["MiscellaneousDriveId"] = new SelectList(_context.MiscellaneousDrives, "Id", "Id", part.MiscellaneousDriveId);
             ViewData["SoundCardId"] = new SelectList(_context.SoundCards, "Id", "Id", part.SoundCardId);
             ViewData["VideoCardId"] = new SelectList(_context.VideoCards, "Id", "Id", part.VideoCardId);
             return View(part);
@@ -136,7 +136,7 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,OriginalDeviceId,DeviceHistoryId,RamId,HardDriveId,SecondaryDriveId,VideoCardId,SoundCardId,Notes")] Part part)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,OriginalDeviceId,DeviceHistoryId,RamId,HardDriveId,MiscellaneousDriveId,VideoCardId,SoundCardId,Notes")] Part part)
         {
             if (id != part.Id)
             {
@@ -167,7 +167,7 @@ namespace TownOfStettler.Controllers
             ViewData["HardDriveId"] = new SelectList(_context.HardDrives, "Id", "Id", part.HardDriveId);
             ViewData["OriginalDeviceId"] = new SelectList(_context.DeviceInformations, "Id", "Id", part.OriginalDeviceId);
             ViewData["RamId"] = new SelectList(_context.Rams, "Id", "Id", part.RamId);
-            ViewData["SecondaryDriveId"] = new SelectList(_context.SecondaryDrives, "Id", "Id", part.SecondaryDriveId);
+            ViewData["MiscellaneousDriveId"] = new SelectList(_context.MiscellaneousDrives, "Id", "Id", part.MiscellaneousDriveId);
             ViewData["SoundCardId"] = new SelectList(_context.SoundCards, "Id", "Id", part.SoundCardId);
             ViewData["VideoCardId"] = new SelectList(_context.VideoCards, "Id", "Id", part.VideoCardId);
             return View(part);
@@ -186,7 +186,7 @@ namespace TownOfStettler.Controllers
                 .Include(p => p.HardDrive)
                 .Include(p => p.OriginalDevice)
                 .Include(p => p.Ram)
-                .Include(p => p.SecondaryDrive)
+                .Include(p => p.MiscellaneousDrive)
                 .Include(p => p.SoundCard)
                 .Include(p => p.VideoCard)
                 .FirstOrDefaultAsync(m => m.Id == id);

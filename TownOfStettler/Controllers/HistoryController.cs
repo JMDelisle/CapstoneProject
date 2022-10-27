@@ -27,27 +27,7 @@ namespace TownOfStettler.Controllers
             return View(await databaseContext.ToListAsync());
         }
 
-        //Search DeviceId
-        //public async Task<IActionResult> Index(string SearchString)
-        //{
-        //    ViewData["Filter"] = SearchString;
-        //    var Info = from i in _context.Histories
-        //               select i;
-        //    if (!String.IsNullOrEmpty(SearchString))
-        //    {
-        //        //Info = Info.Where(i => i.DeviceTypeId.ToString().Contains(SearchString));
-        //        Info = Info.Where(i => i.DeviceId.ToString().Contains(SearchString));
-        //        //Info = Info.Where(i => i.PartsChanged.ToString().Contains(SearchString));
-        //        //Info = Info.Where(i => i.PastOwnerS.ToString().Contains(SearchString));
-        //        //Info = Info.Where(i => i.Wiped.ToString().Contains(SearchString));
-        //        //Info = Info.Where(i => i.PartsRemoved.ToString().Contains(SearchString));
-        //        //Info = Info.Where(i => i.DateOfChanges.ToString().Contains(SearchString));
-        //        //Info = Info.Where(i => i.OutOfServiceDate.ToString().Contains(SearchString));
-        //        //Info = Info.Where(i => i.Notes.Contains(SearchString));
 
-        //    }
-        //    return View(Info);
-        //}
 
         // GET: History/Details/5
         public async Task<IActionResult> Details(int? id)
