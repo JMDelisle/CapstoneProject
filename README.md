@@ -6,7 +6,7 @@ We were paired up with a Client from Town Of Stettler to build an application th
 `User Manual with Installation:`\
 Install XAMPP Control Panel v3.3.0 and Visual Studio 2022.\
 Once both application installed, make sure to run XAMPP in administration.\
-Click start on Apache and MySQL, then click on MySQL admin, this will bring up a web browser to show where you can put in your database.
+Click start on Apache and MySQL, then click on MySQL admin, this will bring up a web browser to show where you can put in your database.\
 `Folder Explorer`\
 In the folder of where all the files are, double click on "TownOfStettler.sln" which will open up Visual Studio and load the project.\
 `Using Visual Studio 2022`\
