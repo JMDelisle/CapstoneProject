@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+   string searchResults = (ViewBag.Info == null) ? "" : String.Join("\n", ViewBag.Info);
 }
 
 <h1>Device Information Index</h1>
@@ -11,14 +12,42 @@
 
 
 </p>
+@*<form asp-area="" asp-controller="DeviceInformation" asp-action="Index" method="get">
+    <label class="control-label mx-auto mt-5 mb-1">Filter Search</label>
+    <br />
+    <input type="text" name="SearchString" value="@ViewData["Filter"]"
+           class="form-control w-75 mx-auto" style="max-width:350px" />
+    <input type="submit" class="btn btn-primary mt-2 px-3 py-1 fw-bold" value="Find" />
+    
+</form>*@
 
-@*<form asp-action="Index" method="get">
+<form asp-action="Index" method="get">
     <p>
         Menu Search: <input type="text" name="SearchString" value="@ViewData["Filter"]" />
-        <input type="submit" value="Filter" />
+        <input type="submit" value="Find" />
     </p>
 </form>
-*@
+
+@if (!String.IsNullOrWhiteSpace((string)ViewData["Filter"]))
+{
+    <span class="lh-sm fs-5 text-white" style="white-space: pre-line;">
+        @if (@searchResults == "")
+        {
+            <span>No Match To - "@ViewData["Filter"]"</span>
+        }
+        else
+        {
+            <span>
+                No Match To - "@ViewData["Filter"]" In:
+                <br />
+                @searchResults
+            </span>
+        }
+    </span>
+}
+
+
+
 
 <table class="table">
     <thead>

@@ -20,42 +20,43 @@ namespace TownOfStettler.Controllers
             _context = context;
         }
 
-
-        //Search arbitrary string in all fields
-
-        //public IActionResult Index(string SearchString)
-        //{
-        //    ViewData["Filter"] = SearchString;
-        //    var Info = _context.DeviceInformations.ToList();
-        //    if (!String.IsNullOrWhiteSpace(SearchString))
-        //    {
-        //        List<DeviceInformation> goodInfo = new();
-        //        foreach (var item in Info)
-        //        {
-        //            bool match = false;
-        //            var allProps = item.GetType().GetProperties();
-        //            foreach (var prop in allProps)
-        //            {
-        //                if (prop.GetValue(item) != null)
-        //                {
-        //                    match = (prop.GetValue(item).ToString().ToUpper()).Contains(SearchString.Trim().ToUpper());
-        //                }
-        //                if (match)
-        //                {
-        //                    goodInfo.Add(item);
-        //                    break;
-        //                }
-        //            }
-        //        }
-        //        Info = goodInfo;
-        //    }
-        //    return View(Info);
-        //}
-
+        // GET: DeviceInformation
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var databaseContext = _context.DeviceInformations.Include(d => d.DeviceType).Include(d => d.OwnerLocationNavigation);
+            
             return View(await databaseContext.ToListAsync());
+        }
+
+        //Search arbitrary string in all fields
+        public IActionResult Index(string SearchString)
+        {
+            ViewData["Filter"] = SearchString;
+            var Info = _context.DeviceInformations.ToList();
+            if (!String.IsNullOrWhiteSpace(SearchString))
+            {
+                List<DeviceInformation> goodInfo = new List<DeviceInformation>();
+                foreach (var item in Info)
+                {
+                    bool match = false;
+                    var allProps = item.GetType().GetProperties();
+                    foreach (var prop in allProps)
+                    {
+                        if (prop.GetValue(item) != null)
+                        {
+                            match = (prop.GetValue(item).ToString().ToUpper()).Contains(SearchString.Trim().ToUpper());
+                        }
+                        if (match)
+                        {
+                            goodInfo.Add(item);
+                            break;
+                        }
+                    }
+                }
+                Info = goodInfo;
+            }
+            return View(Info);
         }
 
         // GET: DeviceInformation/Details/5
@@ -89,6 +90,11 @@ namespace TownOfStettler.Controllers
         // POST: DeviceInformation/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
+       
+      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,DeviceTypeId,OwnerLocation,TosNumber,SerialNumber,ModelNumber,PowerSupply,PurchaseStore,PurchasePrice,PurchaseDate,OperatingSystem,Destroyed,Notes")] DeviceInformation deviceInformation)
@@ -101,6 +107,7 @@ namespace TownOfStettler.Controllers
             }
             ViewData["DeviceTypeId"] = new SelectList(_context.HardwareDevices, "Id", "Id", deviceInformation.DeviceTypeId);
             ViewData["OwnerLocation"] = new SelectList(_context.OwnerLocations, "Id", "Id", deviceInformation.OwnerLocation);
+       
             return View(deviceInformation);
         }
 
