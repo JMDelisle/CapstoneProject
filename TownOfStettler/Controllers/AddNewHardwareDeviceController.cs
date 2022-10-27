@@ -30,9 +30,9 @@ namespace TownOfStettler.Controllers
             return View();
         }
 
-        public IActionResult EnterNewHardwareDevice()
-        {
+        //public IActionResult EnterNewHardwareDevice()
+        //{
 
-        }
+        //}
     }
 }
