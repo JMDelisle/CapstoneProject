@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Threading;
+using TownOfStettler.Data;
 
 namespace TownOfStettler.Models
 {
@@ -15,5 +18,21 @@ namespace TownOfStettler.Models
 
         public virtual History? HistoryNavigation { get; set; }
         public virtual OwnerLocation OwnerLocationNavigation { get; set; } = null!;
+
+
+        [NotMapped]
+        public string OwnerLocationWithName
+        {
+            get
+            {
+                string result = "#" + OwnerLocation.ToString();
+                using (DatabaseContext __dbcntxt = new DatabaseContext())
+                {
+                    result += " [ " + __dbcntxt.OwnerLocations.Single(item => (item.Id == OwnerLocation)).Name + " ]";
+                }
+                return result;
+            }
+        }
+
     }
 }
