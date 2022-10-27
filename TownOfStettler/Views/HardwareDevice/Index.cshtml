@@ -21,7 +21,7 @@
     <thead>
         <tr>
             <th>
-                 @Html.DisplayNameFor(model => model.TypeOfHardware)
+                 @*@Html.DisplayNameFor(model => model.TypeOfHardware)*@Type Of Hardware
             </th>
             <th></th>
         </tr>
@@ -30,7 +30,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TypeOfHardware)
+                    @Html.DisplayFor(modelItem => item.HardDevice)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

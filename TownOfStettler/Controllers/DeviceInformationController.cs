@@ -20,43 +20,43 @@ namespace TownOfStettler.Controllers
             _context = context;
         }
 
-        // GET: DeviceInformation
-        //public async Task<IActionResult> Index()
-        //{
-        //    var databaseContext = _context.DeviceInformations.Include(d => d.DeviceType).Include(d => d.DisplayMonitorNavigation).Include(d => d.InstalledSoftware01Navigation).Include(d => d.InstalledSoftware02Navigation).Include(d => d.InstalledSoftware03Navigation).Include(d => d.InstalledSoftware04Navigation).Include(d => d.InstalledSoftware05Navigation).Include(d => d.InstalledSoftware06Navigation).Include(d => d.InstalledSoftware07Navigation).Include(d => d.InstalledSoftware08Navigation).Include(d => d.InstalledSoftware09Navigation).Include(d => d.InstalledSoftware10Navigation).Include(d => d.InstalledSoftware11Navigation).Include(d => d.InstalledSoftware12Navigation).Include(d => d.InstalledSoftware13Navigation).Include(d => d.InstalledSoftware14Navigation).Include(d => d.InstalledSoftware15Navigation).Include(d => d.InstalledSoftware16Navigation).Include(d => d.InstalledSoftware17Navigation).Include(d => d.InstalledSoftware18Navigation).Include(d => d.InstalledSoftware19Navigation).Include(d => d.InstalledSoftware20Navigation).Include(d => d.OwnerLocationNavigation);
-        //    return View(await databaseContext.ToListAsync());
-        //}
 
         //Search arbitrary string in all fields
-        public IActionResult Index(string SearchString)
-        {
-            ViewData["Filter"] = SearchString;
-            var Info = _context.DeviceInformations.ToList();
-            if (!String.IsNullOrWhiteSpace(SearchString))
-            {
-                List<DeviceInformation> goodInfo = new List<DeviceInformation>();
-                foreach (var item in Info)
-                {
-                    bool match = false;
-                    var allProps = item.GetType().GetProperties();
-                    foreach (var prop in allProps)
-                    {
-                        if (prop.GetValue(item) != null)
-                        {
-                            match = (prop.GetValue(item).ToString().ToUpper()).Contains(SearchString.Trim().ToUpper());
-                        }
-                        if (match)
-                        {
-                            goodInfo.Add(item);
-                            break;
-                        }
-                    }
-                }
-                Info = goodInfo;
-            }
-            return View(Info);
-        }
 
+        //public IActionResult Index(string SearchString)
+        //{
+        //    ViewData["Filter"] = SearchString;
+        //    var Info = _context.DeviceInformations.ToList();
+        //    if (!String.IsNullOrWhiteSpace(SearchString))
+        //    {
+        //        List<DeviceInformation> goodInfo = new();
+        //        foreach (var item in Info)
+        //        {
+        //            bool match = false;
+        //            var allProps = item.GetType().GetProperties();
+        //            foreach (var prop in allProps)
+        //            {
+        //                if (prop.GetValue(item) != null)
+        //                {
+        //                    match = (prop.GetValue(item).ToString().ToUpper()).Contains(SearchString.Trim().ToUpper());
+        //                }
+        //                if (match)
+        //                {
+        //                    goodInfo.Add(item);
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //        Info = goodInfo;
+        //    }
+        //    return View(Info);
+        //}
+
+        public async Task<IActionResult> Index()
+        {
+            var databaseContext = _context.DeviceInformations.Include(d => d.DeviceType).Include(d => d.OwnerLocationNavigation);
+            return View(await databaseContext.ToListAsync());
+        }
 
         // GET: DeviceInformation/Details/5
         public async Task<IActionResult> Details(int? id)
