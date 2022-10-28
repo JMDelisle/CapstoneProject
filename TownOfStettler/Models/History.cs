@@ -48,7 +48,6 @@ namespace TownOfStettler.Models
             get
             {
                 return (DateOfChanges.ToString("yyyy-MM-dd"));
-
             }
         }
 
@@ -57,7 +56,7 @@ namespace TownOfStettler.Models
         {
             get
             {
-                if (OutOfServiceDate == null)
+                    if (OutOfServiceDate == null)
                 {
                     return "";
                 }
