@@ -30,8 +30,27 @@ namespace TownOfStettler.Controllers
             return View();
         }
 
-        public IActionResult EnterNewHardwareDevice(string ownerLocationName, string hrdwreTOSnum, string hrdwreType, string ownerAddress, string ownerPhoneNumber)
+        public IActionResult EnterNewHardwareDevice(string ownerLocationName, string hrdwreTOSnum, string hrdwreType, string ownerAddress, string ownerPhoneNumber, string notes, string warrantyType, string warrantyLength, string warrantyExpiryDate)
         {
+            ValidationException validationState = new ValidationException();
+
+            if (string.IsNullOrEmpty(hrdwreTOSnum))
+            {
+                validationState.SubExceptions.Add(new Exception("Hardware Serial Number can not be empty."));
+            }
+            if (string.IsNullOrEmpty(hrdwreType))
+            {
+                validationState.SubExceptions.Add(new Exception("Hardware Type can not be empty."));
+            }
+            if (string.IsNullOrEmpty(warrantyType))
+            {
+                validationState.SubExceptions.Add(new Exception("Warrenty Type can not be empty."));
+            }
+            if (string.IsNullOrEmpty(warrantyLength))
+            {
+                validationState.SubExceptions.Add(new Exception("Warrenty Length can not be empty."));
+            }
+
             OwnerLocation ownerLocation = null;
             foreach (OwnerLocation entry in _context.OwnerLocations)
             {
@@ -60,9 +79,22 @@ namespace TownOfStettler.Controllers
                     TosNumber = hrdwreTOSnum,  //varchar(20)
                     TypeOfDevice = hrdwreType,  //varchar(40)
                     Destroyed = false,  //bool
+                    Notes = notes  //text  (nullable)
                 };
                 _context.OtherHardwares.Add(hardware);
                 _context.SaveChanges();
+            }
+
+            if (warrantyType != null || warrantyLength != null)
+            {
+                Warranty warranty = new Warranty()
+                {
+                    TypeOfWarranty = warrantyType,  //varchar(100)
+                    LengthOfWarranty = warrantyLength,  //varchar(15)
+                    WarrantyExpiryDate = DateOnly.Parse(warrantyExpiryDate),  //date (nullable)
+                    Notes = notes,  //text (nullable)
+                };
+                _context.Warranties.Add(warranty);
             }
 
             _context.SaveChanges();

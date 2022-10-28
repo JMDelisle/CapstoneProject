@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Threading;
 using TownOfStettler.Data;
 
+//  I have noticed that there is a column missing from this table.  I would add a serial number column to this table that could be null.  Modems, and switches would have a serial number, but keyboards may not
 namespace TownOfStettler.Models
 {
     public partial class OtherHardware
