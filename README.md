@@ -21,5 +21,7 @@ Go back to Visual Studio 2022, and click on the complier above the red line as s
 `Using the web browser of your new database entry`\
 The home page has a option to use the menu on the navbar, or to use the drop down menu to search
 the database tables.The user can search the entire database with the search bar on the home page.(Still work in progress at this time)\
-Each database table has a option to enter in new data by using the Create New link. You can also edit existing data or delete unwanted data from the table by using the links at the end of each
-row.
+Each database table has a option to enter in new data by using the Create New link. You can also edit existing data or delete unwanted data from the table by using the links at the end of each row.\
+
+
+The picture was provided from the client and all rights reserved to Town of Stettler.
