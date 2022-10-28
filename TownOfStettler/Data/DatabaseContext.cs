@@ -524,7 +524,7 @@ namespace TownOfStettler.Data
             //    TosNumber = "unknown", //varchar(25)
             //    ViewSizeInches = ,  //decimal (3,2)
             //    ViewType = "",  //varchar (30)
-            //    Resolution = "",  //varchar(20)
+            //    Resolution = "",  //varchar(20) (nullable)
             //    RefreshRateHz = ,  //int(3) (nullable)
             //    SerialNumber = "",  //varchar(50)
             //    OutputType = "",  //varchar(10) (nullable)

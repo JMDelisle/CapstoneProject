@@ -30,8 +30,35 @@ namespace TownOfStettler.Controllers
             return View();
         }
 
-        public IActionResult EnterNewMonitor(string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string TosNumber, string monitorSize, string monitorType, string monitorResolution, string monitorRefreshRate, string monitorSerialNumber, string monitorOutput, string monOutNum)
+        public IActionResult EnterNewMonitor(string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string TosNumber, string monitorSize, string monitorType, string monitorResolution, string monitorRefreshRate, string monitorSerialNumber, string monitorOutput, string monOutNum, string warrantyType, string warrantyLength, string warrantyExpiryDate, string notes)
         {
+            ValidationException validationState = new ValidationException();
+
+            if (string.IsNullOrEmpty(TosNumber))
+            {
+                validationState.SubExceptions.Add(new Exception("TOS Number can not be empty."));
+            }
+            if (string.IsNullOrEmpty(monitorSize))
+            {
+                validationState.SubExceptions.Add(new Exception("Monitor Size can not be empty."));
+            }
+            if (string.IsNullOrEmpty(monitorType))
+            {
+                validationState.SubExceptions.Add(new Exception("Monitor Type can not be empty."));
+            }
+            if (string.IsNullOrEmpty(monitorSerialNumber))
+            {
+                validationState.SubExceptions.Add(new Exception("Monitor Serial Number can not be empty."));
+            }
+            if (string.IsNullOrEmpty(warrantyType))
+            {
+                validationState.SubExceptions.Add(new Exception("Warrenty Type can not be empty."));
+            }
+            if (string.IsNullOrEmpty(warrantyLength))
+            {
+                validationState.SubExceptions.Add(new Exception("Warrenty Length can not be empty."));
+            }
+
             OwnerLocation ownerLocation = null;
             foreach (OwnerLocation entry in _context.OwnerLocations)
             {
@@ -60,14 +87,28 @@ namespace TownOfStettler.Controllers
                 TosNumber = TosNumber, //varchar(25)
                 ViewSizeInches = Decimal.Parse(monitorSize),  //decimal (3,2)
                 ViewType = monitorType,  //varchar (30)
-                Resolution = monitorResolution,  //varchar(20)
+                Resolution = monitorResolution,  //varchar(20) (nullable)
                 RefreshRateHz = int.Parse(monitorRefreshRate),  //int(3) (nullable)
                 SerialNumber = monitorSerialNumber,  //varchar(50)
                 OutputType = monitorOutput,  //varchar(10) (nullable)
                 NumberOfOutputs = int.Parse(monOutNum),  //int (nullable)
-            };
+                Notes = notes,  //text (nullable)
+                };
             _context.DisplayMonitors.Add(displayMonitor);
             _context.SaveChanges();
+            }
+            // need code here to find out if the monitor is in use or not, if so, add to the in-use monitors table
+
+            if (warrantyType != null || warrantyLength != null)
+            {
+                Warranty warranty = new Warranty()
+                {
+                    TypeOfWarranty = warrantyType,  //varchar(100)
+                    LengthOfWarranty = warrantyLength,  //varchar(15)
+                    WarrantyExpiryDate = DateOnly.Parse(warrantyExpiryDate),  //date (nullable)
+                    Notes = notes,  //text (nullable)
+                };
+                _context.Warranties.Add(warranty);
             }
 
             _context.SaveChanges();

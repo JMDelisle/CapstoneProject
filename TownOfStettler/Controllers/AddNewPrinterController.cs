@@ -31,8 +31,60 @@ namespace TownOfStettler.Controllers
 
             return View();
         }
-        public IActionResult EnterNewPrinter(string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string printerType, string connectionType, string warrantyType, string warrantyLength, string warrantyExpiryDate, string tiedToDevice, string printerTOS, string printerSerNum, string printerModel, string store, string price, string date)
+        public IActionResult EnterNewPrinter(string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string printerType, string connectionType, string warrantyType, string warrantyLength, string warrantyExpiryDate, string tiedToDevice, string printerTOS, string printerSerNum, string printerModel, string store, string price, string date, string notes, string notesPrinter, string notesWarrenty)
         {
+            ValidationException validationState = new ValidationException();
+
+            if (string.IsNullOrEmpty(printerTOS))
+            {
+                validationState.SubExceptions.Add(new Exception("Printer TOS Number can not be empty."));
+            }
+
+            if (string.IsNullOrEmpty(printerSerNum))
+            {
+                validationState.SubExceptions.Add(new Exception("Printer Serial Number can not be empty."));
+            }
+
+            if (string.IsNullOrEmpty(printerModel))
+            {
+                validationState.SubExceptions.Add(new Exception("Printer Model can not be empty."));
+            }
+
+            if (string.IsNullOrEmpty(store))
+            {
+                validationState.SubExceptions.Add(new Exception("Purchase Store can not be empty."));
+            }
+
+            if (string.IsNullOrEmpty(price))
+            {
+                validationState.SubExceptions.Add(new Exception("Purchase Price can not be empty."));
+            }
+
+            if (string.IsNullOrEmpty(date))
+            {
+                validationState.SubExceptions.Add(new Exception("Purchase Date can not be empty."));
+            }
+
+            if (string.IsNullOrEmpty(printerType))
+            {
+                validationState.SubExceptions.Add(new Exception("Printer Type can not be empty."));
+            }
+
+            if (string.IsNullOrEmpty(connectionType))
+            {
+                validationState.SubExceptions.Add(new Exception("Printer Connection Type can not be empty."));
+            }
+
+            if (string.IsNullOrEmpty(warrantyType))
+            {
+                validationState.SubExceptions.Add(new Exception("Warrenty Type can not be empty."));
+            }
+
+            if (string.IsNullOrEmpty(warrantyLength))
+            {
+                validationState.SubExceptions.Add(new Exception("Warrenty Length can not be empty."));
+            }
+
             OwnerLocation ownerLocation = null;
             foreach (OwnerLocation entry in _context.OwnerLocations)
             {
@@ -66,16 +118,17 @@ namespace TownOfStettler.Controllers
                 {
                     DeviceInformation deviceInformation = new DeviceInformation()
                     {
-                        DeviceTypeId = 5,
-                        OwnerLocation = ownerLocation.Id,
-                        TosNumber = printerTOS,
-                        SerialNumber = printerSerNum,
-                        ModelNumber = printerModel,
-                        PurchaseStore = store,
-                        PurchasePrice = Math.Round(Decimal.Parse(price), 2),
-                        PurchaseDate = DateOnly.Parse(date),
-                        OperatingSystem = "none",
-                        Destroyed = false,
+                        DeviceTypeId = 5,  //int PK
+                        OwnerLocation = ownerLocation.Id,  //int FK
+                        TosNumber = printerTOS, // varchar(25) not null
+                        SerialNumber = printerSerNum,  //varchar(30)
+                        ModelNumber = printerModel,  //varchar(50)
+                        PurchaseStore = store,  //varchar(30)
+                        PurchasePrice = Math.Round(Decimal.Parse(price), 2),  //decimal(6,2)
+                        PurchaseDate = DateOnly.Parse(date),  //date
+                        OperatingSystem = "none",  //varchar(30)
+                        Destroyed = false,  //bool
+                        Notes = notes,  //text (nullable)
                     };
 
                     _context.DeviceInformations.Add(deviceInformation);
@@ -90,6 +143,7 @@ namespace TownOfStettler.Controllers
                     DeviceId = tiedDevice,
                     Type = printerType,  //varchar(20)
                     ConnectionType = connectionType,  //varchar(15)
+                    Notes = notesPrinter,  //text (nullable)
                 };
                 _context.Printers.Add(printer);
                 _context.SaveChanges();
@@ -102,6 +156,7 @@ namespace TownOfStettler.Controllers
                     TypeOfWarranty = warrantyType,  //varchar(100)
                     LengthOfWarranty = warrantyLength,  //varchar(15)
                     WarrantyExpiryDate = DateOnly.Parse(warrantyExpiryDate),  //date (nullable)
+                    Notes = notesWarrenty,  //text (nullable)
                 };
                 _context.Warranties.Add(warranty);
             }
