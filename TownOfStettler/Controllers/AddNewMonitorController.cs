@@ -99,17 +99,17 @@ namespace TownOfStettler.Controllers
             }
             // need code here to find out if the monitor is in use or not, if so, add to the in-use monitors table
 
-            if (warrantyType != null || warrantyLength != null)
-            {
-                Warranty warranty = new Warranty()
-                {
-                    TypeOfWarranty = warrantyType,  //varchar(100)
-                    LengthOfWarranty = warrantyLength,  //varchar(15)
-                    WarrantyExpiryDate = DateOnly.Parse(warrantyExpiryDate),  //date (nullable)
-                    Notes = notes,  //text (nullable)
-                };
-                _context.Warranties.Add(warranty);
-            }
+            //if (warrantyType != null || warrantyLength != null)
+            //{
+            //    Warranty warranty = new Warranty()
+            //    {
+            //        TypeOfWarranty = warrantyType,  //varchar(100)
+            //        LengthOfWarranty = warrantyLength,  //varchar(15)
+            //        WarrantyExpiryDate = DateOnly.Parse(warrantyExpiryDate),  //date (nullable)
+            //        Notes = notes,  //text (nullable)
+            //    };
+            //    _context.Warranties.Add(warranty);
+            //}
 
             _context.SaveChanges();
             return RedirectToAction("Index");

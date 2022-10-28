@@ -149,17 +149,17 @@ namespace TownOfStettler.Controllers
                 _context.SaveChanges();
             }
             }
-            if (warrantyType != null || warrantyLength != null)
-            {
-                Warranty warranty = new Warranty()
-                {
-                    TypeOfWarranty = warrantyType,  //varchar(100)
-                    LengthOfWarranty = warrantyLength,  //varchar(15)
-                    WarrantyExpiryDate = DateOnly.Parse(warrantyExpiryDate),  //date (nullable)
-                    Notes = notesWarrenty,  //text (nullable)
-                };
-                _context.Warranties.Add(warranty);
-            }
+            //if (warrantyType != null || warrantyLength != null)
+            //{
+            //    Warranty warranty = new Warranty()
+            //    {
+            //        TypeOfWarranty = warrantyType,  //varchar(100)
+            //        LengthOfWarranty = warrantyLength,  //varchar(15)
+            //        WarrantyExpiryDate = DateOnly.Parse(warrantyExpiryDate),  //date (nullable)
+            //        Notes = notesWarrenty,  //text (nullable)
+            //    };
+            //    _context.Warranties.Add(warranty);
+            //}
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
