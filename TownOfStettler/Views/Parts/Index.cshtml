@@ -21,28 +21,28 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @*@Html.DisplayNameFor(model => model.DeviceHistory)*@Device History
+            <th class="px-5">
+                @*@Html.DisplayNameFor(model => model.OriginalDevice)*@Original Device ID
             </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.HardDrive)*@Hard Drive
+            <th class="px-5">
+                @*@Html.DisplayNameFor(model => model.DeviceHistory)*@Device History ID
             </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.OriginalDevice)*@Original Device
+            <th class="px-5">
+                @*@Html.DisplayNameFor(model => model.Ram)*@Ram ID
             </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Ram)*@Ram
+            <th class="px-5">
+                @*@Html.DisplayNameFor(model => model.HardDrive)*@Hard Drive ID
             </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.MiscellaneousDrive)*@Miscellaneous Drive/Reader
+            <th class="px-5">
+                @*@Html.DisplayNameFor(model => model.MiscellaneousDrive)*@Miscellaneous Drive/Reader ID
             </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.SoundCard)*@Sound Card
+            <th class="px-5">
+                @*@Html.DisplayNameFor(model => model.VideoCard)*@Video Card ID
             </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.VideoCard)*@Video Card
+            <th class="px-5">
+                @*@Html.DisplayNameFor(model => model.SoundCard)*@Sound Card ID
             </th>
-            <th>
+            <th class="px-5">
                 @*@Html.DisplayNameFor(model => model.Notes)*@Notes
             </th>
 
@@ -50,39 +50,43 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeviceHistory.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HardDrive.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OriginalDevice.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ram.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MiscellaneousDrive.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoundCard.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VideoCard.Id)
-            </td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OriginalDeviceIdWithName) @*OriginalDevice.Id*@
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeviceHistory.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RamIdWithName) @*Ram.Id*@
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.HDDIdWithName) @*HardDrive.Id*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiscIdWithName)    @*MiscellaneousDrive.Id*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VideosIdWithName) @*VideoCard.Id*@
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoundCard.Id)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Notes)
                 </td>
 
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

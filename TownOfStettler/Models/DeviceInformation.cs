@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Linq;
-
+using TownOfStettler.Data;
 
 namespace TownOfStettler.Models
 {
@@ -70,9 +67,39 @@ namespace TownOfStettler.Models
         }
 
 
-        [NotMapped]
-        public string IdTos => DeviceTypeId + "-" + TosNumber;
+        //[NotMapped]
+        //public string IdTos => DeviceTypeId + "-" + TosNumber;
 
+        [NotMapped]
+        public string DeviceTypeIdWithName
+        {
+            get
+            {
+                string result = "ID#" + DeviceTypeId.ToString();
+                using (DatabaseContext __dbcntxt = new())
+                {
+                    result += (" [ " + __dbcntxt.DeviceInformations.Single(item => (item.Id == DeviceTypeId)).TosNumber + " ]");
+                }
+                return result;
+            }
+
+        }
+
+
+        [NotMapped]
+        public string OwnerLocationIdWithName
+        {
+            get
+            {
+                string result = "ID#" + OwnerLocation.ToString();
+                using (DatabaseContext __dbcntxt = new())
+                {
+                    result += (" [ " + __dbcntxt.OwnerLocations.Single(item => (item.Id == OwnerLocation)).Name + " ]");
+                }
+                return result;
+            }
+
+        }
 
     }
 }

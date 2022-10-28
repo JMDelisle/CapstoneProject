@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Channels;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TownOfStettler.Data;
@@ -26,7 +21,6 @@ namespace TownOfStettler.Controllers
             var databaseContext = _context.Histories.Include(h => h.Device).Include(h => h.DeviceType).Include(h => h.PartsChangedNavigation).Include(h => h.PastOwnerSNavigation);
             return View(await databaseContext.ToListAsync());
         }
-
 
 
         // GET: History/Details/5
@@ -66,10 +60,12 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DeviceTypeId,DeviceId,PartsChanged,PastOwnerS,Wiped,PartsRemoved,DateOfChanges,OutOfServiceDate,Notes")] History history)
+        public async Task<IActionResult> Create(string DateOfChanges, string OutOfServiceDate, [Bind("Id,DeviceTypeId,DeviceId,PartsChanged,PastOwnerS,Wiped,PartsRemoved,DateOfChanges,OutOfServiceDate,Notes")] History history)
         {
             if (ModelState.IsValid)
             {
+                history.DateOfChanges = DateOnly.Parse(DateOfChanges);
+                history.OutOfServiceDate = DateOnly.Parse(OutOfServiceDate);
                 _context.Add(history);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

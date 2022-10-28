@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using TownOfStettler.Data;
 using TownOfStettler.Models;
-using TownOfStettler.Models.Exceptions;
 using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
-using MessagePack;
 using ValidationException = TownOfStettler.Models.Exceptions.ValidationException;
 
 namespace TownOfStettler.Controllers

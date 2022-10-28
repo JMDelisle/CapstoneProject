@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Threading;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using TownOfStettler.Data;
 
 //  I have noticed that there is a column missing from this table.  I would add a serial number column to this table that could be null.  Modems, and switches would have a serial number, but keyboards may not
@@ -21,19 +18,21 @@ namespace TownOfStettler.Models
         public virtual OwnerLocation OwnerLocationNavigation { get; set; } = null!;
 
 
+
         [NotMapped]
-        public string OwnerLocationWithName
+        public string OwnerLocationIdWithName
         {
             get
             {
-                string result = "#" + OwnerLocation.ToString();
-                using (DatabaseContext __dbcntxt = new DatabaseContext())
+                string result = "ID#" + OwnerLocation.ToString();
+                using (DatabaseContext __dbcntxt = new())
                 {
-                    result += " [ " + __dbcntxt.OwnerLocations.Single(item => (item.Id == OwnerLocation)).Name + " ]";
+                    result += (" [ " + __dbcntxt.OwnerLocations.Single(item => (item.Id == OwnerLocation)).Name + " ]");
                 }
                 return result;
             }
         }
+
 
     }
 }

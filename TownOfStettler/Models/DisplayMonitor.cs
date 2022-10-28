@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace TownOfStettler.Models
+﻿namespace TownOfStettler.Models
 {
     public partial class DisplayMonitor
     {

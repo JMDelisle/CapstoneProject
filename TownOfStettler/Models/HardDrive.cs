@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using TownOfStettler.Data;
 
 namespace TownOfStettler.Models
@@ -30,7 +28,7 @@ namespace TownOfStettler.Models
         {
             get
             {
-                string result = "#" + DeviceId.ToString();
+                string result = "ID#" + DeviceId.ToString();
                 using (DatabaseContext __dbcntxt = new())
                 {
                     result += (" [ " + __dbcntxt.DeviceInformations.Single(item => (item.Id == DeviceId)).TosNumber + " ]");

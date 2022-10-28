@@ -46,7 +46,13 @@ h1, h3 {
 }
 
 
-h4, th, label {
+h4, label {
+    color: #fec751;
+    /*background-color: #781a16;*/
+    border-radius: 5px;
+}
+
+th {
     color: #fec751;
     /*background-color: #781a16;*/
     border-radius: 5px;

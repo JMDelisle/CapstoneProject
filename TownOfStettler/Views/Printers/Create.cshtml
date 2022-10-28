@@ -13,12 +13,12 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="TosNumber" class="control-label"></label>
+                <label asp-for="TosNumber" class="control-label">TOS Number:</label>
                 <input asp-for="TosNumber" class="form-control" />
                 <span asp-validation-for="TosNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OwnerLocation" class="control-label"></label>
+                <label asp-for="OwnerLocation" class="control-label">Owner LOcation:</label>
                 <select asp-for="OwnerLocation" class ="form-control" asp-items="ViewBag.OwnerLocation"></select>
             </div>
             <div class="form-group">

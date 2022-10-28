@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using TownOfStettler.Data;
 
 namespace TownOfStettler.Models
 {
@@ -14,7 +13,19 @@ namespace TownOfStettler.Models
         public virtual VideoCard VideoCard { get; set; } = null!;
 
         [NotMapped]
-        public string TypeId => Type + "-" + VideoCardId;
+        public string VideosIdWithName
+        {
+            get
+            {
+                string result = "ID#" + VideoCardId.ToString();
+                using (DatabaseContext __dbcntxt = new())
+                {
+                    result += (" [ " + __dbcntxt.VideoCards.Single(item => (item.Id == VideoCardId)).Brand + " ]");
+                }
+                return result;
+            }
+        }
+
 
     }
 }
