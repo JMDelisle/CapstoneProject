@@ -12,10 +12,10 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace TownOfStettler.Controllers
 {
-    public class AddNewDesktop : Controller
+    public class AddNewDesktopController : Controller
     {
         private readonly DatabaseContext _context;
-        public AddNewDesktop(DatabaseContext context)
+        public AddNewDesktopController(DatabaseContext context)
         {
             _context = context;
         }
@@ -32,7 +32,7 @@ namespace TownOfStettler.Controllers
             return View();
         }
 
-        public IActionResult EnterNewDesktop(string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string TOSnumber, string serverSerNumber, string serverModel, string pwrSupply, string store, string price, string date, string serverOS, string serverNotes, string networkCardSpeed, string networkCardWireless, string networkCardBluetooth, string networkCardSerNum, string networkNotes, string hardDriveType, string hardDriveSize, string HDDserNum, string hardDriveNotes, string processorType, string processorSpeed, string processorSerNum, string processorGeneration, string processorCoreCount, string processorNotes, string RamSize, string ramType, string ramSpeed, string ramSerNum, string ramNotes, string miscellaneousDriveType, string miscellaneousDriveRemoveable, string miscDriveSerNum, string miscNotes, string soundCardBrand, string soundNotes, string videoCardBrand, string videoCardRamSize, string vidCardSerNum, string vidCardNotes, string videoCardOutputType, string videoCardOutputNumber, string outputNotes, string warrantyType, string warrantyLength, string warrantyExpiryDate, string warrantyNotes)
+        public IActionResult EnterNewDesktop(string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string TOSnumber, string desktopSerNumber, string desktopModel, string pwrSupply, string store, string price, string date, string desktopOS, string desktopNotes, string networkCardSpeed, string networkCardWireless, string networkCardBluetooth, string networkCardSerNum, string networkNotes, string hardDriveType, string hardDriveSize, string HDDserNum, string hardDriveNotes, string processorType, string processorSpeed, string processorSerNum, string processorGeneration, string processorCoreCount, string processorNotes, string RamSize, string ramType, string ramSpeed, string ramSerNum, string ramNotes, string miscellaneousDriveType, string miscellaneousDriveRemoveable, string miscDriveSerNum, string miscNotes, string soundCardBrand, string soundNotes, string videoCardBrand, string videoCardRamSize, string vidCardSerNum, string vidCardNotes, string videoCardOutputType, string videoCardOutputNumber, string outputNotes, string warrantyType, string warrantyLength, string warrantyExpiryDate, string warrantyNotes)
         {
             ValidationException validationState = new ValidationException();
 
@@ -52,11 +52,11 @@ namespace TownOfStettler.Controllers
             {
                 validationState.SubExceptions.Add(new Exception("Server TOS Number can not be empty."));
             }
-            if (string.IsNullOrEmpty(serverSerNumber))
+            if (string.IsNullOrEmpty(desktopSerNumber))
             {
                 validationState.SubExceptions.Add(new Exception("Server Serial Number can not be empty."));
             }
-            if (string.IsNullOrEmpty(serverModel))
+            if (string.IsNullOrEmpty(desktopModel))
             {
                 validationState.SubExceptions.Add(new Exception("Server Model Number can not be empty."));
             }
@@ -72,7 +72,7 @@ namespace TownOfStettler.Controllers
             {
                 validationState.SubExceptions.Add(new Exception("Server Purchase Date can not be empty."));
             }
-            if (string.IsNullOrEmpty(serverOS))
+            if (string.IsNullOrEmpty(desktopOS))
             {
                 validationState.SubExceptions.Add(new Exception("Server Operating System can not be empty."));
             }
@@ -188,15 +188,15 @@ namespace TownOfStettler.Controllers
                 DeviceTypeId = 2,  //int FK
                 OwnerLocation = ownerLocation.Id,  //int FK
                 TosNumber = TOSnumber,  //varchar(25)
-                SerialNumber = serverSerNumber,  //varchar(30)
-                ModelNumber = serverModel,  //varchar(50)
+                SerialNumber = desktopSerNumber,  //varchar(30)
+                ModelNumber = desktopModel,  //varchar(50)
                 PowerSupply = pwrSupply,  //varchar(75) (nullable)
                 PurchaseStore = store,  //varchar(30)
                 PurchasePrice = Math.Round(Decimal.Parse(price), 2),  //decimal(6,2)
                 PurchaseDate = DateOnly.Parse(date),  //date
-                OperatingSystem = serverOS,  //varchar(30)
+                OperatingSystem = desktopOS,  //varchar(30)
                 Destroyed = false,  //bool
-                Notes = serverNotes,  //text  (nullable)
+                Notes = desktopNotes,  //text  (nullable)
             };
             _context.DeviceInformations.Add(deviceInformation);
             _context.SaveChanges();
