@@ -78,7 +78,7 @@ namespace TownOfStettler.Models
                 string result = "ID#" + DeviceTypeId.ToString();
                 using (DatabaseContext __dbcntxt = new())
                 {
-                    result += (" [ " + __dbcntxt.DeviceInformations.Single(item => (item.Id == DeviceTypeId)).TosNumber + " ]");
+                    result += (" [ " + __dbcntxt.HardwareDevices.Single(item => (item.Id == DeviceTypeId)).TypeOfHardware + " ]");
                 }
                 return result;
             }

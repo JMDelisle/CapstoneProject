@@ -1,4 +1,7 @@
-﻿namespace TownOfStettler.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using TownOfStettler.Data;
+
+namespace TownOfStettler.Models
 {
     public partial class Printer
     {
@@ -14,5 +17,21 @@
         public virtual DeviceInformation? Device { get; set; }
         public virtual History? HistoryNavigation { get; set; }
         public virtual OwnerLocation OwnerLocationNavigation { get; set; } = null!;
+
+        [NotMapped]
+        public string DeviceIdWithName
+        {
+            get
+            {
+                string result = "ID#" + DeviceId.ToString();
+                using (DatabaseContext __dbcntxt = new())
+                {
+                    result += (" [ " + __dbcntxt.DeviceInformations.Single(item => (item.Id == DeviceId)).TosNumber + " ]");
+                }
+                return result;
+            }
+
+        }
+
     }
 }

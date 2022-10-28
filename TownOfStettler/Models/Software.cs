@@ -56,15 +56,16 @@ namespace TownOfStettler.Models
         public string PurchDate
         {
             get
-            {
-                if (PurchaseDate == null)
-                {
-                    return "";
-                }
-                else
+            {                
                 {
                     return (PurchaseDate?.ToString("yyyy-MM-dd"));
                 }
+
+                //if (PurchaseDate == null)
+                //{
+                //    return "";
+                //}
+                //else
 
             }
         }

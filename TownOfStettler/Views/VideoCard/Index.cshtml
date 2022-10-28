@@ -23,11 +23,6 @@
             <th>
                 @*@Html.DisplayNameFor(model => model.Device)*@Device ID
             </th>
-
-            <th>
-                @*@Html.DisplayNameFor(model => model.Notes)*@Notes
-            </th>
-
             <th>
                 @*@Html.DisplayNameFor(model => model.Brand)*@Brand
             </th>
@@ -40,6 +35,9 @@
             <th>
                 @*@Html.DisplayNameFor(model => model.Destroyed)*@Destroyed
             </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Notes)*@Notes
+            </th>
 
             <th></th>
         </tr>
@@ -51,7 +49,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.DeviceIdWithName) @*Device.Id*@
                 </td>
-
                 <td>
                     @Html.DisplayFor(modelItem => item.Brand)
                 </td>

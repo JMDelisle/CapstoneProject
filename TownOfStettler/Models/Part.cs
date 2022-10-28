@@ -73,7 +73,7 @@ namespace TownOfStettler.Models
         {
             get
             {
-                string result = "#" + HardDriveId.ToString();
+                string result = "ID#" + HardDriveId.ToString();
                 using (DatabaseContext __dbcntxt = new())
                 {
                     result += (" [ " + __dbcntxt.HardDrives.Single(item => (item.Id == HardDriveId)).Type + " ]");
@@ -87,7 +87,7 @@ namespace TownOfStettler.Models
         {
             get
             {
-                string result = "#" + MiscellaneousDriveId.ToString();
+                string result = "ID#" + MiscellaneousDriveId.ToString();
                 using (DatabaseContext __dbcntxt = new())
                 {
                     result += (" [ " + __dbcntxt.MiscellaneousDrives.Single(item => (item.Id == MiscellaneousDriveId)).Type + " ]");
