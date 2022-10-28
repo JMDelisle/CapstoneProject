@@ -32,7 +32,7 @@ namespace TownOfStettler.Controllers
             return View();
         }
 
-        public IActionResult EnterNewLaptop(string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string TOSnumber, string serverSerNumber, string serverModel, string pwrSupply, string store, string price, string date, string serverOS, string notes, string networkCardSpeed, string networkCardWireless, string networkCardBluetooth, string networkCardSerNum, string networkNotes, string hardDriveType, string hardDriveSize, string HDDserNum, string hardDriveNotes, string processorType, string processorSpeed, string processorSerNum, string processorGeneration, string processorCoreCount, string processorNotes, string RamSize, string ramType, string ramSpeed, string ramSerNum, string ramNotes, string miscellaneousDriveType, string miscellaneousDriveRemoveable, string miscDriveSerNum, string miscNotes, string soundCardBrand, string soundNotes, string videoCardBrand, string videoCardRamSize, string vidCardSerNum, string vidCardNotes, string videoCardOutputType, string videoCardOutputNumber, string outputNotes, string warrantyType, string warrantyLength, string warrantyExpiryDate, string warrantyNotes)
+        public IActionResult EnterNewLaptop(string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string TOSnumber, string serverSerNumber, string serverModel, string pwrSupply, string store, string price, string date, string serverOS, string notes, string networkCardSpeed, string networkCardWireless, string networkCardBluetooth, string networkCardSerNum, string networkNotes, string hardDriveType, string hardDriveSize, string HDDserNum, string hardDriveNotes, string processorType, string processorSpeed, string processorSerNum, string processorGeneration, string processorCoreCount, string processorNotes, string RamSize, string ramType, string ramSpeed, string ramSerNum, string ramNotes, string miscellaneousDriveType, string miscellaneousDriveRemoveable, string miscDriveSerNum, string miscNotes, string soundCardBrand, string soundNotes, string videoCardBrand, string videoCardRamSize, string vidCardSerNum, string vidCardNotes, string videoCardOutputType, string videoCardOutputNumber, string outputNotes, string warrantyType, string warrantyLength, string warrantyExpiryDate, string warrantyNotes, string monitorSize, string monitorType, string monitorResolution, string monitorRefreshRate, string monOutNum)
         {
             ValidationException validationState = new ValidationException();
 
@@ -160,6 +160,18 @@ namespace TownOfStettler.Controllers
             {
                 validationState.SubExceptions.Add(new Exception("You must enter the Warranty Length."));
             }
+            if (string.IsNullOrEmpty(monitorSize))
+            {
+                validationState.SubExceptions.Add(new Exception("You must enter Monitor Size."));
+            }
+            if (string.IsNullOrEmpty(monitorType))
+            {
+                validationState.SubExceptions.Add(new Exception("You must enter Monitor Type."));
+            }
+            if (string.IsNullOrEmpty(monitorResolution))
+            {
+                validationState.SubExceptions.Add(new Exception("You must enter Monitor Resolution."));
+            }
 
 
             OwnerLocation ownerLocation = null;
@@ -200,6 +212,22 @@ namespace TownOfStettler.Controllers
             };
             _context.DeviceInformations.Add(deviceInformation);
             _context.SaveChanges();
+
+            if (monitorSize != null || monitorType != null || monitorResolution != null)
+            {
+                DisplayMonitor displayMonitor = new DisplayMonitor()
+                {
+                    TosNumber = TOSnumber, //varchar(25)
+                    ViewSizeInches = Decimal.Parse(monitorSize),  //decimal (3,2)
+                    ViewType = monitorType,  //varchar (30)
+                    Resolution = monitorResolution,  //varchar(20)
+                    RefreshRateHz = int.Parse(monitorRefreshRate),  //int(3) (nullable)
+                    SerialNumber = "Laptop Monitor",  //varchar(50)
+                    NumberOfOutputs = int.Parse(monOutNum),  //int (nullable)
+                };
+                _context.DisplayMonitors.Add(displayMonitor);
+                _context.SaveChanges();
+            }
 
             if (networkCardSpeed != null || networkCardBluetooth != null || networkCardWireless != null || networkCardSerNum != null || networkCardSerNum != null)
             {
