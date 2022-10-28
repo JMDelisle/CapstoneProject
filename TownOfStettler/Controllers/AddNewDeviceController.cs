@@ -46,22 +46,7 @@ namespace TownOfStettler.Controllers
         {
             ValidationException validationState = new ValidationException();
 
-            if (string.IsNullOrEmpty(hardwareDevice))
-            {
-                validationState.SubExceptions.Add(new Exception("Please choose a Device Hardware Type."));
-            }
-            if (string.IsNullOrEmpty(ownerLocationName))
-            {
-                validationState.SubExceptions.Add(new Exception("Error Message Here."));
-            }
-            if (string.IsNullOrEmpty(ownerAddress))
-            {
-                validationState.SubExceptions.Add(new Exception("Error Message Here."));
-            }
-            if (string.IsNullOrEmpty(ownerPhoneNumber))
-            {
-                validationState.SubExceptions.Add(new Exception("Error Message Here."));
-            }
+            
             if (string.IsNullOrEmpty(monitorSize))
             {
                 validationState.SubExceptions.Add(new Exception("Please choose a Monitor Size."));
@@ -302,123 +287,8 @@ namespace TownOfStettler.Controllers
                 _context.SaveChanges();
 
                 // if statement to allow for laptop monitor goes here to make the Monitor TOS number the same as the Device TOS Number
-
-
-                if (networkCardSpeed != null || networkCardBluetooth != null || networkCardWireless != null || networkCardSerNum != null || networkCardSerNum != null)
-                {
-                    EthernetNetwork ethernetNetwork = new EthernetNetwork()
-                    {
-                        DeviceId = deviceInformation.Id,  //int FK
-                        Speed = networkCardSpeed,  //varchar (30)
-                        Wireless = bool.Parse(networkCardWireless),  //bool
-                        Bluetooth = bool.Parse(networkCardBluetooth),  //bool
-                        SerialNumber = networkCardSerNum,  //varchar(30)
-                        Destroyed = false,
-                    };
-                    _context.EthernetNetworks.Add(ethernetNetwork);
-                    _context.SaveChanges();
-
-                }
-                if (hardDriveType != null || hardDriveSize != null || HDDserNum != null)
-                {
-                    HardDrive hardDrive = new HardDrive()
-                    {
-                        DeviceId = deviceInformation.Id,  //int FK
-                        Type = hardDriveType,  //varchar(20)
-                        SizeGb = int.Parse(hardDriveSize),  //int(7)
-                        SerialNumber = HDDserNum,  //varchar(30)
-                        Destroyed = false,
-                    };
-                    _context.HardDrives.Add(hardDrive);
-                    _context.SaveChanges();
-                }
-                if (processorType != null || processorSpeed != null || processorGeneration != null)
-                {
-                    Processor processor = new Processor()
-                    {
-                        DeviceId = deviceInformation.Id,  //int FK
-                        Type = processorType,  //varchar(25)
-                        SpeedGhz = Math.Round(Decimal.Parse(processorSpeed), 2),  //decimal(5,3)
-                        SerialNumber = processorSerNum,  //varchar(30)
-                        Generation = int.Parse(processorGeneration),  //int(11) (nullable)
-                        CoreCount = int.Parse(processorCoreCount),  //int(11) (nullable)
-                        Destroyed = false,  //bool
-                    };
-                    _context.Processors.Add(processor);
-                    _context.SaveChanges();
-                }
-
-                if (ramType != null || RamSize != null || ramSpeed != null || ramSerNum != null)
-                {
-                    Ram ram = new Ram()
-                    {
-                        DeviceId = deviceInformation.Id,  //int FK
-                        Type = ramType,  //varchar(15)
-                        SizeGb = int.Parse(RamSize),  //int(11)
-                        SpeedMhz = int.Parse(ramSpeed),  //int(5) (nullable)
-                        SerialNumber = ramSerNum,  //varchar(30)
-                        Destroyed = false,  //bool
-                    };
-                    _context.Rams.Add(ram);
-                    _context.SaveChanges();
-                }
-
-                if (MiscellaneousDriveType != null || MiscellaneousDriveRemoveable != null)
-                {
-                    MiscellaneousDrive MiscellaneousDrive = new MiscellaneousDrive()
-                    {
-                        DeviceId = deviceInformation.Id,  //int FK
-                        Type = MiscellaneousDriveType,  //varchar(30)
-                        Removable = bool.Parse(MiscellaneousDriveRemoveable),  //bool
-                        SerialNumber = miscDriveSerNum,  //varchar(30)
-                        Destroyed = false,  //bool
-                    };
-                    _context.MiscellaneousDrives.Add(MiscellaneousDrive);
-                    _context.SaveChanges();
-                }
-
-                if (soundCardBrand != null)
-                {
-                    SoundCard soundCard = new SoundCard()
-                    {
-                        DeviceId = deviceInformation.Id,  //int FK
-                        Brand = soundCardBrand,  //varchar(20) (nullable)
-                        Destroyed = false, //bool
-                    };
-                    _context.SoundCards.Add(soundCard);
-                    _context.SaveChanges();
-                }
-
-                while (videoCardRamSize != null)
-                {
-                    if (videoCardBrand != null || videoCardRamSize != null || vidCardSerNum != null)
-                    {
-                        VideoCard videoCard = new VideoCard()
-                        {
-                            DeviceId = deviceInformation.Id,  //int FK
-                            Brand = videoCardBrand,  //varchar(20) (nullable)
-                            RamSizeGb = int.Parse(videoCardRamSize),  //int(11)
-                            SerialNumber = vidCardSerNum,  //varchar(30)
-                            Destroyed = false,  //bool
-                        };
-                        _context.VideoCards.Add(videoCard);
-                        _context.SaveChanges();
-
-                        if (videoCardOutputNumber != null)
-                        {
-                            // if statement to check to see if the input (PK) is on the table 
-                            Output output = new Output()
-                            {
-                                Type = videoCardOutputType,  //varchar(10) PK
-                                VideoCardId = videoCard.Id,  //_context.VideoCards.Id,  //int FK
-                                NumberOfOutputs = int.Parse(videoCardOutputNumber),  //int(2)
-                            };
-                            _context.Outputs.Add(output);
-                            _context.SaveChanges();
-                        }
-                    }
-
-                }
+                
+                
             }
             
            
