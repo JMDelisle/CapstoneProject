@@ -22,20 +22,20 @@
     <thead>
         <tr>
             <th>
-                @*@Html.DisplayNameFor(model => model.HardDrive)*@Hard Drive ID
-            </th>
-            <th>
                 @*@Html.DisplayNameFor(model => model.Processor)*@Processor ID
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.Ram)*@Ram ID
             </th>
             <th>
+                @*@Html.DisplayNameFor(model => model.HardDrive)*@Hard Drive ID
+            </th>
+            <th>
                 @*@Html.DisplayNameFor(model => model.MiscellaneousDrive)*@Miscellaneous Drive/Reader ID
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.SoundCard)*@Sound Card ID
-            </th> 
+            </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.VideoCard)*@Video Card ID
             </th>
@@ -47,36 +47,37 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.HardDrive.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Processor.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ram.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MiscellaneousDrive.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoundCard.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VideoCard.Id)
-            </td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProcessorIdWithName) @*Processor.Id*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RamIdWithName) @*Ram.Id*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HardDriveIdWithName) @*HardDrive.Id*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DriveReaderIdWithName) @*MiscellaneousDrive.Id*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoundCard.Id) @*SoundCard.Id*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VideoCardIdWithName) @*VideoCard.Id*@
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Notes)
                 </td>
 
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

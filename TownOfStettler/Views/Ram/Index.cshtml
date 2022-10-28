@@ -22,7 +22,11 @@
     <thead>
         <tr>
             <th>
-               @* @Html.DisplayNameFor(model => model.Type)*@Type
+                @*@Html.DisplayNameFor(model => model.Device)*@Device ID
+            </th>
+
+            <th>
+                @* @Html.DisplayNameFor(model => model.Type)*@Type
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.SizeGb)*@Size Gb
@@ -37,9 +41,6 @@
                 @*@Html.DisplayNameFor(model => model.Destroyed)*@Destroyed
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.Device)*@Device ID
-            </th>
-            <th>
                 @*@Html.DisplayNameFor(model => model.Notes)*@Notes
             </th>
 
@@ -47,36 +48,38 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SizeGb)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpeedMhz)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SerialNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Destroyed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Device.Id)
-            </td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeviceIdWithName) @*Device.Id*@
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SizeGb)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpeedMhz)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SerialNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destroyed)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Notes)
                 </td>
 
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

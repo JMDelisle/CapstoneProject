@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using TownOfStettler.Data;
 
 namespace TownOfStettler.Models
 {
@@ -26,6 +27,20 @@ namespace TownOfStettler.Models
         public virtual ICollection<Output> Outputs { get; set; }
         public virtual ICollection<Part> Parts { get; set; }
 
+        [NotMapped]
+        public string DeviceIdWithName
+        {
+            get
+            {
+                string result = "ID#" + DeviceId.ToString();
+                using (DatabaseContext __dbcntxt = new())
+                {
+                    result += (" [ " + __dbcntxt.DeviceInformations.Single(item => (item.Id == DeviceId)).TosNumber + " ]");
+                }
+                return result;
+            }
+
+        }
 
     }
 }

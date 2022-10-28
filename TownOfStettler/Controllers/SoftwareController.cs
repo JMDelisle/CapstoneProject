@@ -59,10 +59,13 @@ namespace TownOfStettler.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ProductKey,SoftwareName,AssociatedAccount,Subscription,SubscriptionEndDate,PurchaseDate,PurchasePrice,DevicesAllowed,EndOfSupportDate,Notes")] Software software)
+        public async Task<IActionResult> Create(string SubscriptionEndDate, string PurchaseDate, string EndOfSupportDate, [Bind("Id,ProductKey,SoftwareName,AssociatedAccount,Subscription,SubscriptionEndDate,PurchaseDate,PurchasePrice,DevicesAllowed,EndOfSupportDate,Notes")] Software software)
         {
             if (ModelState.IsValid)
             {
+                software.SubscriptionEndDate = DateOnly.Parse(SubscriptionEndDate);
+                software.PurchaseDate = DateOnly.Parse(PurchaseDate);
+                software.EndOfSupportDate = DateOnly.Parse(EndOfSupportDate);
                 _context.Add(software);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -100,7 +103,6 @@ namespace TownOfStettler.Controllers
 
             if (ModelState.IsValid)
             {
-                software.SubscriptionEndDate = DateOnly.Parse(SubscriptionEndDate);
                 try
                 {
                     software.SubscriptionEndDate = DateOnly.Parse(SubscriptionEndDate);

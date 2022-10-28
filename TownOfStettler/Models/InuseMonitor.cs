@@ -19,7 +19,7 @@ namespace TownOfStettler.Models
         {
             get
             {
-                string result = "#" + DeviceId.ToString();
+                string result = "ID#" + DeviceId.ToString();
                 using (DatabaseContext __dbcntxt = new DatabaseContext())
                 {
                     result += " [ " + __dbcntxt.DeviceInformations.Single(item => (item.Id == DeviceId)).TosNumber + " ]";
@@ -33,7 +33,7 @@ namespace TownOfStettler.Models
         {
             get
             {
-                string result = "#" + MonitorId.ToString();
+                string result = "ID#" + MonitorId.ToString();
                 using (DatabaseContext __dbcntxt = new DatabaseContext())
                 {
                     result += " [ " + __dbcntxt.DeviceInformations.Single(item => (item.Id == MonitorId)).TosNumber + " ]";

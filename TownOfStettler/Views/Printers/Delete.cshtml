@@ -12,13 +12,17 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TosNumber)
+            @*@Html.DisplayNameFor(model => model.TosNumber)*@TOS Number
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TosNumber)
         </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.Id)
+        </dd>
+
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Type)
+            @*@Html.DisplayNameFor(model => model.Type)*@Type
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Type)
@@ -38,9 +42,6 @@
         <dt class = "col-sm-2">
             @*@Html.DisplayNameFor(model => model.Device)*@Device
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Device.Id)
-        </dd>
         <dt class = "col-sm-2">
             @*@Html.DisplayNameFor(model => model.HistoryNavigation)*@History Navigation
         </dt>

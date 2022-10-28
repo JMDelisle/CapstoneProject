@@ -33,7 +33,6 @@
             <th>
                 @*@Html.DisplayNameFor(model => model.OutOfServiceDate)*@Out Of Service Date
             </th>
-
             <th class="px-10">
                 @*@Html.DisplayNameFor(model => model.Device)*@Device ID
             </th>
@@ -68,16 +67,16 @@
                     @Html.DisplayFor(modelItem => item.StrOoS)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DeviceId)
+                    @Html.DisplayFor(modelItem => item.DeviceIdWithName) @*DeviceId*@
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DeviceType.Id)
+                    @Html.DisplayFor(modelItem => item.DeviceTypeIdWithName) @*DeviceType.Id*@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.PartsChangedNavigation.Id)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PastOwnerSNavigation.Id)
+                    @Html.DisplayFor(modelItem => item.PastOwnerSNavigation.Id) @*PastOwnerSNavigation.Id*@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Notes)

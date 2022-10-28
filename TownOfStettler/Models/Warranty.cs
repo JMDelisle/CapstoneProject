@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
+using TownOfStettler.Data;
 
 namespace TownOfStettler.Models
 {
@@ -30,8 +31,20 @@ namespace TownOfStettler.Models
             }
         }
 
-        //[NotMapped]
-        //public string IdTos => Device + "-" + TosNumber;
+        [NotMapped]
+        public string DeviceIdWithName
+        {
+            get
+            {
+                string result = "ID#" + DeviceId.ToString();
+                using (DatabaseContext __dbcntxt = new())
+                {
+                    result += (" [ " + __dbcntxt.DeviceInformations.Single(item => (item.Id == DeviceId)).TosNumber + " ]");
+                }
+                return result;
+            }
+
+        }
 
     }
 }
