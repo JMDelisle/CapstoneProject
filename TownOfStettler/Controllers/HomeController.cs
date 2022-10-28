@@ -1,8 +1,5 @@
-﻿using System;
-using System.Reflection;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Microsoft.EntityFrameworkCore;
 using TownOfStettler.Models;
 using TownOfStettler.Data;
 
@@ -10,8 +7,6 @@ namespace TownOfStettler.Controllers
 {
     public class HomeController : Controller
     {
-       
-
         private readonly DatabaseContext _context;
 
         public HomeController(DatabaseContext context)
