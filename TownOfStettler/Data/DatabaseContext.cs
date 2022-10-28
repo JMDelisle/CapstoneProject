@@ -1955,17 +1955,9 @@ namespace TownOfStettler.Data
             //modelBuilder.Entity<Printer>().HasData(
             //    new Printer
             //    {
-            //        Id = 1,
-            //        OwnerLocation = ,
-            //        DeviceId = ,
-            //        Type = "",
-            //        ConnectionType = "",
-            //        Notes = "",
-            //    },
-            //    new Printer
-            //    {
             //        Id = ,  //int PK
             //        OwnerLocation = ,  //int FK
+            //        TosNumber = ,  //varchar(25)
             //        DeviceId = ,  //int FK (nullable)
             //        Type = "",  //varchar(20)
             //        ConnectionType = "",  //varchar(15)

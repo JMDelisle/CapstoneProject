@@ -106,7 +106,7 @@ namespace TownOfStettler.Controllers
             {
                 validationState.SubExceptions.Add(new Exception("Error Message Here."));
             }
-           
+
             if (string.IsNullOrEmpty(processorType))
             {
                 validationState.SubExceptions.Add(new Exception("Error Message Here."));
@@ -277,31 +277,33 @@ namespace TownOfStettler.Controllers
                 _context.OwnerLocations.Add(ownerLocation);
                 _context.SaveChanges();
             }
-            
+
             int convertedHardwareDevice = int.Parse(hardwareDevice);
-            DeviceInformation deviceInformation = new DeviceInformation()
+
+            if (convertedHardwareDevice == 1 || convertedHardwareDevice == 2 || convertedHardwareDevice == 3 || convertedHardwareDevice == 6)
             {
-                DeviceTypeId = convertedHardwareDevice,
-                OwnerLocation = ownerLocation.Id,
-                TosNumber = TOSnumber,
-                SerialNumber = cpuSerNumber,
-                ModelNumber = cpuModel,
-                PowerSupply = pwrSupply,
-                PurchaseStore = store,
-                PurchasePrice = Math.Round(Decimal.Parse(price), 2),
-                PurchaseDate = DateOnly.Parse(date),
-                OperatingSystem = cpuOS,
-                Destroyed = false,
-                Notes = notes,
-            };
+                DeviceInformation deviceInformation = new DeviceInformation()
+                {
+                    DeviceTypeId = convertedHardwareDevice,
+                    OwnerLocation = ownerLocation.Id,
+                    TosNumber = TOSnumber,
+                    SerialNumber = cpuSerNumber,
+                    ModelNumber = cpuModel,
+                    PowerSupply = pwrSupply,
+                    PurchaseStore = store,
+                    PurchasePrice = Math.Round(Decimal.Parse(price), 2),
+                    PurchaseDate = DateOnly.Parse(date),
+                    OperatingSystem = cpuOS,
+                    Destroyed = false,
+                    Notes = notes,
+                };
 
-            _context.DeviceInformations.Add(deviceInformation);
-            _context.SaveChanges();
+                _context.DeviceInformations.Add(deviceInformation);
+                _context.SaveChanges();
 
-            // if statement to allow for laptop monitor goes here to make the Monitor TOS number the same as the Device TOS Number
+                // if statement to allow for laptop monitor goes here to make the Monitor TOS number the same as the Device TOS Number
 
-            if (convertedHardwareDevice == 1 || convertedHardwareDevice == 2 || convertedHardwareDevice == 3)
-            {
+
                 if (networkCardSpeed != null || networkCardBluetooth != null || networkCardWireless != null || networkCardSerNum != null || networkCardSerNum != null)
                 {
                     EthernetNetwork ethernetNetwork = new EthernetNetwork()
@@ -329,7 +331,7 @@ namespace TownOfStettler.Controllers
                     };
                     _context.HardDrives.Add(hardDrive);
                     _context.SaveChanges();
-                }                
+                }
                 if (processorType != null || processorSpeed != null || processorGeneration != null)
                 {
                     Processor processor = new Processor()
@@ -418,24 +420,8 @@ namespace TownOfStettler.Controllers
 
                 }
             }
-            if (convertedHardwareDevice == 3)
-            {
-                DisplayMonitor displayMonitor = new DisplayMonitor()
-                {
-                    TosNumber = deviceInformation.TosNumber, //varchar(25)
-                    ViewSizeInches = Decimal.Parse(monitorSize),  //decimal (3,2)
-                    ViewType = monitorType,  //varchar (30)
-                    Resolution = monitorResolution,  //varchar(20)
-                    RefreshRateHz = int.Parse(monitorRefreshRate),  //int(3) (nullable)
-                    SerialNumber = monitorSerialNumber,  //varchar(50)
-                    OutputType = monitorOutput,  //varchar(10) (nullable)
-                    NumberOfOutputs = int.Parse(monOutNum),  //int (nullable)
-                };
-                _context.DisplayMonitors.Add(displayMonitor);
-                _context.SaveChanges();
-            }
-            if (convertedHardwareDevice == 4 || convertedHardwareDevice == 5)
-            {
+            
+           
 
                 if (monitorSize != null || monTOSNum != null || monitorType != null || monitorResolution != null || monitorSerialNumber != null)
                 {
@@ -452,37 +438,9 @@ namespace TownOfStettler.Controllers
                     };
                     _context.DisplayMonitors.Add(displayMonitor);
                     _context.SaveChanges();
-                }                
-            }
-
-            if (convertedHardwareDevice == 5)
-            {
-                Printer printer = new Printer()
-                {
-                    OwnerLocation = ownerLocation.Id,  //int FK
-                    DeviceId = deviceInformation.Id,  //int FK (nullable)
-                    Type = printerType,  //varchar(20)
-                    ConnectionType = connectionType,  //varchar(15)
-                };
-                _context.Printers.Add(printer);
-                _context.SaveChanges();
-            }
-
-            if (convertedHardwareDevice == 6)
-            {           
-                if (hrdwreTOSnum != null || hrdwreType != null)
-                {
-                    OtherHardware hardware = new OtherHardware()
-                    {
-                        OwnerLocation = ownerLocation.Id,  //int FK
-                        TosNumber = hrdwreTOSnum,  //varchar(20)
-                        TypeOfDevice = hrdwreType,  //varchar(40)
-                        Destroyed = false,  //bool
-                    };
-                    _context.OtherHardwares.Add(hardware);
-                    _context.SaveChanges();
                 }
-            }
+            
+
             if (warrantyType != null || warrantyLength != null)
             {
                 Warranty warranty = new Warranty()
@@ -497,6 +455,7 @@ namespace TownOfStettler.Controllers
 
             _context.SaveChanges();
             return RedirectToAction("Index");
+        
         }
 
     }
