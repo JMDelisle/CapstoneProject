@@ -32,7 +32,7 @@ namespace TownOfStettler.Controllers
             return View();
         }
 
-        public IActionResult EnterNewDesktop(string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string TOSnumber, string serverSerNumber, string serverModel, string pwrSupply, string store, string price, string date, string serverOS, string notes, string networkCardSpeed, string networkCardWireless, string networkCardBluetooth, string networkCardSerNum, string networkNotes, string hardDriveType, string hardDriveSize, string HDDserNum, string hardDriveNotes, string processorType, string processorSpeed, string processorSerNum, string processorGeneration, string processorCoreCount, string processorNotes, string RamSize, string ramType, string ramSpeed, string ramSerNum, string ramNotes, string miscellaneousDriveType, string miscellaneousDriveRemoveable, string miscDriveSerNum, string miscNotes, string soundCardBrand, string soundNotes, string videoCardBrand, string videoCardRamSize, string vidCardSerNum, string vidCardNotes, string videoCardOutputType, string videoCardOutputNumber, string outputNotes, string warrantyType, string warrantyLength, string warrantyExpiryDate, string warrantyNotes)
+        public IActionResult EnterNewDesktop(string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string TOSnumber, string serverSerNumber, string serverModel, string pwrSupply, string store, string price, string date, string serverOS, string serverNotes, string networkCardSpeed, string networkCardWireless, string networkCardBluetooth, string networkCardSerNum, string networkNotes, string hardDriveType, string hardDriveSize, string HDDserNum, string hardDriveNotes, string processorType, string processorSpeed, string processorSerNum, string processorGeneration, string processorCoreCount, string processorNotes, string RamSize, string ramType, string ramSpeed, string ramSerNum, string ramNotes, string miscellaneousDriveType, string miscellaneousDriveRemoveable, string miscDriveSerNum, string miscNotes, string soundCardBrand, string soundNotes, string videoCardBrand, string videoCardRamSize, string vidCardSerNum, string vidCardNotes, string videoCardOutputType, string videoCardOutputNumber, string outputNotes, string warrantyType, string warrantyLength, string warrantyExpiryDate, string warrantyNotes)
         {
             ValidationException validationState = new ValidationException();
 
@@ -196,7 +196,7 @@ namespace TownOfStettler.Controllers
                 PurchaseDate = DateOnly.Parse(date),  //date
                 OperatingSystem = serverOS,  //varchar(30)
                 Destroyed = false,  //bool
-                Notes = notes,  //text  (nullable)
+                Notes = serverNotes,  //text  (nullable)
             };
             _context.DeviceInformations.Add(deviceInformation);
             _context.SaveChanges();
@@ -241,7 +241,7 @@ namespace TownOfStettler.Controllers
                         Generation = int.Parse(processorGeneration),  //int(11) (nullable)
                         CoreCount = int.Parse(processorCoreCount),  //int(11) (nullable)
                         Destroyed = false,  //bool
-                        Notes = processorNotes
+                        Notes = processorNotes  //text  (nullable)
                     };
                     _context.Processors.Add(processor);
                     _context.SaveChanges();
