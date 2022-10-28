@@ -1,72 +1,34 @@
-﻿////using Microsoft.AspNetCore.Http;
-////using Microsoft.AspNetCore.Mvc;
-////using Microsoft.AspNetCore.Mvc.Rendering;
-////using TownOfStettler.Data;
-////using TownOfStettler.Models;
-////using TownOfStettler.Models.Exceptions;
-////using Newtonsoft.Json;
-////using System.ComponentModel.DataAnnotations;
-////using MessagePack;
-////using ValidationException = TownOfStettler.Models.Exceptions.ValidationException;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using TownOfStettler.Data;
+using TownOfStettler.Models;
+using TownOfStettler.Models.Exceptions;
+using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+using MessagePack;
+using ValidationException = TownOfStettler.Models.Exceptions.ValidationException;
 
-////namespace TownOfStettler.Controllers
-////{
-////    public class AddNewHardwareDeviceController : Controller
-////    {
-////        private readonly DatabaseContext _context;
-////        public AddNewHardwareDeviceController(DatabaseContext context)
-////        {
-////            _context = context;
-////        }
-////        public IActionResult Index()
-////        {
-////            // If there are exceptions, store them in the view data/bag
-////            if (TempData["Exceptions"] != null)
-////            {
-////                ViewData["Exceptions"] =
-////                     JsonConvert.DeserializeObject(TempData["Exceptions"].ToString(), typeof(ValidationException));
-////            }
-
-////            return View();
-////        }
-
-//        public IActionResult EnterNewHardwareDevice(string ownerLocationName, string hrdwreTOSnum, string hrdwreType, string ownerAddress, string ownerPhoneNumber, string notes, string warrantyType, string warrantyLength, string warrantyExpiryDate)
+//namespace TownOfStettler.Controllers
+//{
+//    public class AddNewHardwareDeviceController : Controller
+//    {
+//        private readonly DatabaseContext _context;
+//        public AddNewHardwareDeviceController(DatabaseContext context)
 //        {
-//            ValidationException validationState = new ValidationException();
-
-//            if (string.IsNullOrEmpty(hrdwreTOSnum))
+//            _context = context;
+//        }
+//        public IActionResult Index()
+//        {
+//            // If there are exceptions, store them in the view data/bag
+//            if (TempData["Exceptions"] != null)
 //            {
-//                validationState.SubExceptions.Add(new Exception("Hardware Serial Number can not be empty."));
-//            }
-//            if (string.IsNullOrEmpty(hrdwreType))
-//            {
-//                validationState.SubExceptions.Add(new Exception("Hardware Type can not be empty."));
-//            }
-//            if (string.IsNullOrEmpty(warrantyType))
-//            {
-//                validationState.SubExceptions.Add(new Exception("Warrenty Type can not be empty."));
-//            }
-//            if (string.IsNullOrEmpty(warrantyLength))
-//            {
-//                validationState.SubExceptions.Add(new Exception("Warrenty Length can not be empty."));
+//                ViewData["Exceptions"] =
+//                     JsonConvert.DeserializeObject(TempData["Exceptions"].ToString(), typeof(ValidationException));
 //            }
 
-//            OwnerLocation ownerLocation = null;
-//            foreach (OwnerLocation entry in _context.OwnerLocations)
-//            {
-//                if (entry.Name == ownerLocationName)
-//                {
-//                    ownerLocation = entry;
-//                };
-//            }
-//            if (ownerLocation is null)
-//            {
-//                ownerLocation = new OwnerLocation()
-//                {
-//                    Name = ownerLocationName,  //varchar(60)
-//                    Address = ownerAddress,  //varchar(75)
-//                    PhoneNumber = ownerPhoneNumber,  //text (nullable)
-//                };
+//            return View();
+//        }
 
 //                _context.OwnerLocations.Add(ownerLocation);
 //                _context.SaveChanges();

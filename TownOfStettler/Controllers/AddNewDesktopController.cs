@@ -10,15 +10,15 @@
 //using ValidationException = TownOfStettler.Models.Exceptions.ValidationException;
 //using static System.Formats.Asn1.AsnWriter;
 
-//namespace TownOfStettler.Controllers
-//{
-//    public class AddNewLaptopController : Controller
-//    {
-//        private readonly DatabaseContext _context;
-//        public AddNewLaptopController(DatabaseContext context)
-//        {
-//            _context = context;
-//        }
+namespace TownOfStettler.Controllers
+{
+    public class AddNewDesktopController : Controller
+    {
+        private readonly DatabaseContext _context;
+        public AddNewDesktopController(DatabaseContext context)
+        {
+            _context = context;
+        }
 
 //        public IActionResult Index()
 //        {
@@ -32,7 +32,7 @@
 //            return View();
 //        }
 
-        public IActionResult EnterNewLaptop(string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string TOSnumber, string laptopSerNumber, string laptopModel, string pwrSupply, string store, string price, string date, string laptopOS, string laptopNotes, string networkCardSpeed, string networkCardWireless, string networkCardBluetooth, string networkCardSerNum, string networkNotes, string hardDriveType, string hardDriveSize, string HDDserNum, string hardDriveNotes, string processorType, string processorSpeed, string processorSerNum, string processorGeneration, string processorCoreCount, string processorNotes, string RamSize, string ramType, string ramSpeed, string ramSerNum, string ramNotes, string miscellaneousDriveType, string miscellaneousDriveRemoveable, string miscDriveSerNum, string miscNotes, string soundCardBrand, string soundNotes, string videoCardBrand, string videoCardRamSize, string vidCardSerNum, string vidCardNotes, string videoCardOutputType, string videoCardOutputNumber, string outputNotes, string warrantyType, string warrantyLength, string warrantyExpiryDate, string warrantyNotes, string monitorSize, string monitorType, string monitorResolution, string monitorRefreshRate, string monOutNum)
+        public IActionResult EnterNewDesktop(string ownerLocationName, string ownerAddress, string ownerPhoneNumber, string TOSnumber, string serverSerNumber, string serverModel, string pwrSupply, string store, string price, string date, string serverOS, string notes, string networkCardSpeed, string networkCardWireless, string networkCardBluetooth, string networkCardSerNum, string networkNotes, string hardDriveType, string hardDriveSize, string HDDserNum, string hardDriveNotes, string processorType, string processorSpeed, string processorSerNum, string processorGeneration, string processorCoreCount, string processorNotes, string RamSize, string ramType, string ramSpeed, string ramSerNum, string ramNotes, string miscellaneousDriveType, string miscellaneousDriveRemoveable, string miscDriveSerNum, string miscNotes, string soundCardBrand, string soundNotes, string videoCardBrand, string videoCardRamSize, string vidCardSerNum, string vidCardNotes, string videoCardOutputType, string videoCardOutputNumber, string outputNotes, string warrantyType, string warrantyLength, string warrantyExpiryDate, string warrantyNotes)
         {
             ValidationException validationState = new ValidationException();
 
@@ -160,18 +160,6 @@
             {
                 validationState.SubExceptions.Add(new Exception("You must enter the Warranty Length."));
             }
-            if (string.IsNullOrEmpty(monitorSize))
-            {
-                validationState.SubExceptions.Add(new Exception("You must enter Monitor Size."));
-            }
-            if (string.IsNullOrEmpty(monitorType))
-            {
-                validationState.SubExceptions.Add(new Exception("You must enter Monitor Type."));
-            }
-            if (string.IsNullOrEmpty(monitorResolution))
-            {
-                validationState.SubExceptions.Add(new Exception("You must enter Monitor Resolution."));
-            }
 
 
 //            OwnerLocation ownerLocation = null;
@@ -197,7 +185,7 @@
 
             DeviceInformation deviceInformation = new DeviceInformation()
             {
-                DeviceTypeId = 3,  //int FK
+                DeviceTypeId = 2,  //int FK
                 OwnerLocation = ownerLocation.Id,  //int FK
                 TosNumber = TOSnumber,  //varchar(25)
                 SerialNumber = serverSerNumber,  //varchar(30)
@@ -212,22 +200,6 @@
             };
             _context.DeviceInformations.Add(deviceInformation);
             _context.SaveChanges();
-
-//            if (monitorSize != null || monitorType != null || monitorResolution != null)
-//            {
-//                DisplayMonitor displayMonitor = new DisplayMonitor()
-//                {
-//                    TosNumber = TOSnumber, //varchar(25)
-//                    ViewSizeInches = Decimal.Parse(monitorSize),  //decimal (3,2)
-//                    ViewType = monitorType,  //varchar (30)
-//                    Resolution = monitorResolution,  //varchar(20)
-//                    RefreshRateHz = int.Parse(monitorRefreshRate),  //int(3) (nullable)
-//                    SerialNumber = "Laptop Monitor",  //varchar(50)
-//                    NumberOfOutputs = int.Parse(monOutNum),  //int (nullable)
-//                };
-//                _context.DisplayMonitors.Add(displayMonitor);
-//                _context.SaveChanges();
-//            }
 
 //            if (networkCardSpeed != null || networkCardBluetooth != null || networkCardWireless != null || networkCardSerNum != null || networkCardSerNum != null)
 //            {
@@ -244,92 +216,92 @@
 //                _context.EthernetNetworks.Add(ethernetNetwork);
 //                _context.SaveChanges();
 
-//                if (hardDriveType != null || hardDriveSize != null || HDDserNum != null)
-//                {
-//                    HardDrive hardDrive = new HardDrive()
-//                    {
-//                        DeviceId = deviceInformation.Id,  //int FK
-//                        Type = hardDriveType,  //varchar(20)
-//                        SizeGb = int.Parse(hardDriveSize),  //int(7)
-//                        SerialNumber = HDDserNum,  //varchar(30)
-//                        Destroyed = false,
-//                        Notes = hardDriveNotes  //text  (nullable)
-//                    };
-//                    _context.HardDrives.Add(hardDrive);
-//                    _context.SaveChanges();
-//                }
-//                if (processorType != null || processorSpeed != null || processorSerNum != null)
-//                {
-//                    Processor processor = new Processor()
-//                    {
-//                        DeviceId = deviceInformation.Id,  //int FK
-//                        Type = processorType,  //varchar(25)
-//                        SpeedGhz = Math.Round(Decimal.Parse(processorSpeed), 2),  //decimal(5,3)
-//                        SerialNumber = processorSerNum,  //varchar(30)
-//                        Generation = int.Parse(processorGeneration),  //int(11) (nullable)
-//                        CoreCount = int.Parse(processorCoreCount),  //int(11) (nullable)
-//                        Destroyed = false,  //bool
-//                        Notes = processorNotes
-//                    };
-//                    _context.Processors.Add(processor);
-//                    _context.SaveChanges();
-//                }
-//                if (ramType != null || RamSize != null || ramSerNum != null)
-//                {
-//                    Ram ram = new Ram()
-//                    {
-//                        DeviceId = deviceInformation.Id,  //int FK
-//                        Type = ramType,  //varchar(15)
-//                        SizeGb = int.Parse(RamSize),  //int(11)
-//                        SpeedMhz = int.Parse(ramSpeed),  //int(5) (nullable)
-//                        SerialNumber = ramSerNum,  //varchar(30)
-//                        Destroyed = false,  //bool
-//                        Notes = ramNotes
-//                    };
-//                    _context.Rams.Add(ram);
-//                    _context.SaveChanges();
-//                }
-//                if (miscellaneousDriveType != null || miscellaneousDriveRemoveable != null || miscDriveSerNum != null)
-//                {
-//                    MiscellaneousDrive MiscellaneousDrive = new MiscellaneousDrive()
-//                    {
-//                        DeviceId = deviceInformation.Id,  //int FK
-//                        Type = miscellaneousDriveType,  //varchar(30)
-//                        Removable = bool.Parse(miscellaneousDriveRemoveable),  //bool
-//                        SerialNumber = miscDriveSerNum,  //varchar(30)
-//                        Destroyed = false,  //bool
-//                        Notes = miscNotes  //text  (nullable)
-//                    };
-//                    _context.MiscellaneousDrives.Add(MiscellaneousDrive);
-//                    _context.SaveChanges();
-//                }
-//                if (soundCardBrand != null)
-//                {
-//                    SoundCard soundCard = new SoundCard()
-//                    {
-//                        DeviceId = deviceInformation.Id,  //int FK
-//                        Brand = soundCardBrand,  //varchar(20) (nullable)
-//                        Destroyed = false, //bool
-//                        Notes = soundNotes
-//                    };
-//                    _context.SoundCards.Add(soundCard);
-//                    _context.SaveChanges();
-//                }
-//                while (videoCardRamSize != null)
-//                {
-//                    if (videoCardRamSize != null || vidCardSerNum != null)
-//                    {
-//                        VideoCard videoCard = new VideoCard()
-//                        {
-//                            DeviceId = deviceInformation.Id,  //int FK
-//                            Brand = videoCardBrand,  //varchar(20) (nullable)
-//                            RamSizeGb = int.Parse(videoCardRamSize),  //int(11)
-//                            SerialNumber = vidCardSerNum,  //varchar(30)
-//                            Destroyed = false,  //bool
-//                            Notes = vidCardNotes  //text  (nullable)
-//                        };
-//                        _context.VideoCards.Add(videoCard);
-//                        _context.SaveChanges();
+                if (hardDriveType != null || hardDriveSize != null || HDDserNum != null)
+                {
+                    HardDrive hardDrive = new HardDrive()
+                    {
+                        DeviceId = deviceInformation.Id,  //int FK
+                        Type = hardDriveType,  //varchar(20)
+                        SizeGb = int.Parse(hardDriveSize),  //int(7)
+                        SerialNumber = HDDserNum,  //varchar(30)
+                        Destroyed = false,
+                        Notes = hardDriveNotes  //text  (nullable)
+                    };
+                    _context.HardDrives.Add(hardDrive);
+                    _context.SaveChanges();
+                }
+                if (processorType != null || processorSpeed != null || processorSerNum != null)
+                {
+                    Processor processor = new Processor()
+                    {
+                        DeviceId = deviceInformation.Id,  //int FK
+                        Type = processorType,  //varchar(25)
+                        SpeedGhz = Math.Round(Decimal.Parse(processorSpeed), 2),  //decimal(5,3)
+                        SerialNumber = processorSerNum,  //varchar(30)
+                        Generation = int.Parse(processorGeneration),  //int(11) (nullable)
+                        CoreCount = int.Parse(processorCoreCount),  //int(11) (nullable)
+                        Destroyed = false,  //bool
+                        Notes = processorNotes
+                    };
+                    _context.Processors.Add(processor);
+                    _context.SaveChanges();
+                }
+                if (ramType != null || RamSize != null || ramSerNum != null)
+                {
+                    Ram ram = new Ram()
+                    {
+                        DeviceId = deviceInformation.Id,  //int FK
+                        Type = ramType,  //varchar(15)
+                        SizeGb = int.Parse(RamSize),  //int(11)
+                        SpeedMhz = int.Parse(ramSpeed),  //int(5) (nullable)
+                        SerialNumber = ramSerNum,  //varchar(30)
+                        Destroyed = false,  //bool
+                        Notes = ramNotes
+                    };
+                    _context.Rams.Add(ram);
+                    _context.SaveChanges();
+                }
+                if (miscellaneousDriveType != null || miscellaneousDriveRemoveable != null || miscDriveSerNum != null)
+                {
+                    MiscellaneousDrive MiscellaneousDrive = new MiscellaneousDrive()
+                    {
+                        DeviceId = deviceInformation.Id,  //int FK
+                        Type = miscellaneousDriveType,  //varchar(30)
+                        Removable = bool.Parse(miscellaneousDriveRemoveable),  //bool
+                        SerialNumber = miscDriveSerNum,  //varchar(30)
+                        Destroyed = false,  //bool
+                        Notes = miscNotes  //text  (nullable)
+                    };
+                    _context.MiscellaneousDrives.Add(MiscellaneousDrive);
+                    _context.SaveChanges();
+                }
+                if (soundCardBrand != null)
+                {
+                    SoundCard soundCard = new SoundCard()
+                    {
+                        DeviceId = deviceInformation.Id,  //int FK
+                        Brand = soundCardBrand,  //varchar(20) (nullable)
+                        Destroyed = false, //bool
+                        Notes = soundNotes
+                    };
+                    _context.SoundCards.Add(soundCard);
+                    _context.SaveChanges();
+                }
+                while (videoCardRamSize != null)
+                {
+                    if (videoCardRamSize != null || vidCardSerNum != null)
+                    {
+                        VideoCard videoCard = new VideoCard()
+                        {
+                            DeviceId = deviceInformation.Id,  //int FK
+                            Brand = videoCardBrand,  //varchar(20) (nullable)
+                            RamSizeGb = int.Parse(videoCardRamSize),  //int(11)
+                            SerialNumber = vidCardSerNum,  //varchar(30)
+                            Destroyed = false,  //bool
+                            Notes = vidCardNotes  //text  (nullable)
+                        };
+                        _context.VideoCards.Add(videoCard);
+                        _context.SaveChanges();
 
 //                        if (videoCardOutputNumber != null)
 //                        {
